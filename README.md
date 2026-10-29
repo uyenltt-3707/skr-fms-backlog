@@ -2,7 +2,7 @@
 
 ## 1. Dự án
 
-**Dự án:** SKR-FMS — Sakura Fish Market Operations Support · **Mã học viên:** [PL điền] · **Đề:** Product A (LAB-5)
+**Dự án:** SKR-FMS — Sakura Fish Market Operations Support · **Mã học viên:** uyenltt3707 · **Đề:** Product A (LAB-5)
 
 > Repo và GitHub Project này **công khai**: chỉ nội dung tự viết, chỉ ghi **mã** spec LAB-4 (SCR-/API-/DBT-/ADR-/DD-/FS-/WU-);
 > không chép RFP hay văn bản spec, không dữ liệu thật, không dữ liệu cá nhân, không khóa bí mật.
