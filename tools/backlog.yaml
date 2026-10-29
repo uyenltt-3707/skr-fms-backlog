@@ -1,0 +1,1185 @@
+# Backlog LAB-5 Product A — dữ liệu TỰ VIẾT (không chép spec LAB-4 / RFP; chỉ ghi mã SCR-/API-/DBT-/ADR-/DD-/FS-/CSP-/WU-).
+# Nguồn break: bàn giao LAB-4 (product-a-fishmarket @ 576480b, specs/_meta/lab5_handoff.yaml — 95 WU, 13 epic).
+#
+# Cấu trúc: epic → issue → sub-issue (tối đa 3 cấp, dùng sub-issue thật của GitHub).
+#   id      id nội bộ, ổn định: I-NNN = issue từ WU-NNN · I-NNN.k = sub-issue · X-xx = issue thêm khi break (thiết kế / 要確認)
+#   wu      WU nguồn trong handoff (rỗng nếu là issue thêm)
+#   kind    DB · API · UI · batch · test · hạ tầng · tài liệu · thiết kế · 要確認
+#   owner   担当(仮): FE-A FE-B BE-A BE-B QA-A PM (người giả định)
+#   hours   CHỈ item lá (≤ 15h). Issue cha / epic = tổng con, script tự cộng (estimate.md §3 quy tắc 4)
+#   sprint  1 · 2 · 3 · ~ (backlog, chưa xếp)
+#   deps    id nội bộ phải xong trước (issue = mọi item lá bên dưới)
+#   constraint  mặc định theo epic (E10 = 完納奨励金, còn lại なし)
+meta:
+  repo: uyenltt-3707/skr-fms-backlog
+  project_owner: uyenltt-3707
+  project_number: 2
+  source_commit: 576480b
+  leaf_max_hours: 15
+  sprints: {1: "Sprint 1 (giả lập)", 2: "Sprint 2 (giả lập)", 3: "Sprint 3 (giả lập)"}
+  # giờ làm backlog / người / sprint: 10 ngày × 7.5h = 75h − họp 7.5h − buffer 15h = 52.5h; PM 30h (phần còn lại là quản lý)
+  capacity: {FE-A: 52.5, FE-B: 52.5, BE-A: 52.5, BE-B: 52.5, QA-A: 52.5, PM: 30}
+
+epics:
+  - id: E01
+    name: 基盤・認証・権限
+    desc: Đăng nhập có MFA và khóa tạm, phân quyền theo vai trò ở từng API, quản lý tài khoản, khung màn hình chung.
+    issues:
+      - id: I-001
+        wu: [WU-001]
+        title: Thêm cột khóa tạm và liên kết người tham gia cho tài khoản (DBT-01)
+        kind: DB
+        owner: BE-A
+        spec: [DBT-01, ADR-013]
+        hours: 5
+        sprint: 1
+        desc: Migration bổ sung bộ đếm đăng nhập sai, thời điểm hết khóa tạm và khóa ngoại tới người tham gia, kèm index và CHECK.
+        done: Migration chạy được trên DB sạch và DB có seed; cột mới có giá trị mặc định hợp lệ.
+      - id: I-002
+        wu: [WU-002]
+        title: Thêm bước OTP và khóa tạm cho đăng nhập (API-001)
+        kind: API
+        spec: [API-001, SCR-01, ADR-013, CSP-04]
+        deps: [I-001]
+        desc: Vai trò bắt buộc MFA phải qua bước TOTP để có phiên AAL2; sai mật khẩu nhiều lần thì khóa tạm; mỗi nhánh lỗi trả mã riêng.
+        done: Đủ nhánh thành công / sai / khóa / khóa tạm / OTP sai, mỗi nhánh có test API.
+        subs:
+          - {id: I-002.1, title: "Bước TOTP sau mật khẩu và nâng phiên lên AAL2", kind: API, owner: BE-A, hours: 12, sprint: 1, done: "Vai trò MFA không có AAL2 thì không vào được màn nghiệp vụ."}
+          - {id: I-002.2, title: "Đếm lần sai và khóa tạm 5 lần / 15 phút, tách mã lỗi đăng nhập", kind: API, owner: BE-A, hours: 10, sprint: 2, done: "Lần sai thứ 5 khóa 15 phút; 4 mã lỗi phân biệt được trong test."}
+      - id: I-003
+        wu: [WU-003]
+        title: Middleware bắt buộc AAL2 cho API cần MFA
+        kind: API
+        spec: [CSP-04, API-006, API-041, API-043]
+        deps: [I-002]
+        desc: Một lớp kiểm tra chung trả 403 MFA_REQUIRED và ghi audit khi gọi API cần MFA bằng phiên chưa đủ mức xác thực.
+        done: Mọi API có cột MFA = 要 đều đi qua middleware; test 403 cho từng nhóm.
+        subs:
+          - {id: I-003.1, title: "Viết middleware AAL2 + 403 MFA_REQUIRED + audit ACCESS_DENIED", kind: API, owner: BE-B, hours: 10, sprint: 2, done: "Middleware có unit test cho phiên AAL1 / AAL2 / không phiên."}
+          - {id: I-003.2, title: "Gắn middleware AAL2 cho khoảng 30 endpoint theo API_List", kind: API, owner: BE-B, hours: 10, sprint: 2, done: "Bảng đối chiếu endpoint ↔ cột MFA không lệch; test 403 đạt."}
+      - id: I-004
+        wu: [WU-004]
+        title: Thu hẹp quyền đọc theo vai trò ở từng route (CSP-03)
+        kind: API
+        owner: BE-B
+        spec: [CSP-03, API-011, API-013, API-015, API-020, API-021, API-023]
+        hours: 6
+        sprint: 1
+        desc: Đổi tham số kiểm vai trò của các route đọc để chỉ vai trò được phép xem; truy cập sai ghi audit.
+        done: 8 route đọc trả 403 cho vai trò không được phép; có test.
+      - id: I-005
+        wu: [WU-005]
+        title: Màn đăng nhập SCR-01 có bước MFA và thông báo khóa
+        kind: UI
+        spec: [SCR-01, API-001, API-002]
+        deps: [I-002]
+        desc: Màn đăng nhập ba bước (mật khẩu → OTP → đăng ký QR lần đầu) và các thông báo theo MSG-040〜046.
+        done: Đủ biến thể WF-01 chạy được với API thật; có test component.
+        subs:
+          - {id: I-005.1, title: "Form bước OTP và đăng ký QR lần đầu", kind: UI, owner: FE-A, hours: 12, sprint: 2, done: "Người dùng MFA đăng nhập hết luồng trên môi trường dev."}
+          - {id: I-005.2, title: "Thông báo khóa tạm / số lần còn lại / hết phiên (MSG-040〜046)", kind: UI, owner: FE-A, hours: 8, sprint: 2, done: "Mỗi mã lỗi API hiện đúng MSG."}
+      - id: I-006
+        wu: [WU-006]
+        title: Cấu hình timeout phiên và hủy phiên khi khóa tài khoản
+        kind: hạ tầng
+        owner: FE-A
+        spec: [CSP-02, ADR-013]
+        deps: [I-077]
+        hours: 6
+        sprint: 1
+        desc: Đặt chính sách phiên của Supabase (không hoạt động 30 phút, tối đa 12 giờ) và xử lý 401 phía client để đưa về màn đăng nhập.
+        done: Hết hạn phiên thì client về SCR-01; khóa tài khoản thì phiên đang mở bị hủy.
+      - id: I-007
+        wu: [WU-007]
+        title: Thiết bị dùng chung ở hiện trường — phiên theo ca và chọn người thao tác bằng PIN
+        kind: UI
+        spec: [CSP-19, SCR-01, ADR-013]
+        desc: Tablet hiện trường mở phiên theo ca; mỗi thao tác chọn người bằng ID và PIN, bản ghi lưu người đã chọn. Database Design chưa có bảng thiết bị nên thiết kế trước.
+        done: Bản ghi nghiệp vụ tạo từ tablet có actor là người chọn bằng PIN; PIN lưu dạng băm, giới hạn số lần thử.
+        subs:
+          - {id: I-007.1, title: "Thiết kế bổ sung bảng thiết bị + PIN băm (bổ sung Database Design, ADR-013)", kind: thiết kế, owner: PM, hours: 8, sprint: 2, deps: [X-Q1], done: "Bản thiết kế bảng + luồng được PL duyệt."}
+          - {id: I-007.2, title: "DB + API đăng ký thiết bị và xác minh PIN có giới hạn thử", kind: API, owner: BE-A, hours: 14, sprint: ~, deps: [I-007.1, I-002], done: "API có test cho PIN đúng / sai / vượt số lần."}
+          - {id: I-007.3, title: "UI phiên theo ca và hộp chọn người thao tác bằng ID・PIN", kind: UI, owner: FE-B, hours: 14, sprint: ~, deps: [I-007.1, I-007.2], done: "Luồng chọn người chạy trên tablet 10 inch."}
+          - {id: I-007.4, title: "Ghi actor = người đã chọn vào các RPC ghi nghiệp vụ", kind: API, owner: BE-B, hours: 10, sprint: ~, deps: [I-007.2], done: "Audit và bản ghi nghiệp vụ hiện đúng người thao tác."}
+      - id: X-Q1
+        title: "[要確認] Thiết bị dùng chung — đăng ký thiết bị, độ dài PIN, cấp / thu hồi (ADR-013 未決 #4)"
+        kind: 要確認
+        owner: PM
+        spec: [ADR-013, CSP-19]
+        hours: 1
+        sprint: 1
+        label: 要確認
+        desc: Database Design chưa có bảng thiết bị và PIN; ADR-013 đang dùng giả định tạm. Cần câu trả lời trước khi chốt thiết kế bổ sung ở I-007.1.
+        done: Có câu trả lời (hoặc PL chốt giữ giả định tạm); cập nhật I-007.
+      - id: I-008
+        wu: [WU-008]
+        title: Cấp / đình chỉ vai trò và khóa tài khoản qua RPC, chặn tự thao tác (API-008〜010)
+        kind: API
+        owner: BE-A
+        spec: [API-008, API-009, API-010, SCR-03]
+        deps: [I-071]
+        hours: 10
+        sprint: 3
+        desc: Chuyển ba thao tác quản trị tài khoản sang RPC nguyên tử; không cho tự cấp quyền, tự đình chỉ, tự khóa (SoD-4); lý do bắt buộc.
+        done: Ba RPC có test chặn tự thao tác; audit nhạy cảm ghi before/after.
+      - id: I-009
+        wu: [WU-009]
+        title: Màn quản lý tài khoản SCR-03 chặn tự thao tác và hiện banner MFA
+        kind: UI
+        owner: FE-B
+        spec: [SCR-03, API-006, API-007]
+        deps: [I-008, I-003]
+        hours: 10
+        sprint: 3
+        desc: Bổ sung vào màn sẵn có cảnh báo khi cấp quyền đặc biệt, ẩn thao tác lên chính mình và banner yêu cầu MFA.
+        done: Biến thể WF-03 hiển thị đúng; nút tự thao tác không xuất hiện.
+      - id: I-010
+        wu: [WU-010]
+        title: Khung chung — header, nav theo vai trò, ダッシュボード
+        kind: UI
+        spec: [CSP-01, CSP-03, CSP-22, API-003, API-004, API-005]
+        deps: [I-041]
+        desc: Header có tên, nhãn tiếng Nhật của vai trò, 業務日 và banner 締め / 休市; menu theo vai trò; trang đầu đếm việc theo vai trò.
+        done: 16 màn dùng chung khung; người nhiều vai trò thấy menu hợp lệ.
+        subs:
+          - {id: I-010.1, title: "Header 業務日 + banner 締め / 休市 + nhãn trạng thái", kind: UI, owner: FE-B, hours: 10, sprint: 2, done: "Đổi 業務日 lúc 02:00 JST hiển thị đúng."}
+          - {id: I-010.2, title: "Nav theo 7 vai trò và ダッシュボード đếm việc", kind: UI, owner: FE-B, hours: 14, sprint: 2, done: "Mỗi vai trò chỉ thấy mục được phép."}
+
+  - id: E02
+    name: 参加者・参加根拠（許可／承認）
+    desc: Người tham gia theo 4 loại, căn cứ tham gia theo loại (許可 / 承認 / 市場登録 / 取引地点登録), trạng thái hiệu lực và hàm kiểm tra FS-03.
+    issues:
+      - id: I-011
+        wu: [WU-011]
+        title: Ràng buộc loại người tham gia và 参加上限 (DBT-03)
+        kind: DB
+        owner: BE-A
+        spec: [DBT-03, SCR-05]
+        hours: 6
+        sprint: 1
+        desc: Sau khi tạo, loại của người tham gia bị khóa; 参加上限 chỉ áp cho 売買参加者; dọn seed lệch.
+        done: Trigger và CHECK có test; seed chạy lại không lỗi.
+      - id: I-012
+        wu: [WU-012]
+        title: Căn cứ tham gia gắn loại người tham gia và RULE chuyển trạng thái (DBT-04)
+        kind: DB
+        spec: [DBT-04, ADR-014]
+        deps: [I-011]
+        desc: Thêm loại vào bảng căn cứ, FK ghép và CHECK loại căn cứ theo loại người; trạng thái 再審査; quy tắc chuyển trạng thái gồm 再審査 → 一時停止.
+        done: Dữ liệu cũ backfill đủ; CHECK từ chối căn cứ sai loại.
+        subs:
+          - {id: I-012.1, title: "Cột loại + FK ghép + CHECK căn cứ theo loại người", kind: DB, owner: BE-A, hours: 10, sprint: 2, done: "Insert căn cứ sai loại bị từ chối."}
+          - {id: I-012.2, title: "Trạng thái under_review + RULE chuyển trạng thái + backfill", kind: DB, owner: BE-A, hours: 8, sprint: 2, done: "Mọi cặp chuyển ngoài RULE bị chặn."}
+      - id: I-013
+        wu: [WU-013]
+        title: Bảng lịch sử trạng thái căn cứ append-only (DBT-17)
+        kind: DB
+        owner: BE-B
+        spec: [DBT-17]
+        deps: [I-012]
+        hours: 10
+        sprint: 3
+        desc: Bảng mới chỉ thêm dòng, CHECK các cặp chuyển hợp lệ (kể cả dòng đăng ký đầu tiên) và điều kiện riêng của 仲卸 / 売買参加者.
+        done: UPDATE / DELETE bị chặn; cặp chuyển không hợp lệ bị từ chối.
+      - id: I-014
+        wu: [WU-014]
+        title: Hàm FS-03 kiểm tra hiệu lực người tham gia
+        kind: DB
+        spec: [FS-03, CSP-09, DBT-04]
+        deps: [I-012]
+        desc: Hàm dùng chung cho 確定 giao dịch, giao hàng và đăng ký lô; trả reason_code theo thứ tự CSP-09, có 失効 suy ra từ ngày.
+        done: Kết quả khớp bảng quyết định FS-03; đây là đường găng nên review 2 người.
+        subs:
+          - {id: I-014.1, title: "Căn cứ bắt buộc theo loại + 失効 suy ra từ ngày", kind: DB, owner: BE-A, hours: 12, sprint: 3, done: "Đủ 4 loại người tham gia có test."}
+          - {id: I-014.2, title: "Thứ tự reason_code CSP-09 (thêm UNDER_REVIEW / BASIS_MISMATCH)", kind: DB, owner: BE-A, hours: 10, sprint: 3, done: "Nhiều lý do cùng lúc trả đúng mã đầu tiên."}
+      - id: I-015
+        wu: [WU-015]
+        title: Đăng ký và đổi trạng thái căn cứ qua RPC (API-016 / API-017)
+        kind: API
+        owner: BE-B
+        spec: [API-016, API-017, SCR-06]
+        deps: [I-013]
+        hours: 12
+        sprint: ~
+        desc: Route gọi RPC nguyên tử, ghi lịch sử DBT-17; trả BASIS_MISMATCH khi sai loại, PERIOD_OVERLAP khi chồng thời gian.
+        done: Hai route có test cho mọi mã lỗi.
+      - id: I-016
+        wu: [WU-016]
+        title: Giải tỏa 一時停止 theo loại căn cứ (API-018)
+        kind: API
+        spec: [API-018, SCR-06, FS-03]
+        deps: [I-013]
+        desc: 許可 của 仲卸 dùng 条件付き解除 (cần điều kiện + căn cứ); 卸売業者 / 買出人 dùng 解除 có lý do; 売買参加者 không được giải tỏa trực tiếp.
+        done: Mỗi loại người tham gia đi đúng nhánh; điểm review trọng tâm FIG-004.
+        subs:
+          - {id: I-016.1, title: "Nhánh 条件付き解除 cho 仲卸・許可", kind: API, owner: BE-B, hours: 12, sprint: ~, done: "Thiếu điều kiện hoặc căn cứ thì từ chối."}
+          - {id: I-016.2, title: "Nhánh 解除 + RELEASE_NOT_ALLOWED cho 売買参加者", kind: API, owner: BE-B, hours: 10, sprint: ~, done: "Test đủ 4 loại người tham gia."}
+      - id: I-017
+        wu: [WU-017]
+        title: 再審査 và ghi kết quả thẩm định (API-019)
+        kind: API
+        spec: [API-019, SCR-06]
+        deps: [I-013]
+        desc: Đưa căn cứ vào 再審査 từ 一時停止 hoặc 失効; ghi kết quả 適合 (về 有効) hoặc 不適合 (về 一時停止). Thẩm định ở ngoài hệ thống.
+        done: Mọi nhánh theo loại người có test; lịch sử DBT-17 đúng.
+        subs:
+          - {id: I-017.1, title: "Vào 再審査 từ 一時停止 / 失効 theo loại", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "Nhánh 失効 suy ra từ valid_to có test."}
+          - {id: I-017.2, title: "Ghi kết quả 適合 / 不適合 và trạng thái đích", kind: API, owner: BE-A, hours: 8, sprint: ~, done: "Hai kết quả chuyển đúng trạng thái."}
+      - id: I-018
+        wu: [WU-018]
+        title: Màn SCR-06 — căn cứ tham gia, form đổi theo loại người
+        kind: UI
+        spec: [SCR-06, API-015, API-016, API-017, API-018, API-019]
+        deps: [I-015, I-016, I-017]
+        desc: Form đổi theo loại căn cứ, hiển thị 4 trạng thái, các hộp thoại giải tỏa / 再審査 / 更新の申請; ROLE-SETTLEMENT chỉ xem.
+        done: 16 biến thể WF-06 hiển thị đúng với API thật.
+        subs:
+          - {id: I-018.1, title: "Form theo loại căn cứ + 4 trạng thái FIG-010", kind: UI, owner: FE-A, hours: 14, sprint: ~, done: "4 loại người tham gia hiện đúng trường."}
+          - {id: I-018.2, title: "Hộp thoại 条件付き解除 / 解除", kind: UI, owner: FE-A, hours: 12, sprint: ~, done: "Lỗi API hiện đúng MSG."}
+          - {id: I-018.3, title: "Hộp thoại 再審査 / 更新の申請 + chế độ chỉ xem cho ROLE-SETTLEMENT", kind: UI, owner: FE-B, hours: 12, sprint: ~, done: "ROLE-SETTLEMENT không thấy nút ghi."}
+      - id: I-019
+        wu: [WU-019]
+        title: Màn người tham gia SCR-05 thêm ràng buộc loại và phạm vi xem
+        kind: UI
+        owner: FE-B
+        spec: [SCR-05, API-011, API-012, API-013, API-014]
+        deps: [I-011, I-004]
+        hours: 10
+        sprint: 1
+        desc: Khóa trường loại khi sửa, chỉ hiện 参加上限 cho 売買参加者; ROLE-INTAKE chỉ thấy 卸売業者.
+        done: Biến thể WF-05 đúng theo vai trò.
+      - id: I-020
+        wu: [WU-020]
+        title: Unit test ma trận FS-03
+        kind: test
+        spec: [FS-03, CSP-09]
+        deps: [I-014]
+        desc: Ma trận loại người × loại căn cứ × trạng thái, ngày biên đầu / cuối hiệu lực và thứ tự reason_code.
+        done: Ma trận chạy trong CI; ca thất bại chỉ rõ tổ hợp.
+        subs:
+          - {id: I-020.1, title: "Ma trận 4 loại người × 4 căn cứ × trạng thái", kind: test, owner: QA-A, hours: 12, sprint: 3, done: "Đủ tổ hợp hợp lệ / không hợp lệ."}
+          - {id: I-020.2, title: "Ngày biên valid_from / valid_to và thứ tự reason_code", kind: test, owner: QA-A, hours: 8, sprint: 3, done: "Ca biên trước / đúng / sau ngày đều có."}
+
+  - id: E03
+    name: ロット・目利き／下見
+    desc: Đăng ký lô (kể cả 後入力 từ phiếu giấy), sổ cái số lượng, ghi kết quả 目利き / 下見 do người nhập, 公開 lô.
+    issues:
+      - id: I-021
+        wu: [WU-021]
+        title: Trạng thái lô 5 giá trị, cột 後入力 và sổ cái số lượng (DBT-07 / DBT-18)
+        kind: DB
+        spec: [DBT-07, DBT-18]
+        deps: [I-011]
+        desc: Đổi CHECK trạng thái lô theo FIG-011 và map dữ liệu prototype; thêm loại người bán + FK ghép; cột nhập bù phiếu giấy; bảng sổ cái số lượng.
+        done: Dữ liệu prototype map đủ; sổ cái ghi được dòng initial.
+        subs:
+          - {id: I-021.1, title: "Trạng thái FIG-011 + map listed / sold_out + FK loại người bán", kind: DB, owner: BE-B, hours: 10, sprint: 1, done: "Trạng thái cũ map hết, không còn giá trị lạ."}
+          - {id: I-021.2, title: "Cột 後入力 (Ver 0.3) + bảng sổ cái DBT-18", kind: DB, owner: BE-B, hours: 10, sprint: 2, done: "Sổ cái chỉ thêm dòng."}
+      - id: I-022
+        wu: [WU-022]
+        title: Đăng ký lô qua RPC register_lot (API-022)
+        kind: API
+        spec: [API-022, SCR-08, CSP-20]
+        deps: [I-021, I-014, I-041]
+        desc: Gom các kiểm tra vào một RPC — 業務日 lấy ở server, chặn ngày 休市, người bán phải là 卸売業者 còn hiệu lực; nhập bù kiểm ngày phiếu.
+        done: Mọi mã lỗi có test; sổ cái có dòng initial.
+        subs:
+          - {id: I-022.1, title: "RPC register_lot — 業務日 server, 休市, kiểm người bán qua FS-03", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "Ngày 休市 và người bán hết hiệu lực bị từ chối."}
+          - {id: I-022.2, title: "Nhánh 後入力 SLIP_DATE_MISMATCH + dòng initial DBT-18 + route", kind: API, owner: BE-A, hours: 8, sprint: ~, done: "Phiếu khác ngày bị từ chối đúng mã."}
+      - id: I-023
+        wu: [WU-023]
+        title: Màn đăng ký lô SCR-08 cho PC và tablet
+        kind: UI
+        spec: [SCR-08]
+        deps: [I-022, I-010]
+        desc: Form đăng ký lô và chế độ nhập bù từ phiếu giấy; báo rõ khi ngày đã 締め, ngày 休市 hoặc mất mạng — không lưu tạm trên máy.
+        done: 18 biến thể WF-08 (8 trên tablet) đúng.
+        subs:
+          - {id: I-023.1, title: "Form PC + chế độ 後入力", kind: UI, owner: FE-A, hours: 12, sprint: ~, done: "Đăng ký được lô thường và lô nhập bù."}
+          - {id: I-023.2, title: "Bố cục tablet + banner + trạng thái mất kết nối", kind: UI, owner: FE-B, hours: 12, sprint: ~, done: "Mất mạng thì khóa nút gửi và báo rõ."}
+      - id: I-024
+        wu: [WU-024]
+        title: Bảng kết quả 目利き / 下見 và trigger khóa ngày (DBT-19)
+        kind: DB
+        owner: BE-B
+        spec: [DBT-19]
+        deps: [I-021]
+        hours: 6
+        sprint: 3
+        desc: Bảng mới lưu người nhập, người xác nhận, thời điểm, liên kết bản thay thế; gắn trigger khóa ngày cho DBT-18 / 19 / 22, bỏ nhánh seed.
+        done: Ghi vào ngày đã 締め bị chặn ở cả 3 bảng.
+      - id: I-025
+        wu: [WU-025]
+        title: Ghi kết quả 目利き / 下見 qua RPC (API-024 / API-025)
+        kind: API
+        spec: [API-024, API-025, SCR-10]
+        deps: [I-024]
+        desc: Lần 下見 đầu tiên chuyển lô 受付 → 下見済; sửa sau khi lô đã vào giao dịch thì tạo bản thay thế có lý do và audit nhạy cảm.
+        done: Bản cũ không bị ghi đè; audit đủ.
+        subs:
+          - {id: I-025.1, title: "RPC record_lot_inspection + chuyển 受付 → 下見済", kind: API, owner: BE-A, hours: 10, sprint: ~, done: "Chuyển trạng thái chỉ ở lần đầu."}
+          - {id: I-025.2, title: "Sửa sau giao dịch bằng supersedes_id + lý do", kind: API, owner: BE-A, hours: 8, sprint: ~, done: "Thiếu lý do thì từ chối."}
+      - id: I-026
+        wu: [WU-026]
+        title: Màn 目利き・下見 SCR-10 cho PC và tablet
+        kind: UI
+        spec: [SCR-10, CSP-15]
+        deps: [I-025, I-010]
+        desc: Màn mới để ghi và tra kết quả do người nhập; có ô HITL; không có điểm số hay gợi ý tự động.
+        done: 15 biến thể đúng; không có thành phần gợi ý.
+        subs:
+          - {id: I-026.1, title: "Ghi / tra kết quả trên PC + ô HITL", kind: UI, owner: FE-B, hours: 12, sprint: ~, done: "Người xác nhận hiển thị đúng."}
+          - {id: I-026.2, title: "Bố cục tablet + biến thể trạng thái", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "Dùng được trên tablet 10 inch."}
+      - id: I-027
+        wu: [WU-027]
+        title: 公開 lô từ SCR-09 (API-062)
+        kind: API
+        spec: [SCR-09, DBT-07, API-062]
+        deps: [I-021]
+        desc: Một chuyển trạng thái 下見済 → 公開 cho ROLE-TRADE để lô xuất hiện ở màn giao dịch; SCR-09 chỉ cần nút tối thiểu.
+        done: Lô 公開 chọn được ở SCR-11 / SCR-13; audit LOT_PUBLISHED.
+        subs:
+          - {id: I-027.1, title: "RPC publish_lot + route API-062 + audit", kind: API, owner: BE-B, hours: 5, sprint: 3, done: "Lô chưa 下見済 bị từ chối."}
+          - {id: I-027.2, title: "Nút 公開 tối thiểu trên SCR-09", kind: UI, owner: FE-A, hours: 4, sprint: 3, deps: [I-027.1], done: "ROLE-TRADE bấm được, vai trò khác không thấy."}
+
+  - id: E04
+    name: 相対取引
+    desc: Nhập, 提出, 確定, 差戻し, 取消 giao dịch 相対 với kiểm tra hiệu lực bên mua và số lượng lô.
+    issues:
+      - id: I-028
+        wu: [WU-028]
+        title: Cột bên mua, lý do từ chối, 取消 và trigger bất biến sau 確定 (DBT-08)
+        kind: DB
+        owner: BE-A
+        spec: [DBT-08]
+        deps: [I-011]
+        hours: 8
+        sprint: 3
+        desc: Thêm loại bên mua + FK ghép, mã từ chối gần nhất, cột 取消; khóa cột nghiệp vụ sau 確定; nhãn 訂正申請中 / 更正済 tính ra khi đọc.
+        done: UPDATE cột nghiệp vụ sau 確定 bị chặn.
+      - id: I-029
+        wu: [WU-029]
+        title: RPC 確定 giao dịch 相対 theo DD-01
+        kind: DB
+        spec: [DD-01, API-030, FS-03]
+        deps: [I-014, I-021, I-028]
+        desc: Luồng chính, nguyên tử. Kiểm theo thứ tự khóa ngày / 休市 → lô 公開 → hiệu lực bên mua → số lượng; từ chối thì giữ 確認待ち và ghi audit.
+        done: Thứ tự kiểm đúng DD-01; hai 確定 đồng thời không làm âm số lượng.
+        subs:
+          - {id: I-029.1, title: "Chuỗi kiểm khóa ngày → 公開 → FS-03 bên mua", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Mỗi nhánh từ chối giữ 確認待ち."}
+          - {id: I-029.2, title: "Trừ số lượng + sổ cái DBT-18 + test đồng thời", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Test song song 2 phiên không âm số lượng."}
+      - id: I-030
+        wu: [WU-030]
+        title: Bổ sung kiểm tra cho route giao dịch 相対 (API-026〜029)
+        kind: API
+        owner: BE-B
+        spec: [API-026, API-027, API-028, API-029]
+        deps: [I-028]
+        hours: 8
+        sprint: 3
+        desc: Thêm BUYER_TYPE_INVALID, cảnh báo hiệu lực, LOT_NOT_SELECTABLE; 提出 đi qua RPC.
+        done: Ba mã có test API.
+      - id: I-031
+        wu: [WU-031]
+        title: 差戻し và 取消 giao dịch 相対 (API-031 / API-032)
+        kind: API
+        spec: [API-031, API-032]
+        deps: [I-029]
+        desc: Hai RPC mới; 取消 trước 締め hoàn số lượng vào sổ cái và ghi audit nhạy cảm; đã có 調整要求 thì trả INVALID_STATE.
+        done: Số lượng hoàn đúng; trạng thái sai bị từ chối.
+        subs:
+          - {id: I-031.1, title: "RPC + route 差戻し", kind: API, owner: BE-B, hours: 6, sprint: ~, done: "Chỉ 確認待ち mới 差戻し được."}
+          - {id: I-031.2, title: "RPC + route 取消 có hoàn số lượng DBT-18", kind: API, owner: BE-B, hours: 10, sprint: ~, done: "Có 調整要求 đang mở thì INVALID_STATE."}
+      - id: I-032
+        wu: [WU-032]
+        title: Màn giao dịch 相対 SCR-11
+        kind: UI
+        spec: [SCR-11]
+        deps: [I-030, I-031, I-010]
+        desc: Nhập, 提出, 確定, 差戻し, 取消 trên một màn; lý do từ chối diễn giải theo reason_code; banner khi ngày đã khóa.
+        done: 15 biến thể WF-11 đúng với API thật.
+        subs:
+          - {id: I-032.1, title: "Nhập / 提出 / 確定 + hiển thị lý do từ chối", kind: UI, owner: FE-A, hours: 12, sprint: ~, done: "Mỗi reason_code ra đúng câu."}
+          - {id: I-032.2, title: "差戻し / 取消 + banner khóa ngày", kind: UI, owner: FE-A, hours: 10, sprint: ~, done: "Ngày đã 締め thì nút ghi bị khóa."}
+
+  - id: E05
+    name: せり結果
+    desc: Ghi kết quả せり do người nhập theo vòng 下書き → 確認待ち → 確定, có 確認者, không OCR / AI.
+    issues:
+      - id: I-033
+        wu: [WU-033]
+        title: Vòng trạng thái kết quả せり và 確認者 (DBT-09)
+        kind: DB
+        spec: [DBT-09]
+        deps: [I-011]
+        desc: Đổi CHECK theo FIG-012, 確認者 là người bấm 確定 (tên người kiểm tùy chọn), thời điểm quyết định nằm trong 業務日; khóa cột sau 確定; chuyển dữ liệu ngoại lệ cũ.
+        done: Dữ liệu prototype chuyển xong; cột khóa sau 確定.
+        subs:
+          - {id: I-033.1, title: "CHECK vòng FIG-012 + 確認者 + loại người thắng", kind: DB, owner: BE-B, hours: 10, sprint: 2, done: "Trạng thái ngoài vòng bị chặn."}
+          - {id: I-033.2, title: "Trigger bất biến sau 確定 + map exception → 確認待ち", kind: DB, owner: BE-B, hours: 8, sprint: 3, done: "last_rejection_code giữ được mã cũ."}
+      - id: I-034
+        wu: [WU-034]
+        title: Luồng API kết quả せり theo DD-02 (API-034〜038)
+        kind: API
+        spec: [DD-02, API-034, API-035, API-036, API-037, API-038]
+        deps: [I-033, I-014]
+        desc: RPC ghi kết quả chỉ tạo 下書き; thêm 提出, 確定 (có 確認者), 差戻し, 取消 — bốn endpoint mới và đổi hành vi RPC cũ.
+        done: Mọi chuyển hợp lệ chạy; chuyển sai trả lỗi và giữ trạng thái.
+        subs:
+          - {id: I-034.1, title: "Ghi kết quả chỉ tạo 下書き + API-035 提出", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "RPC cũ không còn tạo thẳng 確定."}
+          - {id: I-034.2, title: "API-036 確定 có 確認者 + kiểm FS-03", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "Người thắng hết hiệu lực bị từ chối."}
+          - {id: I-034.3, title: "API-037 差戻し + API-038 取消", kind: API, owner: BE-B, hours: 12, sprint: ~, done: "取消 trước 締め hoàn số lượng."}
+          - {id: I-034.4, title: "Test luồng 4 endpoint せり", kind: test, owner: QA-A, hours: 8, sprint: ~, deps: [I-034.1, I-034.2, I-034.3], done: "Kịch bản đủ nhánh chạy trong CI."}
+      - id: I-035
+        wu: [WU-035]
+        title: Màn kết quả せり SCR-13 cho PC và tablet
+        kind: UI
+        spec: [SCR-13, CSP-15]
+        deps: [I-034, I-010]
+        desc: Người nhập điền tay bên mua thắng, lượng, giá đơn vị và giờ chốt (ô HITL); hiện nhãn 例外; 確認者 xác nhận trước khi 確定.
+        done: 16 biến thể đúng FIG-012.
+        subs:
+          - {id: I-035.1, title: "Form PC + ô HITL + xác nhận 確認者", kind: UI, owner: FE-B, hours: 12, sprint: ~, done: "確認者 ghi đúng người bấm."}
+          - {id: I-035.2, title: "Bố cục tablet + nhãn 例外 + biến thể", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "Dùng được trên tablet."}
+
+  - id: E06
+    name: 引渡し
+    desc: Ghi các lần giao, số lượng hiệu lực, 保留 / 保留解除, ngoại lệ giao hàng có 例外確認者.
+    issues:
+      - id: I-036
+        wu: [WU-036]
+        title: Cột xác nhận giao hàng và view số lượng hiệu lực (DBT-10 / DBT-16)
+        kind: DB
+        spec: [DBT-10, DBT-16, DBT-21]
+        deps: [I-047]
+        desc: Thêm số lượng xác nhận, người xác nhận, lý do 保留; view tính số lượng hiệu lực = gốc + điều chỉnh và trạng thái giao hàng suy ra.
+        done: View trả 4 trạng thái đúng với dữ liệu mẫu có điều chỉnh.
+        subs:
+          - {id: I-036.1, title: "Cột DBT-10 (確認数量 / 確認者 / hold_reason)", kind: DB, owner: BE-A, hours: 6, sprint: 2, done: "Migration chạy được."}
+          - {id: I-036.2, title: "View DBT-16 số lượng hiệu lực + trạng thái suy ra", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Có điều chỉnh DBT-21 thì số lượng đổi đúng."}
+      - id: I-037
+        wu: [WU-037]
+        title: Sửa RPC ghi giao hàng và giải tỏa 保留 theo DD-03
+        kind: DB
+        spec: [DD-03, API-040, API-041]
+        deps: [I-036, I-014]
+        desc: Người nhận hết hiệu lực thì giao hàng vào 保留; đang 保留 thì từ chối ghi; người giải tỏa phải khác người ghi.
+        done: Hai RPC có test cho mọi nhánh.
+        subs:
+          - {id: I-037.1, title: "record_delivery — DELIVERY_ON_HOLD + FS-03 người nhận", kind: DB, owner: BE-B, hours: 10, sprint: ~, done: "Người nhận hết hiệu lực → 保留."}
+          - {id: I-037.2, title: "release_delivery_hold — người giải tỏa ≠ người ghi", kind: DB, owner: BE-B, hours: 6, sprint: ~, done: "Cùng người thì từ chối."}
+      - id: I-038
+        wu: [WU-038]
+        title: Ngoại lệ giao hàng có 例外確認者 (DBT-22 / DBT-23 / API-042)
+        kind: API
+        spec: [API-042, DBT-22, DBT-23]
+        deps: [I-036]
+        desc: Bảng ngoại lệ và mã lý do; API ghi ngoại lệ với người xác nhận; sau 締め không ghi được nữa, phải đi 調整要求 ở ngày sau.
+        done: Ghi sau 締め bị chặn; 例外確認者 bắt buộc.
+        subs:
+          - {id: I-038.1, title: "Bảng DBT-22 + mã lý do DBT-23", kind: DB, owner: BE-A, hours: 6, sprint: ~, done: "Seed mã lý do có sẵn."}
+          - {id: I-038.2, title: "RPC + route API-042 + khóa sau 締め", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "Test HITL và khóa ngày."}
+      - id: I-039
+        wu: [WU-039]
+        title: Màn giao hàng SCR-15 cho PC và tablet
+        kind: UI
+        spec: [SCR-15]
+        deps: [I-037, I-010]
+        desc: Ghi từng lần giao, 保留 / 保留解除 (cần MFA), danh sách giao dịch còn dở từ ngày trước, nút sang 例外登録.
+        done: 17 biến thể đúng.
+        subs:
+          - {id: I-039.1, title: "Lần giao + 保留 / 保留解除 có MFA", kind: UI, owner: FE-A, hours: 12, sprint: ~, done: "Phiên AAL1 không giải tỏa được."}
+          - {id: I-039.2, title: "Giao dịch dở ngày trước + nút 例外登録 + tablet", kind: UI, owner: FE-A, hours: 10, sprint: ~, done: "Còn 残数量 thì hiện ở ngày sau."}
+      - id: X-Q2
+        title: "[要確認] SCR-16 例外登録 chưa có đơn vị công việc nhưng SCR-15 có nút dẫn tới"
+        kind: 要確認
+        owner: PM
+        spec: [SCR-15, SCR-16, API-042]
+        hours: 1.5
+        sprint: 1
+        label: 要確認
+        desc: API-042 đã có ở I-038 nhưng màn nhập ngoại lệ chưa được thiết kế (nằm ngoài 16 màn cốt lõi). Cần PL chọn - dựng màn tối thiểu hay tạm ẩn nút ở SCR-15.
+        done: PL trả lời; tạo issue màn tối thiểu hoặc ghi quyết định ẩn nút.
+
+  - id: E07
+    name: 業務日・締め・締め解除
+    desc: Lịch 休市, xác định 業務日, 締め / 締め解除, tranh chấp (SCR-20), báo cáo ngày và xuất CSV (SCR-28), xuất lại đối soát.
+    issues:
+      - id: I-040
+        wu: [WU-040]
+        title: Lịch 休市 và thông tin khóa ngày (DBT-24 / DBT-05)
+        kind: DB
+        owner: BE-B
+        spec: [DBT-24, DBT-05]
+        hours: 6
+        sprint: 1
+        desc: Bảng lịch ngày nghỉ chợ và cột lý do / thông tin khóa của ngày nghiệp vụ.
+        done: Migration + seed lịch mẫu.
+      - id: I-041
+        wu: [WU-041]
+        title: Hàm FS-02 xác định 業務日 có xét 休市
+        kind: DB
+        owner: BE-B
+        spec: [FS-02, CSP-01, CSP-06, API-004]
+        deps: [I-040]
+        hours: 10
+        sprint: 2
+        desc: Ranh giới 02:00 JST và ngày 休市 trả MARKET_HOLIDAY; API-004 trả thêm cờ ngày nghỉ.
+        done: Biên 01:59 / 02:00 và ngày 休市 có test.
+      - id: I-042
+        wu: [WU-042]
+        title: Sửa RPC 締め theo DD-04
+        kind: DB
+        owner: BE-B
+        spec: [DD-04, API-045]
+        deps: [I-040]
+        hours: 12
+        sprint: 3
+        desc: Trả danh sách việc chưa xử lý và bắt lý do (hoặc lý do cố định khi không còn việc); chặn ngày tương lai; cho 締め bù ngày quá khứ; ghi audit.
+        done: Ba nhánh có test.
+      - id: I-043
+        wu: [WU-043]
+        title: 締め解除 có người duyệt khác người 申請 (DBT-25 / API-046〜048)
+        kind: API
+        spec: [DBT-25, API-046, API-047, API-048, DD-04]
+        deps: [I-042]
+        desc: Bảng yêu cầu mở khóa, RPC 申請 và quyết định; người duyệt khác người 申請; một ngày chỉ một yêu cầu đang chờ.
+        done: Duyệt xong thì ngày về open; trùng yêu cầu bị từ chối.
+        subs:
+          - {id: I-043.1, title: "Bảng DBT-25 + RPC request / decide", kind: DB, owner: BE-A, hours: 12, sprint: 3, done: "Người duyệt = người 申請 thì từ chối."}
+          - {id: I-043.2, title: "Ba route API-046〜048 + DUPLICATE_PENDING_REQUEST", kind: API, owner: BE-A, hours: 10, sprint: ~, done: "Test API đủ mã lỗi."}
+      - id: I-044
+        wu: [WU-044]
+        title: Màn đối soát và 締め SCR-18 thêm lý do
+        kind: UI
+        owner: FE-B
+        spec: [SCR-18, API-043, API-044]
+        deps: [I-042, I-010]
+        hours: 10
+        sprint: 3
+        desc: Bổ sung danh sách việc chưa xử lý, ô lý do khi 締め, 締め bù và hiển thị 休市.
+        done: Biến thể WF-18 đúng.
+      - id: I-045
+        wu: [WU-045]
+        title: Màn 締め解除 SCR-19
+        kind: UI
+        spec: [SCR-19]
+        deps: [I-043]
+        desc: Màn mới — 申請, 承認・実行, 却下; nhắc xuất lại dữ liệu đối soát sau khi mở.
+        done: 10 biến thể đúng.
+        subs:
+          - {id: I-045.1, title: "Danh sách + form 申請", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "Trùng yêu cầu hiện đúng MSG."}
+          - {id: I-045.2, title: "承認・実行 / 却下 + nhắc xuất lại", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "Người 申請 không thấy nút duyệt."}
+      - id: I-046
+        wu: [WU-046]
+        title: Xuất lại dữ liệu đối soát cho ngày mở rồi 締め lại (DBT-28 / DBT-29)
+        kind: batch
+        spec: [DBT-28, DBT-29, ADR-009]
+        deps: [I-043, X-Q3]
+        desc: Sau 締め解除 và 締め lại, xuất lại dữ liệu đối soát theo cùng mã lô xuất. Phụ thuộc quyết định về thuế và cột trạng thái (DBT-29 chưa chốt).
+        done: Xuất lại cùng batch code cho ra dữ liệu mới, bản cũ còn truy được.
+        subs:
+          - {id: I-046.1, title: "Job xuất lại theo batch code DBT-28 / DBT-29", kind: batch, owner: BE-B, hours: 14, sprint: ~, done: "Chạy lại 2 lần không nhân đôi."}
+          - {id: I-046.2, title: "Test xuất lại sau 締め解除", kind: test, owner: QA-A, hours: 6, sprint: ~, deps: [I-046.1], done: "So khớp số dòng và tổng tiền."}
+      - id: X-Q3
+        title: "[要確認] Xuất lại đối soát (WU-046) cần bản xuất lần đầu IF-ACC-01 chưa có đơn vị công việc"
+        kind: 要確認
+        owner: PM
+        spec: [DBT-28, DBT-29, ADR-009]
+        hours: 1.5
+        sprint: 1
+        label: 要確認
+        desc: DBT-28/29 được ghi là tạo cùng SCR-29 (ngoài 16 màn cốt lõi), thuế từng giao dịch và cột trạng thái DBT-29 vẫn 未決. Cần PL quyết - đưa xuất lần đầu vào LAB-5 hay hoãn WU-046.
+        done: PL trả lời; cập nhật I-046 (phạm vi hoặc hoãn) và PREMISE.md.
+      - id: I-092
+        wu: [WU-092]
+        title: Bảng tranh chấp DBT-26 + RLS deny-all
+        kind: DB
+        owner: BE-B
+        spec: [DBT-26, ADR-004, ADR-007]
+        deps: [I-069]
+        hours: 6
+        sprint: ~
+        desc: Bảng mới lưu từng vụ tranh chấp - tình trạng, lý do phát sinh, ai xử lý, hạn dự kiến và kết luận; lịch sử dựa vào audit; vẫn ghi được khi ngày đã 締め.
+        done: Ghi được vào ngày đã 締め; RLS chặn truy cập trực tiếp.
+      - id: I-093
+        wu: [WU-093]
+        title: Màn 紛争管理 SCR-20 — thiết kế màn trước, rồi API và UI
+        kind: UI
+        spec: [DBT-26, SCR-20]
+        desc: Màn ngoài cốt lõi chưa có screen spec ở LAB-4. Bước đầu viết screen spec và cấp API-ID; sau đó API và UI danh sách tranh chấp mở, lịch sử, ghi kết quả cuối (HITL).
+        done: Screen spec được PL duyệt; màn chạy với vòng đời mở → đóng; tranh chấp mở có thông báo.
+        subs:
+          - {id: I-093.1, title: "Thiết kế màn SCR-20 — screen spec + cấp API-ID", kind: thiết kế, owner: PM, hours: 8, sprint: 1, done: "Screen spec + dòng API_List được PL duyệt."}
+          - {id: I-093.2, title: "API tranh chấp (danh sách / ghi / đóng) + thông báo", kind: API, owner: BE-A, hours: 12, sprint: ~, deps: [I-093.1, I-092, I-082], done: "Test API đủ vòng đời."}
+          - {id: I-093.3, title: "UI SCR-20 danh sách + chi tiết + ghi kết quả", kind: UI, owner: FE-A, hours: 14, sprint: ~, deps: [I-093.1, I-093.2], done: "Biến thể theo screen spec mới đúng."}
+      - id: I-094
+        wu: [WU-094]
+        title: Batch 日次レポート CP-09 và nhật ký chạy báo cáo (DBT-30)
+        kind: batch
+        spec: [DBT-30]
+        deps: [I-080, I-042]
+        desc: Chạy 10:00 JST và khi 締め xong, chỉ cho ngày đã 締め, xong trước 11:00 JST; tạo 9 báo cáo ngày theo catalog; ghi nhật ký chạy; ngày chưa 締め thì bỏ qua và cảnh báo.
+        done: 9 báo cáo tạo đúng; chạy lại cùng ngày không nhân đôi; quá 11:00 có cảnh báo.
+        subs:
+          - {id: I-094.1, title: "Khung job + DBT-30 report_runs + idempotent theo 業務日", kind: batch, owner: BE-B, hours: 12, sprint: ~, done: "Ngày chưa 締め bị bỏ qua có cảnh báo."}
+          - {id: I-094.2, title: "Truy vấn RPT-01〜05", kind: batch, owner: BE-B, hours: 14, sprint: ~, done: "Số liệu khớp dữ liệu mẫu."}
+          - {id: I-094.3, title: "Truy vấn RPT-06〜09", kind: batch, owner: BE-A, hours: 14, sprint: ~, done: "Số liệu khớp dữ liệu mẫu."}
+          - {id: I-094.4, title: "Test hạn 11:00 và chạy lại", kind: test, owner: QA-A, hours: 8, sprint: ~, deps: [I-094.1, I-094.2, I-094.3], done: "Đo thời gian với dữ liệu FIG-LOAD-01."}
+      - id: I-095
+        wu: [WU-095]
+        title: Màn 帳票出力・CSV SCR-28 — thiết kế màn trước, rồi API và UI
+        kind: UI
+        spec: [DBT-30, SCR-28]
+        desc: Màn ngoài cốt lõi chưa có screen spec. Bước đầu thiết kế màn và cấp API-ID; sau đó chọn báo cáo trong 12 báo cáo cố định, lọc, xem và xuất CSV (không PDF).
+        done: Screen spec được PL duyệt; 12 báo cáo xem và xuất CSV được.
+        subs:
+          - {id: I-095.1, title: "Thiết kế màn SCR-28 — screen spec + cấp API-ID", kind: thiết kế, owner: PM, hours: 6, sprint: 1, done: "Screen spec + dòng API_List được PL duyệt."}
+          - {id: I-095.2, title: "API tra cứu / xuất CSV + báo cáo tháng RPT-10〜12 tạo khi xem", kind: API, owner: BE-B, hours: 14, sprint: ~, deps: [I-095.1, I-094], done: "CSV đúng bộ cột của catalog."}
+          - {id: I-095.3, title: "UI chọn báo cáo + lọc + xem + nút xuất CSV", kind: UI, owner: FE-B, hours: 14, sprint: ~, deps: [I-095.1, I-095.2], done: "12 báo cáo chọn được."}
+
+  - id: E08
+    name: 調整要求
+    desc: Sửa giao dịch đã 確定 bằng 調整要求 (reverse / delta, append-only), 証憑, giá trị hiệu lực dùng chung.
+    issues:
+      - id: I-047
+        wu: [WU-047]
+        title: Bảng 調整要求, dòng điều chỉnh và 証憑 (DBT-20 / DBT-21 / DBT-27)
+        kind: DB
+        spec: [DBT-20, DBT-21, DBT-27]
+        desc: Ba bảng mới — yêu cầu, dòng reverse / delta chỉ thêm, tệp đính kèm; tạo bucket Storage và nhóm thời hạn lưu.
+        done: DBT-21 chặn UPDATE / DELETE; bucket không public.
+        subs:
+          - {id: I-047.1, title: "DBT-20 + DBT-21 append-only", kind: DB, owner: BE-A, hours: 12, sprint: 1, done: "Trigger chặn sửa có test."}
+          - {id: I-047.2, title: "DBT-27 + bucket Storage + nhóm lưu trữ", kind: DB, owner: BE-A, hours: 6, sprint: 1, done: "Bucket private, có nhóm 7 năm / 3 năm."}
+      - id: I-048
+        wu: [WU-048]
+        title: Tạo 調整要求 (API-049 / API-050)
+        kind: API
+        spec: [API-049, API-050, CSP-10]
+        deps: [I-047]
+        desc: Chỉ nhận đối tượng đã 確定; trùng yêu cầu đang chờ thì từ chối; 証憑 bắt buộc khi ảnh hưởng 精算 / 引渡し theo FORM-CORR-01; tính phạm vi ảnh hưởng.
+        done: Ba mã từ chối có test.
+        subs:
+          - {id: I-048.1, title: "Route tạo + kiểm đối tượng 確定 + DUPLICATE_PENDING_REQUEST", kind: API, owner: BE-B, hours: 12, sprint: ~, done: "Đối tượng chưa 確定 bị từ chối."}
+          - {id: I-048.2, title: "Kiểm 証憑 theo FORM-CORR-01 + suy ra 影響範囲", kind: API, owner: BE-B, hours: 8, sprint: ~, done: "EVIDENCE_REQUIRED đúng điều kiện."}
+      - id: I-049
+        wu: [WU-049]
+        title: RPC quyết định 調整要求 theo DD-05
+        kind: DB
+        spec: [DD-05, API-051]
+        deps: [I-047, I-062]
+        desc: Trong một giao dịch - kiểm đối tượng chưa đổi và số lượng, ghi reverse + delta vào 業務日 đang mở, cập nhật sổ cái, gọi tính delta 完納奨励金.
+        done: Lỗi ở bất kỳ bước nào thì rollback toàn bộ; có test.
+        subs:
+          - {id: I-049.1, title: "Kiểm đối tượng chưa đổi + kiểm số lượng", kind: DB, owner: BE-A, hours: 10, sprint: ~, done: "Đối tượng đã đổi thì từ chối."}
+          - {id: I-049.2, title: "Ghi reverse + delta DBT-21 và sổ cái DBT-18", kind: DB, owner: BE-A, hours: 14, sprint: ~, done: "Tổng số lượng sau điều chỉnh đúng."}
+          - {id: I-049.3, title: "Gọi delta 完納奨励金 trong cùng giao dịch + test rollback", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Lỗi delta thì không còn dòng điều chỉnh nào."}
+      - id: I-050
+        wu: [WU-050]
+        title: Màn tạo 調整要求 SCR-21 và endpoint đọc riêng API-069
+        kind: UI
+        spec: [SCR-21, API-069]
+        deps: [I-048, I-090, X-D33.1]
+        desc: Chọn giao dịch 確定 qua endpoint đọc riêng (không mở API đọc thô), đề xuất 訂正 / 取消, đính 証憑 khi cần. Đối tượng 支払実績 làm ở X-D33 sau thiết kế.
+        done: ROLE-TRADE và ROLE-SETTLEMENT tạo được yêu cầu; 証憑 bắt buộc đúng điều kiện.
+        subs:
+          - {id: I-050.1, title: "Endpoint đọc riêng API-069", kind: API, owner: BE-B, hours: 8, sprint: ~, done: "Chỉ trả trường cần cho SCR-21."}
+          - {id: I-050.2, title: "UI chọn giao dịch + đề xuất 訂正 / 取消", kind: UI, owner: FE-A, hours: 14, sprint: ~, deps: [I-050.1], done: "Biến thể WF-21 đúng."}
+          - {id: I-050.3, title: "UI đính 証憑 ở SCR-21", kind: UI, owner: FE-A, hours: 6, sprint: ~, done: "Sai loại / quá dung lượng hiện MSG-012."}
+      - id: I-051
+        wu: [WU-051]
+        title: Màn duyệt 調整要求 SCR-22
+        kind: UI
+        spec: [SCR-22]
+        deps: [I-049]
+        desc: Hiện song song bản gốc và đề xuất, ước trước số 完納奨励金 bị ảnh hưởng (tính lại trong kỳ hay sinh delta ở kỳ sau), rồi 承認 / 却下. 「追加情報の要求」 gộp vào 却下 ở baseline.
+        done: Biến thể WF-22 đúng; người 起票 không duyệt được.
+        subs:
+          - {id: I-051.1, title: "Diff gốc / mới + 承認 / 却下", kind: UI, owner: FE-B, hours: 12, sprint: ~, done: "Lý do 却下 bắt buộc."}
+          - {id: I-051.2, title: "Xem trước ảnh hưởng 完納奨励金", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "Hiện rõ trong kỳ hay delta kỳ sau."}
+      - id: I-052
+        wu: [WU-052]
+        title: Hàm giá trị hiệu lực dùng chung cho mọi màn đọc
+        kind: API
+        spec: [DBT-21, API-026, API-033, API-039]
+        deps: [I-047]
+        desc: Một hàm duy nhất tính giá trị = gốc + điều chỉnh, dùng cho đọc 相対, せり, giao hàng, 精算 để không lệch số liệu giữa các màn.
+        done: Ba API đọc dùng cùng hàm; test đối chiếu khớp.
+        subs:
+          - {id: I-052.1, title: "Hàm giá trị hiệu lực (gốc + DBT-21)", kind: API, owner: BE-B, hours: 12, sprint: ~, done: "Unit test nhiều lần điều chỉnh."}
+          - {id: I-052.2, title: "Áp hàm vào API-026 / 033 / 039 + test đối chiếu", kind: API, owner: BE-B, hours: 10, sprint: ~, done: "Số liệu 3 màn khớp nhau."}
+      - id: I-090
+        wu: [WU-090]
+        title: Tải lên / tải xuống 証憑 dùng chung (API-066 / API-067)
+        kind: API
+        spec: [DBT-27, SCR-21, SCR-06, API-050, API-016, API-066, API-067]
+        deps: [I-047]
+        desc: Upload có kiểm loại tệp và dung lượng, download bằng signed URL; quyền theo màn gốc (SCR-21, SCR-06); nhóm thời hạn lưu.
+        done: Vai trò không có quyền ở màn gốc không tải được.
+        subs:
+          - {id: I-090.1, title: "API-066 upload + kiểm loại / dung lượng + audit", kind: API, owner: BE-A, hours: 10, sprint: ~, done: "Tệp sai loại bị từ chối."}
+          - {id: I-090.2, title: "API-067 signed URL + quyền theo màn gốc", kind: API, owner: BE-A, hours: 8, sprint: ~, done: "URL hết hạn đúng thời gian."}
+
+  - id: E09
+    name: 規則・料率版
+    desc: Version quy tắc / tỷ lệ với vòng 起票 → 承認待ち → 承認 → 公布, ロールバック, giới hạn 公布 trong năm tài chính.
+    issues:
+      - id: I-053
+        wu: [WU-053]
+        title: Bảng version quy tắc và bảng tier (DBT-11 / DBT-12)
+        kind: DB
+        spec: [DBT-11, DBT-12, ADR-006]
+        desc: Thêm trạng thái, loại version, version nguồn, lý do đổi, quy tắc 支払期日; bỏ cột thuế (hằng 110/100 nằm trong hàm); bảng tier; khóa nội dung từ 承認.
+        done: Sửa version đã 承認 bị chặn; seed chạy lại được.
+        subs:
+          - {id: I-053.1, title: "DBT-11 trạng thái / loại / nguồn / payment_due_rule + bỏ cột thuế", kind: DB, owner: BE-B, hours: 12, sprint: 1, done: "Dữ liệu seed chuyển đủ."}
+          - {id: I-053.2, title: "DBT-12 tiers + trigger bất biến từ 承認", kind: DB, owner: BE-B, hours: 8, sprint: 1, done: "Test chặn sửa sau 承認."}
+      - id: I-054
+        wu: [WU-054]
+        title: API soạn version quy tắc (API-052〜056)
+        kind: API
+        spec: [API-052, API-053, API-054, API-055, API-056]
+        deps: [I-053]
+        desc: Danh sách, 起票 (thường hoặc ロールバック sao chép version nguồn), sửa, gửi duyệt, 取下げ chỉ do người 起票.
+        done: 5 route có test.
+        subs:
+          - {id: I-054.1, title: "Danh sách + 起票 thường / ロールバック", kind: API, owner: BE-A, hours: 10, sprint: ~, done: "ロールバック sao chép đủ tier."}
+          - {id: I-054.2, title: "Sửa / 承認申請 / 取下げ", kind: API, owner: BE-A, hours: 10, sprint: ~, done: "Người khác 起票者 không 取下げ được."}
+      - id: I-055
+        wu: [WU-055]
+        title: RPC 承認 / 差戻し / 公布 version theo DD-06
+        kind: DB
+        spec: [DD-06, API-057, API-058, API-059]
+        deps: [I-053]
+        desc: Người duyệt khác người 起票; tối đa 4 lần 公布 thường trong một năm tài chính (bắt đầu tháng 4), ロールバック không tính; kiểm 発効日.
+        done: Lần 公布 thứ 5 bị từ chối; ロールバック vẫn được.
+        subs:
+          - {id: I-055.1, title: "承認 / 差戻し + người ≠ 起票者", kind: DB, owner: BE-B, hours: 8, sprint: ~, done: "Tự duyệt bị chặn."}
+          - {id: I-055.2, title: "公布 + đếm 4 lần / 会計年度 + kiểm 発効日", kind: DB, owner: BE-B, hours: 12, sprint: ~, done: "Biên tháng 3 / tháng 4 có test."}
+      - id: I-056
+        wu: [WU-056]
+        title: Màn soạn version SCR-23
+        kind: UI
+        spec: [SCR-23]
+        deps: [I-054]
+        desc: Soạn version với bảng tier sửa được, ngưỡng, quy tắc 支払期日; tạo ロールバック; 取下げ.
+        done: Biến thể WF-23 đúng.
+        subs:
+          - {id: I-056.1, title: "Form version + bảng tier sửa được", kind: UI, owner: FE-A, hours: 14, sprint: ~, done: "Ngưỡng chồng nhau bị báo lỗi."}
+          - {id: I-056.2, title: "ロールバック + 取下げ", kind: UI, owner: FE-A, hours: 8, sprint: ~, done: "Chọn version nguồn được."}
+      - id: I-057
+        wu: [WU-057]
+        title: Màn duyệt / 公布 version SCR-24
+        kind: UI
+        spec: [SCR-24]
+        deps: [I-055]
+        desc: 承認, 差戻し, 公布 và bộ đếm số lần 公布 trong năm.
+        done: 12 biến thể đúng.
+        subs:
+          - {id: I-057.1, title: "承認 / 差戻し / 公布", kind: UI, owner: FE-B, hours: 10, sprint: ~, done: "起票者 không thấy nút duyệt."}
+          - {id: I-057.2, title: "Bộ đếm 公布 n/4 + biến thể", kind: UI, owner: FE-B, hours: 6, sprint: ~, done: "Đủ 4 lần thì nút 公布 khóa."}
+
+  - id: E10
+    name: 完納奨励金
+    desc: Tính 完納奨励金 theo version áp dụng, khoản trả đúng hạn, tier, làm tròn JPY, delta kỳ sau; batch tạo 暫定, người 確定. Mọi issue gắn Constraint = 完納奨励金 và tách riêng, không gộp.
+    constraint: 完納奨励金
+    issues:
+      - id: I-058
+        wu: [WU-058]
+        title: Chọn version tỷ lệ / ngưỡng áp dụng theo 業務日
+        kind: DB
+        owner: BE-B
+        spec: [CSP-17, DBT-11, DBT-14]
+        deps: [I-053]
+        hours: 8
+        sprint: ~
+        desc: Hàm trả version đã 公布 có 発効日 gần nhất không sau ngày cần tính; mỗi kết quả lưu id version đã dùng.
+        done: Hai version liên tiếp, ngày biên 発効日 chọn đúng; kết quả có rule_version_id.
+      - id: I-059
+        wu: [WU-059]
+        title: Xác định khoản trả đủ hạn 以内
+        kind: DB
+        spec: [FS-01, DBT-13, DBT-11]
+        deps: [I-058]
+        desc: Tính 支払期日 từ quy tắc của version; chỉ khoản trả không muộn hơn hạn (giờ JST, tính cả ngày hạn) mới được tính; không có ân hạn; trả trễ không được gì.
+        done: Trả đúng ngày hạn được tính, trễ 1 ngày không được.
+        subs:
+          - {id: I-059.1, title: "Tính 支払期日 từ payment_due_rule (hỗ trợ cả 2 dạng quy tắc)", kind: DB, owner: BE-A, hours: 10, sprint: ~, done: "Cả hai dạng quy tắc có test."}
+          - {id: I-059.2, title: "Lọc khoản trả theo hạn ở JST + test biên ngày", kind: DB, owner: BE-A, hours: 10, sprint: ~, done: "Biên 23:59 / 00:00 JST đúng."}
+      - id: I-060
+        wu: [WU-060]
+        title: Tra 交付率 theo bảng tier của version
+        kind: DB
+        owner: BE-B
+        spec: [FS-01, DBT-12]
+        deps: [I-058]
+        hours: 8
+        sprint: ~
+        desc: Từ tổng tiền đủ điều kiện, chọn tier và 交付率 theo bảng của version; giá trị đúng ngưỡng xử lý theo quy ước biên của DBT-12.
+        done: Giá trị ngay ngưỡng, dưới và trên ngưỡng có test.
+      - id: I-061
+        wu: [WU-061]
+        title: Làm tròn xuống JPY một lần cho mỗi người tham gia × kỳ
+        kind: DB
+        owner: BE-B
+        spec: [FS-01, CSP-16]
+        deps: [I-059, I-060]
+        hours: 8
+        sprint: ~
+        desc: Tính bằng số nguyên (không dùng float), nhân 交付率 và hệ số thuế 110/100 rồi làm tròn xuống một lần ở tổng, không làm tròn từng khoản.
+        done: Kết quả khớp test vector; không có phép float trong code.
+      - id: I-062
+        wu: [WU-062]
+        title: Delta kỳ sau khi 調整要求 đổi số tiền của kỳ đã 確定
+        kind: DB
+        spec: [FS-01, DD-05, DBT-14, CSP-16]
+        deps: [I-061, I-064, X-Q4]
+        desc: Tính lại theo version của kỳ gốc, ghi dòng delta (tham chiếu 調整要求 và kết quả gốc) vào kỳ chưa 確定 kế tiếp; bản ghi cũ giữ nguyên.
+        done: Kỳ gốc không đổi; delta đúng version kỳ gốc.
+        subs:
+          - {id: I-062.1, title: "Tính lại kỳ gốc theo version kỳ gốc", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Version mới hơn không bị dùng nhầm."}
+          - {id: I-062.2, title: "Ghi dòng delta vào kỳ chưa 確定 kế tiếp", kind: DB, owner: BE-A, hours: 12, sprint: ~, done: "Bản ghi cũ không bị UPDATE."}
+      - id: I-063
+        wu: [WU-063]
+        title: Batch tháng DD-07 chỉ tạo / tính lại kết quả 暫定
+        kind: batch
+        spec: [DD-07, CSP-16]
+        deps: [I-061, I-080]
+        desc: Vercel Cron gọi route nội bộ có CRON secret; chạy lại cùng kỳ không nhân đôi; chỉ ghi kết quả 暫定 và audit INCENTIVE_CALCULATED. Việc 確定 thuộc I-091.
+        done: Chạy 2 lần cho cùng kỳ ra cùng kết quả; không tạo 確定.
+        subs:
+          - {id: I-063.1, title: "Route cron + CRON secret + khóa theo kỳ", kind: batch, owner: BE-B, hours: 10, sprint: ~, done: "Gọi không có secret bị 401."}
+          - {id: I-063.2, title: "Tạo / tính lại 暫定 idempotent + audit", kind: batch, owner: BE-B, hours: 12, sprint: ~, done: "Không đụng kết quả đã 確定."}
+      - id: I-064
+        wu: [WU-064]
+        title: Bổ sung cột cho thanh toán và kết quả 完納奨励金 (DBT-13 / DBT-14)
+        kind: DB
+        owner: BE-B
+        spec: [DBT-13, DBT-14]
+        deps: [I-053]
+        hours: 6
+        sprint: ~
+        desc: Thanh toán tham chiếu 調整要求 bằng FK, lưu version, người và thời điểm ghi; kết quả có thời điểm 確定, nguồn, loại thường / delta; giữ trigger bất biến khi 確定.
+        done: Migration chạy được; kết quả đã 確定 không sửa được.
+      - id: I-065
+        wu: [WU-065]
+        title: Màn 照会 完納奨励金 SCR-27 có version và dòng delta
+        kind: UI
+        spec: [SCR-27, API-060, API-061]
+        deps: [I-064, I-061]
+        desc: Hiện version và 発効日 đã dùng, các dòng delta (kỳ gốc, 調整要求), diễn giải phép tính, cảnh báo lệch MSG-202. Chỉ xem.
+        done: Biến thể WF-27 đúng; số hiển thị khớp kết quả DB.
+        subs:
+          - {id: I-065.1, title: "API-060 / 061 trả version + dòng delta + phép tính", kind: API, owner: BE-A, hours: 8, sprint: ~, done: "Response có đủ trường cho màn."}
+          - {id: I-065.2, title: "UI SCR-27 version / delta / phép tính / MSG-202", kind: UI, owner: FE-A, hours: 14, sprint: ~, deps: [I-065.1], done: "Lọc theo người tham gia lấy từ API-060."}
+      - id: I-066
+        wu: [WU-066]
+        title: Test vector INC-EDGE và ca biên cho FS-01
+        kind: test
+        owner: QA-A
+        spec: [FS-01]
+        deps: [I-061]
+        hours: 10
+        sprint: ~
+        desc: Bổ sung vào test sẵn có các ca INC-EDGE-01〜03 và biên - trả đúng ngày hạn, trễ 1 ngày, không có khoản nào, đúng ngưỡng tier, làm tròn.
+        done: Mọi ca chạy trong CI và đạt.
+      - id: I-067
+        wu: [WU-067]
+        title: Nhập 支払実績 ở SCR-26 (API-063〜065)
+        kind: UI
+        spec: [SCR-26, DBT-13, API-063, API-064, API-065]
+        deps: [I-064]
+        desc: Màn tối thiểu nhập 支払完了日 từng dòng hoặc qua CSV (một lỗi là bỏ cả tệp); kỳ đã 確定 thì không cho sửa; ghi audit. Đây là đầu vào để xác định 以内.
+        done: Nhập tay và CSV đều được; kỳ 確定 trả INVALID_STATE.
+        subs:
+          - {id: I-067.1, title: "API-063 danh sách + API-064 ghi / sửa + INVALID_STATE", kind: API, owner: BE-B, hours: 10, sprint: ~, done: "Kỳ đã 確定 bị từ chối."}
+          - {id: I-067.2, title: "API-065 nhập CSV all-or-nothing", kind: API, owner: BE-B, hours: 10, sprint: ~, done: "Một dòng lỗi thì không dòng nào được ghi."}
+          - {id: I-067.3, title: "UI SCR-26 form + tải CSV", kind: UI, owner: FE-B, hours: 12, sprint: ~, deps: [I-067.1], done: "Lỗi từng dòng CSV hiện rõ."}
+      - id: I-068
+        wu: [WU-068]
+        title: Test tích hợp delta sau 確定 và batch chạy lại
+        kind: test
+        spec: [DD-05, DD-07]
+        deps: [I-062, I-063, I-049]
+        desc: Kịch bản xuyên 調整要求, tính delta và batch - duyệt điều chỉnh sau khi kỳ đã 確定 thì delta vào kỳ sau đúng version gốc; chạy batch lại không nhân đôi.
+        done: Hai kịch bản chạy trong CI.
+        subs:
+          - {id: I-068.1, title: "Kịch bản 調整要求 承認 sau 確定 → delta kỳ sau", kind: test, owner: QA-A, hours: 10, sprint: ~, done: "Version kỳ gốc được dùng."}
+          - {id: I-068.2, title: "Kịch bản batch chạy lại không nhân đôi", kind: test, owner: QA-A, hours: 6, sprint: ~, done: "Số dòng kết quả không đổi."}
+      - id: I-091
+        wu: [WU-091]
+        title: 確定 kỳ 完納奨励金 bởi ROLE-SETTLEMENT (API-068) + nút ở SCR-26
+        kind: API
+        spec: [DD-07, DBT-14, SCR-27, SCR-26, API-068]
+        deps: [I-063]
+        desc: Người có MFA bấm 確定 sau khi kiểm 支払実績; dùng chung khóa với batch; tính lại trong cùng giao dịch, khác số 暫定 thì cập nhật 暫定 + trả 409 và không 確定; ghi audit INCENTIVE_CONFIRMED.
+        done: Số lệch thì 409 và không 確定; khớp thì 確定 bất biến.
+        subs:
+          - {id: I-091.1, title: "API-068 確定 + tính lại FS-01 + advisory lock + audit", kind: API, owner: BE-A, hours: 12, sprint: ~, done: "Chạy song song với batch không lỗi."}
+          - {id: I-091.2, title: "Nút 確定 kỳ trên SCR-26 + hiển thị kết quả tính lại (409)", kind: UI, owner: FE-B, hours: 6, sprint: ~, deps: [I-091.1], done: "Phiên AAL1 không thấy nút."}
+      - id: X-D33
+        title: "[D33] Mở rộng 調整要求 sang 支払実績 — thiết kế trước, rồi cài đặt"
+        kind: thiết kế
+        spec: [DD-05, SCR-21, API-050, API-069, DBT-20, DBT-13]
+        desc: Sửa 支払完了日 sau khi kỳ đã 確定 phải đi qua 調整要求 để sinh delta kỳ sau. LAB-4 mới có quyết định, 調整要求 hiện chỉ nhận 相対 / せり. Sub-issue đầu tiên là thiết kế, các bước cài đặt phụ thuộc nó.
+        done: Thiết kế được PL duyệt; sửa 支払完了日 của kỳ đã 確定 tạo delta ở kỳ sau.
+        subs:
+          - {id: X-D33.1, title: "Thiết kế mở rộng đối tượng 調整要求 sang 支払実績 (DD-05 / SCR-21 / API-050 / API-069 / DBT-20)", kind: thiết kế, owner: PM, hours: 10, sprint: 1, done: "Bản sửa DD-05, SCR-21, API_List, DBT-20 được PL duyệt."}
+          - {id: X-D33.2, title: "DB + RPC quyết định cho đối tượng 支払実績 → cập nhật 支払完了日 + gọi delta", kind: DB, owner: BE-A, hours: 12, sprint: ~, deps: [X-D33.1, I-049, I-062, I-067], done: "Kỳ gốc không đổi, delta ở kỳ sau."}
+          - {id: X-D33.3, title: "API-050 / API-069 nhận đối tượng 支払実績", kind: API, owner: BE-B, hours: 8, sprint: ~, deps: [X-D33.1, I-048, I-050], done: "Chỉ ROLE-SETTLEMENT tạo được loại này."}
+          - {id: X-D33.4, title: "SCR-21 cho chọn đối tượng 支払実績", kind: UI, owner: FE-A, hours: 8, sprint: ~, deps: [X-D33.1, X-D33.3], done: "Biến thể mới theo thiết kế."}
+          - {id: X-D33.5, title: "Test tích hợp sửa 支払完了日 sau 確定 → delta kỳ sau", kind: test, owner: QA-A, hours: 8, sprint: ~, deps: [X-D33.2, X-D33.3], done: "Đổi khoản từ trễ sang đúng hạn tạo delta dương."}
+      - id: X-Q4
+        title: "[要確認] Định nghĩa 「次期」 khi ghi delta 完納奨励金"
+        kind: 要確認
+        owner: PM
+        spec: [FS-01, DD-05, DBT-14]
+        hours: 1
+        sprint: 1
+        label: 要確認
+        desc: Handoff ghi 「次期」 còn 未決. Backlog tạm hiểu là kỳ chưa 確定 sớm nhất tại thời điểm 承認 (PREMISE.md §2). Cần xác nhận khi có nhiều kỳ chưa 確定 cùng lúc.
+        done: PL / khách xác nhận; cập nhật I-062 nếu khác giả định.
+
+  - id: E11
+    name: 監査・共通
+    desc: Audit append-only, danh mục mã lỗi và message tiếng Nhật, component dùng chung, RLS cho bảng mới, loại bỏ demo_reset.
+    issues:
+      - id: I-069
+        wu: [WU-069]
+        title: Bảng audit thêm 業務日 / người tham gia, bỏ nhánh demo_reset (DBT-15)
+        kind: DB
+        owner: BE-A
+        spec: [DBT-15, ADR-007, ADR-012]
+        hours: 6
+        sprint: 1
+        desc: Thêm hai cột tra cứu; trigger append-only không còn ngoại lệ cho reset dữ liệu demo.
+        done: UPDATE / DELETE audit bị chặn trong mọi trường hợp.
+      - id: I-070
+        wu: [WU-070]
+        title: Danh mục mã lỗi và message tiếng Nhật (CSP-21)
+        kind: API
+        spec: [CSP-21]
+        desc: Đưa 37 mã lỗi + 8 reason_code vào lớp lỗi API và 130 message JA vào i18n; UI dịch mã → message.
+        done: Không còn chuỗi lỗi viết cứng; mọi mã có message.
+        subs:
+          - {id: I-070.1, title: "37 mã lỗi + 8 reason_code vào lớp lỗi API", kind: API, owner: BE-B, hours: 8, sprint: 1, done: "Script đối chiếu Error_Code_List không lệch."}
+          - {id: I-070.2, title: "130 MSG JA vào i18n + map mã → MSG ở UI", kind: UI, owner: FE-A, hours: 12, sprint: 1, done: "Script đối chiếu message list không lệch."}
+      - id: I-071
+        wu: [WU-071]
+        title: Helper ghi audit dùng chung cho mọi RPC (CSP-11)
+        kind: API
+        spec: [CSP-11, ADR-007]
+        deps: [I-069]
+        desc: Ghi audit theo 72 mã action trong cùng giao dịch, kể cả khi RPC từ chối và khi truy cập bị chặn.
+        done: Mỗi RPC ghi đúng mã action; từ chối cũng có dòng audit.
+        subs:
+          - {id: I-071.1, title: "Helper audit 72 action trong cùng giao dịch", kind: API, owner: BE-A, hours: 10, sprint: 2, done: "Rollback thì audit cũng rollback."}
+          - {id: I-071.2, title: "Ghi audit cho rpc_reject và ACCESS_DENIED", kind: API, owner: BE-A, hours: 8, sprint: 2, done: "Test 403 có dòng audit."}
+      - id: I-072
+        wu: [WU-072]
+        title: Component UI dùng chung
+        kind: UI
+        spec: [CSP-05, CSP-07, CSP-15, CSP-18, CSP-22]
+        desc: Bộ component dùng lại ở 16 màn - các banner (ngày, 締め, 休市, MFA), hộp bắt nhập lý do, ô nhập tay HITL, nhãn trạng thái, bảng khi không có dữ liệu hoặc tải lỗi.
+        done: Có story / test cho từng component.
+        subs:
+          - {id: I-072.1, title: "Banner + hộp lý do bắt buộc", kind: UI, owner: FE-A, hours: 10, sprint: 1, done: "Lý do rỗng không gửi được."}
+          - {id: I-072.2, title: "Ô HITL + nhãn trạng thái + bảng rỗng / lỗi tải", kind: UI, owner: FE-B, hours: 10, sprint: 1, done: "Nhãn trạng thái đúng CSP-22."}
+      - id: I-073
+        wu: [WU-073]
+        title: Bật RLS và REVOKE cho mọi bảng mới (ADR-004)
+        kind: DB
+        owner: BE-B
+        spec: [ADR-004]
+        deps: [I-013, I-047]
+        hours: 5
+        sprint: ~
+        desc: Lặp mẫu sẵn có cho DBT-17〜32 — bật RLS, thu quyền, không tạo policy.
+        done: Script kiểm mọi bảng public đều bật RLS.
+      - id: I-074
+        wu: [WU-074]
+        title: Loại demo_reset khỏi bản production (ADR-012)
+        kind: hạ tầng
+        owner: FE-B
+        spec: [ADR-012]
+        hours: 4
+        sprint: 1
+        desc: Xóa hàm reset dữ liệu demo và ba nhánh bỏ qua trigger khỏi migration production.
+        done: Tìm trong migration production không còn demo_reset.
+
+  - id: E12
+    name: インフラ・NFR
+    desc: Môi trường production, khung job, DR cross-region B′, giám sát, load test, thông báo.
+    issues:
+      - id: I-075
+        wu: [WU-075]
+        title: DR baseline B′ — dump 15 phút và sao chép Storage sang Osaka (ADR-010)
+        kind: hạ tầng
+        spec: [ADR-010]
+        deps: [I-077]
+        desc: Job dump logic mỗi 15 phút (gồm schema auth), sao chép Storage sang S3 Osaka có mã hóa, object lock, quyền tách riêng.
+        done: Bản dump mới nhất ở Osaka không cũ hơn 15 phút; khóa và quyền tách khỏi production.
+        subs:
+          - {id: I-075.1, title: "Job dump logic 15 phút gồm schema auth", kind: hạ tầng, owner: FE-A, hours: 14, sprint: 1, done: "Dump chạy theo lịch, lỗi có log."}
+          - {id: I-075.2, title: "Sao chép Storage sang S3 Osaka + mã hóa + object lock", kind: hạ tầng, owner: FE-B, hours: 12, sprint: 1, done: "Không xóa được object trong thời hạn khóa."}
+          - {id: I-075.3, title: "Tách quyền + quản lý khóa + runbook vận hành", kind: hạ tầng, owner: FE-B, hours: 10, sprint: 2, done: "Tài khoản production không xóa được bản sao."}
+      - id: I-076
+        wu: [WU-076]
+        title: Đo thời gian dump + sao chép để chốt B′ hay lùi về B
+        kind: test
+        spec: [ADR-010]
+        deps: [I-075, I-081]
+        desc: Đo với dữ liệu theo FIG-LOAD-01. Dưới 15 phút thì giữ B′; không đạt thì lùi về B 1 giờ, hạ compliance NFR-AVL-03 xuống Partial và gửi câu hỏi khách đã duyệt.
+        done: Có số đo và quyết định B′ / B ghi vào ADR-010.
+        subs:
+          - {id: I-076.1, title: "Đo dump + sao chép với dữ liệu FIG-LOAD-01", kind: test, owner: QA-A, hours: 10, sprint: 2, done: "Báo cáo số đo 3 lần chạy."}
+          - {id: I-076.2, title: "Ghi quyết định B′ / B + bước tiếp theo (câu hỏi khách nếu lùi)", kind: tài liệu, owner: PM, hours: 4, sprint: 2, deps: [I-076.1], done: "PL ký quyết định."}
+      - id: I-077
+        wu: [WU-077]
+        title: Dựng môi trường production (Supabase Pro + PITR Tokyo, Vercel Pro hnd1)
+        kind: hạ tầng
+        owner: FE-B
+        spec: [ADR-001, ADR-010]
+        hours: 8
+        sprint: 1
+        desc: Tạo project production, bật PITR, đặt region, biến môi trường và secret.
+        done: Deploy được bản build; secret không nằm trong repo.
+      - id: I-078
+        wu: [WU-078]
+        title: Giám sát và cảnh báo (NFR-OPS-01)
+        kind: hạ tầng
+        spec: [ADR-010, DD-07]
+        deps: [I-075, I-080]
+        desc: Cảnh báo khi job dump / batch lỗi hoặc trễ, dump quá 12 phút (cảnh báo sớm cho B′), tỉ lệ lỗi API cao, mail gửi lại vẫn lỗi.
+        done: Mỗi loại cảnh báo được kích thử và nhận được.
+        subs:
+          - {id: I-078.1, title: "Cảnh báo job dump / batch lỗi, trễ, dump > 12 phút", kind: hạ tầng, owner: FE-A, hours: 10, sprint: 2, done: "Kích thử nhận được cảnh báo."}
+          - {id: I-078.2, title: "Cảnh báo tỉ lệ lỗi API + mail retry thất bại", kind: hạ tầng, owner: FE-A, hours: 8, sprint: 2, done: "Ngưỡng ghi trong runbook."}
+      - id: I-079
+        wu: [WU-079]
+        title: Thủ tục restore Osaka và diễn tập ACC-05
+        kind: tài liệu
+        spec: [ADR-010, ADR-001]
+        deps: [I-075]
+        desc: Viết thủ tục dựng lại Postgres và lớp Auth / API ở Osaka (Supabase không có sẵn ở đó), diễn tập đo RTO 4 giờ và cold restore trong 2 ngày, lập biên bản.
+        done: Biên bản diễn tập có số đo RTO; vượt 4 giờ thì báo PL.
+        subs:
+          - {id: I-079.1, title: "Viết thủ tục restore Osaka", kind: tài liệu, owner: PM, hours: 12, sprint: ~, done: "Người khác làm theo được."}
+          - {id: I-079.2, title: "Dựng thử Postgres + Auth / API ở Osaka", kind: hạ tầng, owner: FE-B, hours: 14, sprint: ~, done: "Ứng dụng đăng nhập được trên bản dựng thử."}
+          - {id: I-079.3, title: "Diễn tập ACC-05 đo RTO + cold restore + biên bản", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-079.1, I-079.2], done: "Biên bản có thời gian từng bước."}
+      - id: I-080
+        wu: [WU-080]
+        title: Khung job CP-08 (Vercel Cron → route nội bộ)
+        kind: hạ tầng
+        owner: FE-A
+        spec: [DD-07]
+        deps: [I-077]
+        hours: 10
+        sprint: 1
+        desc: Route nội bộ chỉ nhận lời gọi có CRON secret, có khóa chống chạy trùng và cho chạy lại thủ công.
+        done: Gọi trùng không chạy song song; chạy lại tay được.
+      - id: I-081
+        wu: [WU-081]
+        title: Load test hiệu năng theo FIG-LOAD-01
+        kind: test
+        spec: [ADR-001]
+        deps: [I-077]
+        desc: Dựng dữ liệu và kịch bản giờ cao điểm 02:00〜10:00 với số người dùng đồng thời theo FIG-LOAD-01; đo ở cỡ compute Small và Medium.
+        done: Báo cáo p95 và đề xuất cỡ compute.
+        subs:
+          - {id: I-081.1, title: "Dữ liệu + kịch bản tải FIG-LOAD-01", kind: test, owner: QA-A, hours: 10, sprint: 1, done: "Kịch bản chạy lặp lại được."}
+          - {id: I-081.2, title: "Chạy đo Small / Medium + báo cáo", kind: test, owner: QA-A, hours: 8, sprint: 1, deps: [I-081.1], done: "Có p95 cho từng cỡ."}
+      - id: I-082
+        wu: [WU-082]
+        title: Thông báo アプリ内 và メール qua outbox (DBT-31 / DBT-32)
+        kind: batch
+        spec: [DBT-31, DBT-32]
+        deps: [I-080]
+        desc: Ghi thông báo vào outbox, hiển thị trong ứng dụng, gửi mail và thử lại tối đa 3 lần.
+        done: Mail lỗi 3 lần thì chuyển trạng thái thất bại và có cảnh báo.
+        subs:
+          - {id: I-082.1, title: "Outbox DBT-31 / 32 + thông báo アプリ内", kind: batch, owner: BE-B, hours: 10, sprint: ~, done: "Thông báo hiện cho đúng người nhận."}
+          - {id: I-082.2, title: "Gửi メール + retry ≤ 3", kind: batch, owner: BE-B, hours: 10, sprint: ~, done: "Retry dừng ở lần 3."}
+
+  - id: E13
+    name: テスト・移行・文書
+    desc: E2E theo state machine, test quyền, test khóa ngày, migration từ schema prototype, tài liệu API, theo dõi 未決.
+    issues:
+      - id: I-083
+        wu: [WU-083]
+        title: E2E theo 8 state machine
+        kind: test
+        spec: [CSP-13, DD-01, DD-02, DD-03, DD-04, DD-05, DD-06]
+        deps: [I-032, I-035, I-039, I-045, I-051, I-057]
+        desc: Mọi chuyển trạng thái hợp lệ, các nhánh từ chối giữ nguyên trạng thái cũ và có audit.
+        done: E2E chạy trong CI cho cả 8 state machine.
+        subs:
+          - {id: I-083.1, title: "E2E 相対 + せり (DD-01 / DD-02)", kind: test, owner: QA-A, hours: 14, sprint: ~, done: "Đủ chuyển hợp lệ và từ chối."}
+          - {id: I-083.2, title: "E2E 引渡し + 締め (DD-03 / DD-04)", kind: test, owner: QA-A, hours: 12, sprint: ~, done: "Đủ chuyển hợp lệ và từ chối."}
+          - {id: I-083.3, title: "E2E 調整要求 + version quy tắc (DD-05 / DD-06)", kind: test, owner: QA-A, hours: 12, sprint: ~, done: "Đủ chuyển hợp lệ và từ chối."}
+      - id: I-084
+        wu: [WU-084]
+        title: Test quyền 69 endpoint × 7 vai trò
+        kind: test
+        spec: [CSP-03, CSP-04]
+        deps: [I-003, I-004]
+        desc: Sinh ca từ API_List theo permission_matrix §4, gồm phiên AAL1 / AAL2 và quyền đọc đã thu hẹp.
+        done: Ma trận quyền chạy trong CI.
+        subs:
+          - {id: I-084.1, title: "Sinh ca endpoint × vai trò từ API_List", kind: test, owner: QA-A, hours: 10, sprint: 2, done: "Mỗi endpoint có ca cho 7 vai trò."}
+          - {id: I-084.2, title: "Ca AAL1 / AAL2 + quyền đọc thu hẹp", kind: test, owner: QA-A, hours: 8, sprint: 2, done: "8 route đọc thu hẹp có ca 403."}
+      - id: I-085
+        wu: [WU-085]
+        title: Test khóa 締め và ranh giới 業務日
+        kind: test
+        spec: [CSP-05, CSP-13, FS-02]
+        deps: [I-042, I-041]
+        desc: Khóa 締め trên mọi bảng gắn 業務日, tranh chấp đồng thời giữa 締め và 確定, biên 01:59 / 02:00 JST và ngày 休市.
+        done: Ca đồng thời tái hiện được ổn định.
+        subs:
+          - {id: I-085.1, title: "Khóa 締め trên mọi bảng gắn 業務日", kind: test, owner: QA-A, hours: 10, sprint: 3, done: "Mỗi bảng có ca ghi sau 締め."}
+          - {id: I-085.2, title: "Race 締め ↔ 確定 + biên 02:00 JST + 休市", kind: test, owner: QA-A, hours: 10, sprint: 3, done: "Chạy 50 lần không lỗi ngẫu nhiên."}
+      - id: I-086
+        wu: [WU-086]
+        title: Migration từ schema prototype
+        kind: DB
+        spec: [DBT-04, DBT-07, DBT-09]
+        deps: [I-012, I-021, I-033]
+        desc: Đổi trạng thái cũ sang trạng thái thiết kế, backfill loại người tham gia, dọn seed; theo 52 điểm chênh design_vs_prototype.
+        done: Migration chạy trên bản sao dữ liệu prototype không lỗi; số dòng khớp.
+        subs:
+          - {id: I-086.1, title: "Map trạng thái lô / giao dịch / せり", kind: DB, owner: BE-B, hours: 10, sprint: ~, done: "Không còn giá trị trạng thái cũ."}
+          - {id: I-086.2, title: "Backfill participant_type + dọn seed + đối chiếu số dòng", kind: DB, owner: BE-B, hours: 8, sprint: ~, done: "Bảng đối chiếu trước / sau."}
+      - id: I-087
+        wu: [WU-087]
+        title: Cập nhật tài liệu API theo API_List 69 endpoint
+        kind: tài liệu
+        owner: PM
+        spec: [API-001, API-069]
+        deps: [I-070]
+        hours: 6
+        sprint: ~
+        desc: Đồng bộ tài liệu API của bản thật với danh sách endpoint và mã lỗi.
+        done: Không còn endpoint thiếu tài liệu.
+      - id: I-088
+        wu: [WU-088]
+        title: Theo dõi 未決 và câu hỏi khách (変更管理)
+        kind: tài liệu
+        owner: PM
+        spec: [ADR-013, ADR-014]
+        hours: 8
+        sprint: 2
+        desc: Một danh sách 未決 gom từ ADR, permission matrix, state machine, screen spec; cập nhật thiết kế khi có câu trả lời.
+        done: Danh sách có người phụ trách và hạn cho từng mục.
+      - id: I-089
+        wu: [WU-089]
+        title: Test không có tự động hóa ở 目利き・下見 / せり (HITL)
+        kind: test
+        owner: QA-A
+        spec: [CSP-15, SCR-10, SCR-13]
+        deps: [I-026, I-035]
+        hours: 6
+        sprint: ~
+        desc: Kiểm tiêu chí loại trừ SCOPE-OUT-01/02 - không gợi ý, không OCR; 確認者 lưu đúng người thao tác.
+        done: Ca kiểm đạt cho SCR-10 và SCR-13.

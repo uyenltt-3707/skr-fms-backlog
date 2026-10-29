@@ -1,0 +1,1580 @@
+{
+ "E01": {
+  "number": 1,
+  "level": "epic",
+  "title": "[Epic] E01 基盤・認証・権限",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/1"
+ },
+ "I-001": {
+  "number": 2,
+  "level": "issue",
+  "title": "[WU-001] Thêm cột khóa tạm và liên kết người tham gia cho tài khoản (DBT-01)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/2"
+ },
+ "I-002": {
+  "number": 3,
+  "level": "issue",
+  "title": "[WU-002] Thêm bước OTP và khóa tạm cho đăng nhập (API-001)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/3"
+ },
+ "I-002.1": {
+  "number": 4,
+  "level": "sub",
+  "title": "[WU-002] Bước TOTP sau mật khẩu và nâng phiên lên AAL2",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/4"
+ },
+ "I-002.2": {
+  "number": 5,
+  "level": "sub",
+  "title": "[WU-002] Đếm lần sai và khóa tạm 5 lần / 15 phút, tách mã lỗi đăng nhập",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/5"
+ },
+ "I-003": {
+  "number": 6,
+  "level": "issue",
+  "title": "[WU-003] Middleware bắt buộc AAL2 cho API cần MFA",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/6"
+ },
+ "I-003.1": {
+  "number": 7,
+  "level": "sub",
+  "title": "[WU-003] Viết middleware AAL2 + 403 MFA_REQUIRED + audit ACCESS_DENIED",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/7"
+ },
+ "I-003.2": {
+  "number": 8,
+  "level": "sub",
+  "title": "[WU-003] Gắn middleware AAL2 cho khoảng 30 endpoint theo API_List",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/8"
+ },
+ "I-004": {
+  "number": 9,
+  "level": "issue",
+  "title": "[WU-004] Thu hẹp quyền đọc theo vai trò ở từng route (CSP-03)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/9"
+ },
+ "I-005": {
+  "number": 10,
+  "level": "issue",
+  "title": "[WU-005] Màn đăng nhập SCR-01 có bước MFA và thông báo khóa",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/10"
+ },
+ "I-005.1": {
+  "number": 11,
+  "level": "sub",
+  "title": "[WU-005] Form bước OTP và đăng ký QR lần đầu",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/11"
+ },
+ "I-005.2": {
+  "number": 12,
+  "level": "sub",
+  "title": "[WU-005] Thông báo khóa tạm / số lần còn lại / hết phiên (MSG-040〜046)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/12"
+ },
+ "E12": {
+  "number": 13,
+  "level": "epic",
+  "title": "[Epic] E12 インフラ・NFR",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/13"
+ },
+ "I-077": {
+  "number": 14,
+  "level": "issue",
+  "title": "[WU-077] Dựng môi trường production (Supabase Pro + PITR Tokyo, Vercel Pro hnd1)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/14"
+ },
+ "I-006": {
+  "number": 15,
+  "level": "issue",
+  "title": "[WU-006] Cấu hình timeout phiên và hủy phiên khi khóa tài khoản",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/15"
+ },
+ "I-007": {
+  "number": 16,
+  "level": "issue",
+  "title": "[WU-007] Thiết bị dùng chung ở hiện trường — phiên theo ca và chọn người thao tác bằng PIN",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/16"
+ },
+ "X-Q1": {
+  "number": 17,
+  "level": "issue",
+  "title": "[要確認] Thiết bị dùng chung — đăng ký thiết bị, độ dài PIN, cấp / thu hồi (ADR-013 未決 #4)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/17"
+ },
+ "I-007.1": {
+  "number": 18,
+  "level": "sub",
+  "title": "[WU-007] Thiết kế bổ sung bảng thiết bị + PIN băm (bổ sung Database Design, ADR-013)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/18"
+ },
+ "I-007.2": {
+  "number": 19,
+  "level": "sub",
+  "title": "[WU-007] DB + API đăng ký thiết bị và xác minh PIN có giới hạn thử",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/19"
+ },
+ "I-007.3": {
+  "number": 20,
+  "level": "sub",
+  "title": "[WU-007] UI phiên theo ca và hộp chọn người thao tác bằng ID・PIN",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/20"
+ },
+ "I-007.4": {
+  "number": 21,
+  "level": "sub",
+  "title": "[WU-007] Ghi actor = người đã chọn vào các RPC ghi nghiệp vụ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/21"
+ },
+ "E11": {
+  "number": 22,
+  "level": "epic",
+  "title": "[Epic] E11 監査・共通",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/22"
+ },
+ "I-069": {
+  "number": 23,
+  "level": "issue",
+  "title": "[WU-069] Bảng audit thêm 業務日 / người tham gia, bỏ nhánh demo_reset (DBT-15)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/23"
+ },
+ "I-071": {
+  "number": 24,
+  "level": "issue",
+  "title": "[WU-071] Helper ghi audit dùng chung cho mọi RPC (CSP-11)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/24"
+ },
+ "I-008": {
+  "number": 25,
+  "level": "issue",
+  "title": "[WU-008] Cấp / đình chỉ vai trò và khóa tài khoản qua RPC, chặn tự thao tác (API-008〜010)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/25"
+ },
+ "I-009": {
+  "number": 26,
+  "level": "issue",
+  "title": "[WU-009] Màn quản lý tài khoản SCR-03 chặn tự thao tác và hiện banner MFA",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/26"
+ },
+ "E07": {
+  "number": 27,
+  "level": "epic",
+  "title": "[Epic] E07 業務日・締め・締め解除",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/27"
+ },
+ "I-040": {
+  "number": 28,
+  "level": "issue",
+  "title": "[WU-040] Lịch 休市 và thông tin khóa ngày (DBT-24 / DBT-05)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/28"
+ },
+ "I-041": {
+  "number": 29,
+  "level": "issue",
+  "title": "[WU-041] Hàm FS-02 xác định 業務日 có xét 休市",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/29"
+ },
+ "I-010": {
+  "number": 30,
+  "level": "issue",
+  "title": "[WU-010] Khung chung — header, nav theo vai trò, ダッシュボード",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/30"
+ },
+ "I-010.1": {
+  "number": 31,
+  "level": "sub",
+  "title": "[WU-010] Header 業務日 + banner 締め / 休市 + nhãn trạng thái",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/31"
+ },
+ "I-010.2": {
+  "number": 32,
+  "level": "sub",
+  "title": "[WU-010] Nav theo 7 vai trò và ダッシュボード đếm việc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/32"
+ },
+ "E02": {
+  "number": 33,
+  "level": "epic",
+  "title": "[Epic] E02 参加者・参加根拠（許可／承認）",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/33"
+ },
+ "I-011": {
+  "number": 34,
+  "level": "issue",
+  "title": "[WU-011] Ràng buộc loại người tham gia và 参加上限 (DBT-03)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/34"
+ },
+ "I-012": {
+  "number": 35,
+  "level": "issue",
+  "title": "[WU-012] Căn cứ tham gia gắn loại người tham gia và RULE chuyển trạng thái (DBT-04)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/35"
+ },
+ "I-012.1": {
+  "number": 36,
+  "level": "sub",
+  "title": "[WU-012] Cột loại + FK ghép + CHECK căn cứ theo loại người",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/36"
+ },
+ "I-012.2": {
+  "number": 37,
+  "level": "sub",
+  "title": "[WU-012] Trạng thái under_review + RULE chuyển trạng thái + backfill",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/37"
+ },
+ "I-013": {
+  "number": 38,
+  "level": "issue",
+  "title": "[WU-013] Bảng lịch sử trạng thái căn cứ append-only (DBT-17)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/38"
+ },
+ "I-014": {
+  "number": 39,
+  "level": "issue",
+  "title": "[WU-014] Hàm FS-03 kiểm tra hiệu lực người tham gia",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/39"
+ },
+ "I-014.1": {
+  "number": 40,
+  "level": "sub",
+  "title": "[WU-014] Căn cứ bắt buộc theo loại + 失効 suy ra từ ngày",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/40"
+ },
+ "I-014.2": {
+  "number": 41,
+  "level": "sub",
+  "title": "[WU-014] Thứ tự reason_code CSP-09 (thêm UNDER_REVIEW / BASIS_MISMATCH)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/41"
+ },
+ "I-015": {
+  "number": 42,
+  "level": "issue",
+  "title": "[WU-015] Đăng ký và đổi trạng thái căn cứ qua RPC (API-016 / API-017)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/42"
+ },
+ "I-016": {
+  "number": 43,
+  "level": "issue",
+  "title": "[WU-016] Giải tỏa 一時停止 theo loại căn cứ (API-018)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/43"
+ },
+ "I-016.1": {
+  "number": 44,
+  "level": "sub",
+  "title": "[WU-016] Nhánh 条件付き解除 cho 仲卸・許可",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/44"
+ },
+ "I-016.2": {
+  "number": 45,
+  "level": "sub",
+  "title": "[WU-016] Nhánh 解除 + RELEASE_NOT_ALLOWED cho 売買参加者",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/45"
+ },
+ "I-017": {
+  "number": 46,
+  "level": "issue",
+  "title": "[WU-017] 再審査 và ghi kết quả thẩm định (API-019)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/46"
+ },
+ "I-017.1": {
+  "number": 47,
+  "level": "sub",
+  "title": "[WU-017] Vào 再審査 từ 一時停止 / 失効 theo loại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/47"
+ },
+ "I-017.2": {
+  "number": 48,
+  "level": "sub",
+  "title": "[WU-017] Ghi kết quả 適合 / 不適合 và trạng thái đích",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/48"
+ },
+ "I-018": {
+  "number": 49,
+  "level": "issue",
+  "title": "[WU-018] Màn SCR-06 — căn cứ tham gia, form đổi theo loại người",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/49"
+ },
+ "I-018.1": {
+  "number": 50,
+  "level": "sub",
+  "title": "[WU-018] Form theo loại căn cứ + 4 trạng thái FIG-010",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/50"
+ },
+ "I-018.2": {
+  "number": 51,
+  "level": "sub",
+  "title": "[WU-018] Hộp thoại 条件付き解除 / 解除",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/51"
+ },
+ "I-018.3": {
+  "number": 52,
+  "level": "sub",
+  "title": "[WU-018] Hộp thoại 再審査 / 更新の申請 + chế độ chỉ xem cho ROLE-SETTLEMENT",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/52"
+ },
+ "I-019": {
+  "number": 53,
+  "level": "issue",
+  "title": "[WU-019] Màn người tham gia SCR-05 thêm ràng buộc loại và phạm vi xem",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/53"
+ },
+ "I-020": {
+  "number": 54,
+  "level": "issue",
+  "title": "[WU-020] Unit test ma trận FS-03",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/54"
+ },
+ "I-020.1": {
+  "number": 55,
+  "level": "sub",
+  "title": "[WU-020] Ma trận 4 loại người × 4 căn cứ × trạng thái",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/55"
+ },
+ "I-020.2": {
+  "number": 56,
+  "level": "sub",
+  "title": "[WU-020] Ngày biên valid_from / valid_to và thứ tự reason_code",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/56"
+ },
+ "E03": {
+  "number": 57,
+  "level": "epic",
+  "title": "[Epic] E03 ロット・目利き／下見",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/57"
+ },
+ "I-021": {
+  "number": 58,
+  "level": "issue",
+  "title": "[WU-021] Trạng thái lô 5 giá trị, cột 後入力 và sổ cái số lượng (DBT-07 / DBT-18)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/58"
+ },
+ "I-021.1": {
+  "number": 59,
+  "level": "sub",
+  "title": "[WU-021] Trạng thái FIG-011 + map listed / sold_out + FK loại người bán",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/59"
+ },
+ "I-021.2": {
+  "number": 60,
+  "level": "sub",
+  "title": "[WU-021] Cột 後入力 (Ver 0.3) + bảng sổ cái DBT-18",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/60"
+ },
+ "I-022": {
+  "number": 61,
+  "level": "issue",
+  "title": "[WU-022] Đăng ký lô qua RPC register_lot (API-022)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/61"
+ },
+ "I-022.1": {
+  "number": 62,
+  "level": "sub",
+  "title": "[WU-022] RPC register_lot — 業務日 server, 休市, kiểm người bán qua FS-03",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/62"
+ },
+ "I-022.2": {
+  "number": 63,
+  "level": "sub",
+  "title": "[WU-022] Nhánh 後入力 SLIP_DATE_MISMATCH + dòng initial DBT-18 + route",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/63"
+ },
+ "I-023": {
+  "number": 64,
+  "level": "issue",
+  "title": "[WU-023] Màn đăng ký lô SCR-08 cho PC và tablet",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/64"
+ },
+ "I-023.1": {
+  "number": 65,
+  "level": "sub",
+  "title": "[WU-023] Form PC + chế độ 後入力",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/65"
+ },
+ "I-023.2": {
+  "number": 66,
+  "level": "sub",
+  "title": "[WU-023] Bố cục tablet + banner + trạng thái mất kết nối",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/66"
+ },
+ "I-024": {
+  "number": 67,
+  "level": "issue",
+  "title": "[WU-024] Bảng kết quả 目利き / 下見 và trigger khóa ngày (DBT-19)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/67"
+ },
+ "I-025": {
+  "number": 68,
+  "level": "issue",
+  "title": "[WU-025] Ghi kết quả 目利き / 下見 qua RPC (API-024 / API-025)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/68"
+ },
+ "I-025.1": {
+  "number": 69,
+  "level": "sub",
+  "title": "[WU-025] RPC record_lot_inspection + chuyển 受付 → 下見済",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/69"
+ },
+ "I-025.2": {
+  "number": 70,
+  "level": "sub",
+  "title": "[WU-025] Sửa sau giao dịch bằng supersedes_id + lý do",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/70"
+ },
+ "I-026": {
+  "number": 71,
+  "level": "issue",
+  "title": "[WU-026] Màn 目利き・下見 SCR-10 cho PC và tablet",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/71"
+ },
+ "I-026.1": {
+  "number": 72,
+  "level": "sub",
+  "title": "[WU-026] Ghi / tra kết quả trên PC + ô HITL",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/72"
+ },
+ "I-026.2": {
+  "number": 73,
+  "level": "sub",
+  "title": "[WU-026] Bố cục tablet + biến thể trạng thái",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/73"
+ },
+ "I-027": {
+  "number": 74,
+  "level": "issue",
+  "title": "[WU-027] 公開 lô từ SCR-09 (API-062)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/74"
+ },
+ "I-027.1": {
+  "number": 75,
+  "level": "sub",
+  "title": "[WU-027] RPC publish_lot + route API-062 + audit",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/75"
+ },
+ "I-027.2": {
+  "number": 76,
+  "level": "sub",
+  "title": "[WU-027] Nút 公開 tối thiểu trên SCR-09",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/76"
+ },
+ "E04": {
+  "number": 77,
+  "level": "epic",
+  "title": "[Epic] E04 相対取引",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/77"
+ },
+ "I-028": {
+  "number": 78,
+  "level": "issue",
+  "title": "[WU-028] Cột bên mua, lý do từ chối, 取消 và trigger bất biến sau 確定 (DBT-08)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/78"
+ },
+ "I-029": {
+  "number": 79,
+  "level": "issue",
+  "title": "[WU-029] RPC 確定 giao dịch 相対 theo DD-01",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/79"
+ },
+ "I-029.1": {
+  "number": 80,
+  "level": "sub",
+  "title": "[WU-029] Chuỗi kiểm khóa ngày → 公開 → FS-03 bên mua",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/80"
+ },
+ "I-029.2": {
+  "number": 81,
+  "level": "sub",
+  "title": "[WU-029] Trừ số lượng + sổ cái DBT-18 + test đồng thời",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/81"
+ },
+ "I-030": {
+  "number": 82,
+  "level": "issue",
+  "title": "[WU-030] Bổ sung kiểm tra cho route giao dịch 相対 (API-026〜029)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/82"
+ },
+ "I-031": {
+  "number": 83,
+  "level": "issue",
+  "title": "[WU-031] 差戻し và 取消 giao dịch 相対 (API-031 / API-032)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/83"
+ },
+ "I-031.1": {
+  "number": 84,
+  "level": "sub",
+  "title": "[WU-031] RPC + route 差戻し",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/84"
+ },
+ "I-031.2": {
+  "number": 85,
+  "level": "sub",
+  "title": "[WU-031] RPC + route 取消 có hoàn số lượng DBT-18",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/85"
+ },
+ "I-032": {
+  "number": 86,
+  "level": "issue",
+  "title": "[WU-032] Màn giao dịch 相対 SCR-11",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/86"
+ },
+ "I-032.1": {
+  "number": 87,
+  "level": "sub",
+  "title": "[WU-032] Nhập / 提出 / 確定 + hiển thị lý do từ chối",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/87"
+ },
+ "I-032.2": {
+  "number": 88,
+  "level": "sub",
+  "title": "[WU-032] 差戻し / 取消 + banner khóa ngày",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/88"
+ },
+ "E05": {
+  "number": 89,
+  "level": "epic",
+  "title": "[Epic] E05 せり結果",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/89"
+ },
+ "I-033": {
+  "number": 90,
+  "level": "issue",
+  "title": "[WU-033] Vòng trạng thái kết quả せり và 確認者 (DBT-09)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/90"
+ },
+ "I-033.1": {
+  "number": 91,
+  "level": "sub",
+  "title": "[WU-033] CHECK vòng FIG-012 + 確認者 + loại người thắng",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/91"
+ },
+ "I-033.2": {
+  "number": 92,
+  "level": "sub",
+  "title": "[WU-033] Trigger bất biến sau 確定 + map exception → 確認待ち",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/92"
+ },
+ "I-034": {
+  "number": 93,
+  "level": "issue",
+  "title": "[WU-034] Luồng API kết quả せり theo DD-02 (API-034〜038)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/93"
+ },
+ "I-034.1": {
+  "number": 94,
+  "level": "sub",
+  "title": "[WU-034] Ghi kết quả chỉ tạo 下書き + API-035 提出",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/94"
+ },
+ "I-034.2": {
+  "number": 95,
+  "level": "sub",
+  "title": "[WU-034] API-036 確定 có 確認者 + kiểm FS-03",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/95"
+ },
+ "I-034.3": {
+  "number": 96,
+  "level": "sub",
+  "title": "[WU-034] API-037 差戻し + API-038 取消",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/96"
+ },
+ "I-034.4": {
+  "number": 97,
+  "level": "sub",
+  "title": "[WU-034] Test luồng 4 endpoint せり",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/97"
+ },
+ "I-035": {
+  "number": 98,
+  "level": "issue",
+  "title": "[WU-035] Màn kết quả せり SCR-13 cho PC và tablet",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/98"
+ },
+ "I-035.1": {
+  "number": 99,
+  "level": "sub",
+  "title": "[WU-035] Form PC + ô HITL + xác nhận 確認者",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/99"
+ },
+ "I-035.2": {
+  "number": 100,
+  "level": "sub",
+  "title": "[WU-035] Bố cục tablet + nhãn 例外 + biến thể",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/100"
+ },
+ "E06": {
+  "number": 101,
+  "level": "epic",
+  "title": "[Epic] E06 引渡し",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/101"
+ },
+ "E08": {
+  "number": 102,
+  "level": "epic",
+  "title": "[Epic] E08 調整要求",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/102"
+ },
+ "I-047": {
+  "number": 103,
+  "level": "issue",
+  "title": "[WU-047] Bảng 調整要求, dòng điều chỉnh và 証憑 (DBT-20 / DBT-21 / DBT-27)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/103"
+ },
+ "I-036": {
+  "number": 104,
+  "level": "issue",
+  "title": "[WU-036] Cột xác nhận giao hàng và view số lượng hiệu lực (DBT-10 / DBT-16)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/104"
+ },
+ "I-036.1": {
+  "number": 105,
+  "level": "sub",
+  "title": "[WU-036] Cột DBT-10 (確認数量 / 確認者 / hold_reason)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/105"
+ },
+ "I-036.2": {
+  "number": 106,
+  "level": "sub",
+  "title": "[WU-036] View DBT-16 số lượng hiệu lực + trạng thái suy ra",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/106"
+ },
+ "I-037": {
+  "number": 107,
+  "level": "issue",
+  "title": "[WU-037] Sửa RPC ghi giao hàng và giải tỏa 保留 theo DD-03",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/107"
+ },
+ "I-037.1": {
+  "number": 108,
+  "level": "sub",
+  "title": "[WU-037] record_delivery — DELIVERY_ON_HOLD + FS-03 người nhận",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/108"
+ },
+ "I-037.2": {
+  "number": 109,
+  "level": "sub",
+  "title": "[WU-037] release_delivery_hold — người giải tỏa ≠ người ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/109"
+ },
+ "I-038": {
+  "number": 110,
+  "level": "issue",
+  "title": "[WU-038] Ngoại lệ giao hàng có 例外確認者 (DBT-22 / DBT-23 / API-042)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/110"
+ },
+ "I-038.1": {
+  "number": 111,
+  "level": "sub",
+  "title": "[WU-038] Bảng DBT-22 + mã lý do DBT-23",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/111"
+ },
+ "I-038.2": {
+  "number": 112,
+  "level": "sub",
+  "title": "[WU-038] RPC + route API-042 + khóa sau 締め",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/112"
+ },
+ "I-039": {
+  "number": 113,
+  "level": "issue",
+  "title": "[WU-039] Màn giao hàng SCR-15 cho PC và tablet",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/113"
+ },
+ "I-039.1": {
+  "number": 114,
+  "level": "sub",
+  "title": "[WU-039] Lần giao + 保留 / 保留解除 có MFA",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/114"
+ },
+ "I-039.2": {
+  "number": 115,
+  "level": "sub",
+  "title": "[WU-039] Giao dịch dở ngày trước + nút 例外登録 + tablet",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/115"
+ },
+ "X-Q2": {
+  "number": 116,
+  "level": "issue",
+  "title": "[要確認] SCR-16 例外登録 chưa có đơn vị công việc nhưng SCR-15 có nút dẫn tới",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/116"
+ },
+ "I-042": {
+  "number": 117,
+  "level": "issue",
+  "title": "[WU-042] Sửa RPC 締め theo DD-04",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/117"
+ },
+ "I-043": {
+  "number": 118,
+  "level": "issue",
+  "title": "[WU-043] 締め解除 có người duyệt khác người 申請 (DBT-25 / API-046〜048)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/118"
+ },
+ "I-043.1": {
+  "number": 119,
+  "level": "sub",
+  "title": "[WU-043] Bảng DBT-25 + RPC request / decide",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/119"
+ },
+ "I-043.2": {
+  "number": 120,
+  "level": "sub",
+  "title": "[WU-043] Ba route API-046〜048 + DUPLICATE_PENDING_REQUEST",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/120"
+ },
+ "I-044": {
+  "number": 121,
+  "level": "issue",
+  "title": "[WU-044] Màn đối soát và 締め SCR-18 thêm lý do",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/121"
+ },
+ "I-045": {
+  "number": 122,
+  "level": "issue",
+  "title": "[WU-045] Màn 締め解除 SCR-19",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/122"
+ },
+ "I-045.1": {
+  "number": 123,
+  "level": "sub",
+  "title": "[WU-045] Danh sách + form 申請",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/123"
+ },
+ "I-045.2": {
+  "number": 124,
+  "level": "sub",
+  "title": "[WU-045] 承認・実行 / 却下 + nhắc xuất lại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/124"
+ },
+ "X-Q3": {
+  "number": 125,
+  "level": "issue",
+  "title": "[要確認] Xuất lại đối soát (WU-046) cần bản xuất lần đầu IF-ACC-01 chưa có đơn vị công việc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/125"
+ },
+ "I-046": {
+  "number": 126,
+  "level": "issue",
+  "title": "[WU-046] Xuất lại dữ liệu đối soát cho ngày mở rồi 締め lại (DBT-28 / DBT-29)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/126"
+ },
+ "I-046.1": {
+  "number": 127,
+  "level": "sub",
+  "title": "[WU-046] Job xuất lại theo batch code DBT-28 / DBT-29",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/127"
+ },
+ "I-046.2": {
+  "number": 128,
+  "level": "sub",
+  "title": "[WU-046] Test xuất lại sau 締め解除",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/128"
+ },
+ "I-092": {
+  "number": 129,
+  "level": "issue",
+  "title": "[WU-092] Bảng tranh chấp DBT-26 + RLS deny-all",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/129"
+ },
+ "I-093": {
+  "number": 130,
+  "level": "issue",
+  "title": "[WU-093] Màn 紛争管理 SCR-20 — thiết kế màn trước, rồi API và UI",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/130"
+ },
+ "I-093.1": {
+  "number": 131,
+  "level": "sub",
+  "title": "[WU-093] Thiết kế màn SCR-20 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/131"
+ },
+ "I-080": {
+  "number": 132,
+  "level": "issue",
+  "title": "[WU-080] Khung job CP-08 (Vercel Cron → route nội bộ)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/132"
+ },
+ "I-082": {
+  "number": 133,
+  "level": "issue",
+  "title": "[WU-082] Thông báo アプリ内 và メール qua outbox (DBT-31 / DBT-32)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/133"
+ },
+ "I-093.2": {
+  "number": 134,
+  "level": "sub",
+  "title": "[WU-093] API tranh chấp (danh sách / ghi / đóng) + thông báo",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/134"
+ },
+ "I-093.3": {
+  "number": 135,
+  "level": "sub",
+  "title": "[WU-093] UI SCR-20 danh sách + chi tiết + ghi kết quả",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/135"
+ },
+ "I-094": {
+  "number": 136,
+  "level": "issue",
+  "title": "[WU-094] Batch 日次レポート CP-09 và nhật ký chạy báo cáo (DBT-30)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/136"
+ },
+ "I-094.1": {
+  "number": 137,
+  "level": "sub",
+  "title": "[WU-094] Khung job + DBT-30 report_runs + idempotent theo 業務日",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/137"
+ },
+ "I-094.2": {
+  "number": 138,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn RPT-01〜05",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/138"
+ },
+ "I-094.3": {
+  "number": 139,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn RPT-06〜09",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/139"
+ },
+ "I-094.4": {
+  "number": 140,
+  "level": "sub",
+  "title": "[WU-094] Test hạn 11:00 và chạy lại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/140"
+ },
+ "I-095": {
+  "number": 141,
+  "level": "issue",
+  "title": "[WU-095] Màn 帳票出力・CSV SCR-28 — thiết kế màn trước, rồi API và UI",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/141"
+ },
+ "I-095.1": {
+  "number": 142,
+  "level": "sub",
+  "title": "[WU-095] Thiết kế màn SCR-28 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/142"
+ },
+ "I-095.2": {
+  "number": 143,
+  "level": "sub",
+  "title": "[WU-095] API tra cứu / xuất CSV + báo cáo tháng RPT-10〜12 tạo khi xem",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/143"
+ },
+ "I-095.3": {
+  "number": 144,
+  "level": "sub",
+  "title": "[WU-095] UI chọn báo cáo + lọc + xem + nút xuất CSV",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/144"
+ },
+ "I-047.1": {
+  "number": 145,
+  "level": "sub",
+  "title": "[WU-047] DBT-20 + DBT-21 append-only",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/145"
+ },
+ "I-047.2": {
+  "number": 146,
+  "level": "sub",
+  "title": "[WU-047] DBT-27 + bucket Storage + nhóm lưu trữ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/146"
+ },
+ "I-048": {
+  "number": 147,
+  "level": "issue",
+  "title": "[WU-048] Tạo 調整要求 (API-049 / API-050)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/147"
+ },
+ "I-048.1": {
+  "number": 148,
+  "level": "sub",
+  "title": "[WU-048] Route tạo + kiểm đối tượng 確定 + DUPLICATE_PENDING_REQUEST",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/148"
+ },
+ "I-048.2": {
+  "number": 149,
+  "level": "sub",
+  "title": "[WU-048] Kiểm 証憑 theo FORM-CORR-01 + suy ra 影響範囲",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/149"
+ },
+ "E10": {
+  "number": 150,
+  "level": "epic",
+  "title": "[Epic] E10 完納奨励金",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/150"
+ },
+ "E09": {
+  "number": 151,
+  "level": "epic",
+  "title": "[Epic] E09 規則・料率版",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/151"
+ },
+ "I-053": {
+  "number": 152,
+  "level": "issue",
+  "title": "[WU-053] Bảng version quy tắc và bảng tier (DBT-11 / DBT-12)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/152"
+ },
+ "I-058": {
+  "number": 153,
+  "level": "issue",
+  "title": "[WU-058] Chọn version tỷ lệ / ngưỡng áp dụng theo 業務日",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/153"
+ },
+ "I-059": {
+  "number": 154,
+  "level": "issue",
+  "title": "[WU-059] Xác định khoản trả đủ hạn 以内",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/154"
+ },
+ "I-060": {
+  "number": 155,
+  "level": "issue",
+  "title": "[WU-060] Tra 交付率 theo bảng tier của version",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/155"
+ },
+ "I-061": {
+  "number": 156,
+  "level": "issue",
+  "title": "[WU-061] Làm tròn xuống JPY một lần cho mỗi người tham gia × kỳ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/156"
+ },
+ "I-064": {
+  "number": 157,
+  "level": "issue",
+  "title": "[WU-064] Bổ sung cột cho thanh toán và kết quả 完納奨励金 (DBT-13 / DBT-14)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/157"
+ },
+ "X-Q4": {
+  "number": 158,
+  "level": "issue",
+  "title": "[要確認] Định nghĩa 「次期」 khi ghi delta 完納奨励金",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/158"
+ },
+ "I-062": {
+  "number": 159,
+  "level": "issue",
+  "title": "[WU-062] Delta kỳ sau khi 調整要求 đổi số tiền của kỳ đã 確定",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/159"
+ },
+ "I-049": {
+  "number": 160,
+  "level": "issue",
+  "title": "[WU-049] RPC quyết định 調整要求 theo DD-05",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/160"
+ },
+ "I-049.1": {
+  "number": 161,
+  "level": "sub",
+  "title": "[WU-049] Kiểm đối tượng chưa đổi + kiểm số lượng",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/161"
+ },
+ "I-049.2": {
+  "number": 162,
+  "level": "sub",
+  "title": "[WU-049] Ghi reverse + delta DBT-21 và sổ cái DBT-18",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/162"
+ },
+ "I-049.3": {
+  "number": 163,
+  "level": "sub",
+  "title": "[WU-049] Gọi delta 完納奨励金 trong cùng giao dịch + test rollback",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/163"
+ },
+ "I-090": {
+  "number": 164,
+  "level": "issue",
+  "title": "[WU-090] Tải lên / tải xuống 証憑 dùng chung (API-066 / API-067)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/164"
+ },
+ "X-D33": {
+  "number": 165,
+  "level": "issue",
+  "title": "[D33] Mở rộng 調整要求 sang 支払実績 — thiết kế trước, rồi cài đặt",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/165"
+ },
+ "X-D33.1": {
+  "number": 166,
+  "level": "sub",
+  "title": "[D33] Thiết kế mở rộng đối tượng 調整要求 sang 支払実績 (DD-05 / SCR-21 / API-050 / API-069 / DBT-20)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/166"
+ },
+ "I-050": {
+  "number": 167,
+  "level": "issue",
+  "title": "[WU-050] Màn tạo 調整要求 SCR-21 và endpoint đọc riêng API-069",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/167"
+ },
+ "I-050.1": {
+  "number": 168,
+  "level": "sub",
+  "title": "[WU-050] Endpoint đọc riêng API-069",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/168"
+ },
+ "I-050.2": {
+  "number": 169,
+  "level": "sub",
+  "title": "[WU-050] UI chọn giao dịch + đề xuất 訂正 / 取消",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/169"
+ },
+ "I-050.3": {
+  "number": 170,
+  "level": "sub",
+  "title": "[WU-050] UI đính 証憑 ở SCR-21",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/170"
+ },
+ "I-051": {
+  "number": 171,
+  "level": "issue",
+  "title": "[WU-051] Màn duyệt 調整要求 SCR-22",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/171"
+ },
+ "I-051.1": {
+  "number": 172,
+  "level": "sub",
+  "title": "[WU-051] Diff gốc / mới + 承認 / 却下",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/172"
+ },
+ "I-051.2": {
+  "number": 173,
+  "level": "sub",
+  "title": "[WU-051] Xem trước ảnh hưởng 完納奨励金",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/173"
+ },
+ "I-052": {
+  "number": 174,
+  "level": "issue",
+  "title": "[WU-052] Hàm giá trị hiệu lực dùng chung cho mọi màn đọc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/174"
+ },
+ "I-052.1": {
+  "number": 175,
+  "level": "sub",
+  "title": "[WU-052] Hàm giá trị hiệu lực (gốc + DBT-21)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/175"
+ },
+ "I-052.2": {
+  "number": 176,
+  "level": "sub",
+  "title": "[WU-052] Áp hàm vào API-026 / 033 / 039 + test đối chiếu",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/176"
+ },
+ "I-090.1": {
+  "number": 177,
+  "level": "sub",
+  "title": "[WU-090] API-066 upload + kiểm loại / dung lượng + audit",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/177"
+ },
+ "I-090.2": {
+  "number": 178,
+  "level": "sub",
+  "title": "[WU-090] API-067 signed URL + quyền theo màn gốc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/178"
+ },
+ "I-053.1": {
+  "number": 179,
+  "level": "sub",
+  "title": "[WU-053] DBT-11 trạng thái / loại / nguồn / payment_due_rule + bỏ cột thuế",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/179"
+ },
+ "I-053.2": {
+  "number": 180,
+  "level": "sub",
+  "title": "[WU-053] DBT-12 tiers + trigger bất biến từ 承認",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/180"
+ },
+ "I-054": {
+  "number": 181,
+  "level": "issue",
+  "title": "[WU-054] API soạn version quy tắc (API-052〜056)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/181"
+ },
+ "I-054.1": {
+  "number": 182,
+  "level": "sub",
+  "title": "[WU-054] Danh sách + 起票 thường / ロールバック",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/182"
+ },
+ "I-054.2": {
+  "number": 183,
+  "level": "sub",
+  "title": "[WU-054] Sửa / 承認申請 / 取下げ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/183"
+ },
+ "I-055": {
+  "number": 184,
+  "level": "issue",
+  "title": "[WU-055] RPC 承認 / 差戻し / 公布 version theo DD-06",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/184"
+ },
+ "I-055.1": {
+  "number": 185,
+  "level": "sub",
+  "title": "[WU-055] 承認 / 差戻し + người ≠ 起票者",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/185"
+ },
+ "I-055.2": {
+  "number": 186,
+  "level": "sub",
+  "title": "[WU-055] 公布 + đếm 4 lần / 会計年度 + kiểm 発効日",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/186"
+ },
+ "I-056": {
+  "number": 187,
+  "level": "issue",
+  "title": "[WU-056] Màn soạn version SCR-23",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/187"
+ },
+ "I-056.1": {
+  "number": 188,
+  "level": "sub",
+  "title": "[WU-056] Form version + bảng tier sửa được",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/188"
+ },
+ "I-056.2": {
+  "number": 189,
+  "level": "sub",
+  "title": "[WU-056] ロールバック + 取下げ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/189"
+ },
+ "I-057": {
+  "number": 190,
+  "level": "issue",
+  "title": "[WU-057] Màn duyệt / 公布 version SCR-24",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/190"
+ },
+ "I-057.1": {
+  "number": 191,
+  "level": "sub",
+  "title": "[WU-057] 承認 / 差戻し / 公布",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/191"
+ },
+ "I-057.2": {
+  "number": 192,
+  "level": "sub",
+  "title": "[WU-057] Bộ đếm 公布 n/4 + biến thể",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/192"
+ },
+ "I-059.1": {
+  "number": 193,
+  "level": "sub",
+  "title": "[WU-059] Tính 支払期日 từ payment_due_rule (hỗ trợ cả 2 dạng quy tắc)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/193"
+ },
+ "I-059.2": {
+  "number": 194,
+  "level": "sub",
+  "title": "[WU-059] Lọc khoản trả theo hạn ở JST + test biên ngày",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/194"
+ },
+ "I-062.1": {
+  "number": 195,
+  "level": "sub",
+  "title": "[WU-062] Tính lại kỳ gốc theo version kỳ gốc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/195"
+ },
+ "I-062.2": {
+  "number": 196,
+  "level": "sub",
+  "title": "[WU-062] Ghi dòng delta vào kỳ chưa 確定 kế tiếp",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/196"
+ },
+ "I-063": {
+  "number": 197,
+  "level": "issue",
+  "title": "[WU-063] Batch tháng DD-07 chỉ tạo / tính lại kết quả 暫定",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/197"
+ },
+ "I-063.1": {
+  "number": 198,
+  "level": "sub",
+  "title": "[WU-063] Route cron + CRON secret + khóa theo kỳ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/198"
+ },
+ "I-063.2": {
+  "number": 199,
+  "level": "sub",
+  "title": "[WU-063] Tạo / tính lại 暫定 idempotent + audit",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/199"
+ },
+ "I-065": {
+  "number": 200,
+  "level": "issue",
+  "title": "[WU-065] Màn 照会 完納奨励金 SCR-27 có version và dòng delta",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/200"
+ },
+ "I-065.1": {
+  "number": 201,
+  "level": "sub",
+  "title": "[WU-065] API-060 / 061 trả version + dòng delta + phép tính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/201"
+ },
+ "I-065.2": {
+  "number": 202,
+  "level": "sub",
+  "title": "[WU-065] UI SCR-27 version / delta / phép tính / MSG-202",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/202"
+ },
+ "I-066": {
+  "number": 203,
+  "level": "issue",
+  "title": "[WU-066] Test vector INC-EDGE và ca biên cho FS-01",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/203"
+ },
+ "I-067": {
+  "number": 204,
+  "level": "issue",
+  "title": "[WU-067] Nhập 支払実績 ở SCR-26 (API-063〜065)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/204"
+ },
+ "I-067.1": {
+  "number": 205,
+  "level": "sub",
+  "title": "[WU-067] API-063 danh sách + API-064 ghi / sửa + INVALID_STATE",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/205"
+ },
+ "I-067.2": {
+  "number": 206,
+  "level": "sub",
+  "title": "[WU-067] API-065 nhập CSV all-or-nothing",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/206"
+ },
+ "I-067.3": {
+  "number": 207,
+  "level": "sub",
+  "title": "[WU-067] UI SCR-26 form + tải CSV",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/207"
+ },
+ "I-068": {
+  "number": 208,
+  "level": "issue",
+  "title": "[WU-068] Test tích hợp delta sau 確定 và batch chạy lại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/208"
+ },
+ "I-068.1": {
+  "number": 209,
+  "level": "sub",
+  "title": "[WU-068] Kịch bản 調整要求 承認 sau 確定 → delta kỳ sau",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/209"
+ },
+ "I-068.2": {
+  "number": 210,
+  "level": "sub",
+  "title": "[WU-068] Kịch bản batch chạy lại không nhân đôi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/210"
+ },
+ "I-091": {
+  "number": 211,
+  "level": "issue",
+  "title": "[WU-091] 確定 kỳ 完納奨励金 bởi ROLE-SETTLEMENT (API-068) + nút ở SCR-26",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/211"
+ },
+ "I-091.1": {
+  "number": 212,
+  "level": "sub",
+  "title": "[WU-091] API-068 確定 + tính lại FS-01 + advisory lock + audit",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/212"
+ },
+ "I-091.2": {
+  "number": 213,
+  "level": "sub",
+  "title": "[WU-091] Nút 確定 kỳ trên SCR-26 + hiển thị kết quả tính lại (409)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/213"
+ },
+ "X-D33.2": {
+  "number": 214,
+  "level": "sub",
+  "title": "[D33] DB + RPC quyết định cho đối tượng 支払実績 → cập nhật 支払完了日 + gọi delta",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/214"
+ },
+ "X-D33.3": {
+  "number": 215,
+  "level": "sub",
+  "title": "[D33] API-050 / API-069 nhận đối tượng 支払実績",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/215"
+ },
+ "X-D33.4": {
+  "number": 216,
+  "level": "sub",
+  "title": "[D33] SCR-21 cho chọn đối tượng 支払実績",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/216"
+ },
+ "X-D33.5": {
+  "number": 217,
+  "level": "sub",
+  "title": "[D33] Test tích hợp sửa 支払完了日 sau 確定 → delta kỳ sau",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/217"
+ },
+ "I-070": {
+  "number": 218,
+  "level": "issue",
+  "title": "[WU-070] Danh mục mã lỗi và message tiếng Nhật (CSP-21)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/218"
+ },
+ "I-070.1": {
+  "number": 219,
+  "level": "sub",
+  "title": "[WU-070] 37 mã lỗi + 8 reason_code vào lớp lỗi API",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/219"
+ },
+ "I-070.2": {
+  "number": 220,
+  "level": "sub",
+  "title": "[WU-070] 130 MSG JA vào i18n + map mã → MSG ở UI",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/220"
+ },
+ "I-071.1": {
+  "number": 221,
+  "level": "sub",
+  "title": "[WU-071] Helper audit 72 action trong cùng giao dịch",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/221"
+ },
+ "I-071.2": {
+  "number": 222,
+  "level": "sub",
+  "title": "[WU-071] Ghi audit cho rpc_reject và ACCESS_DENIED",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/222"
+ },
+ "I-072": {
+  "number": 223,
+  "level": "issue",
+  "title": "[WU-072] Component UI dùng chung",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/223"
+ },
+ "I-072.1": {
+  "number": 224,
+  "level": "sub",
+  "title": "[WU-072] Banner + hộp lý do bắt buộc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/224"
+ },
+ "I-072.2": {
+  "number": 225,
+  "level": "sub",
+  "title": "[WU-072] Ô HITL + nhãn trạng thái + bảng rỗng / lỗi tải",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/225"
+ },
+ "I-073": {
+  "number": 226,
+  "level": "issue",
+  "title": "[WU-073] Bật RLS và REVOKE cho mọi bảng mới (ADR-004)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/226"
+ },
+ "I-074": {
+  "number": 227,
+  "level": "issue",
+  "title": "[WU-074] Loại demo_reset khỏi bản production (ADR-012)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/227"
+ },
+ "I-075": {
+  "number": 228,
+  "level": "issue",
+  "title": "[WU-075] DR baseline B′ — dump 15 phút và sao chép Storage sang Osaka (ADR-010)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/228"
+ },
+ "I-075.1": {
+  "number": 229,
+  "level": "sub",
+  "title": "[WU-075] Job dump logic 15 phút gồm schema auth",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/229"
+ },
+ "I-075.2": {
+  "number": 230,
+  "level": "sub",
+  "title": "[WU-075] Sao chép Storage sang S3 Osaka + mã hóa + object lock",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/230"
+ },
+ "I-075.3": {
+  "number": 231,
+  "level": "sub",
+  "title": "[WU-075] Tách quyền + quản lý khóa + runbook vận hành",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/231"
+ },
+ "I-081": {
+  "number": 232,
+  "level": "issue",
+  "title": "[WU-081] Load test hiệu năng theo FIG-LOAD-01",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/232"
+ },
+ "I-076": {
+  "number": 233,
+  "level": "issue",
+  "title": "[WU-076] Đo thời gian dump + sao chép để chốt B′ hay lùi về B",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/233"
+ },
+ "I-076.1": {
+  "number": 234,
+  "level": "sub",
+  "title": "[WU-076] Đo dump + sao chép với dữ liệu FIG-LOAD-01",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/234"
+ },
+ "I-076.2": {
+  "number": 235,
+  "level": "sub",
+  "title": "[WU-076] Ghi quyết định B′ / B + bước tiếp theo (câu hỏi khách nếu lùi)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/235"
+ },
+ "I-078": {
+  "number": 236,
+  "level": "issue",
+  "title": "[WU-078] Giám sát và cảnh báo (NFR-OPS-01)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/236"
+ },
+ "I-078.1": {
+  "number": 237,
+  "level": "sub",
+  "title": "[WU-078] Cảnh báo job dump / batch lỗi, trễ, dump > 12 phút",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/237"
+ },
+ "I-078.2": {
+  "number": 238,
+  "level": "sub",
+  "title": "[WU-078] Cảnh báo tỉ lệ lỗi API + mail retry thất bại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/238"
+ },
+ "I-079": {
+  "number": 239,
+  "level": "issue",
+  "title": "[WU-079] Thủ tục restore Osaka và diễn tập ACC-05",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/239"
+ },
+ "I-079.1": {
+  "number": 240,
+  "level": "sub",
+  "title": "[WU-079] Viết thủ tục restore Osaka",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/240"
+ },
+ "I-079.2": {
+  "number": 241,
+  "level": "sub",
+  "title": "[WU-079] Dựng thử Postgres + Auth / API ở Osaka",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/241"
+ },
+ "I-079.3": {
+  "number": 242,
+  "level": "sub",
+  "title": "[WU-079] Diễn tập ACC-05 đo RTO + cold restore + biên bản",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/242"
+ },
+ "I-081.1": {
+  "number": 243,
+  "level": "sub",
+  "title": "[WU-081] Dữ liệu + kịch bản tải FIG-LOAD-01",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/243"
+ },
+ "I-081.2": {
+  "number": 244,
+  "level": "sub",
+  "title": "[WU-081] Chạy đo Small / Medium + báo cáo",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/244"
+ },
+ "I-082.1": {
+  "number": 245,
+  "level": "sub",
+  "title": "[WU-082] Outbox DBT-31 / 32 + thông báo アプリ内",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/245"
+ },
+ "I-082.2": {
+  "number": 246,
+  "level": "sub",
+  "title": "[WU-082] Gửi メール + retry ≤ 3",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/246"
+ },
+ "E13": {
+  "number": 247,
+  "level": "epic",
+  "title": "[Epic] E13 テスト・移行・文書",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/247"
+ },
+ "I-083": {
+  "number": 248,
+  "level": "issue",
+  "title": "[WU-083] E2E theo 8 state machine",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/248"
+ },
+ "I-083.1": {
+  "number": 249,
+  "level": "sub",
+  "title": "[WU-083] E2E 相対 + せり (DD-01 / DD-02)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/249"
+ },
+ "I-083.2": {
+  "number": 250,
+  "level": "sub",
+  "title": "[WU-083] E2E 引渡し + 締め (DD-03 / DD-04)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/250"
+ },
+ "I-083.3": {
+  "number": 251,
+  "level": "sub",
+  "title": "[WU-083] E2E 調整要求 + version quy tắc (DD-05 / DD-06)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/251"
+ },
+ "I-084": {
+  "number": 252,
+  "level": "issue",
+  "title": "[WU-084] Test quyền 69 endpoint × 7 vai trò",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/252"
+ },
+ "I-084.1": {
+  "number": 253,
+  "level": "sub",
+  "title": "[WU-084] Sinh ca endpoint × vai trò từ API_List",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/253"
+ },
+ "I-084.2": {
+  "number": 254,
+  "level": "sub",
+  "title": "[WU-084] Ca AAL1 / AAL2 + quyền đọc thu hẹp",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/254"
+ },
+ "I-085": {
+  "number": 255,
+  "level": "issue",
+  "title": "[WU-085] Test khóa 締め và ranh giới 業務日",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/255"
+ },
+ "I-085.1": {
+  "number": 256,
+  "level": "sub",
+  "title": "[WU-085] Khóa 締め trên mọi bảng gắn 業務日",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/256"
+ },
+ "I-085.2": {
+  "number": 257,
+  "level": "sub",
+  "title": "[WU-085] Race 締め ↔ 確定 + biên 02:00 JST + 休市",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/257"
+ },
+ "I-086": {
+  "number": 258,
+  "level": "issue",
+  "title": "[WU-086] Migration từ schema prototype",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/258"
+ },
+ "I-086.1": {
+  "number": 259,
+  "level": "sub",
+  "title": "[WU-086] Map trạng thái lô / giao dịch / せり",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/259"
+ },
+ "I-086.2": {
+  "number": 260,
+  "level": "sub",
+  "title": "[WU-086] Backfill participant_type + dọn seed + đối chiếu số dòng",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/260"
+ },
+ "I-087": {
+  "number": 261,
+  "level": "issue",
+  "title": "[WU-087] Cập nhật tài liệu API theo API_List 69 endpoint",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/261"
+ },
+ "I-088": {
+  "number": 262,
+  "level": "issue",
+  "title": "[WU-088] Theo dõi 未決 và câu hỏi khách (変更管理)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/262"
+ },
+ "I-089": {
+  "number": 263,
+  "level": "issue",
+  "title": "[WU-089] Test không có tự động hóa ở 目利き・下見 / せり (HITL)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/263"
+ }
+}

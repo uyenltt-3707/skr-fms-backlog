@@ -1,56 +1,87 @@
-SKR-FMS Backlog · Mã học viên: [PL điền] · Đề: Product A (LAB-5)
-
 # SKR-FMS Backlog
 
-> Repo và GitHub Project này **công khai**. Chỉ chứa nội dung tự viết: không chép RFP, không dữ liệu thật, không dữ liệu cá nhân, không khóa bí mật.
-> **Sprint và người phụ trách (担当(仮)) là GIẢ LẬP** cho bài tập — không phản ánh lịch hay nhân sự thật.
+## 1. Dự án
 
-## 1. Giới thiệu
+**Dự án:** SKR-FMS — Sakura Fish Market Operations Support · **Mã học viên:** [PL điền] · **Đề:** Product A (LAB-5)
 
-[PL điền — mục tiêu bài LAB-5, phạm vi Product A, kết quả mong đợi, ràng buộc 完納奨励金 phải là task riêng.]
+> Repo và GitHub Project này **công khai**: chỉ nội dung tự viết, chỉ ghi **mã** spec LAB-4 (SCR-/API-/DBT-/ADR-/DD-/FS-/WU-);
+> không chép RFP hay văn bản spec, không dữ liệu thật, không dữ liệu cá nhân, không khóa bí mật.
+> Sprint và người phụ trách (担当(仮)) là **giả lập**.
 
-## 2. Liên kết
+## 2. Tổng quan
 
-| Mục | URL |
-|-----|-----|
+- **Nguồn break:** bản LAB-4 = repo `product-a-fishmarket` commit **`576480b`** ("lab4: final decisions, PL remarks"),
+  ngày commit **2026-10-29 20:58 (+07:00)**; nguồn break là `specs/_meta/lab5_handoff.yaml` — 95 đơn vị công việc WU-001〜095.
+- **PREMISE.md: có thay đổi** so với LAB-4 — 5 dòng spec thêm / sửa (thiết kế màn SCR-20 và SCR-28, mở rộng 調整要求 sang
+  支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung), 7 giả định bổ sung, 6 hướng đã chốt.
+- **Backlog:** 13 epic · 100 issue · 150 sub-issue (184 item lá) · **1,780h = 237.3 MD**; riêng 完納奨励金 241h (35 item).
+  4 issue `要確認`, 13 chỗ hở spec ghi ở `task-breakdown.md` §4.
+- **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 240h) · Sprint 2 (222h) · Sprint 3 (165h);
+  111 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
+
+## 3. Liên kết
+
+| Mục | Đường dẫn |
+|---|---|
 | Repo | https://github.com/uyenltt-3707/skr-fms-backlog |
-| GitHub Project "SKR-FMS Backlog" | https://github.com/users/uyenltt-3707/projects/2 |
+| GitHub Project "SKR-FMS Backlog" (#2) | https://github.com/users/uyenltt-3707/projects/2 |
+| Báo cáo HTML chấm SWP | `swp-report/` (B3 — chưa có) |
+| Mapping id nội bộ ↔ issue | `tools/issue-map.json` |
 
-## 3. Cấu trúc repo
+Kiểm tra truy cập không đăng nhập: `tools/check-backlog.py --remote` gửi request không cookie / token tới Project và 3 issue mẫu,
+nhận HTTP 200 (2026-10-29). Mở thử bằng cửa sổ ẩn danh của trình duyệt: [PL điền — ngày, kết quả].
+
+**Cách đọc Project:** view **Board** (cột theo Status) và **Table** (lọc theo mọi trường). Trường:
+
+| Trường | Giá trị |
+|---|---|
+| Status | Todo · In Progress · In Review · Done |
+| Iteration | Sprint 1–3 (giả lập), 2 tuần / sprint, từ 2026-11-02; trống = backlog |
+| SWP | trống ở B2; chỉ ghi SWP đã review (B3) |
+| 見積時間 / Estimate (hours) | item lá: ước trực tiếp; issue cha / epic: tổng con |
+| 担当(仮) | FE-A · FE-B · BE-A · BE-B · QA-A · PM (giả định, không gán tài khoản thật) |
+| Item Type | Epic · Issue · Sub-issue (tên "Type" bị GitHub giữ chỗ) |
+| Constraint | 完納奨励金 · なし |
+
+## 4. Cấu trúc repo
 
 | File / thư mục | Nội dung |
-|----------------|----------|
-| `README.md` | Tổng quan, liên kết, cách đọc repo (file này) |
-| `PREMISE.md` | Tiền đề và giả định |
-| `task-breakdown.md` | Nguyên tắc chia task, cây epic → issue → sub-issue |
-| `estimate.md` | Cách quy ra giờ, SWP đã review, tổng hợp |
-| `progress-report.md` | Báo cáo tiến độ Sprint giả lập |
-| `AI-report.md` | Báo cáo sử dụng AI (công cụ, prompt, quyết định) |
+|---|---|
+| `README.md` | Tổng quan, liên kết, cấu trúc, bảng spec → epic (file này) |
+| `PREMISE.md` | Backlog khác bản LAB-4 ở đâu: spec thêm / sửa, giả định bổ sung, hướng đã chốt |
+| `task-breakdown.md` | Nguyên tắc chia task, spec → issue, hạng mục 完納奨励金, chỗ hở spec LAB-4 |
+| `estimate.md` | Báo cáo SWP (B3), cách quy ra giờ, tổng theo epic, so với LAB-1 |
+| `progress-report.md` | Báo cáo tiến độ Sprint giả lập (bước sau) |
+| `AI-report.md` | Skill / prompt đã dùng, review output AI, điểm cần cải thiện |
 | `process_log.md` | Nhật ký thao tác theo thời gian |
-| `tools/` | Script dựng GitHub Project (chạy lại được) |
-| `[PL điền: thư mục báo cáo HTML của skill chấm SWP]` | Báo cáo HTML chấm SWP |
-| `skills/` | Skill đã dùng (nếu có) |
+| `tools/` | Dữ liệu backlog và script: `backlog.yaml` (dữ liệu tự viết), `create-issues.py` (tạo / đồng bộ issue + Project, idempotent), `check-backlog.py` (kiểm tra), `scan-content.py` (quét chép nguyên văn / email / khóa), `backlog_model.py`, `github_api.py`, `project_fields.py` (module dùng chung), `issue-map.json` (mapping sinh ra), `setup-github-project.sh` (dựng Project, B1) |
+| `swp-report/` | Báo cáo HTML của skill chấm SWP (B3) — đang trống |
+| `skills/` | Skill tự viết (B3) — đang trống |
+| `.gitignore` | Loại file bí mật, file tạm, thư mục công cụ cục bộ (`.claude/`, `plans/`) |
+| `.gitattributes` | Ép LF cho script shell |
 
-## 4. Cách đọc GitHub Project
+Chạy lại: `python tools/create-issues.py` (cần `gh` đăng nhập scope `repo` + `project`, Python có PyYAML), rồi
+`python tools/check-backlog.py --remote` và `python tools/scan-content.py`.
 
-Hai view: **Board** (cột theo Status) và **Table** (lọc/sắp xếp theo mọi trường).
+## 5. Spec → epic
 
-| Trường | Kiểu | Giá trị / ý nghĩa |
-|--------|------|-------------------|
-| Status | Single select | Todo · In Progress · In Review · Done |
-| Iteration | Iteration | Sprint 1–3, 2 tuần/sprint; Sprint 1 bắt đầu 2026-11-02 (**ngày giả lập**) |
-| SWP | Number | Chỉ ghi SWP **đã review**; để trống khi chưa review |
-| 見積時間 / Estimate (hours) | Number | Giờ ước lượng của từng issue (quy tắc: `estimate.md`) |
-| 担当(仮) | Single select | FE-A · FE-B · BE-A · BE-B · QA-A · PM — người phụ trách **giả định**, không gán tài khoản thật |
-| Item Type | Single select | Epic · Issue · Sub-issue |
-| Constraint | Single select | 完納奨励金 · なし — dùng để lọc hạng mục bắt buộc tách riêng |
-
-> Tên trường loại item là **Item Type** thay vì "Type": GitHub giữ chỗ tên "Type" (reserved), không tạo được.
-
-Dựng lại Project: `bash tools/setup-github-project.sh` (cần `gh` đã đăng nhập, scope `project` + `repo`; chạy nhiều lần không tạo trùng).
-
-## 5. Trạng thái hiện tại
-
-- [x] B1: repo, Project, trường, view, khung tài liệu
-- [ ] Issue chi tiết — đợi file bàn giao từ LAB-4
-- [ ] SWP đã review · giờ ước lượng · báo cáo Sprint
+| Spec (mã / file LAB-4, hoặc dòng PREMISE) | Epic trên Project | Ghi chú |
+|---|---|---|
+| SCR-01, 03; API-001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 013, 015, 020, 021, 023, 041, 043; DBT-01; CSP-01, 02, 03, 04, 19, 22; ADR-013 | #1 — E01 基盤・認証・権限 | PREMISE P1-5, P2-6 |
+| SCR-05, 06; API-011, 012, 013, 014, 015, 016, 017, 018, 019; DBT-03, 04, 17; FS-03; CSP-09; ADR-014 | #33 — E02 参加者・参加根拠（許可／承認） | — |
+| SCR-08, 09, 10; API-022, 024, 025, 062; DBT-07, 18, 19; CSP-15, 20 | #57 — E03 ロット・目利き／下見 | — |
+| SCR-11; API-026, 027, 028, 029, 030, 031, 032; DBT-08; DD-01; FS-03 | #77 — E04 相対取引 | — |
+| SCR-13; API-034, 035, 036, 037, 038; DBT-09; DD-02; CSP-15 | #89 — E05 せり結果 | — |
+| SCR-15, 16; API-040, 041, 042; DBT-10, 16, 21, 22, 23; DD-03 | #101 — E06 引渡し | 1 issue 要確認 (G6) |
+| SCR-18, 19, 20, 28; API-004, 043, 044, 045, 046, 047, 048; DBT-05, 24, 25, 26, 28, 29, 30; DD-04; FS-02; CSP-01, 06; ADR-004, 007, 009 | #27 — E07 業務日・締め・締め解除 | PREMISE P1-1, P1-2, P2-4; 1 issue 要確認 (G7) |
+| SCR-06, 21, 22; API-016, 026, 033, 039, 049, 050, 051, 066, 067, 069; DBT-20, 21, 27; DD-05; CSP-10 | #102 — E08 調整要求 | PREMISE P3-5, P3-6 |
+| SCR-23, 24; API-052, 053, 054, 055, 056, 057, 058, 059; DBT-11, 12; DD-06; ADR-006 | #151 — E09 規則・料率版 | — |
+| SCR-21, 26, 27; API-050, 060, 061, 063, 064, 065, 068, 069; DBT-11, 12, 13, 14, 20; DD-05, 07; FS-01; CSP-16, 17 | #150 — E10 完納奨励金 | **Constraint = 完納奨励金** cho mọi item; PREMISE P1-3, P1-4, P2-1〜P2-3, P2-5, P3-1〜P3-3 |
+| DBT-15; CSP-05, 07, 11, 15, 18, 21, 22; ADR-004, 007, 012 | #22 — E11 監査・共通 | — |
+| DBT-31, 32; DD-07; ADR-001, 010 | #13 — E12 インフラ・NFR | PREMISE P3-4 (DR B′ / B) |
+| SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 — E13 テスト・移行・文書 | — |
+| PREMISE P1-1 (thiết kế SCR-20) | #27 — E07 業務日・締め・締め解除 | #131 trước #134, #135 |
+| PREMISE P1-2 (thiết kế SCR-28) | #27 — E07 業務日・締め・締め解除 | #142 trước #143, #144 |
+| PREMISE P1-3 (調整要求 → 支払実績, D33) | #150 — E10 完納奨励金 | #165, Constraint = 完納奨励金 |
+| PREMISE P1-4 (nút 確定 SCR-26) | #150 — E10 完納奨励金 | #213, Constraint = 完納奨励金 |
+| PREMISE P1-5 (bảng thiết bị dùng chung) | #1 — E01 基盤・認証・権限 | #18 |

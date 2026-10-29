@@ -33,3 +33,7 @@ desktop.ini
 .vscode/
 .idea/
 node_modules/
+
+# Python
+__pycache__/
+*.pyc
