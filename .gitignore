@@ -1,0 +1,35 @@
+# Secrets / môi trường
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets*
+
+# Dữ liệu thật / cá nhân — repo này public, chỉ chứa nội dung tự viết
+real-data/
+private/
+raw/
+
+# File tạm / sinh ra
+tmp/
+temp/
+*.tmp
+*.bak
+*.log
+~$*
+.~lock.*
+
+# Công cụ cục bộ (kit AI, kế hoạch/báo cáo nháp của agent)
+.claude/
+plans/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+node_modules/
