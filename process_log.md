@@ -39,3 +39,19 @@ Chưa làm (đợi LAB-4): issue chi tiết, SWP, giờ, báo cáo Sprint.
 | 22:20 | `create-issues.py` chạy thật xong | 263 issue, 250 liên kết sub-issue, 263 item Project; không bị rate limit |
 | 22:26 | Chạy lại `create-issues.py` | 0 thay đổi → idempotent |
 | 22:27 | Điền số issue vào tài liệu; `check-backlog.py --remote`; `scan-content.py` | ĐẠT; Project + 3 issue mẫu HTTP 200 khi không đăng nhập; quét bắt 2 câu trích đường dẫn → viết lại → ĐẠT |
+
+## 2026-10-29 — B2b: sửa 3 vấn đề PL phát hiện khi duyệt B2
+
+| Giờ | Việc | Kết quả |
+|-----|------|---------|
+| 22:34 | Nhận yêu cầu B2b; kiểm git (commit B2 `b31976a` đã push, `.gitignore` có `__pycache__/`, `*.pyc`) | — |
+| 22:35 | Đọc SP4 LAB-1 `04_screens.yaml` | 22 màn baseline ngoài 16 màn cốt lõi; SCR-20 / 26 / 28 đã có issue → 19 màn thiếu (17 issue, gộp 34〜36) |
+| 22:36 | Rà 49 WU "sửa từ prototype" (80 item lá, 784h) | +25% hoàn thiện production = +166.5h; 3 lá vượt 15h → tách sub-issue |
+| 22:37 | Chuyển sửa YAML sang dạng dữ liệu + ghi lại cùng định dạng (kiểm round-trip: giống hệt, dry-run 0 thay đổi) | — |
+| 22:38 | Áp thay đổi: 17 issue màn ước thô, tách 12 báo cáo E07, hoàn thiện production, chuyển API đơn giản sang FE | 366 item, 2,909.5h |
+| 22:39 | Xếp lại Iteration | Lần 1 FE-A Sprint 3 = 12h → chuyển I-054 (API soạn version) sang FE-A, I-078.1 sang FE-B → S3 FE-A 48h / FE-B 45h; check ĐẠT |
+| 22:40 | `create-issues.py` đồng bộ (nền) | xem dòng sau |
+| 22:41 | So LAB-1 cùng phạm vi: đọc 102 dòng I của WBS xlsx, gán epic, lập bảng quy đổi pha | 552.2 vs 387.9 MD (−29.8%) |
+| 22:43 | Cập nhật PREMISE, task-breakdown, README, estimate, progress-report, AI-report | — |
+| 23:00 | Đồng bộ GitHub xong; chạy lại | 103 issue mới, 127 cập nhật, 103 liên kết sub-issue, trường 228 item; lần 2: 0 thay đổi |
+| 23:03 | Điền số issue vào tài liệu; `check-backlog.py --remote`; `scan-content.py` | ĐẠT (366 item khớp Project, ẩn danh HTTP 200); quét ĐẠT |

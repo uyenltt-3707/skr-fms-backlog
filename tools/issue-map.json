@@ -824,19 +824,19 @@
  "I-094.2": {
   "number": 138,
   "level": "sub",
-  "title": "[WU-094] Truy vấn RPT-01〜05",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-01 日次取引集計 (giao dịch theo 業務日)",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/138"
  },
  "I-094.3": {
   "number": 139,
   "level": "sub",
-  "title": "[WU-094] Truy vấn RPT-06〜09",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-02 ロット履歴・取引状態ログ",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/139"
  },
  "I-094.4": {
   "number": 140,
   "level": "sub",
-  "title": "[WU-094] Test hạn 11:00 và chạy lại",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-03 失効 / 失効間近の参加者",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/140"
  },
  "I-095": {
@@ -854,7 +854,7 @@
  "I-095.2": {
   "number": 143,
   "level": "sub",
-  "title": "[WU-095] API tra cứu / xuất CSV + báo cáo tháng RPT-10〜12 tạo khi xem",
+  "title": "[WU-095] API chung tra cứu kết quả báo cáo + xuất CSV",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/143"
  },
  "I-095.3": {
@@ -1576,5 +1576,623 @@
   "level": "issue",
   "title": "[WU-089] Test không có tự động hóa ở 目利き・下見 / せり (HITL)",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/263"
+ },
+ "I-010.3": {
+  "number": 264,
+  "level": "sub",
+  "title": "[WU-010] Hoàn thiện production — xử lý lỗi, test bổ sung, kiểm quyền",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/264"
+ },
+ "X-S02": {
+  "number": 265,
+  "level": "issue",
+  "title": "[SCR-02] 外部参加者ログイン（MFA） — đăng nhập người tham gia bên ngoài",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/265"
+ },
+ "X-S02.1": {
+  "number": 266,
+  "level": "sub",
+  "title": "[SCR-02] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/266"
+ },
+ "X-S02.2": {
+  "number": 267,
+  "level": "sub",
+  "title": "[SCR-02] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/267"
+ },
+ "X-S02.3": {
+  "number": 268,
+  "level": "sub",
+  "title": "[SCR-02] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/268"
+ },
+ "X-S02.4": {
+  "number": 269,
+  "level": "sub",
+  "title": "[SCR-02] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/269"
+ },
+ "X-S04": {
+  "number": 270,
+  "level": "issue",
+  "title": "[SCR-04] 外部参加者 参加可否状態・支払義務通知照会",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/270"
+ },
+ "X-S04.1": {
+  "number": 271,
+  "level": "sub",
+  "title": "[SCR-04] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/271"
+ },
+ "X-S04.2": {
+  "number": 272,
+  "level": "sub",
+  "title": "[SCR-04] 実装 1/2 — API + màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/272"
+ },
+ "X-S04.3": {
+  "number": 273,
+  "level": "sub",
+  "title": "[SCR-04] 実装 2/2 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/273"
+ },
+ "I-018.4": {
+  "number": 274,
+  "level": "sub",
+  "title": "[WU-018] Hoàn thiện production — xử lý lỗi, test bổ sung, kiểm quyền",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/274"
+ },
+ "X-S07": {
+  "number": 275,
+  "level": "issue",
+  "title": "[SCR-07] 失効間近参加者 警告一覧",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/275"
+ },
+ "X-S07.1": {
+  "number": 276,
+  "level": "sub",
+  "title": "[SCR-07] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/276"
+ },
+ "X-S07.2": {
+  "number": 277,
+  "level": "sub",
+  "title": "[SCR-07] 実装 1/2 — API + màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/277"
+ },
+ "X-S07.3": {
+  "number": 278,
+  "level": "sub",
+  "title": "[SCR-07] 実装 2/2 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/278"
+ },
+ "X-S09": {
+  "number": 279,
+  "level": "issue",
+  "title": "[SCR-09] ロット一覧・詳細 — trạng thái và điều chỉnh thuộc tính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/279"
+ },
+ "X-S09.1": {
+  "number": 280,
+  "level": "sub",
+  "title": "[SCR-09] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/280"
+ },
+ "X-S09.2": {
+  "number": 281,
+  "level": "sub",
+  "title": "[SCR-09] 実装 1/5 — API",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/281"
+ },
+ "X-S09.3": {
+  "number": 282,
+  "level": "sub",
+  "title": "[SCR-09] 実装 2/5 — danh sách / tìm kiếm",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/282"
+ },
+ "X-S09.4": {
+  "number": 283,
+  "level": "sub",
+  "title": "[SCR-09] 実装 3/5 — chi tiết / form",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/283"
+ },
+ "X-S09.5": {
+  "number": 284,
+  "level": "sub",
+  "title": "[SCR-09] 実装 4/5 — thao tác + hộp thoại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/284"
+ },
+ "X-S09.6": {
+  "number": 285,
+  "level": "sub",
+  "title": "[SCR-09] 実装 5/5 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/285"
+ },
+ "X-S12": {
+  "number": 286,
+  "level": "issue",
+  "title": "[SCR-12] 取引一覧・照会 — tra cứu và 取消 có lý do",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/286"
+ },
+ "X-S12.1": {
+  "number": 287,
+  "level": "sub",
+  "title": "[SCR-12] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/287"
+ },
+ "X-S12.2": {
+  "number": 288,
+  "level": "sub",
+  "title": "[SCR-12] 実装 1/5 — API",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/288"
+ },
+ "X-S12.3": {
+  "number": 289,
+  "level": "sub",
+  "title": "[SCR-12] 実装 2/5 — danh sách / tìm kiếm",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/289"
+ },
+ "X-S12.4": {
+  "number": 290,
+  "level": "sub",
+  "title": "[SCR-12] 実装 3/5 — chi tiết / form",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/290"
+ },
+ "X-S12.5": {
+  "number": 291,
+  "level": "sub",
+  "title": "[SCR-12] 実装 4/5 — thao tác + hộp thoại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/291"
+ },
+ "X-S12.6": {
+  "number": 292,
+  "level": "sub",
+  "title": "[SCR-12] 実装 5/5 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/292"
+ },
+ "X-S14": {
+  "number": 293,
+  "level": "issue",
+  "title": "[SCR-14] せり記録・修正履歴照会",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/293"
+ },
+ "X-S14.1": {
+  "number": 294,
+  "level": "sub",
+  "title": "[SCR-14] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/294"
+ },
+ "X-S14.2": {
+  "number": 295,
+  "level": "sub",
+  "title": "[SCR-14] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/295"
+ },
+ "X-S14.3": {
+  "number": 296,
+  "level": "sub",
+  "title": "[SCR-14] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/296"
+ },
+ "X-S14.4": {
+  "number": 297,
+  "level": "sub",
+  "title": "[SCR-14] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/297"
+ },
+ "X-S16": {
+  "number": 298,
+  "level": "issue",
+  "title": "[SCR-16] 引渡し例外登録 — ghi ngoại lệ giao hàng",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/298"
+ },
+ "X-S16.1": {
+  "number": 299,
+  "level": "sub",
+  "title": "[SCR-16] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/299"
+ },
+ "X-S16.2": {
+  "number": 300,
+  "level": "sub",
+  "title": "[SCR-16] 実装 1/5 — API",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/300"
+ },
+ "X-S16.3": {
+  "number": 301,
+  "level": "sub",
+  "title": "[SCR-16] 実装 2/5 — danh sách / tìm kiếm",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/301"
+ },
+ "X-S16.4": {
+  "number": 302,
+  "level": "sub",
+  "title": "[SCR-16] 実装 3/5 — chi tiết / form",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/302"
+ },
+ "X-S16.5": {
+  "number": 303,
+  "level": "sub",
+  "title": "[SCR-16] 実装 4/5 — thao tác + hộp thoại",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/303"
+ },
+ "X-S16.6": {
+  "number": 304,
+  "level": "sub",
+  "title": "[SCR-16] 実装 5/5 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/304"
+ },
+ "X-S17": {
+  "number": 305,
+  "level": "issue",
+  "title": "[SCR-17] 引渡し・取引・精算 関連照会",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/305"
+ },
+ "X-S17.1": {
+  "number": 306,
+  "level": "sub",
+  "title": "[SCR-17] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/306"
+ },
+ "X-S17.2": {
+  "number": 307,
+  "level": "sub",
+  "title": "[SCR-17] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/307"
+ },
+ "X-S17.3": {
+  "number": 308,
+  "level": "sub",
+  "title": "[SCR-17] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/308"
+ },
+ "X-S17.4": {
+  "number": 309,
+  "level": "sub",
+  "title": "[SCR-17] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/309"
+ },
+ "I-094.5": {
+  "number": 310,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-04 滞留引渡し・引渡し例外",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/310"
+ },
+ "I-094.6": {
+  "number": 311,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-05 日次照合表",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/311"
+ },
+ "I-094.7": {
+  "number": 312,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-06 会計照合用出力表",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/312"
+ },
+ "I-094.8": {
+  "number": 313,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-07 期別 完納奨励金 計算結果",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/313"
+ },
+ "I-094.9": {
+  "number": 314,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-08 ロック後調整ログ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/314"
+ },
+ "I-094.10": {
+  "number": 315,
+  "level": "sub",
+  "title": "[WU-094] Truy vấn + bộ cột RPT-09 紛争と処理 SLA 集計",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/315"
+ },
+ "I-094.11": {
+  "number": 316,
+  "level": "sub",
+  "title": "[WU-094] Test hạn 11:00 và chạy lại cho 9 báo cáo ngày",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/316"
+ },
+ "I-095.4": {
+  "number": 317,
+  "level": "sub",
+  "title": "[WU-095] Báo cáo tháng RPT-10 参加者別月次 (tạo khi xem)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/317"
+ },
+ "I-095.5": {
+  "number": 318,
+  "level": "sub",
+  "title": "[WU-095] Báo cáo tháng RPT-11 取引種別別月次 (tạo khi xem)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/318"
+ },
+ "I-095.6": {
+  "number": 319,
+  "level": "sub",
+  "title": "[WU-095] Báo cáo tháng RPT-12 ルール変更・適用版 (tạo khi xem)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/319"
+ },
+ "X-S29": {
+  "number": 320,
+  "level": "issue",
+  "title": "[SCR-29] 照合データ出力・再出力",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/320"
+ },
+ "X-S29.1": {
+  "number": 321,
+  "level": "sub",
+  "title": "[SCR-29] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/321"
+ },
+ "X-S29.2": {
+  "number": 322,
+  "level": "sub",
+  "title": "[SCR-29] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/322"
+ },
+ "X-S29.3": {
+  "number": 323,
+  "level": "sub",
+  "title": "[SCR-29] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/323"
+ },
+ "X-S29.4": {
+  "number": 324,
+  "level": "sub",
+  "title": "[SCR-29] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/324"
+ },
+ "X-S32": {
+  "number": 325,
+  "level": "issue",
+  "title": "[SCR-32] 証憑ファイルの添付・参照（共通）",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/325"
+ },
+ "X-S32.1": {
+  "number": 326,
+  "level": "sub",
+  "title": "[SCR-32] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/326"
+ },
+ "X-S32.2": {
+  "number": 327,
+  "level": "sub",
+  "title": "[SCR-32] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/327"
+ },
+ "X-S32.3": {
+  "number": 328,
+  "level": "sub",
+  "title": "[SCR-32] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/328"
+ },
+ "X-S32.4": {
+  "number": 329,
+  "level": "sub",
+  "title": "[SCR-32] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/329"
+ },
+ "X-S25": {
+  "number": 330,
+  "level": "issue",
+  "title": "[SCR-25] 規則版の履歴照会・ロールバック起票",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/330"
+ },
+ "X-S25.1": {
+  "number": 331,
+  "level": "sub",
+  "title": "[SCR-25] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/331"
+ },
+ "X-S25.2": {
+  "number": 332,
+  "level": "sub",
+  "title": "[SCR-25] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/332"
+ },
+ "X-S25.3": {
+  "number": 333,
+  "level": "sub",
+  "title": "[SCR-25] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/333"
+ },
+ "X-S25.4": {
+  "number": 334,
+  "level": "sub",
+  "title": "[SCR-25] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/334"
+ },
+ "I-065.3": {
+  "number": 335,
+  "level": "sub",
+  "title": "[WU-065] Hoàn thiện production — xử lý lỗi, test bổ sung, kiểm quyền",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/335"
+ },
+ "X-S30": {
+  "number": 336,
+  "level": "issue",
+  "title": "[SCR-30] 監査ログ検索",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/336"
+ },
+ "X-S30.1": {
+  "number": 337,
+  "level": "sub",
+  "title": "[SCR-30] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/337"
+ },
+ "X-S30.2": {
+  "number": 338,
+  "level": "sub",
+  "title": "[SCR-30] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/338"
+ },
+ "X-S30.3": {
+  "number": 339,
+  "level": "sub",
+  "title": "[SCR-30] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/339"
+ },
+ "X-S30.4": {
+  "number": 340,
+  "level": "sub",
+  "title": "[SCR-30] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/340"
+ },
+ "X-S31": {
+  "number": 341,
+  "level": "issue",
+  "title": "[SCR-31] 精算レコードの適用版照会",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/341"
+ },
+ "X-S31.1": {
+  "number": 342,
+  "level": "sub",
+  "title": "[SCR-31] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/342"
+ },
+ "X-S31.2": {
+  "number": 343,
+  "level": "sub",
+  "title": "[SCR-31] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/343"
+ },
+ "X-S31.3": {
+  "number": 344,
+  "level": "sub",
+  "title": "[SCR-31] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/344"
+ },
+ "X-S31.4": {
+  "number": 345,
+  "level": "sub",
+  "title": "[SCR-31] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/345"
+ },
+ "X-S34": {
+  "number": 346,
+  "level": "issue",
+  "title": "[SCR-34〜36] マスタ保守 — 品目 / 休市カレンダー / 例外理由コード",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/346"
+ },
+ "X-S34.1": {
+  "number": 347,
+  "level": "sub",
+  "title": "[SCR-34〜36] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/347"
+ },
+ "X-S34.2": {
+  "number": 348,
+  "level": "sub",
+  "title": "[SCR-34〜36] 実装 1/4 — 品目マスタ",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/348"
+ },
+ "X-S34.3": {
+  "number": 349,
+  "level": "sub",
+  "title": "[SCR-34〜36] 実装 2/4 — 休市カレンダー",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/349"
+ },
+ "X-S34.4": {
+  "number": 350,
+  "level": "sub",
+  "title": "[SCR-34〜36] 実装 3/4 — 例外理由コード",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/350"
+ },
+ "X-S34.5": {
+  "number": 351,
+  "level": "sub",
+  "title": "[SCR-34〜36] 実装 4/4 — kiểm quyền, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/351"
+ },
+ "X-S33": {
+  "number": 352,
+  "level": "issue",
+  "title": "[SCR-33] cold 保管からの復元要求",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/352"
+ },
+ "X-S33.1": {
+  "number": 353,
+  "level": "sub",
+  "title": "[SCR-33] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/353"
+ },
+ "X-S33.2": {
+  "number": 354,
+  "level": "sub",
+  "title": "[SCR-33] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/354"
+ },
+ "X-S33.3": {
+  "number": 355,
+  "level": "sub",
+  "title": "[SCR-33] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/355"
+ },
+ "X-S33.4": {
+  "number": 356,
+  "level": "sub",
+  "title": "[SCR-33] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/356"
+ },
+ "X-S37": {
+  "number": 357,
+  "level": "issue",
+  "title": "[SCR-37] 通知設定",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/357"
+ },
+ "X-S37.1": {
+  "number": 358,
+  "level": "sub",
+  "title": "[SCR-37] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/358"
+ },
+ "X-S37.2": {
+  "number": 359,
+  "level": "sub",
+  "title": "[SCR-37] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/359"
+ },
+ "X-S37.3": {
+  "number": 360,
+  "level": "sub",
+  "title": "[SCR-37] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/360"
+ },
+ "X-S37.4": {
+  "number": 361,
+  "level": "sub",
+  "title": "[SCR-37] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/361"
+ },
+ "X-S38": {
+  "number": 362,
+  "level": "issue",
+  "title": "[SCR-38] 送信ログ・運用アラートキュー照会",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/362"
+ },
+ "X-S38.1": {
+  "number": 363,
+  "level": "sub",
+  "title": "[SCR-38] 画面設計 — screen spec + cấp API-ID",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/363"
+ },
+ "X-S38.2": {
+  "number": 364,
+  "level": "sub",
+  "title": "[SCR-38] 実装 1/3 — API đọc / ghi",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/364"
+ },
+ "X-S38.3": {
+  "number": 365,
+  "level": "sub",
+  "title": "[SCR-38] 実装 2/3 — màn chính",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/365"
+ },
+ "X-S38.4": {
+  "number": 366,
+  "level": "sub",
+  "title": "[SCR-38] 実装 3/3 — biến thể, xử lý lỗi, test",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/366"
  }
 }

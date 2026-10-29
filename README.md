@@ -12,12 +12,14 @@
 
 - **Nguồn break:** bản LAB-4 = repo `product-a-fishmarket` commit **`576480b`** ("lab4: final decisions, PL remarks"),
   ngày commit **2026-10-29 20:58 (+07:00)**; nguồn break là `specs/_meta/lab5_handoff.yaml` — 95 đơn vị công việc WU-001〜095.
-- **PREMISE.md: có thay đổi** so với LAB-4 — 5 dòng spec thêm / sửa (thiết kế màn SCR-20 và SCR-28, mở rộng 調整要求 sang
-  支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung), 7 giả định bổ sung, 6 hướng đã chốt.
-- **Backlog:** 13 epic · 100 issue · 150 sub-issue (184 item lá) · **1,780h = 237.3 MD**; riêng 完納奨励金 241h (35 item).
-  4 issue `要確認`, 13 chỗ hở spec ghi ở `task-breakdown.md` §4.
-- **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 240h) · Sprint 2 (222h) · Sprint 3 (165h);
-  111 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
+- **PREMISE.md: có thay đổi** so với LAB-4 — 6 dòng spec thêm / sửa (thiết kế màn SCR-20 và SCR-28, mở rộng 調整要求 sang
+  支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung, 19 màn baseline LAB-1 ngoài 16 màn cốt lõi), 9 giả định bổ sung,
+  6 hướng đã chốt.
+- **Backlog (sau B2b):** 13 epic · 117 issue · 236 sub-issue (270 item lá) · **2,909.5h = 387.9 MD**; riêng 完納奨励金 269h (37 item).
+  Trong đó 17 issue màn ước thô (879h, 「詳細設計未作成のため概算」). 4 issue `要確認`, 14 chỗ hở spec ở `task-breakdown.md` §4.
+  So LAB-1 cùng phạm vi: 552.2 → 387.9 MD (−29.8%, giải thích ở `estimate.md` §5).
+- **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 243h) · Sprint 2 (232h) · Sprint 3 (249.5h);
+  195 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
 
 ## 3. Liên kết
 
@@ -67,18 +69,18 @@ Chạy lại: `python tools/create-issues.py` (cần `gh` đăng nhập scope `r
 
 | Spec (mã / file LAB-4, hoặc dòng PREMISE) | Epic trên Project | Ghi chú |
 |---|---|---|
-| SCR-01, 03; API-001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 013, 015, 020, 021, 023, 041, 043; DBT-01; CSP-01, 02, 03, 04, 19, 22; ADR-013 | #1 — E01 基盤・認証・権限 | PREMISE P1-5, P2-6 |
-| SCR-05, 06; API-011, 012, 013, 014, 015, 016, 017, 018, 019; DBT-03, 04, 17; FS-03; CSP-09; ADR-014 | #33 — E02 参加者・参加根拠（許可／承認） | — |
-| SCR-08, 09, 10; API-022, 024, 025, 062; DBT-07, 18, 19; CSP-15, 20 | #57 — E03 ロット・目利き／下見 | — |
-| SCR-11; API-026, 027, 028, 029, 030, 031, 032; DBT-08; DD-01; FS-03 | #77 — E04 相対取引 | — |
-| SCR-13; API-034, 035, 036, 037, 038; DBT-09; DD-02; CSP-15 | #89 — E05 せり結果 | — |
-| SCR-15, 16; API-040, 041, 042; DBT-10, 16, 21, 22, 23; DD-03 | #101 — E06 引渡し | 1 issue 要確認 (G6) |
-| SCR-18, 19, 20, 28; API-004, 043, 044, 045, 046, 047, 048; DBT-05, 24, 25, 26, 28, 29, 30; DD-04; FS-02; CSP-01, 06; ADR-004, 007, 009 | #27 — E07 業務日・締め・締め解除 | PREMISE P1-1, P1-2, P2-4; 1 issue 要確認 (G7) |
-| SCR-06, 21, 22; API-016, 026, 033, 039, 049, 050, 051, 066, 067, 069; DBT-20, 21, 27; DD-05; CSP-10 | #102 — E08 調整要求 | PREMISE P3-5, P3-6 |
-| SCR-23, 24; API-052, 053, 054, 055, 056, 057, 058, 059; DBT-11, 12; DD-06; ADR-006 | #151 — E09 規則・料率版 | — |
+| SCR-01, 02, 03, 04; API-001, 002, 003, 004, 005, 006, 007, 008, 009, 010, 011, 013, 015, 020, 021, 023, 041, 043; DBT-01; CSP-01, 02, 03, 04, 19, 22; ADR-013 | #1 — E01 基盤・認証・権限 | PREMISE P1-5, P2-6; màn ước thô #265, #270 (P1-6) |
+| SCR-05, 06, 07; API-011, 012, 013, 014, 015, 016, 017, 018, 019; DBT-03, 04, 17; FS-03; CSP-09; ADR-014 | #33 — E02 参加者・参加根拠（許可／承認） | màn ước thô #275 (P1-6) |
+| SCR-08, 09, 10; API-022, 024, 025, 062; DBT-07, 18, 19; CSP-15, 20 | #57 — E03 ロット・目利き／下見 | màn ước thô #279 (P1-6) |
+| SCR-11, 12; API-026, 027, 028, 029, 030, 031, 032; DBT-08; DD-01; FS-03 | #77 — E04 相対取引 | màn ước thô #286 (P1-6) |
+| SCR-13, 14; API-034, 035, 036, 037, 038; DBT-09; DD-02; CSP-15 | #89 — E05 せり結果 | màn ước thô #293 (P1-6) |
+| SCR-15, 16, 17; API-040, 041, 042; DBT-10, 16, 21, 22, 23; DD-03 | #101 — E06 引渡し | 1 issue 要確認 (G6); màn ước thô #298, #305 (P1-6) |
+| SCR-18, 19, 20, 28, 29; API-004, 043, 044, 045, 046, 047, 048; DBT-05, 24, 25, 26, 28, 29, 30; DD-04; FS-02; CSP-01, 06; ADR-004, 007, 009 | #27 — E07 業務日・締め・締め解除 | PREMISE P1-1, P1-2, P2-4; 1 issue 要確認 (G7); 12 báo cáo tách riêng (B2b); màn ước thô #320 (P1-6) |
+| SCR-06, 21, 22, 32; API-016, 026, 033, 039, 049, 050, 051, 066, 067, 069; DBT-20, 21, 27; DD-05; CSP-10 | #102 — E08 調整要求 | PREMISE P3-5, P3-6; màn ước thô #325 (P1-6) |
+| SCR-23, 24, 25; API-052, 053, 054, 055, 056, 057, 058, 059; DBT-11, 12; DD-06; ADR-006 | #151 — E09 規則・料率版 | màn ước thô #330 (P1-6) |
 | SCR-21, 26, 27; API-050, 060, 061, 063, 064, 065, 068, 069; DBT-11, 12, 13, 14, 20; DD-05, 07; FS-01; CSP-16, 17 | #150 — E10 完納奨励金 | **Constraint = 完納奨励金** cho mọi item; PREMISE P1-3, P1-4, P2-1〜P2-3, P2-5, P3-1〜P3-3 |
-| DBT-15; CSP-05, 07, 11, 15, 18, 21, 22; ADR-004, 007, 012 | #22 — E11 監査・共通 | — |
-| DBT-31, 32; DD-07; ADR-001, 010 | #13 — E12 インフラ・NFR | PREMISE P3-4 (DR B′ / B) |
+| SCR-30, 31, 34, 35, 36; DBT-11, 14, 15, 23, 24; CSP-05, 07, 11, 15, 18, 21, 22; ADR-004, 007, 012 | #22 — E11 監査・共通 | màn ước thô #336, #341, #346 (P1-6) |
+| SCR-33, 37, 38; DBT-31, 32; DD-07; ADR-001, 010 | #13 — E12 インフラ・NFR | PREMISE P3-4 (DR B′ / B); màn ước thô #352, #357, #362 (P1-6) |
 | SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 — E13 テスト・移行・文書 | — |
 | PREMISE P1-1 (thiết kế SCR-20) | #27 — E07 業務日・締め・締め解除 | #131 trước #134, #135 |
 | PREMISE P1-2 (thiết kế SCR-28) | #27 — E07 業務日・締め・締め解除 | #142 trước #143, #144 |

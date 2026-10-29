@@ -12,6 +12,7 @@ Số `#n` là issue trên repo này. "Dòng" được trỏ từ `task-breakdown
 | P1-3 | DD-05, SCR-21, API-050, API-069, DBT-20 (đối tượng của 調整要求) | Sửa | 調整要求 chỉ nhận giao dịch 相対 / せり → thêm đối tượng 支払実績 (DBT-13) để sửa 支払完了日 của kỳ 完納奨励金 đã 確定, sinh delta kỳ sau | PL đã quyết ở cuối LAB-4 (D33 — Q2) nhưng thiết kế chưa sửa; WU-050 chỉ ghi "thiết kế bổ sung trước khi làm". Khi break thấy 4 tài liệu phải sửa cùng lúc nên tách thành issue riêng có bước thiết kế đầu | #165 (5 sub-issue, đầu tiên là #166); #167 chờ #166 |
 | P1-4 | SCR-26 + API-068 (nút 確定 kỳ 完納奨励金) | Sửa (phạm vi WU-091) | WU-091 chỉ có phần API; WU-067 (SCR-26) không có nút 確定 → thêm sub-issue UI cho nút | D30 đặt thao tác 確定 ở SCR-26 và ghi "nút thuộc phần UI LAB-5", nhưng không WU nào nhận phần UI — phát hiện khi chia owner của WU-091 | #211 → #213 |
 | P1-5 | ADR-013 + Database Design (bảng thiết bị dùng chung, PIN băm) | Thêm | Database Design chưa có bảng thiết bị / PIN → thêm sub-issue thiết kế bổ sung trước phần cài đặt của WU-007 | ADR-013 未決 #4 và lý do Complexity của WU-007 trong handoff; break ra thấy 3 sub-issue cài đặt (API, UI, actor) đều phụ thuộc bảng này | #16 (#18 chờ #17) |
+| P1-6 | 19 màn baseline LAB-1 ngoài 16 màn cốt lõi: SCR-02, 04, 07, 09, 12, 14, 16, 17, 25, 29, 30, 31, 32, 33, 34〜36, 37, 38 (nguồn SP4 LAB-1 `04_screens.yaml`) | Thêm | Backlog B2 chỉ có phạm vi thiết kế LAB-4 (16 màn cốt lõi + phần hệ thống) → thêm 17 issue (34〜36 gộp một), mỗi issue có 画面設計 + 実装, ước thô, Iteration để trống | PL phát hiện khi duyệt B2: các màn này là `block: baseline` của LAB-1 (không phải option) nên phải có trong backlog dù LAB-4 chưa thiết kế; SCR-20 / 26 / 28 đã có từ B2 | #265, #270, #275, #279, #286, #293, #298, #305, #320, #325, #330, #336, #341, #346, #352, #357, #362 |
 
 ## 2. Giả định bổ sung
 
@@ -26,6 +27,8 @@ Chỉ lấp chỗ spec / RFP để ngỏ; không ghi đè điều RFP đã nêu 
 | P2-5 | Nút 確定 trên SCR-26 ở mức tối thiểu: một nút, hộp xác nhận, hiện kết quả khi API trả 409 vì tính lại | D30 không nêu UI chi tiết của SCR-26 (màn ngoài cốt lõi, 非コア) | #213 6h |
 | P2-6 | Thiết bị dùng chung làm theo giả định tạm của ADR-013 (danh sách thiết bị do ứng dụng quản lý, PIN băm, giới hạn số lần thử) cho tới khi có trả lời | ADR-013 未決 #4 (đăng ký thiết bị, độ dài PIN, cấp / thu hồi) | #16 46h; trả lời khác thì sửa #18 và ước lại |
 | P2-7 | Đội giả định 6 người (FE-A, FE-B, BE-A, BE-B, QA-A, PM); sprint 10 ngày × 7.5h; giờ làm backlog 52.5h / người / sprint (trừ 7.5h họp, 15h buffer), PM 30h (còn lại là quản lý) | RFP / LAB-1 không định nghĩa đội cho LAB-5 (LAB-1 chỉ gợi ý cơ cấu đội) | Trần tải mỗi Iteration; Sprint 1 xếp 240h / 292.5h |
+| P2-8 | Prototype là bản demo: phần hoàn thiện lên production (xử lý lỗi theo mã chuẩn, test bổ sung, kiểm quyền / RLS / audit) bằng ~25% giờ phần sửa | Handoff ghi WU 'sửa từ prototype' nhưng không nêu mức hoàn thiện của prototype (còn nhánh demo_reset, seed_mode, chưa có test ma trận) | +166.5h trên 80 item lá của 49 WU; 3 item tách thêm sub-issue (`estimate.md` §3 bước 5) |
+| P2-9 | Màn chưa thiết kế ước thô theo năng suất LAB-1 (S / M / L = 2.5 / 5 / 10 MD); 画面設計 = 0.2 × 実装; ước lại sau khi có screen spec | Màn ngoài cốt lõi chưa có screen spec ở LAB-4 (詳細設計未作成) | 17 issue P1-6 = 879h (73 sub-issue: 17 画面設計 + 56 実装); Iteration để trống tới khi ước lại |
 
 ## 3. Hướng đã chốt
 
