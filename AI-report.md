@@ -50,11 +50,11 @@ quy tắc `estimate.md` §3.
 | B2b sửa sau duyệt | `371a2b2`, `75a66e1` | **PL: 3 vấn đề** — thiếu 19 màn baseline, so LAB-1 lệch phạm vi, cân tải BE / FE | AI: FE-A Sprint 3 chỉ 12h → chuyển item | +17 issue màn 概算; so LAB-1 bằng bảng quy đổi pha; FE nhận API đơn giản |
 | B3a bổ sung + SWP nháp | `bf1e65b`, `6452d3e` | PL: thiếu test tích hợp theo luồng, security test, restore lần 2 | AI: luật chấm lệch trên dữ liệu thật · reviewer: 1 High + 5 Medium + 5 Low | +23 item; skill sửa hết điểm review |
 | B3b review SWP | `8626f4a` | **PL: 14 mẫu** (6 giữ, 1 sửa lý do, 7 đổi) + **R1–R3** | AI: cách cài R1 (bất định của chính item) · reviewer: 1 High + 4 Medium | 2,546 → 2,516; ghi 389 item; PL xác nhận cách cài R1 / R2 (B4 Phần 0) |
-| B4 sprint giả lập + báo cáo tiến độ | commit B4/B5 | **PL duyệt báo cáo tiến độ** sau khi đọc kết quả cổng | AI tự kiểm `check-progress-report.py` · reviewer độc lập `review-progress.md` | AI tự kiểm 23 đạt / 0 lệch; reviewer 3 vòng: CHƯA ĐẠT (3 High + 7 Medium + 8 Low) → CHƯA ĐẠT (N1 + 3 Low) → **ĐẠT**; PL: chờ duyệt |
+| B4 sprint giả lập + báo cáo tiến độ | commit B4/B5 | **PL duyệt báo cáo tiến độ** sau khi đọc kết quả cổng | AI tự kiểm `check-progress-report.py` · reviewer độc lập `review-progress.md` | AI tự kiểm 23 đạt / 0 lệch; reviewer 3 vòng: CHƯA ĐẠT (3 High + 7 Medium + 8 Low) → CHƯA ĐẠT (N1 + 3 Low) → **ĐẠT**; **PL duyệt 2026-10-30 — 受入** |
 
 **Cổng chất lượng báo cáo tiến độ (B4):** (1) **AI tự kiểm đạt** — `tools/check-progress-report.py` sinh lại 5 bảng từ Project
 (giống từng ký tự); kiểm 18 câu khẳng định trong lời văn (item bị chặn theo phụ thuộc, đề xuất rút item, ảnh hưởng mốc), tìm nguồn cho mọi con số còn lại (`progress-data/self-check-progress-report.txt`);
-(2) **reviewer đạt** — vòng 3 (`progress-data/review-progress.md`, 3 vòng: High / Medium sửa hết); (3) **PL duyệt** — sau khi đọc báo cáo này (chờ).
+(2) **reviewer đạt** — vòng 3 (`progress-data/review-progress.md`, 3 vòng: High / Medium sửa hết); (3) **PL duyệt 2026-10-30 — 受入**. Nhận xét của PL khi duyệt (nguyên văn): «Báo cáo tiến độ do AI tổng hợp có số liệu khớp hoàn toàn với Project nhưng vẫn có câu làm nhẹ rủi ro và một câu tiếng Nhậthứa sai với khách. Số đúng chưa đủ để gửi khách; người phải đọc lại giọng văn và cam kết trước khi gửi.»
 
 
 | Bước | Ai review | Phát hiện | Xử lý |
@@ -94,7 +94,8 @@ quy tắc `estimate.md` §3.
 - **Số liệu báo cáo không gõ tay:** bảng trạng thái, bảng 担当, burndown do script đọc Project rồi điền vào `progress-report.md`;
   script tự kiểm sinh lại và so từng ký tự → báo cáo không lệch Project.
 - **Chốt an toàn khi AI ghi lên Project:** dry-run mặc định, `--confirm`, đọc lại, chặn ghi SWP issue đã đóng; sprint giả lập không đụng
-  trường SWP và `check-backlog.py` xác nhận SWP 389 / 389 vẫn khớp sau khi đóng 20 issue.
+  trường SWP và `check-backlog.py` xác nhận SWP 389 / 389 vẫn khớp sau khi đóng 20 issue. Giới hạn: chốt chặn nằm ở script, còn
+  tài khoản thì dùng chung — tài khoản có quyền project ghi được cả Project dự án thật → khi làm thật tách tài khoản / quyền (Nhận xét của PL).
 - **Hai lớp review khác nhau bắt lỗi khác nhau:** script bắt sai số / lệch nguồn; reviewer độc lập bắt tô hồng và bỏ sót; PL bắt lỗi
   phạm vi (19 màn, so LAB-1) mà cả AI lẫn reviewer không thấy vì chỉ đọc nguồn được giao.
 
@@ -105,7 +106,7 @@ quy tắc `estimate.md` §3.
 | SWP là **SWP tạm** do skill tự viết, thang điểm PL đặt | Chạy lại toàn bộ bằng skill chính thức của chương trình, thay hết, không trộn hai thang | Chưa có skill chính thức (chưa có giải pháp) |
 | Chấm SWP theo **từ khóa** → phụ thuộc chất lượng mô tả ticket (#241: phụ thuộc Supabase không ghi → luật cho 10 thay vì 25) | Mẫu ticket bắt buộc mục "Bất định / phụ thuộc ngoài"; người làm chấm lại (planning poker) và đối chiếu | Thời gian: 286 item, PL chỉ kiểm 14 mẫu + 3 quy tắc |
 | **Sprint là giả lập**: kịch bản do AI viết theo hướng PL, không có tiến độ thật | Lấy Status từ hoạt động thật (PR, review), burndown từ lịch sử thật | Bài làm trước khi sprint bắt đầu (chưa có giải pháp trong phạm vi bài) |
-| **Thiếu dữ liệu velocity thật** — điều kiện "thêm 1 BE từ Sprint 4" và rủi ro −25.4% so LAB-1 chưa kiểm được | Ghi giờ thực tế từng item từ Sprint 2, so thực tế / ước ở retro | Chưa có dữ liệu thật |
+| **Thiếu dữ liệu velocity thật** — điều kiện "thêm 1 BE từ Sprint 4" và rủi ro −25.4% so LAB-1 chưa kiểm được | Ghi giờ thực tế từng item từ Sprint 2; epic lệch quá 25% thì ước lại phần còn lại (`estimate.md` §3 quy tắc 9); kiểm lại ước tính và quy tắc SWP bằng dữ liệu thực tế trước khi cam kết tiến độ với khách (Nhận xét của PL) | Chưa có dữ liệu thật |
 | Project không lưu lịch sử Status theo ngày → burndown lấy ngày Done từ YAML, chỉ SWP và trạng thái cuối đọc từ Project | Dùng lịch sử thật (sự kiện issue / Project) hoặc chụp số liệu hằng ngày bằng job | Thời gian; Projects API không trả lịch sử trường |
 | Tự kiểm số trong lời văn là **khớp theo giá trị**: số nhỏ (≤ 10) hay số trùng ngẫu nhiên vẫn "có nguồn" | Gắn nguồn tường minh cho từng câu (vd. chú thích ID số liệu) | Token / thời gian; reviewer độc lập bù phần ngữ nghĩa |
 | Giờ do AI đề xuất cho item lá; PL duyệt quy tắc, chưa duyệt từng con số; lịch Sprint xếp bằng thuật toán | Người làm từng phần ước lại; xếp sprint ở planning có cả đội | Thời gian |
@@ -113,4 +114,13 @@ quy tắc `estimate.md` §3.
 
 ## Nhận xét của PL
 
-[PL điền 3–5 dòng]
+- AI tách 95 đơn vị bàn giao thành 389 item rất nhanh và giữ được truy vết, nhưng bản đầu bỏ sót các màn ngoài 16 màn cốt lõi
+  và so với LAB-1 theo hai phạm vi khác nhau. Hai lỗi này chỉ lộ ra khi tôi đối chiếu tổng giờ với estimate cũ.
+- Skill SWP tạm chấm theo từ khóa nên phụ thuộc chất lượng mô tả ticket. Kiểm 14 mẫu giúp tôi thấy lỗi lặp theo kiểu,
+  và sửa bằng quy tắc (R1–R3) hiệu quả hơn sửa từng issue. Ticket ghi thiếu thông tin (như #241) thì không skill nào chấm đúng.
+- Báo cáo tiến độ do AI tổng hợp có số liệu khớp hoàn toàn với Project nhưng vẫn có câu làm nhẹ rủi ro và một câu tiếng Nhật
+  hứa sai với khách. Số đúng chưa đủ để gửi khách; người phải đọc lại giọng văn và cam kết trước khi gửi.
+- Cho AI Agent ghi thẳng lên Project hiệu quả khi có chạy thử (dry-run), xác nhận và đọc lại để đối chiếu. Khi làm thật, tôi sẽ
+  tách tài khoản hoặc quyền, vì cùng một tài khoản có quyền project cũng ghi được vào Project của dự án thật.
+- Sprint 1 là giả lập nên chưa có velocity thật. Ước tính và quy tắc SWP cần được kiểm lại bằng dữ liệu thực tế (KPI Insight)
+  trước khi dùng để cam kết tiến độ với khách.

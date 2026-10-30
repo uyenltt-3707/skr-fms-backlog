@@ -95,13 +95,15 @@
      số 8 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
      số 25 ← Project / sprint1.yaml
      số 25 ← Project / sprint1.yaml
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 9 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
      số 15 ← tài liệu repo
      số 17 ← Project / sprint1.yaml
      số 17 ← Project / sprint1.yaml
      số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
      số 4 ← tài liệu repo
      số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
-     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 15 ← tài liệu repo
 Số trong lời văn không tìm được nguồn tự động (1) — người đọc kiểm:
   100: …ổ chai** — BE-A / BE-B xếp 99–100% trần (không d…
 KẾT QUẢ: 23 đạt, 0 lệch · 1 số cần người kiểm

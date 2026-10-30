@@ -122,3 +122,12 @@ Chưa làm (chờ PL): quyết định 14 mẫu (`pl_final` / `pl_reason`), ghi 
 | 16:10 | Request không đăng nhập: repo, Project, báo cáo HTML (raw), `progress-report.md`; Edge InPrivate headless mở Project + báo cáo HTML | HTTP 200 cả 5; trang hiện "Sign in" (không đăng nhập) |
 | 16:12 | `check-backlog.py --remote`; `scan-content.py` (thêm bỏ khung bảng Markdown khi so — 1 phát hiện giả là dòng tiêu đề bảng) | ĐẠT; quét ĐẠT (429 văn bản) |
 | 16:14 | Commit + push `sprint1 simulation, progress report, README, AI-report`; request không đăng nhập lại sau push | xem `README.md` §3 |
+
+## 2026-10-30 — Chốt LAB-5: PL duyệt, nhận xét
+
+| Giờ | Việc | Kết quả |
+|-----|------|---------|
+| 16:16 | Ghi nguyên văn 5 ý "Nhận xét của PL" vào `AI-report.md` | — |
+| 16:20 | PL duyệt báo cáo tiến độ (受入): ghi vào `review-progress.md`, AI-report §2; phụ lục JA: câu backup trung tính (B′ 15 phút chờ load test), bỏ ghi chú nội bộ về giới hạn region; ngưỡng ước lại 25% / epic: `estimate.md` §3 quy tắc 9, `progress-report.md` §4; AI-report §3 chỉnh cho khớp nhận xét PL | — |
+| 16:21 | GitHub Pages: URL báo cáo trả 404, API báo chưa có site | Không thêm link vào README |
+| 16:23 | `check-backlog.py --remote` ĐẠT; `check-progress-report.py` 23 đạt / 0 lệch; `scan-content.py` ĐẠT; commit `final: PL review, remarks` + push | — |

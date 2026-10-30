@@ -65,8 +65,8 @@ chấm lại theo quy tắc; dòng PL = skill chấm lại → giá trị PL ch�
 
 ## 3. Cách quy ra giờ
 
-**Cách đã chọn:** ước giờ **trực tiếp, từ dưới lên, cho từng item lá**; cha và epic tự cộng. PL đã duyệt 8 quy tắc dưới đây
-(đề xuất ở B1, quy tắc 4 sửa ở B2).
+**Cách đã chọn:** ước giờ **trực tiếp, từ dưới lên, cho từng item lá**; cha và epic tự cộng. PL đã duyệt 9 quy tắc dưới đây
+(đề xuất ở B1, quy tắc 4 sửa ở B2, quy tắc 9 thêm ở B5).
 
 **Vì sao:** item lá đủ nhỏ (≤ 15h) để người làm hình dung được việc cụ thể; SWP (B3) là cỡ tương đối nên không dùng để suy giờ —
 giữ hai trường độc lập thì mới kiểm chéo được nhau (quy tắc 6).
@@ -81,6 +81,7 @@ giữ hai trường độc lập thì mới kiểm chéo được nhau (quy tắ
 | 6 | Giờ / SWP theo từng epic dùng để kiểm tra chéo (B3): lệch quá ±50% so với trung bình epic thì rà lại. Không dùng để tính giờ. |
 | 7 | Buffer và rủi ro để ở cấp dự án (không phân bổ vào issue). |
 | 8 | 完納奨励金 là các issue riêng, gắn Constraint = 完納奨励金, có tổng riêng (§4). |
+| 9 | Ước lại theo thực tế (PL duyệt 2026-10-30): từ Sprint 2 ghi giờ thực tế từng item; epic nào có thực tế lệch quá **25%** so với ước tính (tính trên các item đã xong của epic) thì ước lại phần còn lại của epic đó, báo PL. |
 
 **Cách áp dụng nhất quán cho từng item lá:**
 

@@ -135,3 +135,15 @@ Ngày: 2026-10-30. Kiểm lại bằng Project #2 (dữ liệu API), `tools/back
 ### Kết luận vòng 3: ĐẠT
 
 Số liệu khớp API; 3 High + các Medium/Low và N1–N4 đã đóng và kiểm độc lập; báo cáo ghi rõ giả lập (thực hiện 2026-10-30), phụ lục JA an toàn gửi khách (không số nội bộ, đã đánh dấu mô phỏng, không còn khẳng định "đã thống nhất", ghi chú nội bộ tách khỏi phụ lục). Chỉ còn 2 ghi chú Low (L1, L2), sửa được cùng lần chỉnh tiếp theo.
+
+## PL duyệt
+
+**PL duyệt 2026-10-30 — 受入** (sau khi đọc `progress-report.md` và vòng 3 của review này).
+
+Nhận xét của PL khi duyệt (nguyên văn):
+
+- Báo cáo tiến độ do AI tổng hợp có số liệu khớp hoàn toàn với Project nhưng vẫn có câu làm nhẹ rủi ro và một câu tiếng Nhật
+  hứa sai với khách. Số đúng chưa đủ để gửi khách; người phải đọc lại giọng văn và cam kết trước khi gửi.
+
+Sửa kèm khi duyệt: câu backup ở phụ lục JA viết trung tính (B′ 15 phút chờ kết quả load test, không đạt thì báo khách kèm phương án đề
+xuất); ngưỡng ước lại 25% theo epic được PL đồng ý (`estimate.md` §3 quy tắc 9, `progress-report.md` §4).
