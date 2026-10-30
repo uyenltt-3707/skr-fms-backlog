@@ -79,3 +79,21 @@ Chưa làm (đợi LAB-4): issue chi tiết, SWP, giờ, báo cáo Sprint.
 | 11:55 | Sửa theo review; lấy lại ảnh chụp, chấm lại, xuất lại báo cáo; dry-run ghi Project | SWP tạm 2,546; mẫu top-3 đổi (#234, #241, #243); dry-run chặn ghi vì 14 mẫu chưa có quyết định PL |
 
 Chưa làm (chờ PL): quyết định 14 mẫu (`pl_final` / `pl_reason`), ghi SWP lên Project.
+
+## 2026-10-30 — B3b: áp quyết định PL cho 14 mẫu + R1–R3, ghi SWP đã review lên Project
+
+| Giờ | Việc | Kết quả |
+|-----|------|---------|
+| 14:18 | Nhận yêu cầu B3b; đọc skill, `swp-scores.yaml`, script ghi / kiểm, `estimate.md` | Nháp 2,546 SWP, 14 mẫu, 0 issue đóng |
+| 14:20 | Đọc độ phức tạp màn LAB-1 `04_screens.yaml` (chỉ đọc) | 19 màn 概算: S = SCR-04 / 07 / 34〜36 · L = SCR-09 / 12 / 16 · còn lại M |
+| 14:22 | Cài R1–R3 vào `swp_rubric.py`; `score-issues.py` giữ điểm nháp (`*_draft`), gắn quy tắc đã áp, kiểm `pl_scope × pl_complexity` | Lần chạy thử: mọi item đổi điểm đều có quy tắc; bộ mẫu bị chọn lại vì chưa có quyết định PL → thêm "đóng băng bộ mẫu khi PL đã quyết" |
+| 14:24 | Khôi phục bản nháp, ghi nguyên văn 14 quyết định PL (`pl_final`, `pl_reason`, `pl_scope`, `pl_complexity`), chấm lại | 14 mẫu giữ nguyên; 2,546 → 2,516 |
+| 14:24 | Phát hiện khi cài R1: #240 / #372 (viết thủ tục restore) vẫn 5 vì issue cha có «RTO» | Bất định phải của chính item — mô tả cha cho tối đa 4 (ghi để PL xác nhận) |
+| 14:25 | Báo cáo bản chốt `swp-report-261030-final.html` (giữ file nháp); `cross-check-notes.yaml`; chụp Edge headless | Không epic nào lệch quá ±50% (nháp: E05 +60%, E06 +52%); sát ngưỡng E05 +47%, E13 −40% — đã giải thích |
+| 14:27 | `SKILL.md`: thêm bản sửa thang điểm của PL R1–R3 (2026-10-30); `check-backlog.py`: SWP phải CÓ trên mọi item; cài lại skill (sửa lỗi in tiếng Việt của `install-skill.py`) | check cục bộ ĐẠT |
+| 14:28 | `write-swp-to-project.py` dry-run | Kế hoạch ghi 389 item, 0 issue đóng, không điểm chặn |
+| 14:28 | `--confirm` (PL đồng ý ghi) | Ghi xong 389 item (286 lá + 103 cha / epic) |
+| 14:30 | Agent `reviewer` rà độc lập script (chỉ đọc) | 1 High + 4 Medium (`AI-report.md` §2) |
+| 14:38 | Đọc lại: dry-run lần 2; `check-backlog.py --remote` | 0 item cần ghi; 389 / 389 có SWP khớp `swp-scores.yaml`, 103 cha / epic = tổng con thật, tổng lá 2,516; ẩn danh HTTP 200; ĐẠT |
+| 14:45 | Sửa theo review: gắn R1 khi chủ đề NFR chỉ ở issue cha, mẫu cũ rời ảnh chụp / `pl_complexity` trống không crash, tách ảnh hưởng quy tắc với PL chốt, check bỏ qua lá đã đóng giữ SWP cũ; chấm lại, xuất lại | Giá trị không đổi (Project 0 item cần ghi); R1 7 · R2 57 / 73 · R3 4 item đổi; PL chốt mẫu +13 |
+| 14:50 | Cập nhật `estimate.md` (§1, §2, §4, §5), `AI-report.md` (§1, §2), README, task-breakdown, progress-report | — |

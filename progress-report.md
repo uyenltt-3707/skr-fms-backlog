@@ -13,7 +13,7 @@
 
 | Trạng thái | Số issue | Tổng SWP | Ghi chú |
 |---|---|---|---|
-| Todo | 389 (286 item lá) | — | SWP tạm đã chấm nháp (2,546), chưa review → chưa ghi Project, chưa tính vào cột này |
+| Todo | 389 (286 item lá) | 2,516 | SWP tạm đã review (PL quyết mẫu + R1–R3), đã ghi Project; tổng chỉ cộng item lá |
 | In Progress | 0 | — | |
 | In Review | 0 | — | |
 | Done | 0 | — | |
@@ -32,5 +32,5 @@ Nhận diện khi lập kế hoạch; cập nhật khi chạy Sprint.
 | 4 câu hỏi 要確認 chưa có trả lời | #17, #116, #125, #158 | Chặn thiết kế #18, phạm vi #126, màn SCR-16, chốt #196 | Gửi câu hỏi tuần 1 Sprint 1; quá hạn thì chốt theo giả định PREMISE.md §2 | PM — 2026-11-06 |
 | Thiết kế bổ sung chưa được PL duyệt | #166, #131, #142 | Phần cài đặt D33, SCR-20, SCR-28 không vào được Sprint 2–3 | Review thiết kế ở giữa Sprint 1 | PM — 2026-11-09 |
 | B′ không đạt khi đo dump + sao chép | #228, #233 | Cam kết NFR-AVL-03 với khách | Đo ở Sprint 2; không đạt thì lùi B và gửi câu hỏi khách đã duyệt | QA-A đo, PM quyết — Sprint 2 |
-| E07 có thể ước thiếu (báo cáo dùng chung) | #136, #141 | Mốc báo cáo ngày FR-RPT-01 (P0) | Kiểm chéo bằng SWP: nháp B3a E07 +13% so tỉ lệ chung (trong ±50%); E05 +60%, E06 +52% vượt ngưỡng → rà lại sau khi PL chốt SWP | PM — sau review SWP |
+| E07 có thể ước thiếu (báo cáo dùng chung) | #136, #141 | Mốc báo cáo ngày FR-RPT-01 (P0) | Kiểm chéo bằng SWP đã review (B3b): E07 +17% so tỉ lệ chung (trong ±50%); không epic nào vượt ±50% (E05 +47%, E06 +28%) | PM — sau review SWP |
 | BE vẫn quá tải sau cân tải (BE ~1,096h ≈ 10 sprint cho 2 người) | toàn backlog BE | Mốc hoàn tất backlog | **Không thêm người lúc này** (PL quyết B3a). Hành động có điều kiện: nếu velocity BE Sprint 1–2 thấp hơn kế hoạch (BE-A 52h / 50h, BE-B 52.5h / 51h) thì thêm 1 BE từ Sprint 4 | Người quyết: PM · thời điểm: cuối Sprint 2 (2026-11-27) |

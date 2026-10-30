@@ -44,7 +44,8 @@ python $S/issue_snapshot.py --repo OWNER/REPO --project-owner OWNER --project-nu
 python $S/score-issues.py --snapshot tmp/swp-snapshot.json --out swp-report/swp-scores.yaml
 python $S/render-swp-report.py --scores swp-report/swp-scores.yaml --out swp-report/swp-report-$(date +%y%m%d).html
 # DỪNG: PL đọc báo cáo, điền pl_final + pl_reason cho mọi mẫu trong swp-scores.yaml
-python $S/score-issues.py ... && python $S/render-swp-report.py ...      # chạy lại: giữ quyết định PL, cập nhật tổng cha
+python $S/score-issues.py ... && python $S/render-swp-report.py ... --out swp-report/swp-report-<yymmdd>-final.html \
+  --notes swp-report/cross-check-notes.yaml   # chạy lại: giữ quyết định PL + bộ mẫu + điểm nháp; giữ file nháp để so
 python $S/write-swp-to-project.py --scores swp-report/swp-scores.yaml            # dry-run: xem kế hoạch + điểm chặn
 python $S/write-swp-to-project.py --scores swp-report/swp-scores.yaml --confirm  # ghi thật
 ```
@@ -63,13 +64,27 @@ khỏi văn bản trước khi chấm; giờ chỉ dùng ở mục kiểm chéo 
 | 2 | một thành phần (1 API / 1 màn hình đơn giản / 1 bảng) | validation đơn giản, ít trạng thái |
 | 3 | hai lớp trong cùng chức năng | nhiều nhánh / state machine, phân quyền |
 | 4 | xuyên UI + API + DB trong 1 chức năng hoặc ảnh hưởng nhiều màn hình | logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời |
-| 5 | nhiều chức năng, hạ tầng toàn hệ thống, migration | bất định cao (phụ thuộc bên ngoài, NFR, 要確認) |
+| 5 | nhiều chức năng, hạ tầng toàn hệ thống, migration | bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1) |
+
+### Bản sửa thang điểm của PL — 2026-10-30 (B3b, sau khi review 14 mẫu)
+
+Áp cho **mọi** item cùng loại (không chỉ mẫu); chạy lại `score-issues.py` là chấm lại toàn bộ. Mỗi item ghi quy tắc đã áp
+(`rules`) và giữ điểm nháp đầu tiên (`scope_draft` / `complexity_draft` / `swp_draft`) để so trước / sau.
+
+| # | Quy tắc | Cách luật áp |
+|---|---|---|
+| R1 | Complexity 5 **chỉ** khi kết quả bất định (đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt). Việc chủ đề NFR nhưng làm theo quy trình xác định → chấm theo độ phức tạp thực tế. | Dấu hiệu mức 5 chỉ còn: 要確認, 未決, chưa chốt, câu hỏi khách, khách trả lời, rto, số đo, đo thời gian, p95. «nfr», «security», «lỗ hổng», «load test», «fig-load», «diễn tập», «restore» thành chủ đề NFR — chỉ ghi chú R1, Complexity lấy theo dấu hiệu mức 4–1. Bất định phải là của **chính item**: mô tả issue cha cho tối đa Complexity 4. |
+| R2 | Màn 概算 (画面設計 và 実装 k/n): Scope 2; Complexity theo độ phức tạp màn ở LAB-1: S → 2, M → 3, L → 4. | Item có dấu hiệu 概算 và tiêu đề `[SCR-xx] 画面設計` / `[SCR-xx] 実装 k/n` (mọi n, không chỉ /3); độ phức tạp đọc từ `04_screens.yaml` của LAB-1 (`--lab1-screens`, chỉ đọc; thiếu file → dừng). Màn gộp (SCR-34〜36) lấy mức cao nhất. Độ tin cậy vừa. 結合テスト・概算 không thuộc R2. |
+| R3 | Issue 要確認 (đi hỏi làm rõ): Scope 1 × Complexity 2 = 2. | Theo loại item 要確認. |
+
+Mẫu PL đã kiểm: `pl_final` + `pl_reason` (bắt buộc), `pl_scope` / `pl_complexity` (tùy chọn, tích phải = `pl_final`).
+Khi PL đã quyết ít nhất một mẫu, chạy lại **giữ nguyên bộ mẫu** (không chọn lại).
 
 Cách luật áp (`scripts/swp_rubric.py`):
 - **Scope:** mức cơ sở theo loại item (要確認 / tài liệu 1 · DB / API / UI / hạ tầng / test 2 · batch / thiết kế 3), nâng lên khi
   mô tả có dấu hiệu phạm vi rộng hơn (vd. «rpc» ở API / DB → 3, «dùng chung», «e2e» → 4, «migration», «結合テスト», «dump» → 5).
 - **Complexity:** mức cao nhất có dấu hiệu trong mô tả của chính item; không có thì dùng mô tả issue cha (ghi rõ trong lý do);
-  vẫn không có → 2, độ tin cậy thấp. Item 要確認 → 5.
+  vẫn không có → 2, độ tin cậy thấp. Item 要確認 → 2 (R3; trước 2026-10-30 là 5).
 - Từ khóa Latin / tiếng Việt khớp theo **ranh giới từ** («view» không khớp «under_review»); từ khóa tiếng Nhật khớp chuỗi con.
   Mỗi từ khóa chỉ nâng một trục, trừ test NFR toàn hệ thống (security, load test, diễn tập restore) — cố ý nâng cả Scope và Complexity.
 - **Độ tin cậy:** cao (≥ 2 dấu hiệu, từ chính item) · vừa (1 dấu hiệu hoặc lấy từ issue cha) · thấp (mặc định, màn 概算, hoặc

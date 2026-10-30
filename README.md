@@ -20,8 +20,9 @@
   lần 2 (52h, P3-8); #233 ghi rõ là load test điều kiện của ADR-010.
   Trong đó 17 issue màn ước thô (879h, 「詳細設計未作成のため概算」). 4 issue `要確認`, 14 chỗ hở spec ở `task-breakdown.md` §4.
   So LAB-1 cùng phạm vi: 552.2 → 412.2 MD (−25.4%; B2b −29.8%; giải thích ở `estimate.md` §5).
-- **SWP (B3a):** đã chấm **nháp** 286 item lá bằng skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
-  Tổng SWP tạm 2,546; 14 issue mẫu chờ PL kiểm; **chưa ghi SWP lên Project**.
+- **SWP (B3a–B3b):** chấm 286 item lá bằng skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
+  PL quyết 14 mẫu + 3 quy tắc R1–R3, chấm lại toàn bộ: nháp 2,546 → **đã review 2,516**; **đã ghi SWP lên Project #2**
+  cho 389 item (cha / epic = tổng con, đọc lại khớp).
 - **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 243h) · Sprint 2 (232h) · Sprint 3 (249.5h);
   211 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
 
@@ -31,7 +32,7 @@
 |---|---|
 | Repo | https://github.com/uyenltt-3707/skr-fms-backlog |
 | GitHub Project "SKR-FMS Backlog" (#2) | https://github.com/users/uyenltt-3707/projects/2 |
-| Báo cáo HTML chấm SWP (nháp, SWP tạm) | `swp-report/swp-report-261030.html` · dữ liệu `swp-report/swp-scores.yaml` |
+| Báo cáo HTML chấm SWP (bản chốt, SWP tạm) | `swp-report/swp-report-261030-final.html` · nháp `swp-report/swp-report-261030.html` · dữ liệu `swp-report/swp-scores.yaml` |
 | Mapping id nội bộ ↔ issue | `tools/issue-map.json` |
 
 Kiểm tra truy cập không đăng nhập: `tools/check-backlog.py --remote` gửi request không cookie / token tới Project và 3 issue mẫu,
@@ -57,7 +58,7 @@ xem được, không cần đăng nhập.
 | `README.md` | Tổng quan, liên kết, cấu trúc, bảng spec → epic (file này) |
 | `PREMISE.md` | Backlog khác bản LAB-4 ở đâu: spec thêm / sửa, giả định bổ sung, hướng đã chốt |
 | `task-breakdown.md` | Nguyên tắc chia task, spec → issue, hạng mục 完納奨励金, chỗ hở spec LAB-4 |
-| `estimate.md` | Báo cáo SWP (mẫu chờ PL), cách quy ra giờ, tổng theo epic, so với LAB-1 |
+| `estimate.md` | Báo cáo SWP (mẫu + quyết định PL, quy tắc R1–R3), cách quy ra giờ, tổng theo epic, so với LAB-1 |
 | `progress-report.md` | Báo cáo tiến độ Sprint giả lập (bước sau) |
 | `AI-report.md` | Skill / prompt đã dùng, review output AI, điểm cần cải thiện |
 | `process_log.md` | Nhật ký thao tác theo thời gian |

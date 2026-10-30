@@ -3,14 +3,45 @@
 meta:
   note: SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế
   formula: SWP = Scope × Complexity (1–25); cha / epic = tổng con
-  generated_at: '2026-10-30T04:56:25+00:00'
+  generated_at: '2026-10-30T07:43:45+00:00'
   snapshot_fetched_at: '2026-10-30T04:56:24+00:00'
   repo: uyenltt-3707/skr-fms-backlog
   project: uyenltt-3707#2
   seed: 20261030
-  status: bản nháp — SWP chỉ ghi lên Project bằng write-swp-to-project.py --confirm sau khi PL quyết mọi mẫu
+  status: đã review — PL quyết 14 mẫu + quy tắc R1–R3 (2026-10-30)
   leaf_count: 286
   sample_count: 14
+  pl_rules:
+    date: '2026-10-30'
+    R1: Complexity 5 chỉ khi kết quả bất định (đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt). Việc chủ đề NFR nhưng làm theo quy trình xác định → chấm theo độ phức tạp thực tế.
+    R2: 'Màn 概算 (画面設計 và 実装 k/n): Scope 2; Complexity theo độ phức tạp màn ở LAB-1: S → 2, M → 3, L → 4.'
+    R3: 'Issue 要確認 (đi hỏi làm rõ): Scope 1 × Complexity 2 = 2.'
+  rule_effects:
+    R1:
+      items: 7
+      changed: 7
+      swp_before: 135
+      swp_after: 79
+    R2:
+      items: 73
+      changed: 57
+      swp_before: 427
+      swp_after: 452
+    R3:
+      items: 4
+      changed: 4
+      swp_before: 20
+      swp_after: 8
+    pl_samples:
+      items: 14
+      changed: 3
+      swp_before: 137
+      swp_after: 150
+    total:
+      items: 286
+      changed: 68
+      swp_before: 2546
+      swp_after: 2516
   hours_ref_note: hours_ref chỉ dùng kiểm chéo giờ / SWP; KHÔNG dùng khi chấm
 items:
 - number: 2
@@ -28,11 +59,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «khóa tạm».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 4
@@ -50,11 +87,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò», «mfa», «aal2».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 5
@@ -72,11 +115,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mã lỗi», «khóa tạm».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 7
@@ -94,11 +143,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «aal2», «403», «audit».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 8
@@ -116,11 +171,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa», «aal2», «403».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 9
@@ -138,11 +199,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «vai trò», «403».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 11
@@ -160,11 +227,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 12
@@ -182,11 +255,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mã lỗi», «phiên», «khóa tạm».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 15
@@ -204,11 +283,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «phiên».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 17
@@ -220,17 +305,24 @@ items:
   constraint: なし
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
-  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại 要確認.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): item là câu hỏi 要確認, kết quả phụ thuộc câu trả lời.'
+  complexity: 2
+  swp: 2
+  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: R3 — issue 要確認 (đi hỏi làm rõ).'
+  reason_complexity: '2 — R3: issue 要確認 (đi hỏi làm rõ) → Complexity 2.'
   confidence: cao
   confidence_note: ''
+  rules:
+  - R3
   closed_note: ''
   skip_write: ''
   hours_ref: 1.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 18
@@ -248,11 +340,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «pin».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 19
@@ -270,11 +368,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «pin».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 20
@@ -292,11 +396,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «pin», «phiên».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 21
@@ -314,11 +424,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit», «rpc».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 25
@@ -336,11 +452,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «nguyên tử».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 26
@@ -358,11 +480,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «mfa».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 31
@@ -380,11 +508,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 32
@@ -402,11 +536,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 264
@@ -424,11 +564,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «audit», «mã lỗi».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 3.5
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 266
@@ -439,18 +585,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
+  scope: 2
   complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-02 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-02: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 267
@@ -464,15 +617,22 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-02 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-02: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 268
@@ -486,15 +646,22 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-02 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-02: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 269
@@ -506,17 +673,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-02 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-02: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 271
@@ -527,21 +701,28 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 4
-  swp: 12
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 2
+  swp: 4
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-04 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-04: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 4.0
   sample: true
   sample_reasons:
   - độ tin cậy thấp (79 item, chọn tối đa 5, rải theo epic)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: 2
+  pl_complexity: 2
+  pl_final: 4
+  pl_reason: chấm lại theo quy tắc R2 — SCR-04 ở LAB-1 = S → Scope 2 × Complexity 2 = 4.
 - number: 272
   title: '[SCR-04] 実装 1/2 — API + màn chính'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/272
@@ -551,17 +732,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 2
+  swp: 4
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-04 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-04: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 9.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 273
@@ -575,15 +763,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-04 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-04: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 9.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 34
@@ -601,11 +796,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 36
@@ -623,11 +824,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 37
@@ -645,11 +852,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «backfill».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 38
@@ -667,11 +880,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 40
@@ -689,11 +908,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «確定» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 41
@@ -711,11 +936,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «確定» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 42
@@ -733,11 +964,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «nguyên tử».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 44
@@ -755,11 +992,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 45
@@ -777,11 +1020,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 47
@@ -799,11 +1048,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 48
@@ -821,11 +1076,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 50
@@ -843,11 +1104,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 51
@@ -865,11 +1132,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «msg».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 52
@@ -887,11 +1160,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «quyền» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 53
@@ -909,11 +1188,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «vai trò».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 55
@@ -931,11 +1216,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 56
@@ -953,11 +1244,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 274
@@ -975,11 +1272,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «audit», «mã lỗi».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 3.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 276
@@ -990,18 +1293,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
+  scope: 2
   complexity: 2
-  swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  swp: 4
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-07 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-07: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 4.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 277
@@ -1015,15 +1325,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-07 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-07: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 9.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 278
@@ -1037,15 +1354,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-07 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-07: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 9.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 59
@@ -1063,11 +1387,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 60
@@ -1085,11 +1415,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «quyền» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 62
@@ -1107,11 +1443,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «rpc», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 63
@@ -1129,11 +1471,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 65
@@ -1151,11 +1499,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 66
@@ -1173,11 +1527,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 67
@@ -1195,11 +1555,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 69
@@ -1217,11 +1583,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «rpc».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 70
@@ -1239,11 +1611,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 72
@@ -1261,11 +1639,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «hitl».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 73
@@ -1283,11 +1667,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 75
@@ -1305,11 +1695,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit», «rpc», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 5.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 76
@@ -1327,11 +1723,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 4.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 280
@@ -1342,18 +1744,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 281
@@ -1365,17 +1774,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 282
@@ -1387,17 +1803,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 283
@@ -1409,17 +1832,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 284
@@ -1431,17 +1861,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 285
@@ -1453,17 +1890,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-09 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-09: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 78
@@ -1481,11 +1925,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «quyền», «確定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 80
@@ -1503,11 +1953,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 81
@@ -1525,11 +1981,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «đồng thời», «song song».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 82
@@ -1547,11 +2009,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «rpc», «提出».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 84
@@ -1569,11 +2037,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «rpc».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 85
@@ -1591,11 +2065,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 87
@@ -1613,11 +2093,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確定», «提出», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 88
@@ -1635,11 +2121,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «取消».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 287
@@ -1650,18 +2142,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 288
@@ -1673,17 +2172,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 289
@@ -1695,17 +2201,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 290
@@ -1717,17 +2230,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 291
@@ -1739,17 +2259,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «rpc» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 292
@@ -1761,17 +2288,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-12 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-12: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 91
@@ -1789,11 +2323,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «確認者».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 92
@@ -1811,11 +2351,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 94
@@ -1833,11 +2379,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «rpc», «確定», «提出».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 95
@@ -1855,11 +2407,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者», «確定», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 96
@@ -1877,11 +2435,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «取消».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 97
@@ -1899,11 +2463,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 99
@@ -1921,11 +2491,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者», «hitl».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 100
@@ -1943,11 +2519,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 294
@@ -1958,18 +2540,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 2
+  scope: 2
+  complexity: 3
   swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lịch sử» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-14 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-14: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 295
@@ -1981,17 +2570,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lịch sử» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-14 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-14: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 296
@@ -2003,17 +2599,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lịch sử» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-14 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-14: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 297
@@ -2025,17 +2628,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-14 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-14: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 105
@@ -2053,11 +2663,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 106
@@ -2075,11 +2691,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 108
@@ -2097,11 +2719,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «保留».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 109
@@ -2119,11 +2747,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 111
@@ -2141,11 +2775,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 112
@@ -2163,11 +2803,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «rpc», «hitl».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 114
@@ -2185,11 +2831,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa», «保留», «phiên».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 115
@@ -2207,11 +2859,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «mfa», «保留» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 116
@@ -2223,17 +2881,24 @@ items:
   constraint: なし
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
-  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại 要確認.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): item là câu hỏi 要確認, kết quả phụ thuộc câu trả lời.'
+  complexity: 2
+  swp: 2
+  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: R3 — issue 要確認 (đi hỏi làm rõ).'
+  reason_complexity: '2 — R3: issue 要確認 (đi hỏi làm rõ) → Complexity 2.'
   confidence: cao
   confidence_note: ''
+  rules:
+  - R3
   closed_note: ''
   skip_write: ''
   hours_ref: 1.5
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 299
@@ -2244,18 +2909,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 300
@@ -2267,17 +2939,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 301
@@ -2289,17 +2968,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 302
@@ -2311,17 +2997,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 303
@@ -2333,17 +3026,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 304
@@ -2355,17 +3055,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 4
+  swp: 8
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: R2 — độ phức tạp màn SCR-16 ở LAB-1 = L.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-16: L)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 306
@@ -2376,18 +3083,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 1
-  swp: 3
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '1 — CRUD thuần: dấu hiệu «tra cứu» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-17 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-17: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 1
+  swp_draft: 3
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 307
@@ -2399,12 +3113,14 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 1
-  swp: 2
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '1 — CRUD thuần: dấu hiệu «tra cứu» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-17 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-17: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
@@ -2412,8 +3128,13 @@ items:
   sample_reasons:
   - SWP thấp nhất (2)
   - độ tin cậy thấp (79 item, chọn tối đa 5, rải theo epic)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 2
+  complexity_draft: 1
+  swp_draft: 2
+  pl_scope: 2
+  pl_complexity: 3
+  pl_final: 6
+  pl_reason: chấm lại theo quy tắc R2 — SCR-17 ở LAB-1 = M → Scope 2 × Complexity 3 = 6.
 - number: 308
   title: '[SCR-17] 実装 2/3 — màn chính'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/308
@@ -2423,20 +3144,27 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 1
-  swp: 2
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '1 — CRUD thuần: dấu hiệu «tra cứu» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-17 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-17: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: true
   sample_reasons:
   - SWP thấp nhất (2)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 2
+  complexity_draft: 1
+  swp_draft: 2
+  pl_scope: 2
+  pl_complexity: 3
+  pl_final: 6
+  pl_reason: chấm lại theo quy tắc R2 — SCR-17 ở LAB-1 = M → Scope 2 × Complexity 3 = 6.
 - number: 309
   title: '[SCR-17] 実装 3/3 — biến thể, xử lý lỗi, test'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/309
@@ -2446,17 +3174,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-17 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-17: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 28
@@ -2474,11 +3209,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 29
@@ -2496,11 +3237,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 117
@@ -2518,11 +3265,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «dd-», «quyền», «audit».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 119
@@ -2540,11 +3293,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «người duyệt», «rpc», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 120
@@ -2562,11 +3321,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mã lỗi».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 121
@@ -2584,11 +3349,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 123
@@ -2606,11 +3377,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «msg».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 124
@@ -2628,11 +3405,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «承認», «却下».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 125
@@ -2644,17 +3427,24 @@ items:
   constraint: なし
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
-  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại 要確認.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): item là câu hỏi 要確認, kết quả phụ thuộc câu trả lời.'
+  complexity: 2
+  swp: 2
+  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: R3 — issue 要確認 (đi hỏi làm rõ).'
+  reason_complexity: '2 — R3: issue 要確認 (đi hỏi làm rõ) → Complexity 2.'
   confidence: cao
   confidence_note: ''
+  rules:
+  - R3
   closed_note: ''
   skip_write: ''
   hours_ref: 1.5
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 127
@@ -2672,11 +3462,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «xuất».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 128
@@ -2694,11 +3490,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «tiền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 129
@@ -2716,11 +3518,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «rls», «audit».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 131
@@ -2738,11 +3546,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «hitl» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 134
@@ -2760,11 +3574,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «thông báo».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 135
@@ -2782,11 +3602,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 137
@@ -2804,11 +3630,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 138
@@ -2826,11 +3658,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 139
@@ -2848,11 +3686,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 140
@@ -2870,11 +3714,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 142
@@ -2892,11 +3742,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lọc», «csv», «xuất» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 143
@@ -2914,11 +3770,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «csv», «xuất».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 144
@@ -2936,11 +3798,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lọc», «csv», «xuất».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 310
@@ -2958,14 +3826,20 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: true
   sample_reasons:
   - ngẫu nhiên (seed 20261030)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: 3
+  pl_complexity: 2
+  pl_final: 6
+  pl_reason: giữ 6.
 - number: 311
   title: '[WU-094] Truy vấn + bộ cột RPT-05 日次照合表'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/311
@@ -2981,11 +3855,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 312
@@ -3003,11 +3883,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 313
@@ -3025,11 +3911,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «完納奨励金».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 314
@@ -3047,11 +3939,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 315
@@ -3069,11 +3967,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 316
@@ -3088,14 +3992,20 @@ items:
   complexity: 5
   swp: 25
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «fig-load».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «fig-load», «đo thời gian».'
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «đo thời gian».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 317
@@ -3113,11 +4023,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lọc», «csv», «xuất» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 318
@@ -3135,11 +4051,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «lọc», «csv», «xuất» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 319
@@ -3157,11 +4079,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 321
@@ -3172,18 +4100,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 4
-  swp: 12
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «thuế» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-29 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-29: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 322
@@ -3195,17 +4130,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «thuế» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-29 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-29: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 323
@@ -3217,17 +4159,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «thuế» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-29 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-29: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 324
@@ -3239,17 +4188,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-29 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-29: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 145
@@ -3267,11 +4223,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «chặn».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 146
@@ -3289,11 +4251,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «delta» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 148
@@ -3311,11 +4279,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確定», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 149
@@ -3333,11 +4307,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確定», «từ chối» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 161
@@ -3355,11 +4335,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 162
@@ -3377,11 +4363,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «delta».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 163
@@ -3399,11 +4391,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «delta», «完納奨励金».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 168
@@ -3421,11 +4419,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 169
@@ -3443,11 +4447,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 170
@@ -3465,11 +4475,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «msg».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 172
@@ -3487,11 +4503,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «承認», «却下».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 173
@@ -3509,11 +4531,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «delta», «完納奨励金».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 175
@@ -3531,14 +4559,21 @@ items:
   reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
   confidence: thấp
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: true
   sample_reasons:
   - độ tin cậy thấp (79 item, chọn tối đa 5, rải theo epic)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 4
+  complexity_draft: 2
+  swp_draft: 8
+  pl_scope: 2
+  pl_complexity: 4
+  pl_final: 8
+  pl_reason: sửa trục Scope 4 → 2, Complexity 2 → 4, SWP giữ 8 — một thành phần (hàm DB) nhưng logic nhiều biến (loại người tham gia → loại căn cứ, ngày nghiệp vụ 02:00, trạng thái đình chỉ). Tổng đúng
+    nhưng lý do của skill sai.
 - number: 176
   title: '[WU-052] Áp hàm vào API-026 / 033 / 039 + test đối chiếu'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/176
@@ -3554,11 +4589,17 @@ items:
   reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
   confidence: thấp
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 2
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 177
@@ -3576,11 +4617,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 178
@@ -3598,11 +4645,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 326
@@ -3613,18 +4666,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 2
+  scope: 2
+  complexity: 3
   swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-32 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-32: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 327
@@ -3636,17 +4696,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-32 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-32: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 328
@@ -3658,17 +4725,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-32 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-32: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 329
@@ -3680,17 +4754,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-32 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-32: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 179
@@ -3708,11 +4789,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «thuế».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 180
@@ -3730,11 +4817,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «承認».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 182
@@ -3752,11 +4845,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «tier».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 183
@@ -3774,11 +4873,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «承認».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 185
@@ -3796,11 +4901,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «承認».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 186
@@ -3818,11 +4929,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «発効日».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 188
@@ -3840,11 +4957,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «tier», «version».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 189
@@ -3862,11 +4985,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 191
@@ -3884,11 +5013,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «承認», «公布».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 192
@@ -3906,11 +5041,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «公布».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 331
@@ -3921,18 +5062,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 4
-  swp: 12
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-25 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-25: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 332
@@ -3944,17 +5092,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-25 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-25: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 333
@@ -3966,17 +5121,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-25 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-25: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 334
@@ -3988,17 +5150,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-25 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-25: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 153
@@ -4016,11 +5185,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «発効日».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 155
@@ -4038,11 +5213,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «tiền», «交付率», «tier».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 156
@@ -4060,11 +5241,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «jpy», «làm tròn», «交付率».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 157
@@ -4082,11 +5269,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «delta», «完納奨励金».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 158
@@ -4098,17 +5291,24 @@ items:
   constraint: 完納奨励金
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
-  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại 要確認.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): item là câu hỏi 要確認, kết quả phụ thuộc câu trả lời.'
+  complexity: 2
+  swp: 2
+  reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: R3 — issue 要確認 (đi hỏi làm rõ).'
+  reason_complexity: '2 — R3: issue 要確認 (đi hỏi làm rõ) → Complexity 2.'
   confidence: cao
   confidence_note: ''
+  rules:
+  - R3
   closed_note: ''
   skip_write: ''
   hours_ref: 1.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 166
@@ -4126,11 +5326,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 4
+  swp_draft: 16
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 193
@@ -4148,11 +5354,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 194
@@ -4170,14 +5382,20 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «biên ngày», «theo hạn».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: true
   sample_reasons:
   - Constraint = 完納奨励金 (bổ sung cho đủ 3)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: 2
+  pl_complexity: 4
+  pl_final: 8
+  pl_reason: 'giữ 8 — 以内 bao gồm ngày hạn, ngày JST, theo kỳ: logic nhiều biến.'
 - number: 195
   title: '[WU-062] Tính lại kỳ gốc theo version kỳ gốc'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/195
@@ -4193,11 +5411,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ gốc», «version».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 196
@@ -4215,11 +5439,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «delta».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 198
@@ -4237,11 +5467,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «theo kỳ».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 199
@@ -4259,11 +5495,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «暫定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 201
@@ -4281,11 +5523,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «delta».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 202
@@ -4303,11 +5551,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «delta».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 203
@@ -4325,11 +5579,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «làm tròn», «tier».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 205
@@ -4347,11 +5607,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確定», «từ chối».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 206
@@ -4369,11 +5635,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «csv».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 207
@@ -4391,14 +5663,20 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «csv».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: true
   sample_reasons:
   - Constraint = 完納奨励金 (bổ sung cho đủ 3)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: 3
+  pl_complexity: 3
+  pl_final: 9
+  pl_reason: sửa Complexity 2 → 3, SWP 6 → 9 — tải CSV phải kiểm từng dòng, báo lỗi từng dòng, chặn khi kỳ đã 確定, phân quyền.
 - number: 209
   title: '[WU-068] Kịch bản 調整要求 承認 sau 確定 → delta kỳ sau'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/209
@@ -4414,11 +5692,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «kỳ gốc», «version».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 4
+  swp_draft: 16
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 210
@@ -4436,11 +5720,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «version», «delta» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 4
+  swp_draft: 16
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 212
@@ -4458,11 +5748,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «song song».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 213
@@ -4480,11 +5776,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «phiên», «確定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 214
@@ -4502,11 +5804,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «kỳ gốc», «delta».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 215
@@ -4524,11 +5832,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 216
@@ -4546,11 +5860,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 217
@@ -4568,11 +5888,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «delta», «支払».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 4
+  swp_draft: 16
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 335
@@ -4590,14 +5916,20 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «audit», «mã lỗi».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 3.5
   sample: true
   sample_reasons:
   - Constraint = 完納奨励金 (bổ sung cho đủ 3)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: 2
+  pl_complexity: 3
+  pl_final: 6
+  pl_reason: giữ 6.
 - number: 23
   title: '[WU-069] Bảng audit thêm 業務日 / người tham gia, bỏ nhánh demo_reset (DBT-15)'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/23
@@ -4613,11 +5945,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «audit», «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 219
@@ -4635,11 +5973,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mã lỗi».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 220
@@ -4657,11 +6001,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «msg».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 15.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 221
@@ -4679,11 +6029,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 222
@@ -4701,11 +6057,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «403», «audit».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 224
@@ -4723,11 +6085,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «quyền», «mfa» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 225
@@ -4745,11 +6113,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «hitl».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 226
@@ -4767,11 +6141,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «rls».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.5
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 227
@@ -4789,11 +6169,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «nhánh».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 5.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 337
@@ -4804,18 +6190,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
+  scope: 2
   complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-30 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-30: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 338
@@ -4829,15 +6222,22 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-30 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-30: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 339
@@ -4851,15 +6251,22 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-30 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-30: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 340
@@ -4871,17 +6278,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-30 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-30: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 342
@@ -4892,21 +6306,28 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 4
-  swp: 12
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «完納奨励金» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  scope: 2
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-31 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-31: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: true
   sample_reasons:
   - độ tin cậy thấp (79 item, chọn tối đa 5, rải theo epic)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 3
+  complexity_draft: 4
+  swp_draft: 12
+  pl_scope: 2
+  pl_complexity: 3
+  pl_final: 6
+  pl_reason: chấm lại theo quy tắc R2 — SCR-31 ở LAB-1 = M → Scope 2 × Complexity 3 = 6.
 - number: 343
   title: '[SCR-31] 実装 1/3 — API đọc / ghi'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/343
@@ -4916,17 +6337,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «完納奨励金» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-31 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-31: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 344
@@ -4938,17 +6366,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 4
-  swp: 8
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version», «完納奨励金» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-31 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-31: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 345
@@ -4960,17 +6395,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-31 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-31: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 347
@@ -4981,18 +6423,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
+  scope: 2
   complexity: 2
-  swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  swp: 4
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-34〜SCR-36 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-34〜SCR-36: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 11.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 348
@@ -5006,15 +6455,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-34〜SCR-36 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-34〜SCR-36: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 349
@@ -5028,15 +6484,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-34〜SCR-36 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-34〜SCR-36: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 350
@@ -5050,15 +6513,22 @@ items:
   scope: 2
   complexity: 2
   swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-34〜SCR-36 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-34〜SCR-36: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 351
@@ -5070,17 +6540,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 3
-  swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 2
+  swp: 4
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '2 — validation đơn giản, ít trạng thái: R2 — độ phức tạp màn SCR-34〜SCR-36 ở LAB-1 = S.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-34〜SCR-36: S)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 14.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 14
@@ -5098,11 +6575,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «secret».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 132
@@ -5120,11 +6603,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «song song», «chạy trùng».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 229
@@ -5142,11 +6631,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 230
@@ -5164,11 +6659,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 231
@@ -5186,11 +6687,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 234
@@ -5205,17 +6712,23 @@ items:
   complexity: 5
   swp: 25
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «load test», «fig-load».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «fig-load», «số đo».'
-  confidence: cao
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «số đo».'
+  confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: true
   sample_reasons:
   - SWP cao nhất (25)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: 5
+  pl_complexity: 5
+  pl_final: 25
+  pl_reason: giữ 25 — hạ tầng toàn hệ thống, kết quả bất định, là điều kiện của ADR-010.
 - number: 235
   title: '[WU-076] Ghi quyết định B′ / B + bước tiếp theo (câu hỏi khách nếu lùi)'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/235
@@ -5228,14 +6741,20 @@ items:
   complexity: 5
   swp: 5
   reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại tài liệu.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «câu hỏi khách».'
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «câu hỏi khách».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 4.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 237
@@ -5253,11 +6772,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 2
+  swp_draft: 10
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 238
@@ -5275,11 +6800,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «cảnh báo».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 2
+  swp_draft: 10
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 240
@@ -5291,17 +6822,24 @@ items:
   constraint: なし
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
+  complexity: 2
+  swp: 2
   reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại tài liệu.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «restore».'
-  confidence: vừa
+  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic. R1: «restore» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
+  confidence: thấp
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 241
@@ -5313,20 +6851,27 @@ items:
   constraint: なし
   state: open
   scope: 5
-  complexity: 5
-  swp: 25
+  complexity: 2
+  swp: 10
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại hạ tầng, dấu hiệu «osaka».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «rto», «diễn tập», «restore» (theo mô tả issue cha).'
-  confidence: vừa
+  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic. R1: «diễn tập» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
+  confidence: thấp
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: true
   sample_reasons:
   - SWP cao nhất (25)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: 5
+  pl_complexity: 5
+  pl_final: 25
+  pl_reason: giữ 25 — hạ tầng toàn hệ thống, phụ thuộc bên ngoài (giới hạn Supabase).
 - number: 242
   title: '[WU-079] Diễn tập ACC-05 đo RTO + cold restore + biên bản'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/242
@@ -5339,14 +6884,20 @@ items:
   complexity: 5
   swp: 25
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «diễn tập», «restore».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «rto», «diễn tập», «restore».'
-  confidence: cao
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «rto».'
+  confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 243
@@ -5358,20 +6909,28 @@ items:
   constraint: なし
   state: open
   scope: 5
-  complexity: 5
-  swp: 25
+  complexity: 4
+  swp: 20
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «load test», «fig-load».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «fig-load».'
+  reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «đồng thời» (theo mô tả issue cha). R1: «fig-load» là chủ đề NFR nhưng việc làm
+    theo quy trình xác định → không chấm 5.'
   confidence: vừa
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: true
   sample_reasons:
   - SWP cao nhất (25)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: 5
+  pl_complexity: 3
+  pl_final: 15
+  pl_reason: sửa Complexity 5 → 3, SWP 25 → 15 — "NFR" không đồng nghĩa bất định; tạo dữ liệu và kịch bản tải là việc xác định, độ phức tạp nằm ở nhiều kịch bản (quy tắc R1).
 - number: 244
   title: '[WU-081] Chạy đo Small / Medium + báo cáo'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/244
@@ -5384,14 +6943,20 @@ items:
   complexity: 5
   swp: 25
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «load test», «fig-load».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «p95».'
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «p95».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 245
@@ -5409,11 +6974,17 @@ items:
   reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «thông báo».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 246
@@ -5431,11 +7002,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 353
@@ -5446,18 +7023,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 2
+  scope: 2
+  complexity: 3
   swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-33 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-33: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 354
@@ -5469,17 +7053,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-33 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-33: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 355
@@ -5491,17 +7082,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic.'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-33 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-33: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 356
@@ -5513,17 +7111,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-33 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-33: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 358
@@ -5534,18 +7139,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
+  scope: 2
   complexity: 3
-  swp: 9
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-37 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-37: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 3
+  swp_draft: 9
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 359
@@ -5559,18 +7171,25 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-37 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-37: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: true
   sample_reasons:
   - độ tin cậy thấp (79 item, chọn tối đa 5, rải theo epic)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: 2
+  pl_complexity: 3
+  pl_final: 6
+  pl_reason: chấm lại theo quy tắc R2 — SCR-37 ở LAB-1 = M → Scope 2 × Complexity 3 = 6.
 - number: 360
   title: '[SCR-37] 実装 2/3 — màn chính'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/360
@@ -5582,15 +7201,22 @@ items:
   scope: 2
   complexity: 3
   swp: 6
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-37 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-37: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 361
@@ -5602,17 +7228,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-37 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-37: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 363
@@ -5623,18 +7256,25 @@ items:
   kind: thiết kế
   constraint: なし
   state: open
-  scope: 3
-  complexity: 2
+  scope: 2
+  complexity: 3
   swp: 6
-  reason_scope: '3 — hai lớp trong cùng chức năng: theo loại thiết kế.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «thông báo», «cảnh báo» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-38 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-38: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 7.5
   sample: false
   sample_reasons: []
+  scope_draft: 3
+  complexity_draft: 2
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 364
@@ -5646,17 +7286,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại API.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «thông báo», «cảnh báo» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-38 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-38: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 365
@@ -5668,17 +7315,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «thông báo», «cảnh báo» (theo mô tả issue cha).'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-38 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-38: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 366
@@ -5690,17 +7344,24 @@ items:
   constraint: なし
   state: open
   scope: 2
-  complexity: 2
-  swp: 4
-  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): theo loại UI.'
-  reason_complexity: '2 — validation đơn giản, ít trạng thái: dấu hiệu «biến thể», «xử lý lỗi».'
-  confidence: thấp
-  confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  complexity: 3
+  swp: 6
+  reason_scope: '2 — một thành phần (1 API / 1 màn hình đơn giản / 1 bảng): R2 — màn 概算, mỗi phần là một thành phần.'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: R2 — độ phức tạp màn SCR-38 ở LAB-1 = M.'
+  confidence: vừa
+  confidence_note: 'màn 概算 — chấm theo R2 (LAB-1 SCR-38: M)'
+  rules:
+  - R2
   closed_note: ''
   skip_write: ''
   hours_ref: 12.5
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 2
+  swp_draft: 4
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 368
@@ -5712,17 +7373,24 @@ items:
   constraint: なし
   state: open
   scope: 5
-  complexity: 5
-  swp: 25
+  complexity: 3
+  swp: 15
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «security».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «nfr».'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mfa», «aal2», «pin». R1: «nfr» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
   confidence: vừa
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 369
@@ -5734,17 +7402,24 @@ items:
   constraint: なし
   state: open
   scope: 5
-  complexity: 5
-  swp: 25
+  complexity: 3
+  swp: 15
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «security».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «nfr».'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «rls», «secret». R1: «nfr» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
   confidence: vừa
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 370
@@ -5756,17 +7431,24 @@ items:
   constraint: なし
   state: open
   scope: 5
-  complexity: 5
-  swp: 25
+  complexity: 3
+  swp: 15
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «security».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «nfr», «lỗ hổng».'
+  reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «secret». R1: «nfr» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
   confidence: vừa
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 372
@@ -5778,17 +7460,24 @@ items:
   constraint: なし
   state: open
   scope: 1
-  complexity: 5
-  swp: 5
+  complexity: 2
+  swp: 2
   reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại tài liệu.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «restore».'
-  confidence: vừa
+  reason_complexity: '2 — mặc định: mô tả không có dấu hiệu rõ về logic. R1: «restore» là chủ đề NFR nhưng việc làm theo quy trình xác định → không chấm 5.'
+  confidence: thấp
   confidence_note: ''
+  rules:
+  - R1
   closed_note: ''
   skip_write: ''
   hours_ref: 4.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 373
@@ -5803,14 +7492,20 @@ items:
   complexity: 5
   swp: 25
   reason_scope: '5 — nhiều chức năng, hạ tầng toàn hệ thống, migration: loại test, dấu hiệu «diễn tập», «restore».'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «rto», «diễn tập», «restore».'
-  confidence: cao
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «rto».'
+  confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 5
+  swp_draft: 25
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 249
@@ -5828,11 +7523,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «dd-», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 250
@@ -5850,11 +7551,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «dd-», «từ chối».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 3
+  swp_draft: 12
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 251
@@ -5872,11 +7579,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 4
+  complexity_draft: 4
+  swp_draft: 16
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 253
@@ -5894,11 +7607,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «vai trò».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 254
@@ -5916,11 +7635,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «quyền», «aal2», «403».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 256
@@ -5938,11 +7663,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «đồng thời» (theo mô tả issue cha).'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 257
@@ -5960,11 +7691,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «race».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 4
+  swp_draft: 8
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 259
@@ -5982,11 +7719,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «trạng thái», «map trạng thái».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 260
@@ -6004,11 +7747,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «backfill».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 261
@@ -6026,11 +7775,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «mã lỗi».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 3
+  swp_draft: 3
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 262
@@ -6045,14 +7800,20 @@ items:
   complexity: 5
   swp: 5
   reason_scope: '1 — thay đổi rất nhỏ trong 1 thành phần, không đổi giao diện / DB: theo loại tài liệu.'
-  reason_complexity: '5 — bất định cao (phụ thuộc bên ngoài, NFR, 要確認): dấu hiệu «未決», «câu hỏi khách».'
+  reason_complexity: '5 — bất định cao — kết quả chưa biết trước: đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt (R1): dấu hiệu «未決», «câu hỏi khách».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 8.0
   sample: false
   sample_reasons: []
+  scope_draft: 1
+  complexity_draft: 5
+  swp_draft: 5
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 263
@@ -6070,11 +7831,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者», «hitl».'
   confidence: cao
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 6.0
   sample: false
   sample_reasons: []
+  scope_draft: 2
+  complexity_draft: 3
+  swp_draft: 6
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 375
@@ -6092,11 +7859,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «差戻し», «取消», «mã lỗi».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 376
@@ -6114,11 +7887,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «保留», «確定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 377
@@ -6136,11 +7915,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «audit», «締め解除».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 14.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 379
@@ -6158,11 +7943,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «承認», «却下».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 380
@@ -6180,14 +7971,20 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «tiền», «delta».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: true
   sample_reasons:
   - ngẫu nhiên (seed 20261030)
-  pl_final: null
-  pl_reason: null
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: 5
+  pl_complexity: 4
+  pl_final: 20
+  pl_reason: giữ 20 — xuyên nhiều chức năng, logic tiền.
 - number: 382
   title: '[結合テスト] Cron 暫定 → nhập 支払実績 (SCR-26) → 確定; dữ liệu mới làm lệch 暫定 thì 409 và không 確定'
   url: https://github.com/uyenltt-3707/skr-fms-backlog/issues/382
@@ -6203,11 +8000,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «支払», «暫定».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 383
@@ -6225,11 +8028,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «kỳ sau», «kỳ gốc», «version».'
   confidence: vừa
   confidence_note: ''
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 385
@@ -6247,11 +8056,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «確認者», «hitl».'
   confidence: thấp
   confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 386
@@ -6269,11 +8084,17 @@ items:
   reason_complexity: '3 — nhiều nhánh / state machine, phân quyền: dấu hiệu «取消», «確認者».'
   confidence: thấp
   confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 3
+  swp_draft: 15
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 388
@@ -6291,11 +8112,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «発効日», «完納奨励金».'
   confidence: thấp
   confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 12.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 - number: 389
@@ -6313,11 +8140,17 @@ items:
   reason_complexity: '4 — logic nghiệp vụ nhiều biến (tiền, làm tròn, kỳ, version quy tắc), nguyên tử / đồng thời: dấu hiệu «version».'
   confidence: thấp
   confidence_note: màn chưa có thiết kế (概算) — phạm vi thật chưa rõ
+  rules: []
   closed_note: ''
   skip_write: ''
   hours_ref: 10.0
   sample: false
   sample_reasons: []
+  scope_draft: 5
+  complexity_draft: 4
+  swp_draft: 20
+  pl_scope: null
+  pl_complexity: null
   pl_final: null
   pl_reason: null
 parents:
@@ -6338,7 +8171,7 @@ parents:
   - 30
   - 265
   - 270
-  swp_sum: 240
+  swp_sum: 224
 - number: 3
   title: '[WU-002] Thêm bước OTP và khóa tạm cho đăng nhập (API-001)'
   level: Issue
@@ -6377,7 +8210,7 @@ parents:
   - 362
   - 367
   - 371
-  swp_sum: 416
+  swp_sum: 381
 - number: 16
   title: '[WU-007] Thiết bị dùng chung ở hiện trường — phiên theo ca và chọn người thao tác bằng PIN'
   level: Issue
@@ -6400,7 +8233,7 @@ parents:
   - 336
   - 341
   - 346
-  swp_sum: 184
+  swp_sum: 171
 - number: 24
   title: '[WU-071] Helper ghi audit dùng chung cho mọi RPC (CSP-11)'
   level: Issue
@@ -6425,7 +8258,7 @@ parents:
   - 136
   - 141
   - 320
-  swp_sum: 263
+  swp_sum: 252
 - number: 30
   title: '[WU-010] Khung chung — header, nav theo vai trò, ダッシュボード'
   level: Issue
@@ -6449,7 +8282,7 @@ parents:
   - 53
   - 54
   - 275
-  swp_sum: 137
+  swp_sum: 135
 - number: 35
   title: '[WU-012] Căn cứ tham gia gắn loại người tham gia và RULE chuyển trạng thái (DBT-04)'
   level: Issue
@@ -6506,7 +8339,7 @@ parents:
   - 71
   - 74
   - 279
-  swp_sum: 136
+  swp_sum: 147
 - number: 58
   title: '[WU-021] Trạng thái lô 5 giá trị, cột 後入力 và sổ cái số lượng (DBT-07 / DBT-18)'
   level: Issue
@@ -6559,7 +8392,7 @@ parents:
   - 83
   - 86
   - 286
-  swp_sum: 106
+  swp_sum: 117
 - number: 79
   title: '[WU-029] RPC 確定 giao dịch 相対 theo DD-01'
   level: Issue
@@ -6589,7 +8422,7 @@ parents:
   - 93
   - 98
   - 293
-  swp_sum: 76
+  swp_sum: 82
 - number: 90
   title: '[WU-033] Vòng trạng thái kết quả せり và 確認者 (DBT-09)'
   level: Issue
@@ -6624,7 +8457,7 @@ parents:
   - 116
   - 298
   - 305
-  swp_sum: 122
+  swp_sum: 143
 - number: 102
   title: '[Epic] E08 調整要求'
   level: Epic
@@ -6637,7 +8470,7 @@ parents:
   - 171
   - 174
   - 325
-  swp_sum: 154
+  swp_sum: 160
 - number: 103
   title: '[WU-047] Bảng 調整要求, dòng điều chỉnh và 証憑 (DBT-20 / DBT-21 / DBT-27)'
   level: Issue
@@ -6772,7 +8605,7 @@ parents:
   - 187
   - 190
   - 330
-  swp_sum: 112
+  swp_sum: 104
 - number: 152
   title: '[WU-053] Bảng version quy tắc và bảng tier (DBT-11 / DBT-12)'
   level: Issue
@@ -6891,7 +8724,7 @@ parents:
   - 205
   - 206
   - 207
-  swp_sum: 16
+  swp_sum: 19
 - number: 208
   title: '[WU-068] Test tích hợp delta sau 確定 và batch chạy lại'
   level: Issue
@@ -6934,7 +8767,7 @@ parents:
   children:
   - 243
   - 244
-  swp_sum: 50
+  swp_sum: 40
 - number: 233
   title: '[WU-076] Load test — điều kiện của ADR-010: dump + sao chép dưới tải xong < 15 phút thì giữ B′, không thì lùi về B'
   level: Issue
@@ -6956,7 +8789,7 @@ parents:
   - 240
   - 241
   - 242
-  swp_sum: 55
+  swp_sum: 52
 - number: 247
   title: '[Epic] E13 テスト・移行・文書'
   level: Epic
@@ -7011,7 +8844,7 @@ parents:
   - 267
   - 268
   - 269
-  swp_sum: 25
+  swp_sum: 24
 - number: 270
   title: '[SCR-04] 外部参加者 参加可否状態・支払義務通知照会'
   level: Issue
@@ -7019,7 +8852,7 @@ parents:
   - 271
   - 272
   - 273
-  swp_sum: 24
+  swp_sum: 12
 - number: 275
   title: '[SCR-07] 失効間近参加者 警告一覧'
   level: Issue
@@ -7027,7 +8860,7 @@ parents:
   - 276
   - 277
   - 278
-  swp_sum: 14
+  swp_sum: 12
 - number: 279
   title: '[SCR-09] ロット一覧・詳細 — trạng thái và điều chỉnh thuộc tính'
   level: Issue
@@ -7038,7 +8871,7 @@ parents:
   - 283
   - 284
   - 285
-  swp_sum: 37
+  swp_sum: 48
 - number: 286
   title: '[SCR-12] 取引一覧・照会 — tra cứu và 取消 có lý do'
   level: Issue
@@ -7049,7 +8882,7 @@ parents:
   - 290
   - 291
   - 292
-  swp_sum: 37
+  swp_sum: 48
 - number: 293
   title: '[SCR-14] せり記録・修正履歴照会'
   level: Issue
@@ -7058,7 +8891,7 @@ parents:
   - 295
   - 296
   - 297
-  swp_sum: 18
+  swp_sum: 24
 - number: 298
   title: '[SCR-16] 引渡し例外登録 — ghi ngoại lệ giao hàng'
   level: Issue
@@ -7069,7 +8902,7 @@ parents:
   - 302
   - 303
   - 304
-  swp_sum: 37
+  swp_sum: 48
 - number: 305
   title: '[SCR-17] 引渡し・取引・精算 関連照会'
   level: Issue
@@ -7078,7 +8911,7 @@ parents:
   - 307
   - 308
   - 309
-  swp_sum: 11
+  swp_sum: 24
 - number: 320
   title: '[SCR-29] 照合データ出力・再出力'
   level: Issue
@@ -7087,7 +8920,7 @@ parents:
   - 322
   - 323
   - 324
-  swp_sum: 32
+  swp_sum: 24
 - number: 325
   title: '[SCR-32] 証憑ファイルの添付・参照（共通）'
   level: Issue
@@ -7096,7 +8929,7 @@ parents:
   - 327
   - 328
   - 329
-  swp_sum: 18
+  swp_sum: 24
 - number: 330
   title: '[SCR-25] 規則版の履歴照会・ロールバック起票'
   level: Issue
@@ -7105,7 +8938,7 @@ parents:
   - 332
   - 333
   - 334
-  swp_sum: 32
+  swp_sum: 24
 - number: 336
   title: '[SCR-30] 監査ログ検索'
   level: Issue
@@ -7114,7 +8947,7 @@ parents:
   - 338
   - 339
   - 340
-  swp_sum: 25
+  swp_sum: 24
 - number: 341
   title: '[SCR-31] 精算レコードの適用版照会'
   level: Issue
@@ -7123,7 +8956,7 @@ parents:
   - 343
   - 344
   - 345
-  swp_sum: 32
+  swp_sum: 24
 - number: 346
   title: '[SCR-34〜36] マスタ保守 — 品目 / 休市カレンダー / 例外理由コード'
   level: Issue
@@ -7133,7 +8966,7 @@ parents:
   - 349
   - 350
   - 351
-  swp_sum: 24
+  swp_sum: 20
 - number: 352
   title: '[SCR-33] cold 保管からの復元要求'
   level: Issue
@@ -7142,7 +8975,7 @@ parents:
   - 354
   - 355
   - 356
-  swp_sum: 18
+  swp_sum: 24
 - number: 357
   title: '[SCR-37] 通知設定'
   level: Issue
@@ -7151,7 +8984,7 @@ parents:
   - 359
   - 360
   - 361
-  swp_sum: 25
+  swp_sum: 24
 - number: 362
   title: '[SCR-38] 送信ログ・運用アラートキュー照会'
   level: Issue
@@ -7160,7 +8993,7 @@ parents:
   - 364
   - 365
   - 366
-  swp_sum: 18
+  swp_sum: 24
 - number: 367
   title: '[NFR-SEC] Security test theo NFR bảo mật (NFR-SEC-01 / 03 / 04, SEC-IAM-02)'
   level: Issue
@@ -7168,14 +9001,14 @@ parents:
   - 368
   - 369
   - 370
-  swp_sum: 75
+  swp_sum: 45
 - number: 371
   title: '[ACC-05] Diễn tập restore lần 2 theo thủ tục đã sửa'
   level: Issue
   children:
   - 372
   - 373
-  swp_sum: 30
+  swp_sum: 27
 - number: 374
   title: '[結合テスト] Luồng 相対 — 下書き → 確定 → 引渡し / 保留 → 締め / 締め bù / 締め解除'
   level: Issue

@@ -31,7 +31,7 @@ Issue cha / epic `Done` khi mọi con `Done`.
 | Sub-issue | `Sub-issue` | sub-issue thật của issue | ước trực tiếp (≤ 15h) | theo loại | theo kế hoạch |
 
 - Mọi item: `Status = Todo` khi tạo (script không ghi đè tiến độ khi chạy lại), `Constraint = 完納奨励金` cho E10, issue D33, RPT-07 và luồng test tích hợp #381, còn lại `なし`.
-- `SWP`: chỉ ghi SWP đã review. B3a chấm nháp bằng skill tạm `skills/swp-provisional/` (kết quả ở `swp-report/`), chưa ghi Project.
+- `SWP`: chỉ ghi SWP đã review. B3a chấm nháp bằng skill tạm `skills/swp-provisional/` (kết quả ở `swp-report/`); B3b PL review (mẫu + R1–R3), đã ghi Project — lá = điểm đã review, cha / epic = tổng con.
 - Nhãn `要確認`: issue cần hỏi lại PL / khách; lọc trên Project bằng `label:要確認`.
 - 担当(仮) theo loại: DB / API / batch → BE-A, BE-B · UI → FE-A, FE-B · test → QA-A · tài liệu / thiết kế / 要確認 → PM.
   **Hạ tầng** (đề không gán) → FE-A, FE-B. **API đơn giản** (CRUD, đọc danh sách, không RPC, không logic tiền, không bảo mật) → FE-A, FE-B

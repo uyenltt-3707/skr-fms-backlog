@@ -2,11 +2,13 @@
 
 Cục bộ (luôn chạy):
   - mọi WU trong handoff có issue, hoặc được ghi ở task-breakdown.md §2 là "chưa thành issue"
-  - item lá có giờ, bội 0.5, 1h ≤ giờ ≤ 15h; không có trường SWP trong YAML
+  - item lá có giờ, bội 0.5, 1h ≤ giờ ≤ 15h; backlog.yaml không có khóa SWP (SWP chỉ ở swp-report/swp-scores.yaml)
   - phụ thuộc tồn tại, không vòng; item đã xếp sprint thì phụ thuộc xếp cùng hoặc sớm hơn
   - mọi item E10 có Constraint = 完納奨励金
   - tải từng 担当(仮) mỗi Sprint ≤ capacity
 --remote: so trường Project #2 và cha–con thật trên GitHub với YAML (cha = tổng con), thử truy cập ẩn danh.
+  Từ B3b SWP phải CÓ trên mọi item: lá = điểm đã review trong swp-scores.yaml (pl_final, không có thì Scope × Complexity);
+  cha / epic = tổng SWP các con thật trên Project.
 
 Chạy:  python tools/check-backlog.py [--handoff PATH] [--remote]
 """
@@ -23,13 +25,14 @@ import backlog_model as bm
 
 REPO_ROOT = bm.TOOLS_DIR.parent
 DEFAULT_HANDOFF = REPO_ROOT.parent / "product-a-fishmarket" / "specs" / "_meta" / "lab5_handoff.yaml"
+SCORES_PATH = REPO_ROOT / "swp-report" / "swp-scores.yaml"
 errors, notes = [], []
 
 
 def check_local(meta, items, by_id, handoff):
     leaves = [i for i in items if i.is_leaf]
     if re.search(r"\bswp\s*:", bm.BACKLOG_PATH.read_text(encoding="utf-8"), re.I):
-        errors.append("backlog.yaml có khóa 'swp' — B2 không được ghi SWP")
+        errors.append("backlog.yaml có khóa 'swp' — SWP chỉ nằm ở swp-report/swp-scores.yaml")
     # WU coverage
     if handoff.exists():
         wus = {u["id"] for u in yaml.safe_load(handoff.read_text(encoding="utf-8"))["units"]}
@@ -99,6 +102,40 @@ def _check_cycles(items, by_id):
             visit(it, [])
 
 
+def expected_swp():
+    """(SWP đã review của lá: pl_final hoặc Scope × Complexity, lá đã đóng giữ giá trị cũ, số issue cha / epic)."""
+    data = yaml.safe_load(SCORES_PATH.read_text(encoding="utf-8"))
+    want = {r["number"]: r["pl_final"] if r.get("pl_final") is not None else r["swp"] for r in data["items"]}
+    kept = {r["number"] for r in data["items"] if r.get("skip_write")}  # lá đã đóng có SWP: Project giữ giá trị cũ
+    return want, kept, {p["number"] for p in data["parents"]}
+
+
+def check_swp(board, parents, expected):
+    """SWP có trên mọi item, khớp swp-scores.yaml; cha / epic = tổng SWP các con thật (đọc lại từ Project)."""
+    want, kept, scored_parents = expected
+    swp = {n: board[n]["values"].get("SWP") for n in board}
+    for num, have in sorted(swp.items()):
+        if have is None:
+            errors.append(f"#{num}: SWP trống")
+        elif num in scored_parents or num in kept:
+            continue  # cha / epic: kiểm bằng tổng con thật bên dưới; lá đã đóng giữ giá trị cũ
+        elif num not in want:
+            errors.append(f"#{num}: có SWP {have} nhưng không có trong swp-scores.yaml")
+        elif float(have) != float(want[num]):
+            errors.append(f"#{num}: SWP = {have}, mong đợi {want[num]} (swp-scores.yaml)")
+    kids = defaultdict(list)
+    for child, parent in parents.items():
+        if parent in board and child in board:
+            kids[parent].append(child)
+    for parent, children in sorted(kids.items()):
+        total = sum(float(swp[c] or 0) for c in children)
+        if swp[parent] is None or float(swp[parent]) != total:
+            errors.append(f"#{parent}: SWP = {swp[parent]} ≠ tổng {len(children)} con {total:g}")
+    leaves = [n for n in board if n not in kids]
+    notes.append(f"SWP: {sum(v is not None for v in swp.values())}/{len(swp)} item có giá trị · {len(kids)} cha / epic "
+                 f"= tổng con · tổng lá {sum(float(swp[n] or 0) for n in leaves):g}")
+
+
 def check_remote(meta, items, by_id):
     from github_api import graphql_nodes
     from project_fields import F_STATUS, Project, desired_values
@@ -123,11 +160,10 @@ def check_remote(meta, items, by_id):
                 errors.append(f"#{num} {it.id}: {name} = {have!r}, mong đợi {want!r}")
         if vals.get(F_STATUS) is None:
             errors.append(f"#{num} {it.id}: Status trống")
-        if vals.get("SWP") is not None:
-            errors.append(f"#{num} {it.id}: SWP đã có giá trị ở B2")
         want_parent = mapping.get(it.parent, {}).get("number")
         if it.parent and parents.get(num) != want_parent:
             errors.append(f"#{num} {it.id}: cha thật = {parents.get(num)}, mong đợi #{want_parent}")
+    check_swp(board, parents, expected_swp())
     notes.append(f"Remote: đối chiếu {len(items)} item với Project #{meta['project_number']}")
     sample = [f"https://github.com/users/{owner}/projects/{meta['project_number']}"]
     sample += [mapping[k]["url"] for k in ("E10", "I-002", "I-062") if k in mapping]

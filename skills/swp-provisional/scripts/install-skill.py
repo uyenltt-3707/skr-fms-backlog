@@ -4,7 +4,12 @@ Nguồn chuẩn là skills/ (được commit); bản ở .claude/ chỉ là bả
 Chạy:  python skills/swp-provisional/scripts/install-skill.py
 """
 import shutil
+import sys
 from pathlib import Path
+
+for _stream in (sys.stdout, sys.stderr):  # Windows: stdout chuyển hướng mặc định code page ANSI
+    if hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
 REPO_ROOT = SKILL_DIR.parent.parent

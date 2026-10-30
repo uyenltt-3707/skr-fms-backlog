@@ -1,7 +1,8 @@
 """Chấm SWP TẠM cho mọi item lá trong ảnh chụp, cộng cho cha / epic, chọn mẫu → swp-scores.yaml.
 
-Chạy:  python score-issues.py --snapshot tmp/swp-snapshot.json --out swp-report/swp-scores.yaml
-Chạy lại giữ nguyên pl_final / pl_reason đã điền trong file cũ (khóa theo số issue).
+Chạy:  python score-issues.py --snapshot tmp/swp-snapshot.json --out swp-report/swp-scores.yaml [--lab1-screens PATH]
+Chạy lại giữ nguyên (khóa theo số issue): pl_final / pl_reason / pl_scope / pl_complexity đã điền, điểm nháp đầu tiên
+(scope_draft / complexity_draft / swp_draft — để so trước / sau quy tắc PL), và bộ mẫu khi PL đã quyết ít nhất một mẫu.
 """
 import argparse
 import json
@@ -12,12 +13,14 @@ from pathlib import Path
 import yaml
 
 import sample_selection
-from swp_rubric import ALLOWED_SWP, PROVISIONAL_NOTE, score_leaf
+from report_data import rule_effects
+from swp_rubric import ALLOWED_SWP, PL_RULES, PROVISIONAL_NOTE, RULES_DATE, score_leaf
 
 SECTION = re.compile(r"^###\s+(.+)$", re.M)
 KEEP_SECTIONS = ("mô tả", "tiêu chí xong", "description", "acceptance")
 KIND = re.compile(r"\*\*Loại:\*\*[^/\n]*/\s*([^·\n]+?)\s*(?:·|$)", re.M)
 CLOSED_LABEL = "chấm sau khi đóng"
+LAB1_SCREENS = Path("../product-a-fishmarket/output/lab1/_work/04_screens.yaml")  # R2, chỉ đọc
 
 
 def description_text(body):
@@ -51,12 +54,29 @@ def load_previous(path):
     rows = {r["number"]: r for r in old.get("items", [])}
     bad = [f"#{n} pl_final = {r['pl_final']!r}" for n, r in rows.items()
            if r.get("pl_final") is not None and r["pl_final"] not in ALLOWED_SWP]
+    bad += [f"#{n} pl_scope × pl_complexity ≠ pl_final" for n, r in rows.items() if r.get("pl_scope") is not None
+            and r["pl_scope"] * (r.get("pl_complexity") or 0) != r.get("pl_final")]
     if bad:  # dừng sớm: giá trị ngoài thang (giờ, SP Fibonacci…) không được đi vào báo cáo hay Project
         raise SystemExit("pl_final phải là tích Scope × Complexity (1–25): " + ", ".join(bad))
     return rows
 
 
-def build(snapshot, previous):
+def load_screens(path):
+    """{SCR-xx: S/M/L} từ SP4 LAB-1 (R2). Thiếu file → dừng: không âm thầm chấm màn 概算 theo luật cũ."""
+    if not path.exists():
+        raise SystemExit(f"Không thấy {path} (độ phức tạp màn LAB-1 cho R2) — truyền --lab1-screens")
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    return {x["id"]: x["complexity"] for x in data["screens"]}
+
+
+def frozen_samples(previous):
+    """PL đã quyết ít nhất một mẫu → giữ nguyên bộ mẫu cũ (chấm lại không được làm đổi mẫu PL đã kiểm)."""
+    if not any(r.get("sample") and r.get("pl_final") is not None for r in previous.values()):
+        return {}
+    return {n: r["sample_reasons"] for n, r in previous.items() if r.get("sample")}
+
+
+def build(snapshot, previous, screens):
     by_num = {r["number"]: r for r in snapshot["issues"] if r["on_project"]}
     rows = []
     for r in by_num.values():
@@ -70,7 +90,7 @@ def build(snapshot, previous):
         kind = m.group(1).strip() if m else ""
         parent_body = parent.get("original_body", parent["body"])  # cha đã đóng: cũng dùng mô tả ban đầu
         s = score_leaf(r["title"], kind, description_text(body), parent["title"],
-                       parent["title"] + "\n" + description_text(parent_body))
+                       parent["title"] + "\n" + description_text(parent_body), screens)
         if r.get("original_missing"):
             s["confidence"], s["confidence_note"] = "thấp", "không đọc được mô tả ban đầu — chấm theo mô tả hiện tại"
         prev = previous.get(r["number"], {})
@@ -81,11 +101,16 @@ def build(snapshot, previous):
             "closed_note": (CLOSED_LABEL + " — chấm theo mô tả ban đầu") if r["state"] == "closed" else "",
             "skip_write": "đã đóng và đã có SWP — không ghi đè" if r["state"] == "closed" and r["swp_now"] is not None else "",
             "hours_ref": r.get("hours"), "sample": False, "sample_reasons": [],
-            "pl_final": prev.get("pl_final"), "pl_reason": prev.get("pl_reason"),
+            **{f"{k}_draft": prev.get(f"{k}_draft", prev.get(k, s[k])) for k in ("scope", "complexity", "swp")},
+            **{k: prev.get(k) for k in ("pl_scope", "pl_complexity", "pl_final", "pl_reason")},
         })
     rows.sort(key=lambda x: (x["epic"], x["number"]))
-    for num, reasons in sample_selection.select(rows).items():
-        row = next(x for x in rows if x["number"] == num)
+    by_row = {x["number"]: x for x in rows}
+    for num, reasons in (frozen_samples(previous) or sample_selection.select(rows)).items():
+        row = by_row.get(num)
+        if row is None:  # mẫu cũ đã rời Project / ảnh chụp
+            print(f"CẢNH BÁO: mẫu #{num} không còn trong ảnh chụp — bỏ khỏi bộ mẫu")
+            continue
         row["sample"], row["sample_reasons"] = True, reasons
     return rows, rollup(rows, by_num)
 
@@ -112,16 +137,21 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--snapshot", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--lab1-screens", default=str(LAB1_SCREENS), help="04_screens.yaml của LAB-1 (R2)")
     a = ap.parse_args()
     snap = json.loads(Path(a.snapshot).read_text(encoding="utf-8"))
     out = Path(a.out)
-    rows, parents = build(snap, load_previous(out))
+    rows, parents = build(snap, load_previous(out), load_screens(Path(a.lab1_screens)))
+    decided = sum(x["sample"] and x["pl_final"] is not None for x in rows)
     meta = {"note": PROVISIONAL_NOTE, "formula": "SWP = Scope × Complexity (1–25); cha / epic = tổng con",
             "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
             "snapshot_fetched_at": snap["fetched_at"], "repo": snap["repo"],
             "project": f"{snap['project_owner']}#{snap['project_number']}", "seed": sample_selection.SEED,
-            "status": "bản nháp — SWP chỉ ghi lên Project bằng write-swp-to-project.py --confirm sau khi PL quyết mọi mẫu",
+            "status": (f"đã review — PL quyết {decided} mẫu + quy tắc R1–R3 ({RULES_DATE})" if decided
+                       == sum(x["sample"] for x in rows) else "bản nháp — SWP chỉ ghi lên Project bằng "
+                       "write-swp-to-project.py --confirm sau khi PL quyết mọi mẫu"),
             "leaf_count": len(rows), "sample_count": sum(x["sample"] for x in rows),
+            "pl_rules": {"date": RULES_DATE, **PL_RULES}, "rule_effects": rule_effects(rows),
             "hours_ref_note": "hours_ref chỉ dùng kiểm chéo giờ / SWP; KHÔNG dùng khi chấm"}
     header = f"# {PROVISIONAL_NOTE}\n# pl_final / pl_reason: PL điền cho item mẫu (và item muốn sửa); để trống = chưa quyết.\n"
     out.parent.mkdir(parents=True, exist_ok=True)

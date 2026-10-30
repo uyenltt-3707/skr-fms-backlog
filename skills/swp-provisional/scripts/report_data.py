@@ -14,6 +14,25 @@ def final_swp(row):
     return row["pl_final"] if row.get("pl_final") is not None else row["swp"]
 
 
+def draft_swp(row):
+    return row.get("swp_draft", row["swp"])
+
+
+def _effect(rows, before, after):
+    return {"items": len(rows), "changed": sum(before(r) != after(r) for r in rows),
+            "swp_before": sum(before(r) for r in rows), "swp_after": sum(after(r) for r in rows)}
+
+
+def rule_effects(rows):
+    """Tách hai bước: quy tắc R1–R3 (nháp → skill chấm lại) rồi PL chốt mẫu (skill chấm lại → pl_final).
+    Mỗi Rx: item áp quy tắc, item đổi SWP, tổng trước / sau; pl_samples: mẫu PL quyết; total: nháp → giá trị chốt."""
+    out = {rule: _effect([r for r in rows if rule in (r.get("rules") or [])], draft_swp, lambda r: r["swp"])
+           for rule in ("R1", "R2", "R3")}
+    out["pl_samples"] = _effect([r for r in rows if r.get("pl_final") is not None], lambda r: r["swp"], final_swp)
+    out["total"] = _effect(rows, draft_swp, final_swp)
+    return out
+
+
 def _group_stats(rows):
     swp = sum(final_swp(r) for r in rows)
     hours = sum(float(r["hours_ref"] or 0) for r in rows)

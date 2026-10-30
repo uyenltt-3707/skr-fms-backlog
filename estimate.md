@@ -2,39 +2,63 @@
 
 ## 1. Báo cáo HTML của skill chấm SWP
 
-Đường dẫn: **`swp-report/swp-report-261030.html`** (tự chứa, mở trực tiếp) · dữ liệu `swp-report/swp-scores.yaml` · skill
-`skills/swp-provisional/` (`SKILL.md`). Trạng thái: **bản nháp** — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
+Đường dẫn bản chốt: **`swp-report/swp-report-261030-final.html`** (tự chứa, mở trực tiếp) · bản nháp giữ lại để so trước / sau:
+`swp-report/swp-report-261030.html` · dữ liệu `swp-report/swp-scores.yaml` · giải thích kiểm chéo `swp-report/cross-check-notes.yaml`
+· skill `skills/swp-provisional/` (`SKILL.md`). Nhãn vẫn là 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
 
-- Chấm 286 item lá theo mô tả issue (không dựa vào giờ); cha / epic = tổng con. Tổng SWP tạm **2,546**; riêng 完納奨励金 320.
-- Độ tin cậy: cao 44 · vừa 163 · thấp 79 (77 trong đó là màn 概算).
-- Kiểm chéo giờ / SWP (quy tắc 6): theo epic, E05 (+60%) và E06 (+52%) lệch quá ±50% so với tỉ lệ chung 1.21 h / SWP; E07 +13%,
-  E11 +12%, E12 −31% (trong ngưỡng). 105 item lá lệch quá ±50% so với epic của nó (44 là màn 概算) → danh sách trong báo cáo §4.
-- **Chưa ghi SWP lên Project** — chờ PL quyết các mẫu ở §2.
+- **Đã review:** PL quyết 14 mẫu (§2) và thêm 3 quy tắc sửa có hệ thống R1–R3, chấm lại toàn bộ 286 item lá. Tổng SWP
+  **2,546 (nháp) → 2,516 (đã review)**, 68 item đổi; riêng 完納奨励金 320 → 320 (#158 −3 theo R3, #207 +3 theo PL).
+- Độ tin cậy sau review: cao 41 · vừa 236 · thấp 9 (nháp: 44 / 163 / 79 — 73 item màn 概算 lên "vừa" nhờ R2).
+- Kiểm chéo giờ / SWP (quy tắc 6): **không epic nào lệch quá ±50%** (tỉ lệ chung 1.23 h / SWP). Nháp có E05 +60%, E06 +52%; sau
+  review E05 +47%, E06 +28%. Sát ngưỡng: E05 +47%, E13 −40% — giải thích ở §4. Item lá lệch quá ±50% so với epic: 105 → 79.
+- **Đã ghi SWP lên Project #2** cho 389 item (lá = điểm đã review, cha / epic = tổng con), đọc lại bằng API khớp từng item (§4).
 
-## 2. Issue mẫu skill chọn để kiểm
+## 2. Issue mẫu skill chọn để kiểm — quyết định PL
 
 Skill chọn 14 mẫu (quy tắc ở `skills/swp-provisional/SKILL.md`): 3 SWP cao nhất, 2 thấp nhất, 5 độ tin cậy thấp, 3 Constraint =
-完納奨励金, 2 ngẫu nhiên (seed cố định); #307 trúng hai quy tắc.
+完納奨励金, 2 ngẫu nhiên (seed cố định); #307 trúng hai quy tắc. "Skill chấm" = bản nháp PL đã kiểm. Lý do ghi nguyên văn vào
+`swp-scores.yaml` (`pl_final`, `pl_reason`; thêm `pl_scope` / `pl_complexity`).
 
-| Issue | Skill chấm (Scope × Complexity → SWP, độ tin cậy) | Bạn chốt | Lý do | Lý do chọn mẫu |
+| Issue | Skill chấm (Scope × Complexity → SWP) | Bạn chốt | Lý do |
+|---|---|---|---|
+| #271 [SCR-04] 画面設計 — screen spec + cấp API-ID | 3 × 4 → 12 | 2 × 2 → **4** | Chấm lại theo quy tắc R2 — SCR-04 ở LAB-1 = S. |
+| #307 [SCR-17] 実装 1/3 — API đọc / ghi | 2 × 1 → 2 | 2 × 3 → **6** | Chấm lại theo quy tắc R2 — SCR-17 ở LAB-1 = M. |
+| #308 [SCR-17] 実装 2/3 — màn chính | 2 × 1 → 2 | 2 × 3 → **6** | Chấm lại theo quy tắc R2 — SCR-17 ở LAB-1 = M. |
+| #310 [WU-094] Truy vấn + bộ cột RPT-04 滞留引渡し・引渡し例外 | 3 × 2 → 6 | 3 × 2 → **6** | Giữ 6. |
+| #175 [WU-052] Hàm giá trị hiệu lực (gốc + DBT-21) | 4 × 2 → 8 | 2 × 4 → **8** | Sửa trục Scope 4 → 2, Complexity 2 → 4, SWP giữ 8 — một thành phần (hàm DB) nhưng logic nhiều biến (loại người tham gia → loại căn cứ, ngày nghiệp vụ 02:00, trạng thái đình chỉ). Tổng đúng nhưng lý do của skill sai. |
+| #194 [WU-059] Lọc khoản trả theo hạn ở JST + test biên ngày | 2 × 4 → 8 | 2 × 4 → **8** | Giữ 8 — 以内 bao gồm ngày hạn, ngày JST, theo kỳ: logic nhiều biến. |
+| #207 [WU-067] UI SCR-26 form + tải CSV | 3 × 2 → 6 | 3 × 3 → **9** | Sửa Complexity 2 → 3, SWP 6 → 9 — tải CSV phải kiểm từng dòng, báo lỗi từng dòng, chặn khi kỳ đã 確定, phân quyền. |
+| #335 [WU-065] Hoàn thiện production — xử lý lỗi, test bổ sung, kiểm quyền | 2 × 3 → 6 | 2 × 3 → **6** | Giữ 6. |
+| #342 [SCR-31] 画面設計 — screen spec + cấp API-ID | 3 × 4 → 12 | 2 × 3 → **6** | Chấm lại theo quy tắc R2 — SCR-31 ở LAB-1 = M. |
+| #234 [WU-076] Đo dump + sao chép trong lúc chạy tải cao điểm FIG-LOAD-01 (điều kiện ADR-010) | 5 × 5 → 25 | 5 × 5 → **25** | Giữ 25 — hạ tầng toàn hệ thống, kết quả bất định, là điều kiện của ADR-010. |
+| #241 [WU-079] Dựng thử Postgres + Auth / API ở Osaka | 5 × 5 → 25 | 5 × 5 → **25** | Giữ 25 — hạ tầng toàn hệ thống, phụ thuộc bên ngoài (giới hạn Supabase). |
+| #243 [WU-081] Dữ liệu + kịch bản tải FIG-LOAD-01 | 5 × 5 → 25 | 5 × 3 → **15** | Sửa Complexity 5 → 3, SWP 25 → 15 — "NFR" không đồng nghĩa bất định; tạo dữ liệu và kịch bản tải là việc xác định, độ phức tạp nằm ở nhiều kịch bản (quy tắc R1). |
+| #359 [SCR-37] 実装 1/3 — API đọc / ghi | 2 × 3 → 6 | 2 × 3 → **6** | Chấm lại theo quy tắc R2 — SCR-37 ở LAB-1 = M. |
+| #380 [結合テスト] Delta → giá trị hiệu lực ở màn đọc, CSV đối soát 「調整済み」, báo cáo ngày | 5 × 4 → 20 | 5 × 4 → **20** | Giữ 20 — xuyên nhiều chức năng, logic tiền. |
+
+Kết quả mẫu so với bản nháp: 6 giữ nguyên, 1 giữ tổng nhưng sửa lý do (#175), 7 đổi (5 theo R2, #243 theo R1, #207 riêng).
+
+**Quy tắc sửa có hệ thống (PL quyết 2026-10-30, áp cho mọi item cùng loại, không chỉ mẫu)** — đã thêm vào thang điểm trong
+`skills/swp-provisional/SKILL.md` và `swp_rubric.py`, chấm lại toàn bộ. Hai bước tách riêng: dòng R1–R3 = bản nháp → skill
+chấm lại theo quy tắc; dòng PL = skill chấm lại → giá trị PL chốt cho 14 mẫu; dòng tổng = bản nháp → giá trị đã ghi lên Project.
+
+| # | Quy tắc | Item áp | Item đổi SWP | SWP trước → sau |
 |---|---|---|---|---|
-| #271 [SCR-04] 画面設計 — screen spec + cấp API-ID | 3 × 4 → **12** (thấp) | | | độ tin cậy thấp (màn 概算) |
-| #307 [SCR-17] 実装 1/3 — API đọc / ghi | 2 × 1 → **2** (thấp) | | | SWP thấp nhất; độ tin cậy thấp (màn 概算) |
-| #308 [SCR-17] 実装 2/3 — màn chính | 2 × 1 → **2** (thấp) | | | SWP thấp nhất |
-| #310 [WU-094] Truy vấn + bộ cột RPT-04 滞留引渡し・引渡し例外 | 3 × 2 → **6** (vừa) | | | ngẫu nhiên (seed 20261030) |
-| #175 [WU-052] Hàm giá trị hiệu lực (gốc + DBT-21) | 4 × 2 → **8** (thấp) | | | độ tin cậy thấp (không có dấu hiệu Complexity) |
-| #194 [WU-059] Lọc khoản trả theo hạn ở JST + test biên ngày | 2 × 4 → **8** (cao) | | | Constraint = 完納奨励金 |
-| #207 [WU-067] UI SCR-26 form + tải CSV | 3 × 2 → **6** (vừa) | | | Constraint = 完納奨励金 |
-| #335 [WU-065] Hoàn thiện production — xử lý lỗi, test bổ sung, kiểm quyền | 2 × 3 → **6** (cao) | | | Constraint = 完納奨励金 |
-| #342 [SCR-31] 画面設計 — screen spec + cấp API-ID | 3 × 4 → **12** (thấp) | | | độ tin cậy thấp (màn 概算) |
-| #234 [WU-076] Đo dump + sao chép trong lúc chạy tải cao điểm FIG-LOAD-01 (điều kiện ADR-010) | 5 × 5 → **25** (cao) | | | SWP cao nhất (hòa điểm → rải theo issue cha) |
-| #241 [WU-079] Dựng thử Postgres + Auth / API ở Osaka | 5 × 5 → **25** (vừa) | | | SWP cao nhất |
-| #243 [WU-081] Dữ liệu + kịch bản tải FIG-LOAD-01 | 5 × 5 → **25** (vừa) | | | SWP cao nhất |
-| #359 [SCR-37] 実装 1/3 — API đọc / ghi | 2 × 3 → **6** (thấp) | | | độ tin cậy thấp (màn 概算) |
-| #380 [結合テスト] Delta → giá trị hiệu lực ở màn đọc, CSV đối soát 「調整済み」, báo cáo ngày | 5 × 4 → **20** (vừa) | | | ngẫu nhiên (seed 20261030) |
+| R1 | Complexity 5 chỉ khi kết quả bất định (đo đạc, phụ thuộc bên ngoài, yêu cầu chưa chốt). Việc chủ đề NFR nhưng làm theo quy trình xác định → chấm theo độ phức tạp thực tế. | 7 | 7 | 135 → 79 (−56) |
+| R2 | Màn 概算 (画面設計 và 実装 k/n): Scope 2; Complexity theo độ phức tạp màn ở LAB-1 (`04_screens.yaml`): S → 2, M → 3, L → 4. | 73 | 57 | 427 → 452 (+25) |
+| R3 | Issue 要確認 (đi hỏi làm rõ): Scope 1 × Complexity 2 = 2. | 4 | 4 | 20 → 8 (−12) |
+| PL | PL chốt 14 mẫu (skill chấm lại → Bạn chốt): đổi #241 10 → 25, #243 20 → 15, #207 6 → 9; #175 đổi trục, giữ tổng | 14 | 3 | 137 → 150 (+13) |
+| | **Tổng mọi item lá** | 286 | 68 | **2,546 → 2,516 (−30)** |
 
-Lý do từng trục của mỗi mẫu: báo cáo HTML §2 và `swp-report/swp-scores.yaml`. PL điền `pl_final` / `pl_reason` ở file YAML
-(cột "Bạn chốt" / "Lý do" ở bảng này cập nhật theo).
+- **R1** đổi #240, #372 (viết / sửa thủ tục restore: 5 → 2), #368〜#370 (security test: Complexity 5 → 3, 25 → 15), #243 (luật
+  cho 5 × 4 = 20 vì mô tả issue cha có «đồng thời»; PL chốt 5 × 3 = 15), #241 (luật hạ còn 5 × 2 = 10 vì bất định chỉ có ở issue
+  cha; PL giữ 25 — phụ thuộc bên ngoài «giới hạn Supabase» không có trong mô tả nên luật không thấy được). Giữ 5 vì đo đạc / yêu cầu chưa chốt: #234, #242, #244, #316, #373 (đo
+  RTO / p95 / thời gian), #235, #262 (câu hỏi khách, 未決).
+- **R2** áp cho 73 sub-issue màn 概算 của 19 màn (mọi `実装 k/n`, không chỉ `/3`; SCR-34〜36 cùng S). 16 item không đổi vì luật cũ đã
+  cho cùng điểm. Lên: màn L (SCR-09 / 12 / 16) và phần 3/3 "biến thể, xử lý lỗi, test"; xuống: 画面設計 Scope 3 → 2, màn S.
+- **R3** áp cho #17, #116, #125, #158: 5 → 2.
+- Cách áp khi cài luật (để PL xác nhận): bất định phải là của **chính item** — mô tả issue cha chỉ cho Complexity tối đa 4 (nếu không,
+  #240 / #372 viết thủ tục vẫn 5 vì issue cha có «RTO»).
 
 ## 3. Cách quy ra giờ
 
@@ -90,25 +114,26 @@ nên chỉ dùng cấu trúc epic → story → task làm tham khảo. Mọi con
 
 ## 4. Tổng theo epic
 
-Chỉ cộng item lá. MD = giờ / 7.5. Tổng SWP = **SWP tạm, bản nháp** (chưa review, chưa ghi Project).
+Chỉ cộng item lá. MD = giờ / 7.5. Tổng SWP = **SWP đã review** (PL quyết mẫu + R1–R3), đã ghi lên trường `SWP` của Project #2
+(cha / epic trên Project = tổng con, đọc lại bằng API khớp). Giờ / SWP so với tỉ lệ chung 1.23 h / SWP (quy tắc 6, ngưỡng ±50%).
 
-| Epic | Số issue (issue / sub-issue / lá) | Tổng SWP | Tổng giờ | MD | Ghi chú (giờ Sprint 1 / 2 / 3 / backlog) |
-|---|---|---|---|---|---|
-| #1 E01 基盤・認証・権限 | 13 / 20 / 26 | 240 | 262.5 | 35.0 | 33.5 / 98 / 25 / 106 |
-| #33 E02 参加者・参加根拠（許可／承認） | 11 / 17 / 21 | 137 | 227.5 | 30.3 | 20 / 12.5 / 67.5 / 127.5 |
-| #57 E03 ロット・目利き／下見 | 8 / 18 / 19 | 136 | 225 | 30.0 | 12.5 / 18.5 / 9 / 185 |
-| #77 E04 相対取引 | 6 / 12 / 14 | 106 | 183.5 | 24.5 | 0 / 0 / 0 / 183.5 |
-| #89 E05 せり結果 | 4 / 12 / 12 | 76 | 148 | 19.7 | 0 / 0 / 22.5 / 125.5 |
-| #101 E06 引渡し | 7 / 18 / 19 | 122 | 224.5 | 29.9 | 1.5 / 0 / 0 / 223 |
-| #27 E07 業務日・締め・締め解除 | 13 / 30 / 36 | 263 | 362 | 48.3 | 23 / 12.5 / 37.5 / 289 |
-| #102 E08 調整要求 | 8 / 20 / 20 | 154 | 209 | 27.9 | 18 / 0 / 0 / 191 |
-| #151 E09 規則・料率版 | 6 / 14 / 14 | 112 | 148 | 19.7 | 25 / 20 / 22 / 81 |
-| #150 E10 完納奨励金 | 14 / 21 / 27 | 268 | 259 | 34.5 | 11 / 0 / 0 / 248 · Constraint 完納奨励金 |
-| #22 E11 監査・共通 | 9 / 19 / 22 | 184 | 249.5 | 33.3 | 62.5 / 22.5 / 0 / 164.5 |
-| #13 E12 インフラ・NFR | 13 / 31 / 33 | 416 | 349 | 46.5 | 36 / 22 / 46 / 245 · B3a +security test #367, restore lần 2 #371 |
-| #247 E13 テスト・移行・文書 | 12 / 20 / 23 | 332 | 244 | 32.5 | 0 / 26 / 20 / 198 · B3a +5 luồng test tích hợp |
-| **Tổng** | **124 / 252 / 286** | **2,546** | **3091.5** | **412.2** | |
-| **Riêng 完納奨励金** (Constraint) | 15 / 24 / 30 | **320** | **291** | **38.8** | 9.4% tổng giờ; gồm D33 46h, RPT-07 10h (sub-issue ở E07), câu hỏi #158 1h, luồng test tích hợp #381 22h (E13) |
+| Epic | Số issue (issue / sub-issue / lá) | Tổng SWP | Tổng giờ | Ghi chú |
+|---|---|---|---|---|
+| #1 E01 基盤・認証・権限 | 13 / 20 / 26 | 224 | 262.5 | 35.0 MD · Sprint 33.5 / 98 / 25 / backlog 106 · SWP nháp 240 (R2 SCR-02 / 04; R3 #17) · giờ / SWP −5% |
+| #33 E02 参加者・参加根拠（許可／承認） | 11 / 17 / 21 | 135 | 227.5 | 30.3 MD · 20 / 12.5 / 67.5 / 127.5 · nháp 137 (R2 SCR-07) · +37% |
+| #57 E03 ロット・目利き／下見 | 8 / 18 / 19 | 147 | 225 | 30.0 MD · 12.5 / 18.5 / 9 / 185 · nháp 136 (R2 SCR-09 = L) · +25% |
+| #77 E04 相対取引 | 6 / 12 / 14 | 117 | 183.5 | 24.5 MD · 0 / 0 / 0 / 183.5 · nháp 106 (R2 SCR-12 = L) · +28% |
+| #89 E05 せり結果 | 4 / 12 / 12 | 82 | 148 | 19.7 MD · 0 / 0 / 22.5 / 125.5 · nháp 76 (R2 SCR-14) · **+47%** sát ngưỡng: WU-033〜035 sửa từ prototype, giờ gồm +25% hoàn thiện production, 4 / 12 lá chạm trần 15h — SWP không tính phần này; không sửa giờ |
+| #101 E06 引渡し | 7 / 18 / 19 | 143 | 224.5 | 29.9 MD · 1.5 / 0 / 0 / 223 · nháp 122 (R2 SCR-16 = L, SCR-17; R3 #116) · +28% (nháp +52%) |
+| #27 E07 業務日・締め・締め解除 | 13 / 30 / 36 | 252 | 362 | 48.3 MD · 23 / 12.5 / 37.5 / 289 · nháp 263 (R2 SCR-29; R3 #125) · +17% |
+| #102 E08 調整要求 | 8 / 20 / 20 | 160 | 209 | 27.9 MD · 18 / 0 / 0 / 191 · nháp 154 (R2 SCR-32) · +6% |
+| #151 E09 規則・料率版 | 6 / 14 / 14 | 104 | 148 | 19.7 MD · 25 / 20 / 22 / 81 · nháp 112 (R2 SCR-25) · +16% |
+| #150 E10 完納奨励金 | 14 / 21 / 27 | 268 | 259 | 34.5 MD · 11 / 0 / 0 / 248 · Constraint 完納奨励金 · nháp 268 (#207 +3 theo PL, #158 −3 theo R3) · −21% |
+| #22 E11 監査・共通 | 9 / 19 / 22 | 171 | 249.5 | 33.3 MD · 62.5 / 22.5 / 0 / 164.5 · nháp 184 (R2 SCR-30 / 31 / 34〜36) · +19% |
+| #13 E12 インフラ・NFR | 13 / 31 / 33 | 381 | 349 | 46.5 MD · 36 / 22 / 46 / 245 · nháp 416 (R1 −46: security test, thủ tục restore, #243; R2 SCR-33 / 37 / 38 +11) · −25% |
+| #247 E13 テスト・移行・文書 | 12 / 20 / 23 | 332 | 244 | 32.5 MD · 0 / 26 / 20 / 198 · nháp 332 · **−40%**: mỗi đoạn luồng 結合テスト là sub-issue 10–14h nhưng giữ Scope 5 (xuyên chức năng) → giờ / SWP thấp có tính cấu trúc; không sửa giờ |
+| **Tổng** | **124 / 252 / 286** | **2,516** | **3091.5** | 412.2 MD · nháp 2,546 (−30) · không epic nào lệch quá ±50% |
+| **Riêng 完納奨励金** (Constraint) | 15 / 24 / 30 | **320** | **291** | 38.8 MD · 9.4% tổng giờ, 12.7% tổng SWP · giờ / SWP 0.91 (−26%) · gồm D33 46h, RPT-07 10h (sub-issue ở E07), câu hỏi #158 (R3: 5 → 2), luồng test tích hợp #381 22h (E13); nháp 320 |
 
 **Tải theo 担当(仮) × Iteration** (giờ; trần 52.5h / người / sprint, PM 30h):
 
@@ -168,8 +193,8 @@ giao hàng, đối soát, kế toán, 完納奨励金, điều chỉnh, tranh ch
 báo cáo thành một sub-issue và ước lại: 9 báo cáo ngày trong #136 (6–14h / báo cáo, RPT-05 / 06 chờ #125),
 3 báo cáo tháng trong #141 (8–10h). Phần báo cáo LAB-5 = 166h = 22.1 MD so với LAB-1 (12 × 3 MD + SCR-28 + batch FT-12-04)
 × 1.3 ≈ 59.5 MD. Vẫn thấp vì LAB-5 dùng **một** màn SCR-28 và **một** API xuất CSV chung cho 12 báo cáo, còn LAB-1 tính màn + lọc + CSV
-riêng cho từng báo cáo. Còn rủi ro ước thiếu → kiểm chéo bằng SWP: bản nháp B3a cho E07 1.38 h / SWP, +13% so với tỉ lệ chung
-(trong ±50%) — chưa thấy dấu hiệu ước thiếu; chờ PL review SWP.
+riêng cho từng báo cáo. Còn rủi ro ước thiếu → kiểm chéo bằng SWP: SWP đã review (B3b) cho E07 1.44 h / SWP, +17% so với tỉ lệ chung
+(trong ±50%) — chưa thấy dấu hiệu ước thiếu.
 
 **WU sửa từ prototype:** đã rà 49 WU (80 item lá). Giờ B2 chỉ tính phần sửa, chưa tính hoàn thiện lên production → cộng +25% cho item
 DB / API / UI / batch / hạ tầng (§3 bước 5): **+166.5h (+22.2 MD)**; 3 item vượt 15h tách thêm sub-issue "Hoàn thiện production".
@@ -182,6 +207,6 @@ DB / API / UI / batch / hạ tầng (§3 bước 5): **+166.5h (+22.2 MD)**; 3 i
 2. **E07 báo cáo** dùng chung màn + API (−37 MD so với cách tính từng báo cáo của LAB-1).
 3. **Tái dùng prototype** ở E04 / E06 / E11 (route, RPC, khung chung đã có) dù đã cộng 25% hoàn thiện.
 4. **E12**: B3a đã thêm security test và diễn tập restore lần 2 (+52h, PL quyết); còn thiếu chuyển kho cold FT-15-02.
-Thay đổi ở PREMISE.md làm tăng giờ (P1-1〜P1-5: 74h; P1-6: 879h), không làm giảm. E07, E11, E12 kiểm chéo bằng SWP ở B3 (quy tắc 6) — nháp B3a: E07 +13%, E11 +12%, E12 −31% so với tỉ lệ chung
-1.21 h / SWP (trong ±50%); E05 +60%, E06 +52% vượt ngưỡng → rà lại sau khi PL chốt SWP.
+Thay đổi ở PREMISE.md làm tăng giờ (P1-1〜P1-5: 74h; P1-6: 879h), không làm giảm. E07, E11, E12 kiểm chéo bằng SWP đã review (B3b, quy tắc 6): E07 +17%, E11 +19%, E12 −25% so với tỉ lệ chung
+1.23 h / SWP (trong ±50%); E05 / E06 nháp vượt ngưỡng (+60% / +52%) nay +47% / +28% — không epic nào vượt ±50% (§4).
 

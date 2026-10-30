@@ -1,0 +1,11 @@
+# Giải thích kiểm chéo giờ / SWP theo epic (bản chốt B3b) — render-swp-report.py --notes đọc file này.
+# Chỉ ghi epic lệch > ±50% hoặc sát ngưỡng (≥ ±40%); giờ / SWP chỉ để rà, không dùng sửa giờ hay SWP.
+E05: >-
+  +47%, trong ngưỡng nhưng sát. 3 WU せり (WU-033〜035) đều sửa từ prototype nên giờ đã gồm +25% hoàn thiện production và
+  4 / 12 lá chạm trần 15h (API-036 確定, API-037 差戻し + API-038 取消, form PC) — SWP không tính phần hoàn thiện này và không
+  tăng theo số endpoint trong một lá. Bản nháp +60% chủ yếu do SCR-14 (概算) chấm thấp 2 × 2; R2 nâng lên 2 × 3 (LAB-1 = M).
+  Không sửa giờ.
+E13: >-
+  −40%, trong ngưỡng. 14 / 23 lá là 結合テスト / E2E / quyền chấm Scope 4–5 (xuyên chức năng) × 3–4 = 12–20 SWP, nhưng mỗi đoạn
+  luồng là một sub-issue 10–14h (quy tắc giờ 8) — trục Scope đo độ rộng của từng đoạn, không đo khối lượng, nên giờ / SWP thấp
+  có tính cấu trúc. Migration (#259, #260) cũng Scope 5 nhưng 8–10h. Không sửa giờ.
