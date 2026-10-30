@@ -13,8 +13,8 @@
 - **Nguồn break:** bản LAB-4 = repo `product-a-fishmarket` commit **`576480b`** ("lab4: final decisions, PL remarks"),
   ngày commit **2026-10-29 20:58 (+07:00)**; nguồn break là `specs/_meta/lab5_handoff.yaml` — 95 đơn vị công việc WU-001〜095.
 - **PREMISE.md: có thay đổi** so với LAB-4 — 6 dòng spec thêm / sửa (thiết kế màn SCR-20 và SCR-28, mở rộng 調整要求 sang
-  支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung, 19 màn baseline LAB-1 ngoài 16 màn cốt lõi), 9 giả định bổ sung,
-  6 hướng đã chốt.
+  支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung, 19 màn baseline LAB-1 ngoài 16 màn cốt lõi), 12 giả định bổ sung
+  (P2-1〜P2-12; mới ở B4: giới hạn Supabase, Sprint 1 giả lập), 9 hướng đã chốt.
 - **Backlog (sau B3a):** 13 epic · 124 issue · 252 sub-issue (286 item lá) · **3,091.5h = 412.2 MD**; riêng 完納奨励金 291h (40 item).
   B3a thêm theo quyết định PL: 5 issue test tích hợp theo luồng nghiệp vụ (130h, PREMISE P3-7), security test và diễn tập restore
   lần 2 (52h, P3-8); #233 ghi rõ là load test điều kiện của ADR-010.
@@ -23,8 +23,10 @@
 - **SWP (B3a–B3b):** chấm 286 item lá bằng skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
   PL quyết 14 mẫu + 3 quy tắc R1–R3, chấm lại toàn bộ: nháp 2,546 → **đã review 2,516**; **đã ghi SWP lên Project #2**
   cho 389 item (cha / epic = tổng con, đọc lại khớp).
-- **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 243h) · Sprint 2 (232h) · Sprint 3 (249.5h);
-  211 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
+- **Sprint giả lập: Sprint 1 đã chạy (giả lập)** — Iteration `Sprint 1 (giả lập)` 2026-11-02〜11-15; bài làm ngày 2026-10-30 nên
+  toàn bộ tiến độ là kịch bản (`progress-data/sprint1.yaml`), ghi lên Project bằng `tools/simulate-sprint.py`. Cuối Sprint 1:
+  29 item lá · Done 20 (182 / 281 SWP, 64.8%; issue Done đã đóng, SWP giữ nguyên) · carry-over 9 (In Review 3, In Progress 5, Todo 1).
+  Báo cáo tiến độ + burndown + rủi ro: `progress-report.md`. Sprint 2 (232h) · Sprint 3 (249.5h) đã xếp kế hoạch; 211 item lá còn ở backlog.
 
 ## 3. Liên kết
 
@@ -32,20 +34,23 @@
 |---|---|
 | Repo | https://github.com/uyenltt-3707/skr-fms-backlog |
 | GitHub Project "SKR-FMS Backlog" (#2) | https://github.com/users/uyenltt-3707/projects/2 |
-| Báo cáo HTML chấm SWP (bản chốt, SWP tạm) | `swp-report/swp-report-261030-final.html` · nháp `swp-report/swp-report-261030.html` · dữ liệu `swp-report/swp-scores.yaml` |
+| Báo cáo HTML chấm SWP (bản chốt, SWP tạm) | `swp-report/swp-report-261030-final.html` — xem: https://github.com/uyenltt-3707/skr-fms-backlog/blob/main/swp-report/swp-report-261030-final.html · file thô (tải về mở trực tiếp, tự chứa): https://raw.githubusercontent.com/uyenltt-3707/skr-fms-backlog/main/swp-report/swp-report-261030-final.html · nháp `swp-report/swp-report-261030.html` |
+| Báo cáo tiến độ Sprint 1 (giả lập) | `progress-report.md` · burndown `progress-data/burndown-sprint1.png` |
 | Mapping id nội bộ ↔ issue | `tools/issue-map.json` |
 
-Kiểm tra truy cập không đăng nhập: `tools/check-backlog.py --remote` gửi request không cookie / token tới Project và 3 issue mẫu,
-nhận HTTP 200 (2026-10-29). Đã mở thử repo, Project và issue mẫu (#150) bằng cửa sổ ẩn danh của trình duyệt ngày 2026-10-30:
-xem được, không cần đăng nhập.
+Kiểm tra truy cập không đăng nhập (2026-10-30): request không cookie / token tới repo, Project #2, báo cáo HTML (raw) và
+`progress-report.md` → **HTTP 200** (`tools/check-backlog.py --remote` cũng kiểm Project + 3 issue mẫu). Đã mở Project #2 và báo cáo
+HTML bằng **Microsoft Edge chế độ InPrivate (cửa sổ ẩn danh, chạy headless)**: xem được, trang hiện nút "Sign in" (không đăng nhập).
+GitHub hiển thị file HTML dưới dạng mã nguồn — muốn xem báo cáo đã định dạng thì tải file (nút Raw / Download) rồi mở bằng trình
+duyệt; file tự chứa, không cần mạng.
 
 **Cách đọc Project:** view **Board** (cột theo Status) và **Table** (lọc theo mọi trường). Trường:
 
 | Trường | Giá trị |
 |---|---|
-| Status | Todo · In Progress · In Review · Done |
+| Status | Todo · In Progress · In Review · Done — Sprint 1 theo kịch bản giả lập; Done = issue đã đóng; cha / epic cộng dồn từ con |
 | Iteration | Sprint 1–3 (giả lập), 2 tuần / sprint, từ 2026-11-02; trống = backlog |
-| SWP | chỉ ghi SWP **đã review**; B3a mới chấm nháp (SWP tạm, trong `swp-report/`), trường trên Project vẫn trống |
+| SWP | SWP tạm **đã review** (B3b): lá = điểm PL đã duyệt, cha / epic = tổng con; issue đã đóng giữ nguyên |
 | 見積時間 / Estimate (hours) | item lá: ước trực tiếp; issue cha / epic: tổng con |
 | 担当(仮) | FE-A · FE-B · BE-A · BE-B · QA-A · PM (giả định, không gán tài khoản thật) |
 | Item Type | Epic · Issue · Sub-issue (tên "Type" bị GitHub giữ chỗ) |
@@ -53,23 +58,27 @@ xem được, không cần đăng nhập.
 
 ## 4. Cấu trúc repo
 
+Mọi mục ở gốc repo:
+
 | File / thư mục | Nội dung |
 |---|---|
 | `README.md` | Tổng quan, liên kết, cấu trúc, bảng spec → epic (file này) |
 | `PREMISE.md` | Backlog khác bản LAB-4 ở đâu: spec thêm / sửa, giả định bổ sung, hướng đã chốt |
 | `task-breakdown.md` | Nguyên tắc chia task, spec → issue, hạng mục 完納奨励金, chỗ hở spec LAB-4 |
 | `estimate.md` | Báo cáo SWP (mẫu + quyết định PL, quy tắc R1–R3), cách quy ra giờ, tổng theo epic, so với LAB-1 |
-| `progress-report.md` | Báo cáo tiến độ Sprint giả lập (bước sau) |
-| `AI-report.md` | Skill / prompt đã dùng, review output AI, điểm cần cải thiện |
-| `process_log.md` | Nhật ký thao tác theo thời gian |
-| `tools/` | Dữ liệu backlog và script: `backlog.yaml` (dữ liệu tự viết), `create-issues.py` (tạo / đồng bộ issue + Project, idempotent), `check-backlog.py` (kiểm tra), `scan-content.py` (quét chép nguyên văn / email / khóa), `backlog_model.py`, `github_api.py`, `project_fields.py` (module dùng chung), `issue-map.json` (mapping sinh ra), `setup-github-project.sh` (dựng Project, B1) |
-| `swp-report/` | Báo cáo HTML tự chứa của skill chấm SWP + `swp-scores.yaml` (điểm từng item, cột `pl_final` / `pl_reason` cho PL) |
-| `skills/swp-provisional/` | Skill chấm SWP **TẠM** tự viết: `SKILL.md` + `scripts/` (lấy dữ liệu, chấm, chọn mẫu, báo cáo, ghi Project có chốt an toàn, cài sang `.claude/skills/`) |
-| `.gitignore` | Loại file bí mật, file tạm, thư mục công cụ cục bộ (`.claude/`, `plans/`) |
+| `progress-report.md` | Báo cáo tiến độ Sprint 1 giả lập: Iteration, trạng thái (số đọc từ Project), burndown, rủi ro trễ; phụ lục お客様向けサマリー（JA） |
+| `AI-report.md` | Skill / prompt đã dùng, review output AI, điểm đặc biệt và điểm cần cải thiện |
+| `process_log.md` | Nhật ký thao tác theo thời gian (B1〜B5) |
+| `progress-data/` | Dữ liệu Sprint giả lập: `sprint1.yaml` (lịch sử trạng thái theo ngày + lý do), `burndown-sprint1.png` / `.csv`, `self-check-progress-report.txt` (AI tự kiểm số liệu báo cáo), `review-progress.md` (reviewer độc lập) |
+| `swp-report/` | Báo cáo HTML tự chứa của skill chấm SWP (bản chốt + nháp), `swp-scores.yaml` (điểm từng item, quyết định PL), `cross-check-notes.yaml` (giải thích kiểm chéo giờ / SWP) |
+| `skills/swp-provisional/` | Skill chấm SWP **TẠM** tự viết: `SKILL.md` (thang điểm, R1–R3) + `scripts/` (lấy dữ liệu, chấm, chọn mẫu, báo cáo, ghi Project có chốt an toàn, cài sang `.claude/skills/`) |
+| `tools/` | Dữ liệu backlog và script: `backlog.yaml` (dữ liệu tự viết, nguồn duy nhất), `create-issues.py` (tạo / đồng bộ issue + Project, idempotent), `check-backlog.py` (kiểm backlog, SWP, trạng thái Sprint 1, truy cập ẩn danh), `simulate-sprint.py` (ghi Sprint giả lập + burndown + bảng báo cáo), `check-progress-report.py` (AI tự kiểm số liệu báo cáo tiến độ), `scan-content.py` (quét chép nguyên văn / email / khóa), module dùng chung `backlog_model.py`, `github_api.py`, `project_fields.py`, `sprint_sim.py`, `sprint_report_render.py`; `issue-map.json` (mapping sinh ra), `setup-github-project.sh` (dựng Project, B1) |
+| `.gitignore` | Loại file bí mật, file tạm, cache Python, thư mục công cụ cục bộ (`.claude/`, `plans/`, `tmp/` — không có trên repo) |
 | `.gitattributes` | Ép LF cho script shell |
 
-Chạy lại: `python tools/create-issues.py` (cần `gh` đăng nhập scope `repo` + `project`, Python có PyYAML), rồi
-`python tools/check-backlog.py --remote` và `python tools/scan-content.py`.
+Chạy lại (cần `gh` đăng nhập scope `repo` + `project`, Python có PyYAML; vẽ burndown cần matplotlib):
+`python tools/create-issues.py` → `python tools/simulate-sprint.py` → `python tools/check-backlog.py --remote` →
+`python tools/check-progress-report.py` → `python tools/scan-content.py`.
 
 ## 5. Spec → epic
 

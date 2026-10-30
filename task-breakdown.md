@@ -30,7 +30,7 @@ Issue cha / epic `Done` khi mọi con `Done`.
 | Issue | `Issue` | sub-issue thật của epic | lá: ước trực tiếp · cha: tổng con | lá: theo loại · cha: người nhiều giờ nhất | lá: theo kế hoạch · cha: sprint chung của con, khác nhau thì trống |
 | Sub-issue | `Sub-issue` | sub-issue thật của issue | ước trực tiếp (≤ 15h) | theo loại | theo kế hoạch |
 
-- Mọi item: `Status = Todo` khi tạo (script không ghi đè tiến độ khi chạy lại), `Constraint = 完納奨励金` cho E10, issue D33, RPT-07 và luồng test tích hợp #381, còn lại `なし`.
+- Mọi item: `Status = Todo` khi tạo (script không ghi đè tiến độ khi chạy lại); Sprint 1 **giả lập** (B4): Status item lá theo `progress-data/sprint1.yaml`, Done = issue đã đóng, cha / epic cộng dồn (`tools/simulate-sprint.py`); `Constraint = 完納奨励金` cho E10, issue D33, RPT-07 và luồng test tích hợp #381, còn lại `なし`.
 - `SWP`: chỉ ghi SWP đã review. B3a chấm nháp bằng skill tạm `skills/swp-provisional/` (kết quả ở `swp-report/`); B3b PL review (mẫu + R1–R3), đã ghi Project — lá = điểm đã review, cha / epic = tổng con.
 - Nhãn `要確認`: issue cần hỏi lại PL / khách; lọc trên Project bằng `label:要確認`.
 - 担当(仮) theo loại: DB / API / batch → BE-A, BE-B · UI → FE-A, FE-B · test → QA-A · tài liệu / thiết kế / 要確認 → PM.

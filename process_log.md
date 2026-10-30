@@ -97,3 +97,28 @@ Chưa làm (chờ PL): quyết định 14 mẫu (`pl_final` / `pl_reason`), ghi 
 | 14:38 | Đọc lại: dry-run lần 2; `check-backlog.py --remote` | 0 item cần ghi; 389 / 389 có SWP khớp `swp-scores.yaml`, 103 cha / epic = tổng con thật, tổng lá 2,516; ẩn danh HTTP 200; ĐẠT |
 | 14:45 | Sửa theo review: gắn R1 khi chủ đề NFR chỉ ở issue cha, mẫu cũ rời ảnh chụp / `pl_complexity` trống không crash, tách ảnh hưởng quy tắc với PL chốt, check bỏ qua lá đã đóng giữ SWP cũ; chấm lại, xuất lại | Giá trị không đổi (Project 0 item cần ghi); R1 7 · R2 57 / 73 · R3 4 item đổi; PL chốt mẫu +13 |
 | 14:50 | Cập nhật `estimate.md` (§1, §2, §4, §5), `AI-report.md` (§1, §2), README, task-breakdown, progress-report | — |
+
+## 2026-10-30 — B4 + B5: xác nhận B3b, Sprint 1 giả lập, báo cáo tiến độ, hoàn thiện
+
+| Giờ | Việc | Kết quả |
+|-----|------|---------|
+| 15:33 | Nhận yêu cầu B4 + B5; đọc README, progress-report, AI-report, script đồng bộ | Sprint 1: 29 item lá, 243h, 281 SWP |
+| 15:36 | Phần 0: PL xác nhận cách cài R1 / R2 → ghi `estimate.md` §2, `SKILL.md`; thêm mô tả #241 (giới hạn Supabase) vào `backlog.yaml` | dry-run: chỉ #241 đổi → đồng bộ: 1 cập nhật; SWP không đổi |
+| 15:39 | Viết kịch bản `progress-data/sprint1.yaml` (lịch sử theo ngày + lý do trễ) | Done 20 · In Review 3 · In Progress 5 · Todo 1 |
+| 15:41 | Viết `sprint_sim.py`, `sprint_report_render.py`, `simulate-sprint.py`; cài matplotlib vào venv | — |
+| 15:43 | `simulate-sprint.py --dry-run` | 48 item cần ghi (29 lá + cha / epic cộng dồn), 20 đóng |
+| 15:44 | Chạy thật | Ghi xong Project; điền bảng lỗi (regex marker không nhận khối rỗng) → sửa |
+| 15:46 | Chạy lại | 0 item cần ghi (idempotent); bảng + `burndown-sprint1.png` / `.csv` sinh từ Project; ảnh thiếu glyph 〜 → đổi ký tự |
+| 15:50 | `check-backlog.py --remote` thêm kiểm trạng thái Sprint 1 | ĐẠT: 389 / 389 SWP khớp (issue đã đóng giữ SWP), 29 lá khớp `sprint1.yaml`, ẩn danh HTTP 200 |
+| 15:52 | `check-progress-report.py` (AI tự kiểm) | Lần 1: 1 LỆCH (carry-over nhắc #14) + lỗi bộ tách số của chính script; sửa lời văn «bám gần», «BE-B thấp nhất» → 12 đạt, 0 lệch |
+| 15:55 | Agent `reviewer` độc lập rà `progress-report.md` với Project (nền) | Vòng 1 (15:58): số liệu khớp; CHƯA ĐẠT — 3 High, 7 Medium, 8 Low |
+| 15:56 | README (mục 2–4), AI-report (§1–§3), PREMISE (P2-7 sửa 240 → 243h; thêm P2-11, P2-12), task-breakdown, estimate | README sửa số giả định cũ (9 → 12, hướng chốt 6 → 9) |
+| 16:05 | `scan-content.py` mở rộng sang `.html`, `.csv` | ĐẠT (428 văn bản) |
+| 15:59 | AI kiểm lại 3 High bằng dữ liệu (tải Sprint 2 + carry-over, phụ thuộc #234 ← I-075, câu JA) | Đúng cả 3 |
+| 16:00 | Sửa: bảng tải Sprint 2 sinh từ Project, kết luận đầu §2, item bị chặn, rủi ro viết lại, JA viết lại; gom sinh bảng vào `build_blocks` | Tự kiểm 18 đạt, 0 lệch |
+| 16:04 | Reviewer vòng 2 | 3 High đóng; mới N1 (rút sang Sprint 3 làm Sprint 3 vượt), 3 Low, ghi chú gắn nhầm #23 (lỗi `replace` của AI) |
+| 16:06 | Đề xuất rút item thành dữ liệu `replan_push_to_sprint3`; bảng tải Sprint 3; câu ảnh hưởng mốc; tách ghi chú nội bộ khỏi phụ lục JA | Tự kiểm 22 đạt, 0 lệch |
+| 16:08 | Reviewer vòng 3 | **ĐẠT** (2 Low) → sửa câu «tối đa ~0.3 sprint, BE-B gánh phần vượt cuối»; tự kiểm 23 đạt, 0 lệch |
+| 16:10 | Request không đăng nhập: repo, Project, báo cáo HTML (raw), `progress-report.md`; Edge InPrivate headless mở Project + báo cáo HTML | HTTP 200 cả 5; trang hiện "Sign in" (không đăng nhập) |
+| 16:12 | `check-backlog.py --remote`; `scan-content.py` (thêm bỏ khung bảng Markdown khi so — 1 phát hiện giả là dòng tiêu đề bảng) | ĐẠT; quét ĐẠT (429 văn bản) |
+| 16:14 | Commit + push `sprint1 simulation, progress report, README, AI-report`; request không đăng nhập lại sau push | xem `README.md` §3 |

@@ -1,0 +1,66 @@
+# Sprint 1 — dữ liệu GIẢ LẬP (không phải tiến độ thật). Bài thực hiện ngày 2026-10-30, trước khi Sprint 1 bắt đầu.
+# Kịch bản do PL đặt: phần lớn item xong; một số trễ / carry-over vì nguyên nhân gắn với backlog
+# (BE nút cổ chai và review chậm, chờ trả lời issue 要確認, giới hạn Supabase phát sinh việc thêm, chờ PL duyệt thiết kế).
+#
+# history: [ngày, Status] theo thứ tự thời gian; Status cuối ngày = mục cuối cùng có ngày ≤ ngày đó; chưa có mục nào = Todo.
+# SWP KHÔNG lưu ở đây — burndown và bảng trạng thái đọc SWP từ Project #2 (tools/sprint_sim.py).
+# Ghi lên Project: tools/simulate-sprint.py (idempotent: chỉ ghi phần lệch, Done thì đóng issue, không đụng SWP).
+sprint:
+  iteration: "Sprint 1 (giả lập)"
+  start: "2026-11-02"
+  end: "2026-11-15"
+  executed_on: "2026-10-30"
+  workdays: ["2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06",
+             "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13"]
+  # Đề xuất cho Sprint 2 planning (chưa ghi lên Project): rút sang Sprint 3 item Sprint 2 không có item phụ thuộc trong Sprint 2.
+  # Giữ chuỗi ADR-010 (#230, #231, #243, #244). Bảng tải Sprint 3 sau khi rút do script tính từ Project.
+  replan_push_to_sprint3: [12, 264, 31, 222, 67]
+  replan_keep_in_sprint2: [230, 231, 243, 244]
+items:
+  # --- BE-A ---
+  - {number: 2, id: I-001, history: [["2026-11-02", In Progress], ["2026-11-02", In Review], ["2026-11-03", Done]]}
+  - {number: 34, id: I-011, history: [["2026-11-03", In Progress], ["2026-11-04", In Review], ["2026-11-05", Done]]}
+  - {number: 5, id: I-002.2, history: [["2026-11-04", In Progress], ["2026-11-06", In Review], ["2026-11-06", Done]]}
+  - {number: 23, id: I-069, history: [["2026-11-06", In Progress], ["2026-11-06", In Review], ["2026-11-09", Done]]}
+  - {number: 145, id: I-047.1, history: [["2026-11-09", In Progress], ["2026-11-10", In Review], ["2026-11-11", Done]]}
+  - {number: 146, id: I-047.2, history: [["2026-11-11", In Progress]],
+     note: "Bắt đầu muộn: BE-A vừa làm 6 item vừa là người review DB của BE-B (kịch bản: review DB do BE-A làm); BE-A / BE-B được xếp 99–100% trần, không có dư (BE nút cổ chai) — carry-over."}
+  # --- BE-B ---
+  - {number: 9, id: I-004, history: [["2026-11-02", In Progress], ["2026-11-03", In Review], ["2026-11-03", Done]]}
+  - {number: 28, id: I-040, history: [["2026-11-03", In Progress], ["2026-11-04", In Review], ["2026-11-04", Done]]}
+  - {number: 59, id: I-021.1, history: [["2026-11-05", In Progress], ["2026-11-09", In Review], ["2026-11-09", Done]]}
+  - {number: 179, id: I-053.1, history: [["2026-11-09", In Progress], ["2026-11-12", In Review]],
+     note: "Xong code 11-12 nhưng chờ review: DBT-11 đổi nhiều cột, người review được là BE-A đang quá tải (review chậm) — carry-over."}
+  - {number: 180, id: I-053.2, history: [["2026-11-12", In Progress]],
+     note: "Trigger bất biến DBT-12 làm sau DBT-11 (#179); #179 kéo dài nên mới bắt đầu — carry-over."}
+  # --- FE-A ---
+  - {number: 220, id: I-070.2, history: [["2026-11-02", In Progress], ["2026-11-05", In Review], ["2026-11-09", In Progress], ["2026-11-11", In Review]],
+     note: "Review trả lại 11-09 (một số MSG JA map sai mã); sửa xong 11-11, chờ review lại — người đọc được 130 MSG tiếng Nhật ít (review chậm) — carry-over."}
+  - {number: 224, id: I-072.1, history: [["2026-11-05", In Progress], ["2026-11-10", In Review], ["2026-11-11", Done]]}
+  - {number: 15, id: I-006, history: [["2026-11-06", In Progress], ["2026-11-09", In Review], ["2026-11-10", Done]],
+     note: "Bắt đầu sau khi #14 xong (11-05, trễ 2 ngày)."}
+  - {number: 132, id: I-080, history: [["2026-11-10", In Progress], ["2026-11-12", In Review], ["2026-11-12", Done]],
+     note: "Phụ thuộc #14; xong ngày 9 thay vì giữa sprint."}
+  # --- FE-B ---
+  - {number: 14, id: I-077, history: [["2026-11-02", In Progress], ["2026-11-05", In Review], ["2026-11-05", Done]],
+     note: "Trễ 2 ngày: giới hạn Supabase (không chọn được region backup, không có region Osaka) phải xác minh và ghi lại cho DR (#241, ADR-010) — việc thêm ngoài 8h ước."}
+  - {number: 227, id: I-074, history: [["2026-11-06", In Progress], ["2026-11-06", In Review], ["2026-11-06", Done]]}
+  - {number: 219, id: I-070.1, history: [["2026-11-09", In Progress], ["2026-11-10", In Review], ["2026-11-10", Done]]}
+  - {number: 53, id: I-019, history: [["2026-11-10", In Progress], ["2026-11-12", In Review], ["2026-11-13", Done]]}
+  - {number: 225, id: I-072.2, history: [["2026-11-12", In Progress]],
+     note: "FE-B mất thời gian cho #14 (Supabase) nên bắt đầu muộn — carry-over."}
+  # --- QA-A ---
+  - {number: 243, id: I-081.1, history: [["2026-11-06", In Progress]],
+     note: "Chờ môi trường #14 (xong 11-05). Giới hạn Supabase làm phát sinh việc thêm: kịch bản tải phải gồm bước dump + sao chép backup ra ngoài để đo điều kiện ADR-010 — carry-over."}
+  - {number: 244, id: I-081.2, history: [],
+     note: "Chưa bắt đầu: cần dữ liệu + kịch bản #243 — carry-over."}
+  # --- PM ---
+  - {number: 17, id: X-Q1, history: [["2026-11-02", In Progress], ["2026-11-06", Done]], note: "Gửi câu hỏi ngày 1, có trả lời đúng hạn 11-06."}
+  - {number: 116, id: X-Q2, history: [["2026-11-02", In Progress], ["2026-11-06", Done]], note: "Gửi câu hỏi ngày 1, có trả lời đúng hạn 11-06."}
+  - {number: 125, id: X-Q3, history: [["2026-11-02", In Progress], ["2026-11-04", Done]]}
+  - {number: 158, id: X-Q4, history: [["2026-11-02", In Progress]],
+     note: "Khách chưa trả lời định nghĩa 「次期」 sau hạn 11-06 — chặn chốt delta 完納奨励金 (#159, #196) — carry-over."}
+  - {number: 142, id: I-095.1, history: [["2026-11-04", In Progress], ["2026-11-06", In Review], ["2026-11-09", Done]], note: "PL duyệt thiết kế SCR-28 ngày 11-09."}
+  - {number: 131, id: I-093.1, history: [["2026-11-03", In Progress], ["2026-11-06", In Review], ["2026-11-10", Done]], note: "PL duyệt thiết kế SCR-20 ngày 11-10."}
+  - {number: 166, id: X-D33.1, history: [["2026-11-02", In Progress], ["2026-11-09", In Review]],
+     note: "Thiết kế D33 xong 11-09, chờ PL duyệt (ảnh hưởng 4 tài liệu + tiền kỳ sau) — carry-over."}

@@ -9,6 +9,7 @@ Cục bộ (luôn chạy):
 --remote: so trường Project #2 và cha–con thật trên GitHub với YAML (cha = tổng con), thử truy cập ẩn danh.
   Từ B3b SWP phải CÓ trên mọi item: lá = điểm đã review trong swp-scores.yaml (pl_final, không có thì Scope × Complexity);
   cha / epic = tổng SWP các con thật trên Project.
+  Từ B4: trạng thái Sprint 1 giả lập khớp progress-data/sprint1.yaml (sprint_sim.verify_sprint_state).
 
 Chạy:  python tools/check-backlog.py [--handoff PATH] [--remote]
 """
@@ -22,6 +23,7 @@ from pathlib import Path
 import yaml
 
 import backlog_model as bm
+import sprint_sim as ss
 
 REPO_ROOT = bm.TOOLS_DIR.parent
 DEFAULT_HANDOFF = REPO_ROOT.parent / "product-a-fishmarket" / "specs" / "_meta" / "lab5_handoff.yaml"
@@ -164,6 +166,10 @@ def check_remote(meta, items, by_id):
         if it.parent and parents.get(num) != want_parent:
             errors.append(f"#{num} {it.id}: cha thật = {parents.get(num)}, mong đợi #{want_parent}")
     check_swp(board, parents, expected_swp())
+    sprint, sim = ss.load_sim()
+    sprint_errs = ss.verify_sprint_state(ss.read_board(), sprint, sim)
+    errors.extend(sprint_errs)
+    notes.append(f"Sprint giả lập: {len(sim)} lá {sprint['iteration']} · trạng thái {'khớp' if not sprint_errs else 'LỆCH'} sprint1.yaml")
     notes.append(f"Remote: đối chiếu {len(items)} item với Project #{meta['project_number']}")
     sample = [f"https://github.com/users/{owner}/projects/{meta['project_number']}"]
     sample += [mapping[k]["url"] for k in ("E10", "I-002", "I-062") if k in mapping]

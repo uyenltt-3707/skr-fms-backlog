@@ -1251,7 +1251,7 @@ epics:
         done: "Biên bản diễn tập có số đo RTO; vượt 4 giờ thì báo PL."
         subs:
           - {id: I-079.1, title: "Viết thủ tục restore Osaka", kind: tài liệu, owner: PM, hours: 12, sprint: ~, done: "Người khác làm theo được."}
-          - {id: I-079.2, title: "Dựng thử Postgres + Auth / API ở Osaka", kind: hạ tầng, owner: FE-B, hours: 14, sprint: ~, done: "Ứng dụng đăng nhập được trên bản dựng thử."}
+          - {id: I-079.2, title: "Dựng thử Postgres + Auth / API ở Osaka", kind: hạ tầng, owner: FE-B, hours: 14, sprint: ~, desc: "Phụ thuộc giới hạn bên ngoài của Supabase: không chọn được region lưu backup, không có region Osaka. Vì vậy không dựng lại bằng dịch vụ Supabase có sẵn mà phải tự dựng Postgres + lớp Auth / API ở Osaka từ bản backup đưa ra ngoài; dựng được hay không và mất bao lâu chỉ biết khi làm thử (kết quả bất định). Bổ sung 2026-10-30 theo PL: mô tả cũ không ghi phụ thuộc này nên skill chấm SWP không thấy được.", done: "Ứng dụng đăng nhập được trên bản dựng thử."}
           - {id: I-079.3, title: "Diễn tập ACC-05 đo RTO + cold restore + biên bản", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-079.1, I-079.2], done: "Biên bản có thời gian từng bước."}
       - id: I-080
         wu: [WU-080]

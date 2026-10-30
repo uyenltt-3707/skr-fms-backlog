@@ -77,6 +77,10 @@ khỏi văn bản trước khi chấm; giờ chỉ dùng ở mục kiểm chéo 
 | R2 | Màn 概算 (画面設計 và 実装 k/n): Scope 2; Complexity theo độ phức tạp màn ở LAB-1: S → 2, M → 3, L → 4. | Item có dấu hiệu 概算 và tiêu đề `[SCR-xx] 画面設計` / `[SCR-xx] 実装 k/n` (mọi n, không chỉ /3); độ phức tạp đọc từ `04_screens.yaml` của LAB-1 (`--lab1-screens`, chỉ đọc; thiếu file → dừng). Màn gộp (SCR-34〜36) lấy mức cao nhất. Độ tin cậy vừa. 結合テスト・概算 không thuộc R2. |
 | R3 | Issue 要確認 (đi hỏi làm rõ): Scope 1 × Complexity 2 = 2. | Theo loại item 要確認. |
 
+PL xác nhận cách áp (2026-10-30): bất định phải ở chính item (mô tả cha cho tối đa 4); R2 áp mọi `実装 k/n`; màn gộp lấy mức
+cao nhất; 結合テスト・概算 không áp R2. Bài học: phụ thuộc bên ngoài phải ghi ở **mô tả item** (vd. #241 — giới hạn Supabase), nếu
+không luật không thấy được.
+
 Mẫu PL đã kiểm: `pl_final` + `pl_reason` (bắt buộc), `pl_scope` / `pl_complexity` (tùy chọn, tích phải = `pl_final`).
 Khi PL đã quyết ít nhất một mẫu, chạy lại **giữ nguyên bộ mẫu** (không chọn lại).
 

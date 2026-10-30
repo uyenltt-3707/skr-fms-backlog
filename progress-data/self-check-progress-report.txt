@@ -1,0 +1,107 @@
+# Tự kiểm progress-report.md với Project #2
+ĐẠT  bảng status: 5 dòng số liệu = sinh lại từ Project
+ĐẠT  bảng owner: 6 dòng số liệu = sinh lại từ Project
+ĐẠT  bảng sprint2: 7 dòng số liệu = sinh lại từ Project
+ĐẠT  bảng sprint3: 7 dòng số liệu = sinh lại từ Project
+ĐẠT  bảng burndown: 11 dòng số liệu = sinh lại từ Project
+ĐẠT  carry-over §2 = item chưa Done trên Project [146, 158, 166, 179, 180, 220, 225, 243, 244]
+ĐẠT  mọi item Done đã đóng issue
+ĐẠT  ngày 1 (11-02) không có SWP Done
+ĐẠT  ngày 2–5 lệch tăng mỗi ngày
+ĐẠT  #244 là item SWP cao nhất Sprint 1
+ĐẠT  tỷ lệ Done SWP 64.8% ≈ giờ 64.0%
+ĐẠT  cuối sprint còn 99 / 281 SWP (35.2%)
+ĐẠT  ngày 6–10 lệch mở rộng, chỉ 11-10 thu hẹp
+ĐẠT  3 item SWP lớn nhất chưa Done [166, 243, 244] = 56 SWP
+ĐẠT  BE Sprint 1 dưới kế hoạch (điều kiện thêm BE đã chạm)
+ĐẠT  BE-A / BE-B xếp 99–100% trần (99.0%, 100.0%)
+ĐẠT  #14 xong 11-05
+ĐẠT  16 item ghi «bị chặn» đều phụ thuộc carry-over
+ĐẠT  #146 chặn trực tiếp 12 item
+ĐẠT  item đề xuất rút [12, 264, 31, 222, 67] thuộc Sprint 2 và không có item Sprint 2 phụ thuộc
+ĐẠT  BE-B [7, 8, 29, 60] đều có item Sprint 2 phụ thuộc
+ĐẠT  carry-over ≈ 0.30 sprint năng lực cả đội
+ĐẠT  BE-B vượt Sprint 2 23.5h ≈ 0.08 sprint (cận dưới mức lùi mốc)
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 14 ← Project / sprint1.yaml
+     số 10 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 20 ← Project / sprint1.yaml
+     số 29 ← Project / sprint1.yaml
+     số 182 ← Project / sprint1.yaml
+     số 281 ← Project / sprint1.yaml
+     số 64.8 ← Project / sprint1.yaml
+     số 9 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 99 ← Project / sprint1.yaml
+     số 87.5 ← Project / sprint1.yaml
+     số 9 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 12 ← tài liệu repo
+     số 4 ← tài liệu repo
+     số 87.5 ← Project / sprint1.yaml
+     số 0.3 ← tài liệu repo
+     số 292.5 ← tài liệu repo
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 27 ← tài liệu repo
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 23.5 ← Project / sprint1.yaml
+     số 0.1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 0.3 ← tài liệu repo
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 0 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 10 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 5 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 6 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 10 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 56 ← tài liệu repo
+     số 99 ← Project / sprint1.yaml
+     số 57 ← tài liệu repo
+     số 99 ← Project / sprint1.yaml
+     số 281 ← Project / sprint1.yaml
+     số 35.2 ← Project / sprint1.yaml
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 4 ← tài liệu repo
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 9 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 4 ← tài liệu repo
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 0.3 ← tài liệu repo
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 99 ← Project / sprint1.yaml
+     số 52 ← Project / sprint1.yaml
+     số 88 ← Project / sprint1.yaml
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 543 ← tài liệu repo
+     số 553 ← tài liệu repo
+     số 1.3 ← tài liệu repo
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 25.4 ← tài liệu repo
+     số 552.2 ← tài liệu repo
+     số 412.2 ← tài liệu repo
+     số 5 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 8 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 25 ← Project / sprint1.yaml
+     số 25 ← Project / sprint1.yaml
+     số 15 ← tài liệu repo
+     số 17 ← Project / sprint1.yaml
+     số 17 ← Project / sprint1.yaml
+     số 2 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 4 ← tài liệu repo
+     số 1 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+     số 3 ← Project / sprint1.yaml (số nhỏ ≤ 10: khớp yếu)
+Số trong lời văn không tìm được nguồn tự động (1) — người đọc kiểm:
+  100: …ổ chai** — BE-A / BE-B xếp 99–100% trần (không d…
+KẾT QUẢ: 23 đạt, 0 lệch · 1 số cần người kiểm

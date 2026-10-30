@@ -16,7 +16,7 @@ import backlog_model as bm
 WINDOW = 40
 REPO_ROOT = bm.TOOLS_DIR.parent
 DEFAULT_SOURCE = REPO_ROOT.parent / "product-a-fishmarket"
-TEXT_EXT = {".md", ".yaml", ".yml", ".py", ".sh", ".json", ".txt"}
+TEXT_EXT = {".md", ".yaml", ".yml", ".py", ".sh", ".json", ".txt", ".html", ".csv"}
 CODE_ID = re.compile(r"\b[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+(?:〜[0-9]+)?\b|\bD\d{1,2}\b|#\d+")
 SECRETS = {
     "email": re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),
@@ -30,6 +30,7 @@ ALLOWED_EMAIL = re.compile(r"@users\.noreply\.github\.com$|@example\.(?:com|org)
 
 
 def normalize(text):
+    text = re.sub(r"\||:?-{3,}:?", " ", text)  # khung bảng Markdown (|, |---|) không phải nội dung
     return re.sub(r"\s+", " ", CODE_ID.sub(" ", text)).lower()
 
 

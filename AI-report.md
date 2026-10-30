@@ -1,6 +1,6 @@
-# AI Report — LAB-5 (nháp, cập nhật đến B3b)
+# AI Report — LAB-5 (B1〜B5)
 
-Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2〜B3a: Claude Opus 5.5) · GitHub CLI `gh` (REST + GraphQL) · Python 3 (PyYAML).
+Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2〜B5: Claude Opus 5.5) · GitHub CLI `gh` (REST + GraphQL) · Python 3 (PyYAML, matplotlib).
 
 ## 1. Skill và prompt đã dùng
 
@@ -15,9 +15,12 @@ Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2〜B3a: Claude
 | Chấm SWP (B3a) | Skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」 | "Skill TẠM: thang Scope × Complexity PL duyệt, chấm lá theo mô tả (không theo giờ), cha = tổng con, lý do + độ tin cậy, chọn 12–15 mẫu theo quy tắc, báo cáo HTML tự chứa, ghi Project mặc định dry-run" | 286 item lá, SWP tạm 2,546, 14 mẫu, `swp-report/swp-report-261030.html` |
 | Áp review PL (B3b) | Skill trên, sửa luật | "Ghi NGUYÊN VĂN quyết định PL cho 14 mẫu (`pl_final`, `pl_reason`); thêm 3 quy tắc R1–R3 vào thang điểm (có ngày), áp cho MỌI item cùng loại, chấm lại toàn bộ; đếm item ảnh hưởng theo từng quy tắc, tổng trước / sau; báo cáo bản chốt giữ file nháp; kiểm chéo giờ / SWP theo epic" | 2,546 → 2,516; R1 7 / R2 57 / R3 4 item đổi; `swp-report/swp-report-261030-final.html` |
 | Agent ghi SWP lên Project (B3b) | `write-swp-to-project.py` + `tools/check-backlog.py --remote` | "Dry-run trước; PL đồng ý thì `--confirm`; đọc lại bằng API đối chiếu từng item với `swp-scores.yaml`, cha / epic = tổng con; check-backlog: SWP phải CÓ trên mọi item" | Ghi 389 item (286 lá + 103 cha / epic); đọc lại: 0 item cần ghi, 389 / 389 khớp, check ĐẠT |
-| Báo cáo tiến độ | — | B4 | — |
+| Sprint giả lập (B4) | Claude Code + script tự viết `tools/simulate-sprint.py` (module `sprint_sim.py`, `sprint_report_render.py`) | "Iteration Sprint 1 (2026-11-02〜11-15), GHI RÕ giả lập; kịch bản cuối sprint có lý do gắn backlog (BE nút cổ chai, chờ 要確認, giới hạn Supabase, review chậm), không tô hồng; Status trên Project, Done thì đóng issue, không sửa SWP issue đã đóng; script idempotent, lịch sử theo ngày ở `progress-data/sprint1.yaml`" | 29 lá: Done 20 (đóng 20 issue) · In Review 3 · In Progress 5 · Todo 1; cha / epic cộng dồn (48 item ghi); chạy lại 0 thay đổi |
+| Báo cáo tiến độ (B4) | Như trên + `tools/check-progress-report.py` | "progress-report.md đúng 4 phần của đề; bảng Trạng thái · Số issue · Tổng SWP · Ghi chú lấy từ Project bằng API, không gõ tay; burndown theo SWP còn lại (lý tưởng vs thực tế) PNG + bảng; rủi ro kèm mốc, hành động, ai / khi nào; phụ lục 5–8 dòng tiếng Nhật gửi khách, không số liệu nội bộ" | Bảng do script điền giữa marker; burndown 281 → 99 SWP; bảng tải Sprint 2 / 3; 7 rủi ro; phụ lục JA |
+| Rà báo cáo tiến độ (B4) | Agent `reviewer` (subagent độc lập, không viết báo cáo, tự đọc Project bằng API) | "Đối chiếu progress-report.md với Project: tìm tô hồng, bỏ sót (carry-over, item bị chặn, rủi ro thiếu), câu không có nguồn, số lệch; kiểm phụ lục JA gửi khách được" | `progress-data/review-progress.md` (§2) |
+| Hoàn thiện (B5) | Claude Code | "README 5 phần đúng đề; AI-report 3 phần; rà PREMISE / task-breakdown / estimate cho khớp Project; check-backlog --remote, quét repo, request không đăng nhập HTTP 200" | §2 bảng cổng review; kết quả kiểm cuối ở `process_log.md` |
 
-Skill `task-breakdown` ở chế độ trước-estimate không sinh số giờ → chỉ dùng cấu trúc epic → story → task làm tham khảo; giờ do
+Skill `tkm:estimate` → sub-skill `task-breakdown` (B2) ở chế độ trước-estimate không sinh số giờ → chỉ dùng cấu trúc epic → story → task làm tham khảo; giờ do
 quy tắc `estimate.md` §3.
 
 **Skill SWP tạm (`skills/swp-provisional/`)**
@@ -37,6 +40,22 @@ quy tắc `estimate.md` §3.
   `swp-scores.yaml` và cha / epic = tổng con thật trên Project.
 
 ## 2. Review output AI
+
+**Cổng review theo bước** (số liệu từ `process_log.md` và commit):
+
+| Bước | Commit | Con người review ở đâu | AI tự kiểm / reviewer độc lập | Kết quả |
+|---|---|---|---|---|
+| B1 dựng repo, Project | `f8ca8aa`, `98f919f` | PL duyệt khung file + 8 quy tắc quy giờ | — | Khung file viết lại theo đề ở B2; sửa quy tắc 4 |
+| B2 break + giờ | `b31976a` | PL duyệt backlog | AI: lịch greedy sai ưu tiên, phụ thuộc bước thiết kế ngược, 10 dòng YAML cụt, 7 mô tả trùng nguồn · reviewer: 3 High + 5 Medium | Sửa 7 điểm script; idempotent |
+| B2b sửa sau duyệt | `371a2b2`, `75a66e1` | **PL: 3 vấn đề** — thiếu 19 màn baseline, so LAB-1 lệch phạm vi, cân tải BE / FE | AI: FE-A Sprint 3 chỉ 12h → chuyển item | +17 issue màn 概算; so LAB-1 bằng bảng quy đổi pha; FE nhận API đơn giản |
+| B3a bổ sung + SWP nháp | `bf1e65b`, `6452d3e` | PL: thiếu test tích hợp theo luồng, security test, restore lần 2 | AI: luật chấm lệch trên dữ liệu thật · reviewer: 1 High + 5 Medium + 5 Low | +23 item; skill sửa hết điểm review |
+| B3b review SWP | `8626f4a` | **PL: 14 mẫu** (6 giữ, 1 sửa lý do, 7 đổi) + **R1–R3** | AI: cách cài R1 (bất định của chính item) · reviewer: 1 High + 4 Medium | 2,546 → 2,516; ghi 389 item; PL xác nhận cách cài R1 / R2 (B4 Phần 0) |
+| B4 sprint giả lập + báo cáo tiến độ | commit B4/B5 | **PL duyệt báo cáo tiến độ** sau khi đọc kết quả cổng | AI tự kiểm `check-progress-report.py` · reviewer độc lập `review-progress.md` | AI tự kiểm 23 đạt / 0 lệch; reviewer 3 vòng: CHƯA ĐẠT (3 High + 7 Medium + 8 Low) → CHƯA ĐẠT (N1 + 3 Low) → **ĐẠT**; PL: chờ duyệt |
+
+**Cổng chất lượng báo cáo tiến độ (B4):** (1) **AI tự kiểm đạt** — `tools/check-progress-report.py` sinh lại 5 bảng từ Project
+(giống từng ký tự); kiểm 18 câu khẳng định trong lời văn (item bị chặn theo phụ thuộc, đề xuất rút item, ảnh hưởng mốc), tìm nguồn cho mọi con số còn lại (`progress-data/self-check-progress-report.txt`);
+(2) **reviewer đạt** — vòng 3 (`progress-data/review-progress.md`, 3 vòng: High / Medium sửa hết); (3) **PL duyệt** — sau khi đọc báo cáo này (chờ).
+
 
 | Bước | Ai review | Phát hiện | Xử lý |
 |---|---|---|---|
@@ -59,17 +78,39 @@ quy tắc `estimate.md` §3.
 | Cài R1 thành luật (AI tự kiểm) | AI | Chỉ bỏ từ khóa NFR khỏi mức 5 vẫn để #240 / #372 (viết thủ tục restore) ở 5 vì mô tả issue cha có «RTO» | Bất định phải của chính item: mô tả cha cho tối đa 4 — ghi rõ để PL xác nhận (`estimate.md` §2) |
 | Script B3b | Agent `reviewer` (độc lập, chỉ đọc) | High: item không có dấu hiệu, issue cha nói NFR → đổi điểm mà không gắn R1. Medium: mẫu cũ rời ảnh chụp → crash; `pl_complexity` trống → crash; ảnh hưởng quy tắc trộn với ghi đè của PL (#241 trông như R1 không đổi); check-backlog báo sai khi issue đã đóng giữ SWP cũ | Sửa hết; tách 2 bước (quy tắc → PL chốt) trong bảng ảnh hưởng; chạy lại: 0 item đổi mà không có quy tắc / quyết định PL, Project 0 item cần ghi |
 
+| Mô tả issue #241 (B4 Phần 0) | **PL** | PL giữ #241 = 25 vì phụ thuộc bên ngoài (giới hạn Supabase: không chọn được region backup, không có region Osaka) — nhưng mô tả issue không ghi, nên skill chấm theo từ khóa chỉ cho 10. **Bài học chất lượng ticket:** điều làm việc bất định phải viết ở chính mô tả item | Bổ sung mô tả #241 (qua `backlog.yaml` → `create-issues.py`, chỉ #241 đổi); KHÔNG đổi SWP đã ghi; ghi bài học vào `SKILL.md` |
+| Xác nhận cách cài R1–R2 (B4 Phần 0) | **PL** | Đồng ý: bất định phải ở chính item (cha cho tối đa 4); R2 áp mọi 実装 k/n; SCR-34〜36 lấy mức cao nhất; 結合テスト・概算 không áp R2 | Ghi "PL đã xác nhận 2026-10-30" ở `estimate.md` §2, `SKILL.md` |
+| Kịch bản Sprint 1 (AI tự kiểm) | AI | Lần chạy thật đầu: Project ghi xong nhưng điền bảng lỗi vì regex marker không nhận khối rỗng; ảnh thiếu glyph 〜 | Sửa regex, đổi ký tự; chạy lại: 0 item cần ghi (idempotent), bảng / ảnh sinh lại |
+| progress-report.md (AI tự kiểm, `check-progress-report.py`) | AI | 1 LỆCH: dòng carry-over nhắc «#14» làm lý do → danh sách #số không đúng 9 item. Lời văn: «Ngày 2–5 bám gần» trong khi lệch tăng mỗi ngày (+35 → +54); «BE-B Done thấp nhất» sai (QA-A 0%). Lỗi của chính script kiểm: số dính đơn vị («1,096h») bị cắt thành «1» nên báo có nguồn | Sửa lời văn; thêm kiểm "lệch tăng mỗi ngày"; sửa bộ tách số, đánh dấu số nhỏ ≤ 10 là khớp yếu; thay «≈ 1,096h» bằng số có nguồn (543h + 553h). Kết quả: 12 đạt, 0 lệch |
+| progress-report.md — vòng 1 (B4) | Agent `reviewer` (độc lập, tự đọc 389 item Project bằng API) | Số liệu khớp hết (trạng thái, giờ, burndown, 20 issue đóng = Done); nhãn giả lập rõ. **CHƯA ĐẠT: 3 High** — (1) không nói Sprint 2 vượt trần khi nhận carry-over (319.5h / 292.5h, BE-B 76h); (2) phụ lục JA 「合意済みの前提」 hứa sai với khách (P2-3 là giả định nội bộ); (3) chuỗi ADR-010 thiếu I-075 (#230, #231 FE-B Sprint 2) → không nói quyết định B′ / B có thể trễ. **7 Medium** — nguyên nhân BE (xếp 99–100% trần), câu không nguồn («người review duy nhất»), thiếu item bị chặn (#188, #189, #226…), lời văn nhẹ («không do một item lớn»: 3 item giữ 57% SWP còn), bỏ qua tín hiệu ước thiếu (#14, #243, chuỗi DR giờ / SWP thấp), JA dòng 1 lạc quan, không có kết luận / ảnh hưởng mốc. **8 Low** (#165 là cha của #166, 25% không nguồn, lý do #244 sai, 11-10 thu hẹp, …) | AI kiểm lại bằng dữ liệu → đúng cả 3 High. Sửa hết: bảng tải Sprint 2 sinh từ Project + hành động rút item cụ thể; viết lại JA; thêm I-075 và ảnh hưởng NFR-AVL-03; kết luận đầu §2; dòng item bị chặn; ghi chú nguồn vào `sprint1.yaml`; script tự kiểm thêm 6 kiểm câu khẳng định (18 đạt, 0 lệch) |
+| progress-report.md — vòng 2 | Agent `reviewer` | 3 High đã đóng (tự tính lại tải Sprint 2, kiểm item rút không có item phụ thuộc). Còn: Medium — ảnh hưởng mốc chưa có con số; **mới N1** — rút item sang Sprint 3 làm Sprint 3 vượt trần (FE-A 58, FE-B 61, BE-A 60) → quá tải chỉ dời đi; Low — ghi chú nội bộ nằm trong phụ lục gửi khách; ô «Vượt» dòng Tổng khác cách tính; **ghi chú SCR-28 gắn nhầm cho #23** (lỗi thay chuỗi của AI: `replace` áp mọi chỗ trùng lịch sử) | Đề xuất rút item thành dữ liệu (`replan_push_to_sprint3`) → bảng tải Sprint 3 sinh từ Project; câu ảnh hưởng mốc «87.5h ≈ 0.3 sprint, lùi ≥ ~0.3 sprint, dồn vào BE»; chuyển ghi chú ra ngoài phụ lục; dòng Tổng ghi cả vượt cộng từng người và ròng; xóa ghi chú ở #23; tự kiểm thêm kiểm đề xuất rút + 0.3 sprint (22 đạt, 0 lệch) |
+| progress-report.md — vòng 3 | Agent `reviewer` | **ĐẠT.** Kiểm lại N1〜N4 bằng API + `backlog.yaml`; còn 2 Low: «0.3 sprint» chưa nói cách tính (chỉ là mức tối đa), chưa nói ai gánh phần vượt cuối (BE-B 23.5h) | Viết lại câu ảnh hưởng mốc: tối đa ~0.3 sprint, BE-B gánh phần vượt cuối, mốc lùi giữa ~0.1 và 0.3 sprint; tự kiểm thêm kiểm này (23 đạt, 0 lệch) |
+
 ## 3. Điểm đặc biệt
 
-- **Hiệu quả:** một file YAML là nguồn duy nhất → issue, trường Project, mapping và bảng trong tài liệu sinh từ đó; chạy lại không
-  tạo trùng. Script quét chép nguyên văn bắt được lỗi mà đọc bằng mắt khó thấy (câu quen dùng trùng repo nguồn).
-- **Chưa tốt, cần cải thiện khi làm thật:** giờ do AI đề xuất cho 184 item lá, PL mới duyệt quy tắc chứ chưa duyệt từng con số —
-  khi làm thật cần người làm từng phần ước lại (planning poker) và đối chiếu SWP. Lịch Sprint xếp bằng thuật toán nên bộc lộ nút cổ
-  chai BE nhưng chưa tối ưu tải FE. So LAB-1 lệch −41.6% chủ yếu do phạm vi — cần PL xác nhận cách so.
-- **Bài học B2b:** AI bám đúng nguồn được giao (handoff) nhưng không tự đối chiếu với baseline LAB-1, và so số liệu khi chưa định nghĩa
-  phạm vi tương đương — cần đưa bước "đối chiếu phạm vi với SP4" và "bảng quy đổi pha" vào prompt ngay từ đầu.
-- **Chưa có ý tưởng:** cách tự động kiểm "giờ hợp lý" ngoài khoảng tham chiếu — B3a dùng SWP kiểm chéo, nhưng 105 / 286 item lệch
-  quá ±50% (44 là màn 概算): luật từ khóa không phân biệt được cỡ các phần 1/3, 2/3, 3/3 của cùng một màn → kiểm chéo mức item
-  còn nhiễu; mức epic dùng được (E05, E06 vượt ngưỡng).
-- **Giới hạn skill TẠM:** chấm bằng từ khóa — tái lập và giải thích được, nhưng không hiểu nghiệp vụ; độ tin cậy "thấp" là để PL
-  kiểm, không phải để bỏ qua. Khi có skill chính thức thì chạy lại và thay toàn bộ.
+**Hiệu quả**
+- **Một nguồn dữ liệu → mọi nơi:** `tools/backlog.yaml` sinh issue, trường Project, mapping và bảng tài liệu; chạy lại không tạo trùng.
+  Sửa mô tả #241 chỉ cần sửa YAML + chạy đồng bộ (1 issue đổi).
+- **Số liệu báo cáo không gõ tay:** bảng trạng thái, bảng 担当, burndown do script đọc Project rồi điền vào `progress-report.md`;
+  script tự kiểm sinh lại và so từng ký tự → báo cáo không lệch Project.
+- **Chốt an toàn khi AI ghi lên Project:** dry-run mặc định, `--confirm`, đọc lại, chặn ghi SWP issue đã đóng; sprint giả lập không đụng
+  trường SWP và `check-backlog.py` xác nhận SWP 389 / 389 vẫn khớp sau khi đóng 20 issue.
+- **Hai lớp review khác nhau bắt lỗi khác nhau:** script bắt sai số / lệch nguồn; reviewer độc lập bắt tô hồng và bỏ sót; PL bắt lỗi
+  phạm vi (19 màn, so LAB-1) mà cả AI lẫn reviewer không thấy vì chỉ đọc nguồn được giao.
+
+**Chưa tốt, cần cải thiện khi làm thật** (kèm lý do chưa làm)
+
+| Điểm | Cần làm khi làm thật | Lý do chưa làm |
+|---|---|---|
+| SWP là **SWP tạm** do skill tự viết, thang điểm PL đặt | Chạy lại toàn bộ bằng skill chính thức của chương trình, thay hết, không trộn hai thang | Chưa có skill chính thức (chưa có giải pháp) |
+| Chấm SWP theo **từ khóa** → phụ thuộc chất lượng mô tả ticket (#241: phụ thuộc Supabase không ghi → luật cho 10 thay vì 25) | Mẫu ticket bắt buộc mục "Bất định / phụ thuộc ngoài"; người làm chấm lại (planning poker) và đối chiếu | Thời gian: 286 item, PL chỉ kiểm 14 mẫu + 3 quy tắc |
+| **Sprint là giả lập**: kịch bản do AI viết theo hướng PL, không có tiến độ thật | Lấy Status từ hoạt động thật (PR, review), burndown từ lịch sử thật | Bài làm trước khi sprint bắt đầu (chưa có giải pháp trong phạm vi bài) |
+| **Thiếu dữ liệu velocity thật** — điều kiện "thêm 1 BE từ Sprint 4" và rủi ro −25.4% so LAB-1 chưa kiểm được | Ghi giờ thực tế từng item từ Sprint 2, so thực tế / ước ở retro | Chưa có dữ liệu thật |
+| Project không lưu lịch sử Status theo ngày → burndown lấy ngày Done từ YAML, chỉ SWP và trạng thái cuối đọc từ Project | Dùng lịch sử thật (sự kiện issue / Project) hoặc chụp số liệu hằng ngày bằng job | Thời gian; Projects API không trả lịch sử trường |
+| Tự kiểm số trong lời văn là **khớp theo giá trị**: số nhỏ (≤ 10) hay số trùng ngẫu nhiên vẫn "có nguồn" | Gắn nguồn tường minh cho từng câu (vd. chú thích ID số liệu) | Token / thời gian; reviewer độc lập bù phần ngữ nghĩa |
+| Giờ do AI đề xuất cho item lá; PL duyệt quy tắc, chưa duyệt từng con số; lịch Sprint xếp bằng thuật toán | Người làm từng phần ước lại; xếp sprint ở planning có cả đội | Thời gian |
+| AI bám nguồn được giao (handoff), không tự đối chiếu baseline LAB-1 (B2b) | Đưa bước "đối chiếu phạm vi với SP4" và "bảng quy đổi pha" vào prompt ngay từ đầu | Đã rút bài học, áp từ B3 |
+
+## Nhận xét của PL
+
+[PL điền 3–5 dòng]

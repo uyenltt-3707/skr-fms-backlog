@@ -57,8 +57,11 @@ chấm lại theo quy tắc; dòng PL = skill chấm lại → giá trị PL ch�
 - **R2** áp cho 73 sub-issue màn 概算 của 19 màn (mọi `実装 k/n`, không chỉ `/3`; SCR-34〜36 cùng S). 16 item không đổi vì luật cũ đã
   cho cùng điểm. Lên: màn L (SCR-09 / 12 / 16) và phần 3/3 "biến thể, xử lý lỗi, test"; xuống: 画面設計 Scope 3 → 2, màn S.
 - **R3** áp cho #17, #116, #125, #158: 5 → 2.
-- Cách áp khi cài luật (để PL xác nhận): bất định phải là của **chính item** — mô tả issue cha chỉ cho Complexity tối đa 4 (nếu không,
-  #240 / #372 viết thủ tục vẫn 5 vì issue cha có «RTO»).
+- Cách áp khi cài luật — **PL đã xác nhận (2026-10-30)**: bất định phải là của **chính item** — mô tả issue cha chỉ cho Complexity
+  tối đa 4 (nếu không, #240 / #372 viết thủ tục vẫn 5 vì issue cha có «RTO»); R2 áp mọi `実装 k/n`; SCR-34〜36 lấy mức cao nhất;
+  `結合テスト・概算` không áp R2.
+- #241, #243 giữ giá trị PL chốt (không đổi SWP đã ghi). Mô tả #241 đã bổ sung phụ thuộc giới hạn Supabase (không chọn được region
+  backup, không có region Osaka) — bài học chất lượng ticket (`AI-report.md` §2).
 
 ## 3. Cách quy ra giờ
 
@@ -146,6 +149,8 @@ Chỉ cộng item lá. MD = giờ / 7.5. Tổng SWP = **SWP đã review** (PL qu
 | QA-A (trần 52.5) | 18 | 18 | 50 | 290 | 376 |
 | PM (trần 30) | 29 | 16 | 4 | 169 | 218 |
 | **Tổng** (trần 292.5) | **243** | **232** | **249.5** | 2367 | 3091.5 |
+
+Sprint 1 **giả lập** (B4): giờ ước không đổi; Done 155.5h / 243h, 182 / 281 SWP; 9 item carry-over (`progress-report.md` §2). Chưa có giờ thực tế nên chưa so thực tế / ước.
 
 ## 5. So với estimate LAB-1
 
