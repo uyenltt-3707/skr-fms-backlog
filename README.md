@@ -20,6 +20,8 @@
   lần 2 (52h, P3-8); #233 ghi rõ là load test điều kiện của ADR-010.
   Trong đó 17 issue màn ước thô (879h, 「詳細設計未作成のため概算」). 4 issue `要確認`, 14 chỗ hở spec ở `task-breakdown.md` §4.
   So LAB-1 cùng phạm vi: 552.2 → 412.2 MD (−25.4%; B2b −29.8%; giải thích ở `estimate.md` §5).
+- **SWP (B3a):** đã chấm **nháp** 286 item lá bằng skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」.
+  Tổng SWP tạm 2,546; 14 issue mẫu chờ PL kiểm; **chưa ghi SWP lên Project**.
 - **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 243h) · Sprint 2 (232h) · Sprint 3 (249.5h);
   211 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
 
@@ -29,7 +31,7 @@
 |---|---|
 | Repo | https://github.com/uyenltt-3707/skr-fms-backlog |
 | GitHub Project "SKR-FMS Backlog" (#2) | https://github.com/users/uyenltt-3707/projects/2 |
-| Báo cáo HTML chấm SWP | `swp-report/` (B3 — chưa có) |
+| Báo cáo HTML chấm SWP (nháp, SWP tạm) | `swp-report/swp-report-261030.html` · dữ liệu `swp-report/swp-scores.yaml` |
 | Mapping id nội bộ ↔ issue | `tools/issue-map.json` |
 
 Kiểm tra truy cập không đăng nhập: `tools/check-backlog.py --remote` gửi request không cookie / token tới Project và 3 issue mẫu,
@@ -42,7 +44,7 @@ xem được, không cần đăng nhập.
 |---|---|
 | Status | Todo · In Progress · In Review · Done |
 | Iteration | Sprint 1–3 (giả lập), 2 tuần / sprint, từ 2026-11-02; trống = backlog |
-| SWP | trống ở B2; chỉ ghi SWP đã review (B3) |
+| SWP | chỉ ghi SWP **đã review**; B3a mới chấm nháp (SWP tạm, trong `swp-report/`), trường trên Project vẫn trống |
 | 見積時間 / Estimate (hours) | item lá: ước trực tiếp; issue cha / epic: tổng con |
 | 担当(仮) | FE-A · FE-B · BE-A · BE-B · QA-A · PM (giả định, không gán tài khoản thật) |
 | Item Type | Epic · Issue · Sub-issue (tên "Type" bị GitHub giữ chỗ) |
@@ -55,13 +57,13 @@ xem được, không cần đăng nhập.
 | `README.md` | Tổng quan, liên kết, cấu trúc, bảng spec → epic (file này) |
 | `PREMISE.md` | Backlog khác bản LAB-4 ở đâu: spec thêm / sửa, giả định bổ sung, hướng đã chốt |
 | `task-breakdown.md` | Nguyên tắc chia task, spec → issue, hạng mục 完納奨励金, chỗ hở spec LAB-4 |
-| `estimate.md` | Báo cáo SWP (B3), cách quy ra giờ, tổng theo epic, so với LAB-1 |
+| `estimate.md` | Báo cáo SWP (mẫu chờ PL), cách quy ra giờ, tổng theo epic, so với LAB-1 |
 | `progress-report.md` | Báo cáo tiến độ Sprint giả lập (bước sau) |
 | `AI-report.md` | Skill / prompt đã dùng, review output AI, điểm cần cải thiện |
 | `process_log.md` | Nhật ký thao tác theo thời gian |
 | `tools/` | Dữ liệu backlog và script: `backlog.yaml` (dữ liệu tự viết), `create-issues.py` (tạo / đồng bộ issue + Project, idempotent), `check-backlog.py` (kiểm tra), `scan-content.py` (quét chép nguyên văn / email / khóa), `backlog_model.py`, `github_api.py`, `project_fields.py` (module dùng chung), `issue-map.json` (mapping sinh ra), `setup-github-project.sh` (dựng Project, B1) |
-| `swp-report/` | Báo cáo HTML của skill chấm SWP (B3) — đang trống |
-| `skills/` | Skill tự viết (B3) — đang trống |
+| `swp-report/` | Báo cáo HTML tự chứa của skill chấm SWP + `swp-scores.yaml` (điểm từng item, cột `pl_final` / `pl_reason` cho PL) |
+| `skills/swp-provisional/` | Skill chấm SWP **TẠM** tự viết: `SKILL.md` + `scripts/` (lấy dữ liệu, chấm, chọn mẫu, báo cáo, ghi Project có chốt an toàn, cài sang `.claude/skills/`) |
 | `.gitignore` | Loại file bí mật, file tạm, thư mục công cụ cục bộ (`.claude/`, `plans/`) |
 | `.gitattributes` | Ép LF cho script shell |
 

@@ -1,6 +1,6 @@
-# AI Report — LAB-5 (nháp, cập nhật đến B2)
+# AI Report — LAB-5 (nháp, cập nhật đến B3a)
 
-Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2: Claude Opus 5.5) · GitHub CLI `gh` (REST + GraphQL) · Python 3 (PyYAML).
+Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2〜B3a: Claude Opus 5.5) · GitHub CLI `gh` (REST + GraphQL) · Python 3 (PyYAML).
 
 ## 1. Skill và prompt đã dùng
 
@@ -11,8 +11,9 @@ Công cụ: Claude Code trong VS Code (B1: Claude Sonnet 5.5 · B2: Claude Opus 
 | Quy giờ (B2) | Claude Code | "Giữ 8 quy tắc B1, sửa quy tắc 4: cha / epic cũng điền giờ = tổng con, script tự cộng; tổng chỉ cộng lá" | `estimate.md` §3–§5; giờ từng lá ước theo bảng tham chiếu §3 |
 | Xếp Iteration (B2) | Script tạm (greedy theo phụ thuộc + trần giờ từng người + tầng ưu tiên nghiệp vụ) | "Sprint 1 = E01, DB lõi, một phần E02 / E03, 6 người × 10 ngày × 7.5h trừ buffer và họp" | Sprint 1 240h / 2 222h / 3 165h; kết quả ghi cứng vào YAML |
 | Sửa sau duyệt (B2b) | Claude Code + script tạm (sửa YAML theo cấu trúc dữ liệu, ghi lại cùng định dạng; so LAB-1 đọc thẳng xlsx WBS) | "Thêm màn baseline LAB-1 ngoài 16 màn cốt lõi (画面設計 + 実装, ước thô theo S/M/L LAB-1); so LAB-1 cùng phạm vi bằng bảng quy đổi pha; tách 12 báo cáo E07; +hoàn thiện production cho WU sửa từ prototype; chuyển API đơn giản sang FE, không sprint nào vượt sức, FE không rảnh ở Sprint 3" | 17 issue + 86 sub-issue mới; 2,909.5h; `estimate.md` §5 viết lại |
-| Chấm SWP | — | B3 | — |
-| Agent ghi SWP lên Project | — | B3 | — |
+| Bổ sung issue theo quyết định PL (B3a) | Claude Code + `create-issues.py` | "Test tích hợp theo luồng nghiệp vụ (không theo màn), giờ theo §3, lá ≤ 15h, QA-A; luồng dùng màn ước thô → 概算; E12 thêm security test theo NFR bảo mật LAB-4 + restore lần 2; kiểm load test đo dump có chưa" | 5 luồng #374〜#387, #367, #371; #233 ghi rõ điều kiện ADR-010; +182h |
+| Chấm SWP (B3a) | Skill tự viết `skills/swp-provisional/` — 「SWP tạm — thang điểm do PL tự đặt, chờ skill chính thức của chương trình; khi có sẽ chạy lại và thay thế」 | "Skill TẠM: thang Scope × Complexity PL duyệt, chấm lá theo mô tả (không theo giờ), cha = tổng con, lý do + độ tin cậy, chọn 12–15 mẫu theo quy tắc, báo cáo HTML tự chứa, ghi Project mặc định dry-run" | 286 item lá, SWP tạm 2,546, 14 mẫu, `swp-report/swp-report-261030.html` |
+| Agent ghi SWP lên Project | `write-swp-to-project.py` (trong skill) | Chỉ chạy `--confirm` sau khi PL quyết mọi mẫu | **Chưa chạy** — chờ PL (B3b) |
 | Báo cáo tiến độ | — | B4 | — |
 
 Skill `task-breakdown` ở chế độ trước-estimate không sinh số giờ → chỉ dùng cấu trúc epic → story → task làm tham khảo; giờ do
@@ -32,7 +33,11 @@ quy tắc `estimate.md` §3.
 | Phạm vi backlog (B2) | PL | **Thiếu 19 màn baseline LAB-1** ngoài 16 màn cốt lõi — AI chỉ lấy phạm vi handoff LAB-4, không đối chiếu SP4 LAB-1 | Thêm 17 issue ước thô (PREMISE P1-6, G14) |
 | So LAB-1 (B2) | PL | So giờ LAB-5 với riêng I (製造・単体) là **khác phạm vi**: LAB-5 còn gồm một phần 結合テスト và 詳細設計 của màn chưa thiết kế; E07 gộp 12 báo cáo khác định dạng; WU sửa prototype chưa tính hoàn thiện production | Lập bảng quy đổi pha rồi mới so (−29.8%); tách 12 báo cáo; +25% cho 80 item lá (`estimate.md` §3, §5) |
 | Cân tải (B2) | PL | AI giữ cứng quy tắc API → BE nên BE nút cổ chai, FE-A rảnh ở Sprint 3 (4h) | Chuyển API đơn giản sang FE; Sprint 3 FE-A 48h / FE-B 45h (`progress-report.md` §4) |
-| Toàn bộ backlog, giờ, Iteration (sau B2b) | PL — **chưa** | — | Chờ PL review trước B3 |
+| Toàn bộ backlog, giờ, Iteration (sau B2b) | PL | Thiếu test tích hợp theo luồng, security test, restore lần 2; load test dump chưa ghi rõ là điều kiện ADR-010; BE quá tải | Thêm issue (P3-7, P3-8); BE: không thêm người, hành động có điều kiện ở `progress-report.md` §4 |
+| Constraint của issue mới (AI tự kiểm) | AI | Sub-issue lấy Constraint của **epic**, không của issue cha → 2 sub-issue luồng 完納奨励金 bị なし | Ghi Constraint trực tiếp cho sub-issue; đồng bộ lại |
+| Luật chấm SWP (AI tự kiểm trên dữ liệu giả lập rồi dữ liệu thật) | AI | Tài liệu / 要確認 bị nâng Scope 5 vì nói về hạ tầng; mô tả **epic** làm ngữ cảnh đẩy Complexity của item lá lên 5; «hiển thị» (mức 1) át 確定 / 提出; 5 mẫu tin cậy thấp đều là màn 概算 | Khóa Scope cho tài liệu / 要確認; chỉ lấy mô tả issue cha (không lấy epic); thêm dấu hiệu; ưu tiên mẫu "không dấu hiệu" |
+| Script skill (B3a) | Agent `reviewer` (độc lập, chỉ đọc) | High: chặn ghi đè SWP issue đã đóng chỉ xét item lá và dùng trạng thái cũ. Medium: nhãn 「chấm sau khi đóng」 mất khi chạy lại sau lỗi; tổng cha lệch khi con bị giữ nguyên; từ khóa khớp chuỗi con («view» trong «under_review»); một từ khóa nâng cả hai trục → top-3 dồn một cụm; thiếu mô tả gốc không cảnh báo | Sửa hết: trạng thái live mọi cấp, gắn nhãn trước khi ghi, cha cộng giá trị đang giữ, khớp theo ranh giới từ, tách từ khóa (trừ test NFR), top-3 rải theo issue cha, cảnh báo + độ tin cậy thấp; kiểm `pl_final` sớm; dry-run vẫn chặn ghi |
+| SWP nháp (B3a) | PL — **chưa** | — | Chờ PL quyết 14 mẫu (`estimate.md` §2) |
 
 ## 3. Điểm đặc biệt
 
@@ -43,4 +48,8 @@ quy tắc `estimate.md` §3.
   chai BE nhưng chưa tối ưu tải FE. So LAB-1 lệch −41.6% chủ yếu do phạm vi — cần PL xác nhận cách so.
 - **Bài học B2b:** AI bám đúng nguồn được giao (handoff) nhưng không tự đối chiếu với baseline LAB-1, và so số liệu khi chưa định nghĩa
   phạm vi tương đương — cần đưa bước "đối chiếu phạm vi với SP4" và "bảng quy đổi pha" vào prompt ngay từ đầu.
-- **Chưa có ý tưởng:** cách tự động kiểm "giờ hợp lý" ngoài khoảng tham chiếu — để B3 dùng SWP kiểm chéo.
+- **Chưa có ý tưởng:** cách tự động kiểm "giờ hợp lý" ngoài khoảng tham chiếu — B3a dùng SWP kiểm chéo, nhưng 105 / 286 item lệch
+  quá ±50% (44 là màn 概算): luật từ khóa không phân biệt được cỡ các phần 1/3, 2/3, 3/3 của cùng một màn → kiểm chéo mức item
+  còn nhiễu; mức epic dùng được (E05, E06 vượt ngưỡng).
+- **Giới hạn skill TẠM:** chấm bằng từ khóa — tái lập và giải thích được, nhưng không hiểu nghiệp vụ; độ tin cậy "thấp" là để PL
+  kiểm, không phải để bỏ qua. Khi có skill chính thức thì chạy lại và thay toàn bộ.

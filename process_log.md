@@ -55,3 +55,27 @@ Chưa làm (đợi LAB-4): issue chi tiết, SWP, giờ, báo cáo Sprint.
 | 22:43 | Cập nhật PREMISE, task-breakdown, README, estimate, progress-report, AI-report | — |
 | 23:00 | Đồng bộ GitHub xong; chạy lại | 103 issue mới, 127 cập nhật, 103 liên kết sub-issue, trường 228 item; lần 2: 0 thay đổi |
 | 23:03 | Điền số issue vào tài liệu; `check-backlog.py --remote`; `scan-content.py` | ĐẠT (366 item khớp Project, ẩn danh HTTP 200); quét ĐẠT |
+
+## 2026-10-30 — B3a: bổ sung issue theo quyết định PL, skill SWP TẠM, chấm nháp
+
+| Giờ | Việc | Kết quả |
+|-----|------|---------|
+| 11:27 | Nhận yêu cầu B3a; đọc README, estimate.md, PREMISE, script đồng bộ | Python hệ thống thiếu PyYAML → dùng venv có PyYAML |
+| 11:30 | Đọc ADR-010 và NFR bảo mật trong spec LAB-4 (chỉ đọc) | Điều kiện B′: dump + sao chép < 15 phút đo ở load test; NFR-SEC-01 / 03 / 04, SEC-IAM-02 |
+| 11:31 | Kiểm load test đo dump | Đã có (#233) → không thêm issue; sửa tiêu đề / mô tả ghi rõ "điều kiện của ADR-010", đo trong lúc chạy tải cao điểm |
+| 11:32 | Thêm vào `backlog.yaml`: 5 issue test tích hợp theo luồng (E13), security test + restore lần 2 (E12) | +23 item, +182h; `check-backlog.py` ĐẠT, không sprint nào vượt trần |
+| 11:33 | `scan-content.py` | 1 tiêu đề trùng nguồn 41 ký tự → viết lại → ĐẠT |
+| 11:34 | `create-issues.py` lần 1 (nền) | 23 issue mới (#367〜#389), 23 liên kết sub-issue, 25 item cập nhật trường |
+| 11:35 | Phát hiện sub-issue kế thừa Constraint từ epic, không từ issue cha → X-IT3.1 / .2 thành なし | Ghi Constraint trực tiếp cho 2 sub-issue; lần 2: 2 cập nhật, 0 tạo mới |
+| 11:36 | Viết skill `skills/swp-provisional/` (SKILL.md + 8 script, mỗi file < 200 dòng) | — |
+| 11:38 | Thử luật chấm trên ảnh chụp giả lập từ YAML | Lệch: tài liệu được Scope 5, mô tả epic làm ngữ cảnh đẩy Complexity, «hiển thị» át 確定 → sửa luật |
+| 11:42 | Lấy ảnh chụp thật (389 issue) → chấm → báo cáo HTML | 286 item lá, SWP tạm 2,587, 14 mẫu |
+| 11:43 | Sửa chọn mẫu: 5 mẫu tin cậy thấp đều là màn 概算 → ưu tiên item "không có dấu hiệu"; bỏ dấu hiệu «jst», «chưa có thiết kế» | Mẫu gồm 1 item không dấu hiệu + 4 màn 概算 |
+| 11:44 | Chụp báo cáo bằng Edge headless | Tiếng Nhật hiển thị đúng; không tài nguyên ngoài |
+| 11:46 | Cập nhật README, PREMISE (P2-10, P3-7〜9), task-breakdown, estimate (§1〜§5), progress-report (§2, §4) | — |
+| 11:48 | `check-backlog.py --remote`; `scan-content.py` | ĐẠT (389 item khớp Project, SWP trên Project trống, ẩn danh HTTP 200); quét ĐẠT |
+| 11:49 | Agent `reviewer` rà độc lập script skill (chỉ đọc) | 1 High + 5 Medium + 5 Low (`AI-report.md` §2) |
+| 11:50 | Commit + push Phần 0 (`backlog: integration tests, security/restore/load tests`) | Tách commit: stage bản tài liệu chỉ gồm Phần 0 |
+| 11:55 | Sửa theo review; lấy lại ảnh chụp, chấm lại, xuất lại báo cáo; dry-run ghi Project | SWP tạm 2,546; mẫu top-3 đổi (#234, #241, #243); dry-run chặn ghi vì 14 mẫu chưa có quyết định PL |
+
+Chưa làm (chờ PL): quyết định 14 mẫu (`pl_final` / `pl_reason`), ghi SWP lên Project.
