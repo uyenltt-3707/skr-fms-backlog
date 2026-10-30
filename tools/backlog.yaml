@@ -1211,14 +1211,14 @@ epics:
           - {id: I-075.3, title: "Tách quyền + quản lý khóa + runbook vận hành", kind: hạ tầng, owner: FE-B, hours: 10, sprint: 2, done: "Tài khoản production không xóa được bản sao."}
       - id: I-076
         wu: [WU-076]
-        title: "Đo thời gian dump + sao chép để chốt B′ hay lùi về B"
+        title: "Load test — điều kiện của ADR-010: dump + sao chép dưới tải xong < 15 phút thì giữ B′, không thì lùi về B"
         kind: test
         spec: [ADR-010]
         deps: [I-075, I-081]
-        desc: "Đo với dữ liệu theo FIG-LOAD-01. Dưới 15 phút thì giữ B′; không đạt thì lùi về B 1 giờ, hạ compliance NFR-AVL-03 xuống Partial và gửi câu hỏi khách đã duyệt."
-        done: "Có số đo và quyết định B′ / B ghi vào ADR-010."
+        desc: "Điều kiện của ADR-010: B′ (dump 15 phút) chỉ được giữ khi dump + sao chép xong dưới 15 phút. Đo với dữ liệu theo FIG-LOAD-01, trong lúc chạy kịch bản tải cao điểm của load test I-081 (job dump chạy cả trong giờ dịch vụ). Đạt thì giữ B′; không đạt thì lùi về B 1 giờ, hạ compliance NFR-AVL-03 xuống Partial và gửi câu hỏi khách đã duyệt."
+        done: "Có số đo 3 lần chạy dưới tải và quyết định B′ / B ghi vào ADR-010."
         subs:
-          - {id: I-076.1, title: "Đo dump + sao chép với dữ liệu FIG-LOAD-01", kind: test, owner: QA-A, hours: 10, sprint: 3, done: "Báo cáo số đo 3 lần chạy."}
+          - {id: I-076.1, title: "Đo dump + sao chép trong lúc chạy tải cao điểm FIG-LOAD-01 (điều kiện ADR-010)", kind: test, owner: QA-A, hours: 10, sprint: 3, done: "Báo cáo số đo 3 lần chạy; lần chậm nhất so với ngưỡng 15 phút."}
           - {id: I-076.2, title: "Ghi quyết định B′ / B + bước tiếp theo (câu hỏi khách nếu lùi)", kind: tài liệu, owner: PM, hours: 4, sprint: 3, deps: [I-076.1], done: "PL ký quyết định."}
       - id: I-077
         wu: [WU-077]
@@ -1321,6 +1321,27 @@ epics:
           - {id: X-S38.2, title: "実装 1/3 — API đọc / ghi", kind: API, owner: FE-B, hours: 12.5, sprint: ~, deps: [X-S38.1], done: "Đúng screen spec đã duyệt; đạt Định nghĩa xong."}
           - {id: X-S38.3, title: "実装 2/3 — màn chính", kind: UI, owner: FE-B, hours: 12.5, sprint: ~, deps: [X-S38.1], done: "Đúng screen spec đã duyệt; đạt Định nghĩa xong."}
           - {id: X-S38.4, title: "実装 3/3 — biến thể, xử lý lỗi, test", kind: UI, owner: FE-B, hours: 12.5, sprint: ~, deps: [X-S38.1], done: "Đúng screen spec đã duyệt; đạt Định nghĩa xong."}
+      - id: X-SEC
+        title: "[NFR-SEC] Security test theo NFR bảo mật (NFR-SEC-01 / 03 / 04, SEC-IAM-02)"
+        kind: test
+        spec: [ADR-004, ADR-010, ADR-013, CSP-03, CSP-04]
+        deps: [I-003, I-004, I-006, I-073]
+        desc: "Thêm theo quyết định PL (B3a): handoff không có WU security test, LAB-1 có trong phần cố định 非機能. Kiểm từ phía người tấn công ba nhóm - xác thực và phiên, truy cập dữ liệu, cấu hình / backup. Kết quả là biên bản lỗ hổng có mức độ và issue sửa."
+        done: "Biên bản security test cho cả ba nhóm; lỗi mức cao đã có issue sửa."
+        subs:
+          - {id: X-SEC.1, title: "Xác thực và phiên — vượt MFA / AAL2 ở API phê duyệt, khóa tạm, timeout phiên, log bất thường, PIN thiết bị dùng chung", kind: test, owner: QA-A, hours: 14, sprint: ~, deps: [I-007], done: "Mỗi kiểm soát của NFR-SEC-01 / 03 và SEC-IAM-02 có ca tấn công và kết quả."}
+          - {id: X-SEC.2, title: "Truy cập dữ liệu — RLS deny-all qua Data API bằng khóa công khai, IDOR giữa người tham gia, secret không lộ ở bundle client", kind: test, owner: QA-A, hours: 12, sprint: ~, done: "Không đọc / ghi được bảng nào bằng khóa công khai; không xem được dữ liệu người khác."}
+          - {id: X-SEC.3, title: "Cấu hình và backup — TLS, secret / khóa backup tách khỏi mã nguồn, quyền đích Osaka, dump mã hóa, quét lỗ hổng thư viện", kind: test, owner: QA-A, hours: 10, sprint: ~, deps: [I-075], done: "Đối chiếu từng mục NFR-SEC-04 có bằng chứng; thư viện không còn lỗ hổng mức cao."}
+      - id: X-DR2
+        title: "[ACC-05] Diễn tập restore lần 2 theo thủ tục đã sửa"
+        kind: test
+        spec: [ADR-010, ADR-001]
+        deps: [I-079]
+        desc: "Thêm theo quyết định PL (B3a): LAB-1 có 2 lần diễn tập, handoff chỉ có 1 (I-079). Lần 2 làm sau khi sửa thủ tục theo biên bản lần 1, để chứng minh RTO 4 giờ và cold restore 2 ngày lặp lại được."
+        done: "Biên bản lần 2 có thời gian từng bước, so với lần 1; RTO vượt 4 giờ thì báo PL."
+        subs:
+          - {id: X-DR2.1, title: "Sửa thủ tục restore Osaka theo biên bản lần 1", kind: tài liệu, owner: PM, hours: 4, sprint: ~, done: "Mọi điểm vướng ở lần 1 có cách xử lý trong thủ tục."}
+          - {id: X-DR2.2, title: "Diễn tập lần 2 — đo RTO + cold restore + biên bản so với lần 1", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [X-DR2.1], done: "Biên bản lần 2 được PL ký."}
 
   - id: E13
     name: テスト・移行・文書
@@ -1403,3 +1424,50 @@ epics:
         sprint: ~
         desc: "Kiểm tiêu chí loại trừ SCOPE-OUT-01/02 - không gợi ý, không OCR; 確認者 lưu đúng người thao tác."
         done: "Ca kiểm đạt cho SCR-10 và SCR-13."
+      - id: X-IT1
+        title: "[結合テスト] Luồng 相対 — 下書き → 確定 → 引渡し / 保留 → 締め / 締め bù / 締め解除"
+        kind: test
+        spec: [DD-01, DD-03, DD-04, FS-02, FS-03]
+        desc: "Thêm theo quyết định PL (B3a): test tích hợp theo luồng nghiệp vụ, không theo từng màn. Một giao dịch 相対 đi hết chuỗi qua UI + API + DB thật, kiểm dữ liệu chuyển đúng giữa E02 / E04 / E06 / E07. Giữ nguyên phần test API trong Định nghĩa xong của từng item."
+        done: "Ba đoạn của luồng chạy trong CI trên dữ liệu seed chung."
+        subs:
+          - {id: X-IT1.1, title: "下書き → 確定 — kiểm hiệu lực 参加根拠 (FS-03), chặn ghi khi ngày đã 締め, 差戻し / 取消", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-032, I-014, I-042], done: "Người tham gia hết hiệu lực và ngày đã 締め đều bị chặn với mã lỗi đúng."}
+          - {id: X-IT1.2, title: "確定 → 引渡し / 保留 → giải tỏa 保留, số lượng hiệu lực ở màn đọc", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-039, I-052], done: "Số lượng hiệu lực khớp giữa màn giao hàng, màn đọc và báo cáo."}
+          - {id: X-IT1.3, title: "締め (còn mục chưa xử lý → lý do) · 締め bù ngày quá khứ · 締め解除 → 締め lại + xuất lại đối soát", kind: test, owner: QA-A, hours: 14, sprint: ~, deps: [I-044, I-045, I-046], done: "Xuất lại cùng batch code, không nhân đôi dòng; audit đủ từng bước."}
+      - id: X-IT2
+        title: "[結合テスト] Luồng 調整要求 sau 締め — reverse / delta"
+        kind: test
+        spec: [DD-05, DD-04, API-069]
+        desc: "Sau khi ngày đã 締め, sửa giao dịch qua 調整要求: 起票 → 承認 / 却下 → dòng reverse và delta → giá trị hiệu lực ở mọi màn đọc, CSV đối soát và báo cáo ngày. 証憑 kiểm qua API dùng chung (màn SCR-32 chưa có thiết kế)."
+        done: "Hai đoạn của luồng chạy trong CI; số tiền hiệu lực khớp ở mọi nơi đọc."
+        subs:
+          - {id: X-IT2.1, title: "起票 (chọn giao dịch qua API-069) + 証憑 → 承認 sinh dòng reverse; 却下 giữ nguyên", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-050, I-051, I-090], done: "Giao dịch gốc bất biến; dòng reverse có liên kết tới 調整要求."}
+          - {id: X-IT2.2, title: "Delta → giá trị hiệu lực ở màn đọc, CSV đối soát 「調整済み」, báo cáo ngày", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [X-IT2.1, I-046, I-094], done: "Cùng một số tiền hiệu lực ở màn, CSV và báo cáo."}
+      - id: X-IT3
+        title: "[結合テスト] Luồng 完納奨励金 — Cron 暫定 → 確定 → delta kỳ sau"
+        kind: test
+        constraint: 完納奨励金
+        spec: [DD-07, DD-05, FS-01, API-068]
+        desc: "Luồng xuyên E07 / E08 / E10 qua API + màn: batch Cron tạo 暫定 → nhập 支払実績 → ROLE-SETTLEMENT 確定 (lệch thì 409) → 調整要求 sau 確定 (giao dịch và 支払実績 theo D33) → delta vào kỳ sau. Dùng lại test vector của I-066 / I-068 (mức DB / batch); ở đây kiểm cả chuỗi người dùng thao tác."
+        done: "Hai đoạn của luồng chạy trong CI; kỳ đã 確定 không đổi, delta vào đúng kỳ sau."
+        subs:
+          - {id: X-IT3.1, constraint: 完納奨励金, title: "Cron 暫定 → nhập 支払実績 (SCR-26) → 確定; dữ liệu mới làm lệch 暫定 thì 409 và không 確定", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-063, I-067, I-091], done: "Cả nhánh khớp và nhánh 409 đều có audit đúng."}
+          - {id: X-IT3.2, constraint: 完納奨励金, title: "調整要求 sau 確定 (giao dịch / 支払実績) → delta kỳ sau → hiển thị ở SCR-27", kind: test, owner: QA-A, hours: 10, sprint: ~, deps: [X-IT3.1, X-D33, I-062, I-065], done: "Delta dùng version của kỳ gốc; SCR-27 hiện dòng delta."}
+      - id: X-IT4
+        title: "[結合テスト・概算] Luồng せり — ghi kết quả (HITL) → 例外 → 引渡し → 締め"
+        kind: test
+        spec: [DD-02, DD-03, CSP-15]
+        desc: "Kết quả せり do người ghi và người 確認 (HITL, không gợi ý / không tự động), sửa có lịch sử, ngoại lệ có 例外確認者, rồi giao hàng và 締め. Luồng dùng màn chưa có thiết kế (SCR-14, SCR-16) → 概算, ước lại sau 画面設計."
+        done: "Hai đoạn của luồng chạy trong CI; mọi thao tác ngoại lệ có người xác nhận và lý do."
+        subs:
+          - {id: X-IT4.1, title: "Ghi kết quả + 確認者 (HITL) → sửa có lịch sử (SCR-13 / SCR-14)", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-035, X-S14], done: "確認者 khác người ghi; lịch sử sửa đủ trước / sau."}
+          - {id: X-IT4.2, title: "例外 — 取消 / ngoại lệ giao hàng có 例外確認者 (SCR-16) → 引渡し → 締め", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [X-IT4.1, I-038, X-S16, I-044], done: "Ngoại lệ chưa xác nhận thì hiện ở danh sách chưa xử lý khi 締め."}
+      - id: X-IT5
+        title: "[結合テスト・概算] Luồng version 業務規程 — soạn → 公布 → áp dụng → ロールバック"
+        kind: test
+        spec: [DD-06, ADR-006, API-068]
+        desc: "Soạn version → 承認 bởi người khác → 公布 (AAL2) → áp dụng theo 発効日 vào phép tính → ロールバック起票 và 公布 lại version cũ; kỳ đã 確定 không đổi. Đoạn ロールバック dùng màn chưa có thiết kế (SCR-25) → 概算, ước lại sau 画面設計."
+        done: "Hai đoạn của luồng chạy trong CI; ngày trước / sau 発効日 dùng đúng version."
+        subs:
+          - {id: X-IT5.1, title: "Soạn → 承認 (người khác) → 公布 (AAL2) → áp dụng theo 発効日 vào tính 完納奨励金", kind: test, owner: QA-A, hours: 12, sprint: ~, deps: [I-056, I-057, I-058], done: "Biên 発効日 có ca ngày trước / đúng ngày / ngày sau."}
+          - {id: X-IT5.2, title: "ロールバック起票 (SCR-25) → 公布 version cũ → kỳ đã 確定 giữ nguyên", kind: test, owner: QA-A, hours: 10, sprint: ~, deps: [X-IT5.1, X-S25, I-091], done: "Kết quả 確定 trước ロールバック không đổi."}

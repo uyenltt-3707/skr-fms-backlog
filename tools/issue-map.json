@@ -1394,13 +1394,13 @@
  "I-076": {
   "number": 233,
   "level": "issue",
-  "title": "[WU-076] Đo thời gian dump + sao chép để chốt B′ hay lùi về B",
+  "title": "[WU-076] Load test — điều kiện của ADR-010: dump + sao chép dưới tải xong < 15 phút thì giữ B′, không thì lùi về B",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/233"
  },
  "I-076.1": {
   "number": 234,
   "level": "sub",
-  "title": "[WU-076] Đo dump + sao chép với dữ liệu FIG-LOAD-01",
+  "title": "[WU-076] Đo dump + sao chép trong lúc chạy tải cao điểm FIG-LOAD-01 (điều kiện ADR-010)",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/234"
  },
  "I-076.2": {
@@ -2194,5 +2194,143 @@
   "level": "sub",
   "title": "[SCR-38] 実装 3/3 — biến thể, xử lý lỗi, test",
   "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/366"
+ },
+ "X-SEC": {
+  "number": 367,
+  "level": "issue",
+  "title": "[NFR-SEC] Security test theo NFR bảo mật (NFR-SEC-01 / 03 / 04, SEC-IAM-02)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/367"
+ },
+ "X-SEC.1": {
+  "number": 368,
+  "level": "sub",
+  "title": "[NFR-SEC] Xác thực và phiên — vượt MFA / AAL2 ở API phê duyệt, khóa tạm, timeout phiên, log bất thường, PIN thiết bị dùng chung",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/368"
+ },
+ "X-SEC.2": {
+  "number": 369,
+  "level": "sub",
+  "title": "[NFR-SEC] Truy cập dữ liệu — RLS deny-all qua Data API bằng khóa công khai, IDOR giữa người tham gia, secret không lộ ở bundle client",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/369"
+ },
+ "X-SEC.3": {
+  "number": 370,
+  "level": "sub",
+  "title": "[NFR-SEC] Cấu hình và backup — TLS, secret / khóa backup tách khỏi mã nguồn, quyền đích Osaka, dump mã hóa, quét lỗ hổng thư viện",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/370"
+ },
+ "X-DR2": {
+  "number": 371,
+  "level": "issue",
+  "title": "[ACC-05] Diễn tập restore lần 2 theo thủ tục đã sửa",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/371"
+ },
+ "X-DR2.1": {
+  "number": 372,
+  "level": "sub",
+  "title": "[ACC-05] Sửa thủ tục restore Osaka theo biên bản lần 1",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/372"
+ },
+ "X-DR2.2": {
+  "number": 373,
+  "level": "sub",
+  "title": "[ACC-05] Diễn tập lần 2 — đo RTO + cold restore + biên bản so với lần 1",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/373"
+ },
+ "X-IT1": {
+  "number": 374,
+  "level": "issue",
+  "title": "[結合テスト] Luồng 相対 — 下書き → 確定 → 引渡し / 保留 → 締め / 締め bù / 締め解除",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/374"
+ },
+ "X-IT1.1": {
+  "number": 375,
+  "level": "sub",
+  "title": "[結合テスト] 下書き → 確定 — kiểm hiệu lực 参加根拠 (FS-03), chặn ghi khi ngày đã 締め, 差戻し / 取消",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/375"
+ },
+ "X-IT1.2": {
+  "number": 376,
+  "level": "sub",
+  "title": "[結合テスト] 確定 → 引渡し / 保留 → giải tỏa 保留, số lượng hiệu lực ở màn đọc",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/376"
+ },
+ "X-IT1.3": {
+  "number": 377,
+  "level": "sub",
+  "title": "[結合テスト] 締め (còn mục chưa xử lý → lý do) · 締め bù ngày quá khứ · 締め解除 → 締め lại + xuất lại đối soát",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/377"
+ },
+ "X-IT2": {
+  "number": 378,
+  "level": "issue",
+  "title": "[結合テスト] Luồng 調整要求 sau 締め — reverse / delta",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/378"
+ },
+ "X-IT2.1": {
+  "number": 379,
+  "level": "sub",
+  "title": "[結合テスト] 起票 (chọn giao dịch qua API-069) + 証憑 → 承認 sinh dòng reverse; 却下 giữ nguyên",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/379"
+ },
+ "X-IT2.2": {
+  "number": 380,
+  "level": "sub",
+  "title": "[結合テスト] Delta → giá trị hiệu lực ở màn đọc, CSV đối soát 「調整済み」, báo cáo ngày",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/380"
+ },
+ "X-IT3": {
+  "number": 381,
+  "level": "issue",
+  "title": "[結合テスト] Luồng 完納奨励金 — Cron 暫定 → 確定 → delta kỳ sau",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/381"
+ },
+ "X-IT3.1": {
+  "number": 382,
+  "level": "sub",
+  "title": "[結合テスト] Cron 暫定 → nhập 支払実績 (SCR-26) → 確定; dữ liệu mới làm lệch 暫定 thì 409 và không 確定",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/382"
+ },
+ "X-IT3.2": {
+  "number": 383,
+  "level": "sub",
+  "title": "[結合テスト] 調整要求 sau 確定 (giao dịch / 支払実績) → delta kỳ sau → hiển thị ở SCR-27",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/383"
+ },
+ "X-IT4": {
+  "number": 384,
+  "level": "issue",
+  "title": "[結合テスト・概算] Luồng せり — ghi kết quả (HITL) → 例外 → 引渡し → 締め",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/384"
+ },
+ "X-IT4.1": {
+  "number": 385,
+  "level": "sub",
+  "title": "[結合テスト・概算] Ghi kết quả + 確認者 (HITL) → sửa có lịch sử (SCR-13 / SCR-14)",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/385"
+ },
+ "X-IT4.2": {
+  "number": 386,
+  "level": "sub",
+  "title": "[結合テスト・概算] 例外 — 取消 / ngoại lệ giao hàng có 例外確認者 (SCR-16) → 引渡し → 締め",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/386"
+ },
+ "X-IT5": {
+  "number": 387,
+  "level": "issue",
+  "title": "[結合テスト・概算] Luồng version 業務規程 — soạn → 公布 → áp dụng → ロールバック",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/387"
+ },
+ "X-IT5.1": {
+  "number": 388,
+  "level": "sub",
+  "title": "[結合テスト・概算] Soạn → 承認 (người khác) → 公布 (AAL2) → áp dụng theo 発効日 vào tính 完納奨励金",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/388"
+ },
+ "X-IT5.2": {
+  "number": 389,
+  "level": "sub",
+  "title": "[結合テスト・概算] ロールバック起票 (SCR-25) → 公布 version cũ → kỳ đã 確定 giữ nguyên",
+  "url": "https://github.com/uyenltt-3707/skr-fms-backlog/issues/389"
  }
 }

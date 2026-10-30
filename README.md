@@ -15,11 +15,13 @@
 - **PREMISE.md: có thay đổi** so với LAB-4 — 6 dòng spec thêm / sửa (thiết kế màn SCR-20 và SCR-28, mở rộng 調整要求 sang
   支払実績 theo D33, nút 確定 ở SCR-26, bảng thiết bị dùng chung, 19 màn baseline LAB-1 ngoài 16 màn cốt lõi), 9 giả định bổ sung,
   6 hướng đã chốt.
-- **Backlog (sau B2b):** 13 epic · 117 issue · 236 sub-issue (270 item lá) · **2,909.5h = 387.9 MD**; riêng 完納奨励金 269h (37 item).
+- **Backlog (sau B3a):** 13 epic · 124 issue · 252 sub-issue (286 item lá) · **3,091.5h = 412.2 MD**; riêng 完納奨励金 291h (40 item).
+  B3a thêm theo quyết định PL: 5 issue test tích hợp theo luồng nghiệp vụ (130h, PREMISE P3-7), security test và diễn tập restore
+  lần 2 (52h, P3-8); #233 ghi rõ là load test điều kiện của ADR-010.
   Trong đó 17 issue màn ước thô (879h, 「詳細設計未作成のため概算」). 4 issue `要確認`, 14 chỗ hở spec ở `task-breakdown.md` §4.
-  So LAB-1 cùng phạm vi: 552.2 → 387.9 MD (−29.8%, giải thích ở `estimate.md` §5).
+  So LAB-1 cùng phạm vi: 552.2 → 412.2 MD (−25.4%; B2b −29.8%; giải thích ở `estimate.md` §5).
 - **Sprint giả lập:** chưa chạy. Đã xếp kế hoạch Sprint 1 (2026-11-02〜11-15, 243h) · Sprint 2 (232h) · Sprint 3 (249.5h);
-  195 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
+  211 item lá còn ở backlog. Lý do xếp: `task-breakdown.md` §1.3. Báo cáo tiến độ: `progress-report.md` (bước sau).
 
 ## 3. Liên kết
 
@@ -31,7 +33,8 @@
 | Mapping id nội bộ ↔ issue | `tools/issue-map.json` |
 
 Kiểm tra truy cập không đăng nhập: `tools/check-backlog.py --remote` gửi request không cookie / token tới Project và 3 issue mẫu,
-nhận HTTP 200 (2026-10-29). Mở thử bằng cửa sổ ẩn danh của trình duyệt: [PL điền — ngày, kết quả].
+nhận HTTP 200 (2026-10-29). Đã mở thử repo, Project và issue mẫu (#150) bằng cửa sổ ẩn danh của trình duyệt ngày 2026-10-30:
+xem được, không cần đăng nhập.
 
 **Cách đọc Project:** view **Board** (cột theo Status) và **Table** (lọc theo mọi trường). Trường:
 
@@ -80,8 +83,8 @@ Chạy lại: `python tools/create-issues.py` (cần `gh` đăng nhập scope `r
 | SCR-23, 24, 25; API-052, 053, 054, 055, 056, 057, 058, 059; DBT-11, 12; DD-06; ADR-006 | #151 — E09 規則・料率版 | màn ước thô #330 (P1-6) |
 | SCR-21, 26, 27; API-050, 060, 061, 063, 064, 065, 068, 069; DBT-11, 12, 13, 14, 20; DD-05, 07; FS-01; CSP-16, 17 | #150 — E10 完納奨励金 | **Constraint = 完納奨励金** cho mọi item; PREMISE P1-3, P1-4, P2-1〜P2-3, P2-5, P3-1〜P3-3 |
 | SCR-30, 31, 34, 35, 36; DBT-11, 14, 15, 23, 24; CSP-05, 07, 11, 15, 18, 21, 22; ADR-004, 007, 012 | #22 — E11 監査・共通 | màn ước thô #336, #341, #346 (P1-6) |
-| SCR-33, 37, 38; DBT-31, 32; DD-07; ADR-001, 010 | #13 — E12 インフラ・NFR | PREMISE P3-4 (DR B′ / B); màn ước thô #352, #357, #362 (P1-6) |
-| SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 — E13 テスト・移行・文書 | — |
+| SCR-33, 37, 38; DBT-31, 32; DD-07; ADR-001, 010 | #13 — E12 インフラ・NFR | PREMISE P3-4 (DR B′ / B); màn ước thô #352, #357, #362 (P1-6); security test #367, restore lần 2 #371 (P3-8); #233 load test điều kiện ADR-010 |
+| SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 — E13 テスト・移行・文書 | test tích hợp theo luồng #374, #378, #381, #384, #387 (P3-7; #384, #387 概算) |
 | PREMISE P1-1 (thiết kế SCR-20) | #27 — E07 業務日・締め・締め解除 | #131 trước #134, #135 |
 | PREMISE P1-2 (thiết kế SCR-28) | #27 — E07 業務日・締め・締め解除 | #142 trước #143, #144 |
 | PREMISE P1-3 (調整要求 → 支払実績, D33) | #150 — E10 完納奨励金 | #165, Constraint = 完納奨励金 |

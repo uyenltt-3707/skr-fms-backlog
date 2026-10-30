@@ -9,11 +9,11 @@
 
 ## 2. Trạng thái
 
-Ảnh chụp 2026-10-29, sau B2b.
+Ảnh chụp 2026-10-30, sau B3a.
 
 | Trạng thái | Số issue | Tổng SWP | Ghi chú |
 |---|---|---|---|
-| Todo | 366 (270 item lá) | — | SWP chấm ở B3 |
+| Todo | 389 (286 item lá) | — | SWP chấm ở B3 |
 | In Progress | 0 | — | |
 | In Review | 0 | — | |
 | Done | 0 | — | |
@@ -33,3 +33,4 @@ Nhận diện khi lập kế hoạch; cập nhật khi chạy Sprint.
 | Thiết kế bổ sung chưa được PL duyệt | #166, #131, #142 | Phần cài đặt D33, SCR-20, SCR-28 không vào được Sprint 2–3 | Review thiết kế ở giữa Sprint 1 | PM — 2026-11-09 |
 | B′ không đạt khi đo dump + sao chép | #228, #233 | Cam kết NFR-AVL-03 với khách | Đo ở Sprint 2; không đạt thì lùi B và gửi câu hỏi khách đã duyệt | QA-A đo, PM quyết — Sprint 2 |
 | E07 có thể ước thiếu (báo cáo dùng chung) | #136, #141 | Mốc báo cáo ngày FR-RPT-01 (P0) | Kiểm chéo bằng SWP ở B3; nếu lệch thì ước lại | PM — B3 |
+| BE vẫn quá tải sau cân tải (BE ~1,096h ≈ 10 sprint cho 2 người) | toàn backlog BE | Mốc hoàn tất backlog | **Không thêm người lúc này** (PL quyết B3a). Hành động có điều kiện: nếu velocity BE Sprint 1–2 thấp hơn kế hoạch (BE-A 52h / 50h, BE-B 52.5h / 51h) thì thêm 1 BE từ Sprint 4 | Người quyết: PM · thời điểm: cuối Sprint 2 (2026-11-27) |

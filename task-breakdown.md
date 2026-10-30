@@ -7,14 +7,14 @@ Nguồn: `specs/_meta/lab5_handoff.yaml` của LAB-4 @ `576480b` — 95 WU, 13 e
 
 ### 1.1 Độ hạt — chia tới đâu thì dừng
 
-- **1 WU = 1 issue** (giữ truy vết 1–1 với handoff, tiêu đề mở đầu `[WU-NNN]`). Issue thêm khi break có tiền tố `[D33]` hoặc `[要確認]`; màn baseline LAB-1 chưa thiết kế có tiền tố `[SCR-NN]` (B2b).
+- **1 WU = 1 issue** (giữ truy vết 1–1 với handoff, tiêu đề mở đầu `[WU-NNN]`). Issue thêm khi break có tiền tố `[D33]` hoặc `[要確認]`; màn baseline LAB-1 chưa thiết kế có tiền tố `[SCR-NN]` (B2b); test tích hợp theo luồng `[結合テスト]` (`[結合テスト・概算]` khi luồng dùng màn ước thô), security test `[NFR-SEC]`, diễn tập restore lần 2 `[ACC-05]` (B3a).
 - **Tách sub-issue** khi có một trong ba điều kiện:
   1. ước giờ > **15h** (2 ngày công × 7.5h) — mỗi sub-issue cũng ≤ 15h;
   2. issue cần **hai loại người làm** (vd. API cho BE + màn cho FE, hoặc phần test tích hợp cho QA) — mỗi sub-issue một 担当(仮);
   3. issue cần **bước thiết kế trước** (SCR-20, SCR-28, D33, thiết bị dùng chung, 19 màn ngoài cốt lõi) — sub-issue thiết kế (画面設計) đứng đầu, sub-issue cài đặt (実装) phụ thuộc nó.
   4. một issue gồm nhiều sản phẩm khác nguồn dữ liệu / định dạng (12 báo cáo E07) — mỗi sản phẩm một sub-issue.
 - **Dừng chia** khi item lá: một người làm, một kết quả kiểm chứng được, ≤ 15h. Không chia theo từng file hay từng tầng code nhỏ hơn thế.
-- Kết quả (sau B2b): 13 epic · 117 issue · 236 sub-issue · 270 item lá (lá = issue không có sub-issue, hoặc sub-issue).
+- Kết quả (sau B3a): 13 epic · 124 issue · 252 sub-issue · 286 item lá (lá = issue không có sub-issue, hoặc sub-issue).
 
 ### 1.2 Định nghĩa xong (Definition of Done)
 
@@ -30,13 +30,13 @@ Issue cha / epic `Done` khi mọi con `Done`.
 | Issue | `Issue` | sub-issue thật của epic | lá: ước trực tiếp · cha: tổng con | lá: theo loại · cha: người nhiều giờ nhất | lá: theo kế hoạch · cha: sprint chung của con, khác nhau thì trống |
 | Sub-issue | `Sub-issue` | sub-issue thật của issue | ước trực tiếp (≤ 15h) | theo loại | theo kế hoạch |
 
-- Mọi item: `Status = Todo` khi tạo (script không ghi đè tiến độ khi chạy lại), `Constraint = 完納奨励金` cho E10 và issue D33, còn lại `なし`.
+- Mọi item: `Status = Todo` khi tạo (script không ghi đè tiến độ khi chạy lại), `Constraint = 完納奨励金` cho E10, issue D33, RPT-07 và luồng test tích hợp #381, còn lại `なし`.
 - `SWP` để trống ở B2 (chấm ở B3).
 - Nhãn `要確認`: issue cần hỏi lại PL / khách; lọc trên Project bằng `label:要確認`.
 - 担当(仮) theo loại: DB / API / batch → BE-A, BE-B · UI → FE-A, FE-B · test → QA-A · tài liệu / thiết kế / 要確認 → PM.
   **Hạ tầng** (đề không gán) → FE-A, FE-B. **API đơn giản** (CRUD, đọc danh sách, không RPC, không logic tiền, không bảo mật) → FE-A, FE-B
   (Next.js fullstack, B2b): #82, #120, #168, #181, #219, #134, #143, #317〜#319 và phần API của màn ước thô.
-  RPC, logic nguyên tử, 完納奨励金, xác thực / phân quyền / 証憑 giữ ở BE. Tổng: BE-A 543h / BE-B 553h, FE-A 703h / FE-B 698.5h, QA-A 198h, PM 214h.
+  RPC, logic nguyên tử, 完納奨励金, xác thực / phân quyền / 証憑 giữ ở BE. Tổng: BE-A 543h / BE-B 553h, FE-A 703h / FE-B 698.5h, QA-A 376h, PM 218h (sau B3a).
 - **Iteration** (6 người × 52.5h = 315h trần lý thuyết; PM chỉ 30h → 292.5h / sprint): xếp theo phụ thuộc (item phụ thuộc phải cùng hoặc sớm hơn) và ưu tiên —
   Sprint 1 = nền tảng: E01 (đăng nhập, quyền), E11 (audit, mã lỗi, component), E12 (môi trường, khung job, DR sớm vì quyết định B′ / B
   ảnh hưởng cam kết NFR), bảng lõi của E02 / E03 / E07 / E08 / E09, các bước thiết kế (D33, SCR-20, SCR-28) và 4 issue 要確認 để có
@@ -59,8 +59,8 @@ Issue cha / epic `Done` khi mọi con `Done`.
 | SCR-23, 24, 25; API-052, 053, 054, 055, 056, 057, 058, 059; DBT-11, 12; DD-06; ADR-006 | #151 E09 規則・料率版 | #152 (2), #181 (2), #184 (2), #187 (2), #190 (2), #330 (4) | — |
 | SCR-21, 26, 27; API-050, 060, 061, 063, 064, 065, 068, 069; DBT-11, 12, 13, 14, 20; DD-05, 07; FS-01; CSP-16, 17 | #150 E10 完納奨励金 | #153, #154 (2), #155, #156, #159 (2), #197 (2), #157, #200 (3), #203, #204 (3), #208 (2), #211 (2), #165 (5), #158 | — |
 | SCR-30, 31, 34, 35, 36; DBT-11, 14, 15, 23, 24; CSP-05, 07, 11, 15, 18, 21, 22; ADR-004, 007, 012 | #22 E11 監査・共通 | #23, #218 (2), #24 (2), #223 (2), #226, #227, #336 (4), #341 (4), #346 (5) | — |
-| SCR-33, 37, 38; DBT-31, 32; DD-07; ADR-001, 010 | #13 E12 インフラ・NFR | #228 (3), #233 (2), #14, #236 (2), #239 (3), #132, #232 (2), #133 (2), #352 (4), #357 (4), #362 (4) | Security test, chuyển kho cold FT-15-02 — không có WU trong handoff (LAB-1 tính ở hạng mục cố định) |
-| SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 E13 テスト・移行・文書 | #248 (3), #252 (2), #255 (2), #258 (2), #261, #262, #263 | Migration dữ liệu khách, đào tạo, cutover, hypercare — hạng mục cố định LAB-1, ngoài thiết kế LAB-4 |
+| SCR-33, 37, 38; DBT-31, 32; DD-07; ADR-001, 010 | #13 E12 インフラ・NFR | #228 (3), #233 (2), #14, #236 (2), #239 (3), #132, #232 (2), #133 (2), #352 (4), #357 (4), #362 (4), #367 (3), #371 (2) | Chuyển kho cold FT-15-02 — không có WU trong handoff (LAB-1 tính ở hạng mục cố định). Security test #367 và restore lần 2 #371 thêm ở B3a (P3-8) |
+| SCR-10, 13; API-001, 069; DBT-04, 07, 09; DD-01, 02, 03, 04, 05, 06; FS-02; CSP-03, 04, 05, 13, 15; ADR-013, 014 | #247 E13 テスト・移行・文書 | #248 (3), #252 (2), #255 (2), #258 (2), #261, #262, #263, #374 (3), #378 (2), #381 (2), #384 (2), #387 (2) | Migration dữ liệu khách, đào tạo, cutover, hypercare — hạng mục cố định LAB-1, ngoài thiết kế LAB-4 |
 | SP4 LAB-1 `04_screens.yaml`: 19 màn baseline ngoài 16 màn cốt lõi chưa có issue (SCR-02, 04, 07, 09, 12, 14, 16, 17, 25, 29–38) | theo epic chức năng | #265, #270, #275, #279, #286, #293, #298, #305, #320, #325, #330, #336, #341, #346, #352, #357, #362 — mỗi issue 画面設計 + 実装, ước thô, Iteration trống | — (SCR-20 / 26 / 28 đã có từ B2) |
 | 95 WU của handoff · 52 dòng `design_vs_prototype.md` (qua bảng dvp_map) | mọi epic | mỗi WU = 1 issue, tiêu đề `[WU-NNN]` | — (kiểm bằng `tools/check-backlog.py`) |
 | FORM-LOT / TRADE / SERI / DEL-01 (phiếu PDF hiện trường) | — | — | LAB-4 không cấp API cho 受領票 PDF (D25) — ngoài phạm vi; làm khi có thiết kế |
@@ -88,6 +88,7 @@ không theo dõi riêng được từng biến; sai một biến là sai tiền 
 | 確定 kỳ bởi ROLE-SETTLEMENT + nút SCR-26 | #211 | Chuyển trạng thái bất biến, dùng chung khóa với batch (P3-2, P1-4) |
 | 調整要求 cho 支払実績 (D33) | #165 | Thiết kế mới, ảnh hưởng 4 tài liệu và số tiền kỳ sau (P1-3) |
 | Định nghĩa 「次期」 | #158 | Câu hỏi làm rõ, chặn chốt #196 |
+| Test tích hợp luồng 完納奨励金: Cron 暫定 → 確定 → delta kỳ sau (E13) | #381 | Chuỗi người dùng thao tác qua API + màn, dùng lại vector #203 / #208 (B3a, P3-7) |
 | Báo cáo RPT-07 期別 完納奨励金 計算結果 (E07) | #313 | Báo cáo số tiền theo kỳ — gắn Constraint để lọc cùng nhóm dù nằm ở epic báo cáo (B2b) |
 
 ## 4. Chỗ hở / mâu thuẫn của spec LAB-4 phát hiện khi break

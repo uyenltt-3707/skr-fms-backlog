@@ -40,6 +40,8 @@ giữ hai trường độc lập thì mới kiểm chéo được nhau (quy tắ
 6. **Màn chưa có thiết kế** (19 màn baseline LAB-1 ngoài 16 màn cốt lõi): ước thô 「詳細設計未作成のため概算」 — 実装 = năng suất LAB-1
    S / M / L = 2.5 / 5 / 10 MD × 7.5h, chia phần ≤ 15h; 画面設計 = 0.2 × 実装 (hệ số 詳細設計 của LAB-1). Ước lại sau 画面設計.
 7. **Báo cáo E07:** 12 báo cáo khác nguồn dữ liệu và bộ cột → mỗi báo cáo một sub-issue, 6–14h tùy độ phức tạp của truy vấn (§5).
+8. **Test tích hợp theo luồng** (B3a, PREMISE P3-7): mỗi đoạn luồng một sub-issue 10–14h (khoảng 'test'), 担当 QA-A; luồng dùng
+   màn ước thô ghi 「概算」, Iteration trống, ước lại sau 画面設計.
 
 Ví dụ trong bảng là giờ cơ sở (bước 2–3); WU sửa từ prototype còn cộng bước 5.
 
@@ -75,10 +77,10 @@ Chỉ cộng item lá. MD = giờ / 7.5. Tổng SWP để trống chờ B3.
 | #151 E09 規則・料率版 | 6 / 14 / 14 | | 148 | 19.7 | 25 / 20 / 22 / 81 |
 | #150 E10 完納奨励金 | 14 / 21 / 27 | | 259 | 34.5 | 11 / 0 / 0 / 248 · Constraint 完納奨励金 |
 | #22 E11 監査・共通 | 9 / 19 / 22 | | 249.5 | 33.3 | 62.5 / 22.5 / 0 / 164.5 |
-| #13 E12 インフラ・NFR | 11 / 26 / 28 | | 297 | 39.6 | 36 / 22 / 46 / 193 |
-| #247 E13 テスト・移行・文書 | 7 / 9 / 12 | | 114 | 15.2 | 0 / 26 / 20 / 68 |
-| **Tổng** | **117 / 236 / 270** | | **2909.5** | **387.9** | |
-| **Riêng 完納奨励金** (Constraint) | 14 / 22 / 28 | | **269** | **35.9** | 9.2% tổng giờ; gồm D33 46h, RPT-07 10h (sub-issue ở E07) và câu hỏi #158 1h |
+| #13 E12 インフラ・NFR | 13 / 31 / 33 | | 349 | 46.5 | 36 / 22 / 46 / 245 · B3a +security test #367, restore lần 2 #371 |
+| #247 E13 テスト・移行・文書 | 12 / 20 / 23 | | 244 | 32.5 | 0 / 26 / 20 / 198 · B3a +5 luồng test tích hợp |
+| **Tổng** | **124 / 252 / 286** | | **3091.5** | **412.2** | |
+| **Riêng 完納奨励金** (Constraint) | 15 / 24 / 30 | | **291** | **38.8** | 9.4% tổng giờ; gồm D33 46h, RPT-07 10h (sub-issue ở E07), câu hỏi #158 1h, luồng test tích hợp #381 22h (E13) |
 
 **Tải theo 担当(仮) × Iteration** (giờ; trần 52.5h / người / sprint, PM 30h):
 
@@ -88,9 +90,9 @@ Chỉ cộng item lá. MD = giờ / 7.5. Tổng SWP để trống chờ B3.
 | FE-B (trần 52.5) | 48 | 52 | 45 | 553.5 | 698.5 |
 | BE-A (trần 52.5) | 52 | 50 | 50 | 391 | 543 |
 | BE-B (trần 52.5) | 52.5 | 51 | 52.5 | 397 | 553 |
-| QA-A (trần 52.5) | 18 | 18 | 50 | 112 | 198 |
-| PM (trần 30) | 29 | 16 | 4 | 165 | 214 |
-| **Tổng** (trần 292.5) | **243** | **232** | **249.5** | 2185 | 2909.5 |
+| QA-A (trần 52.5) | 18 | 18 | 50 | 290 | 376 |
+| PM (trần 30) | 29 | 16 | 4 | 169 | 218 |
+| **Tổng** (trần 292.5) | **243** | **232** | **249.5** | 2367 | 3091.5 |
 
 ## 5. So với estimate LAB-1
 
@@ -107,7 +109,7 @@ rồi chỉ lấy đúng các pha đó của LAB-1 để so.
 | 製造・単体テスト | 1.00 × I | Có | item DB / API / UI / batch (gồm phần 実装 ước thô) |
 | 結合テスト | 0.30 × I | Có — một phần trong Định nghĩa xong của từng item (test API / tích hợp của item) + issue test riêng | item test |
 | システムテスト, UAT支援 | 0.25 + 0.10 × I | Không | — |
-| Cố định 非機能 (bảo mật, backup / restore, giám sát, tải) | 40 MD | Có một phần | E12 hạ tầng / test (DR, giám sát, load test) |
+| Cố định 非機能 (bảo mật, backup / restore, giám sát, tải) | 40 MD | Có một phần | E12 hạ tầng / test (DR, giám sát, load test, security test, restore lần 2) |
 | Cố định khác (移行, 教育, 切替, hypercare, 機器テスト) | 134 MD | Không | — |
 | Gián tiếp (PM / comtor / QA) + buffer 15% | — | Không (quy tắc 7) | — |
 
@@ -128,10 +130,10 @@ FT-13-01 xuất đối soát và FT-13-03 thuế (chờ #125), FT-15-02 chuyển
 | E09 規則・料率版 | 27.0 (1.3 × 20 + 0.2 × 5) | 19.7 | -7.3 (-27%) | API soạn version là CRUD bản nháp; chọn version theo 発効日 (FT-10-03) tính ở E10 |
 | E10 完納奨励金 | 45.5 (1.3 × 35 + 0.2 × 0) | 34.4 | -11.1 (-24%) | LAB-1 ước 2 khối 10 MD (calc_logic_F11); LAB-5 tách 14 issue nhỏ có test vector riêng; đã gồm D33 6.1 MD (P1-3) |
 | E11 監査・共通 | 58.8 (1.3 × 42.5 + 0.2 × 17.5) | 33.3 | -25.5 (-43%) | 共通基盤 20 MD của LAB-1 trải sang E01 / E12 ở LAB-5 và một phần đã có ở prototype |
-| E12 インフラ・NFR | 72.9 (1.3 × 23 + 0.2 × 15 + 40) | 39.6 | -33.3 (-46%) | Chưa có security test, chỉ 1 lần diễn tập restore (LAB-1: 2), chưa có chuyển kho cold FT-15-02 — không có WU trong handoff |
-| E13 テスト・移行・文書 (test xuyên epic, migration schema) | — (đã nằm trong 1.3 × I của từng epic) | 13.3 | — | Test E2E / quyền / khóa ngày của LAB-5 gom ở E13 |
+| E12 インフラ・NFR | 72.9 (1.3 × 23 + 0.2 × 15 + 40) | 46.5 | -26.4 (-36%) | B3a đã thêm security test #367 và diễn tập restore lần 2 #371 (+6.9 MD, P3-8); còn thiếu chuyển kho cold FT-15-02 — không có WU trong handoff |
+| E13 テスト・移行・文書 (test xuyên epic, migration schema) | — (đã nằm trong 1.3 × I của từng epic) | 30.7 | — | Test E2E / quyền / khóa ngày của LAB-5 gom ở E13; B3a thêm 5 luồng test tích hợp (+17.3 MD, P3-7) |
 | Khác LAB-5 (tài liệu, 要確認) | — (LAB-1 tính trong gián tiếp PM) | 2.5 | — | — |
-| **Tổng** | **552.2** | **387.9** | **-164.3 (-29.8%)** | Xem kết luận |
+| **Tổng** | **552.2** | **412.2** | **-140.0 (-25.4%)** | Xem kết luận (B2b: 387.9, −29.8%) |
 
 **E07 — 12 báo cáo:** đã kiểm catalog (RPT-01〜12): mỗi báo cáo lấy từ nguồn dữ liệu khác nhau (giao dịch, lô, người tham gia,
 giao hàng, đối soát, kế toán, 完納奨励金, điều chỉnh, tranh chấp; 3 báo cáo tháng) và có bộ cột riêng → **khác định dạng**. Đã tách mỗi
@@ -143,11 +145,13 @@ riêng cho từng báo cáo. Còn rủi ro ước thiếu → kiểm chéo bằn
 **WU sửa từ prototype:** đã rà 49 WU (80 item lá). Giờ B2 chỉ tính phần sửa, chưa tính hoàn thiện lên production → cộng +25% cho item
 DB / API / UI / batch / hạ tầng (§3 bước 5): **+166.5h (+22.2 MD)**; 3 item vượt 15h tách thêm sub-issue "Hoàn thiện production".
 
-**Kết luận:** chênh −29.8% (vượt ±15%). Nguyên nhân chính, theo thứ tự lớn → nhỏ:
-1. **結合テスト:** LAB-1 0.3 × I = 113.2 MD; LAB-5 có 21.1 MD item test riêng + phần test trong từng item.
-   Màn ước thô chưa có test tích hợp riêng → **rủi ro thiếu test tích hợp**, đề xuất bổ sung sau 画面設計 (ước lại).
+**Kết luận:** chênh −25.4% (B2b −29.8%; vẫn vượt ±15%). Nguyên nhân chính, theo thứ tự lớn → nhỏ:
+1. **結合テスト:** LAB-1 0.3 × I = 113.2 MD. LAB-5 item test riêng (ngoài test 非機能 E12): **trước B3a 21.1 MD (158h) → sau B3a
+   38.4 MD (288h)** nhờ 5 luồng test tích hợp theo luồng nghiệp vụ (+130h, P3-7); chênh 結合テスト giảm từ −92.1 MD xuống **−74.8 MD**.
+   Phần còn lại là test API / tích hợp trong Định nghĩa xong của từng item. Hai luồng dùng màn ước thô (#384, #387) là 概算,
+   ước lại sau 画面設計.
 2. **E07 báo cáo** dùng chung màn + API (−37 MD so với cách tính từng báo cáo của LAB-1).
 3. **Tái dùng prototype** ở E04 / E06 / E11 (route, RPC, khung chung đã có) dù đã cộng 25% hoàn thiện.
-4. **E12** chưa có security test và lần diễn tập restore thứ 2 (không có WU trong handoff) — để PL quyết có thêm issue không.
+4. **E12**: B3a đã thêm security test và diễn tập restore lần 2 (+52h, PL quyết); còn thiếu chuyển kho cold FT-15-02.
 Thay đổi ở PREMISE.md làm tăng giờ (P1-1〜P1-5: 74h; P1-6: 879h), không làm giảm. E07, E11, E12 kiểm chéo bằng SWP ở B3 (quy tắc 6).
 

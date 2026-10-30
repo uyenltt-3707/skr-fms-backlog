@@ -29,6 +29,7 @@ Chỉ lấp chỗ spec / RFP để ngỏ; không ghi đè điều RFP đã nêu 
 | P2-7 | Đội giả định 6 người (FE-A, FE-B, BE-A, BE-B, QA-A, PM); sprint 10 ngày × 7.5h; giờ làm backlog 52.5h / người / sprint (trừ 7.5h họp, 15h buffer), PM 30h (còn lại là quản lý) | RFP / LAB-1 không định nghĩa đội cho LAB-5 (LAB-1 chỉ gợi ý cơ cấu đội) | Trần tải mỗi Iteration; Sprint 1 xếp 240h / 292.5h |
 | P2-8 | Prototype là bản demo: phần hoàn thiện lên production (xử lý lỗi theo mã chuẩn, test bổ sung, kiểm quyền / RLS / audit) bằng ~25% giờ phần sửa | Handoff ghi WU 'sửa từ prototype' nhưng không nêu mức hoàn thiện của prototype (còn nhánh demo_reset, seed_mode, chưa có test ma trận) | +166.5h trên 80 item lá của 49 WU; 3 item tách thêm sub-issue (`estimate.md` §3 bước 5) |
 | P2-9 | Màn chưa thiết kế ước thô theo năng suất LAB-1 (S / M / L = 2.5 / 5 / 10 MD); 画面設計 = 0.2 × 実装; ước lại sau khi có screen spec | Màn ngoài cốt lõi chưa có screen spec ở LAB-4 (詳細設計未作成) | 17 issue P1-6 = 879h (73 sub-issue: 17 画面設計 + 56 実装); Iteration để trống tới khi ước lại |
+| P2-10 | Test tích hợp theo luồng ước 10–14h mỗi đoạn luồng (khoảng 'test' của `estimate.md` §3); luồng dùng màn chưa thiết kế ghi 「概算」, để Iteration trống, ước lại sau 画面設計 | Handoff không có WU 結合テスト theo luồng; test trong Định nghĩa xong của từng item chỉ phủ chính item đó | +130h (11 item lá, QA-A) ở #374, #378, #381, #384, #387; #384, #387 概算 |
 
 ## 3. Hướng đã chốt
 
@@ -40,3 +41,5 @@ Chỉ lấp chỗ spec / RFP để ngỏ; không ghi đè điều RFP đã nêu 
 | P3-4 | DR khi mất cả region Tokyo | B dump 1 giờ · B′ dump 15 phút · C replication logic | B′ baseline có điều kiện; không đạt thì lùi B; C để tương lai | D20: chỉ chốt được khi có số đo → #228 dựng, #233 đo và ghi quyết định |
 | P3-5 | 「追加情報の要求」 ở duyệt 調整要求 | (a) trạng thái riêng · (b) gộp vào 却下 | (b) cho baseline; câu hỏi khách non-blocking | D21 (d), D26 → #171 không có trạng thái riêng |
 | P3-6 | ROLE-SETTLEMENT chọn giao dịch để 起票 調整要求 | (a) mở API đọc thô 026 / 033 · (b) endpoint đọc riêng API-069 | (b) | D24, D29: quyền tối thiểu → #168 |
+| P3-7 | 結合テスト | (a) theo từng màn · (b) theo luồng nghiệp vụ | (b) | PL quyết (B3a): lỗi tích hợp nằm ở chỗ nối giữa các chức năng (相対 → 引渡し → 締め → 調整要求 → 完納奨励金); 5 luồng #374 相対, #378 調整要求, #381 完納奨励金, #384 せり, #387 version 業務規程; giảm chênh 結合テスト so LAB-1 (`estimate.md` §5) |
+| P3-8 | Security test và diễn tập restore lần 2 (E12) | (a) không thêm vì handoff không có WU · (b) thêm theo NFR bảo mật LAB-4 và LAB-1 (2 lần diễn tập) | (b) | PL quyết (B3a): #367 theo NFR-SEC-01 / 03 / 04, SEC-IAM-02; #371 diễn tập ACC-05 lần 2. Load test đo dump đã có (#233) — ghi rõ là điều kiện của ADR-010 (B′ < 15 phút), đo trong lúc chạy tải cao điểm |
